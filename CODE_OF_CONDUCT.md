@@ -22,7 +22,7 @@ We strive to:
 The use of sexualized language or imagery and sexual attention or advances of any kind.
 - Trolling, insulting or derogatory comments, and personal or political attacks.
 - Public or private harassment, including unwelcome sexual attention, and unsolicited private messages (DMs).
-- Publishing others' private information, such as a physical or email address, without their explicit permission ("doxing").
+- Publishing others' private information, such as a physical or email address, without their explicit permission.
 - Other conduct which could reasonably be considered inappropriate in a professional setting.
 - Spam, excessive self-promotion, or posting off-topic content.
 - Plagiarism or misrepresentation of others' work (code, documentation, ideas).
@@ -31,8 +31,8 @@ The use of sexualized language or imagery and sexual attention or advances of an
 
 ***Scope***
 
-This Code of Conduct applies to all kala.ficial spaces and it applies equally to everyone involved in the project (mentors, mentees, contributors, maintainers, and sponsors). This includes:
-- The kala.ficial GitHub repositories (issues, pull requests, discussions, wikis, commit messages).
+This Code of Conduct applies to all kala.ficial spaces and it applies equally to everyone involved in the project (mentors, contributors, maintainers). This includes:
+- The kala.ficial GitHub repositories (issues, pull requests, discussions, commit messages).
 - Official GSSoC’25 communication channels (Discord) dedicated to the project.
 - Social media platform (LinkedIn) in official project-related discussions and posts.
 - All virtual or in-person events, meetings, or workshops affiliated with kala.ficial.
@@ -47,7 +47,7 @@ Please contact one or more of the following:
 - kala.ficial Project Admins or Mentors: (Via designated GSSoC Discord channels or DMs)
 - Project Maintainers: (Via GitHub contact information or official project email)
 
-We take all reports seriously. We will investigate every incident and respond appropriately.
+*We take all reports seriously. We will investigate every incident and respond appropriately.*
 
 ---
 
