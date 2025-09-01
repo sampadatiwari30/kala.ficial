@@ -1,29 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login Form with Captcha</title>
+    <title>Login - KALA.Ficial</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="login.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="auth.css" />
   </head>
   <body>
-<div class="login-form">
-  <div class="form-title">
-    Login
-  </div>
-  <div class="form-input">
-    <label for="username">Username</label>
-    <input type="text" id="username">
-  </div>
-  <div class="form-input">
-    <label for="password">Password</label>
-    <input type="password" id="password">
-  </div>
+    <header>
+      <div class="navbar-container">
+        <div class="logo">
+          <h2>कला.ficial</h2>
+        </div>
+        <nav class="nav-menu" id="navMenu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="exhibition.html">Exhibition</a></li>
+            <li><a href="#indian">Artwork</a></li>
+            <li><a href="Artist Portal.html">Artist Portal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="Loginform.html" class="btn btn-outline active">Login</a>
+          <a href="signuppage.html" class="btn btn-primary">Sign Up</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
 
-  <div class="form-input">
-    <button id="login-btn">Login</button>
-  </div>
-</div>
+    <main class="auth-main">
+      <div class="auth-container">
+        <div class="auth-form-container">
+          <div class="auth-form">
+            <div class="form-header">
+              <h2>Welcome Back</h2>
+              <p>Sign in to your account</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+              <div class="form-group">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username" required>
+                <i class="fas fa-user input-icon"></i>
+              </div>
+              
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-lock input-icon"></i>
+                <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+              </div>
+
+              <div class="form-options">
+                <div class="remember-me">
+                  <input type="checkbox" id="remember" name="remember">
+                  <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary auth-btn">Sign In</button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Don't have an account? <a href="signuppage.html">Sign up here</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="auth-image-container">
+          <div class="auth-image">
+            <img src="gallery.jpeg" alt="Art Gallery">
+            <div class="image-overlay">
+              <h3>Discover Amazing Art</h3>
+              <p>Join our community of art lovers and artists</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script>
+      // Password toggle functionality
+      document.getElementById('passwordToggle').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+      });
+
+      // Login form submission
+      document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (!username || !password) {
+          showNotification('Please fill in all fields.', 'error');
+          return;
+        }
+
+        // Simulate login process
+        showNotification('Login successful! Redirecting...', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      });
+    </script>
   </body>
 </html>

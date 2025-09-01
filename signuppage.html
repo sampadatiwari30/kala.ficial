@@ -3,51 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="signup.css">
+    <title>Sign Up - KALA.Ficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <div class="wrapper">
-      <div class="inner">
-       <div class="image-holder">
-            <img src="p3.png" alt="image">
-       </div>
-       <form>
-        <h3>Registration Form</h3>
-
-        <div class="form-group">
-           <input type="text" placeholder="first name" class="form-control">
-           <input type="text" placeholder="last name" class="form-control">
+    <header>
+      <div class="navbar-container">
+        <div class="logo">
+          <h2>कला.ficial</h2>
         </div>
-        <div class="form-wrapper">
-            <input type="text" placeholder="username" class="form-control">
+        <nav class="nav-menu" id="navMenu">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="exhibition.html">Exhibition</a></li>
+            <li><a href="#indian">Artwork</a></li>
+            <li><a href="Artist Portal.html">Artist Portal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="auth-buttons">
+          <a href="Loginform.html" class="btn btn-outline">Login</a>
+          <a href="signuppage.html" class="btn btn-primary active">Sign Up</a>
         </div>
-     
-        <div class="form-wrapper">
-            <input type="text" placeholder="Email Address" class="form-control">
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-
-        <div class="form-wrapper">
-            <select name="" id="" class="form-control">
-            <option value="" disabled selected>Gneder</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">other</option>
-        </select>
-        </div>
-
-        <div class="form-wrapper">
-               <input type="text" placeholder="password" class="form-control">
-        </div>
-
-        <div class="form-wrapper">
-            <input type="confirm password" placeholder="confirm password" class="form-control">
-     </div>
-        <button>Register</button>
-        <a href="#" ="already registered?"></a>
-        
-       </form>
       </div>
+    </header>
+
+    <main class="auth-main">
+      <div class="auth-container">
+        <div class="auth-form-container">
+          <div class="auth-form">
+            <div class="form-header">
+              <h2>Create Account</h2>
+              <p>Join our art community today</p>
+            </div>
+            
+            <form id="signupForm" class="signup-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                  <i class="fas fa-user input-icon"></i>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                  <i class="fas fa-user input-icon"></i>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <i class="fas fa-at input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <i class="fas fa-envelope input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                  <option value="" disabled selected>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+                <i class="fas fa-venus-mars input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-lock input-icon"></i>
+                <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <i class="fas fa-lock input-icon"></i>
+                <i class="fas fa-eye password-toggle" id="confirmPasswordToggle"></i>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to our newsletter for art updates</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+              <p>Already have an account? <a href="Loginform.html">Sign in here</a></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="auth-image-container">
+          <div class="auth-image">
+            <img src="p3.png" alt="Art Registration">
+            <div class="image-overlay">
+              <h3>Welcome to कला.ficial</h3>
+              <p>Start your artistic journey with us</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts.js"></script>
+    <script>
+      // Password toggle functionality
+      function setupPasswordToggle(toggleId, passwordId) {
+        document.getElementById(toggleId).addEventListener('click', function() {
+          const passwordInput = document.getElementById(passwordId);
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          this.classList.toggle('fa-eye');
+          this.classList.toggle('fa-eye-slash');
+        });
+      }
+
+      setupPasswordToggle('passwordToggle', 'password');
+      setupPasswordToggle('confirmPasswordToggle', 'confirmPassword');
+
+      // Signup form submission
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirmPassword');
+        const terms = formData.get('terms');
+
+        // Validation
+        if (password !== confirmPassword) {
+          showNotification('Passwords do not match.', 'error');
+          return;
+        }
+
+        if (password.length < 6) {
+          showNotification('Password must be at least 6 characters long.', 'error');
+          return;
+        }
+
+        if (!terms) {
+          showNotification('Please accept the Terms of Service.', 'error');
+          return;
+        }
+
+        // Simulate registration process
+        showNotification('Account created successfully! Welcome to कला.ficial!', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 2000);
+      });
+
+      // Real-time password validation
+      document.getElementById('confirmPassword').addEventListener('input', function() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = this.value;
+        
+        if (confirmPassword && password !== confirmPassword) {
+          this.style.borderColor = '#e74c3c';
+        } else {
+          this.style.borderColor = '#e9ecef';
+        }
+      });
+    </script>
+</body>
+</html>
     </div>
 </body>
 </html>
