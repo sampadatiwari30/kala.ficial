@@ -1,0 +1,286 @@
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #fff7f2;
+      color: #333;
+    }
+
+    /* Header */
+    .navbar {
+  background: #111; /* dark background */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Left Logo */
+.logo 
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  left: 20px;
+  margin-right: 2rem; 
+
+}
+.logo span {
+  color: #f97316; /* orange highlight */
+}
+
+.menu-icon {
+  font-size: 1.4rem;
+  color: #f97316;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Nav Links */
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #f97316;
+}
+
+/* Buttons */
+.nav-right .btn {
+  padding: 0.6rem 1.4rem;
+  margin-left: 0.8rem;
+  border-radius: 25px; /* pill shape */
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background: #f97316;
+  color: #fff;
+}
+
+.login-btn:hover {
+  background: #fb923c;
+}
+
+.signup-btn {
+  background: #f97316;
+  color: #fff;
+}
+
+.signup-btn:hover {
+  background: #ea580c;
+}
+
+/* Responsive */
+@media (max-width: 768px) 
+{
+  .nav-menu ul {
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 1rem;
+  }
+
+  .nav-menu ul.active {
+    display: flex;
+  }
+}
+
+
+    /* Contact Section */
+    .contact-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 0 20px;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info h2 {
+      font-size: 28px;
+      color: #ff6600;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      flex: 1;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      color: #ff6600;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+      border-color: #ff6600;
+      box-shadow: 0px 0px 6px rgba(255,102,0,0.3);
+    }
+
+    button {
+      background: #ff6600;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e65c00;
+    }
+
+    /* Footer */
+        #footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 4rem 0 0;
+            position: relative;
+        }
+
+        .footer-content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #ff9933;
+            font-family: "Cinzel", serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff9933;
+        }
+
+        .footer-logo {
+            font-family: "Cinzel", serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff9933;
+            margin-top: 1rem;
+        }
+
+        .footer-section p {
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: #ff9933;
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: #bbb;
+        }
+
+        .footer-contact-item i {
+            color: #ff9933;
+            width: 20px;
+            text-align: center;
+        }
