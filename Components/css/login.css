@@ -1,0 +1,174 @@
+body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #b45309, #92400e, #451a03);
+      background-size: cover;
+    }
+
+    /* Home button */
+    .home-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .home-button:hover {
+      transform: scale(1.1);
+    }
+
+    .home-button img {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Login box */
+    .login-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: slideUp 0.9s ease-out;
+    }
+
+    .login-box h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 0.4rem;
+    }
+
+    .login-box h2 {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #b45309;
+      margin-bottom: 1rem;
+    }
+
+    .login-box h3 {
+      font-size: 1rem;
+      color: #6b4c2a;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus {
+      border: 1px solid #d97706;
+      outline: none;
+      box-shadow: 0 0 6px rgba(217,119,6,0.4);
+    }
+
+    .forgot-link {
+      text-align: right;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+
+    .forgot-link a {
+      font-size: 0.85rem;
+      color: #b45309;
+      text-decoration: none;
+    }
+
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .footer-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .footer-text a {
+      color: #d97706;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+        .home-btn 
+    {
+        position: absolute;   /* fixes it to the corner */
+        left: 20px;           /* space from the left edge */
+        top: 20px;            /* space from the top */
+        text-decoration: none;
+        color: #333;          /* button text color */
+        font-weight: bold;
+        font-size: 18px;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background-color: #f0f0f0;
+        transition: background 0.3s ease;
+    }
+
+    .home-btn:hover
+    {
+        background-color: #ddd;
+    }

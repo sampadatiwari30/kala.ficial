@@ -8,24 +8,35 @@
     <link rel="stylesheet" href="tour1.css"/>
   </head>
   <body>
-    <header>
-      <header>
-        <div class="logo">
-          <button class="button" href="signuppage.html">sign up</button>
-          <button class="button" href="Loginform.html">login</button>
+
+    <!-- Header starts here -->
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- Left Logo -->
+        <div class="nav-left">
+          <a href="index.html" class="logo">कला.ficial</a>
         </div>
+        <!-- Middle Nav Links -->
         <nav class="nav-menu">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#exhibition">Exhibition Information</a></li>
-            <li><a href="#indian">Artwork For Sale</a></li>
-            <li><a href="#Artist Portal">Artist Portal</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="./exhibition.html">Exhibition</a></li>
+            <li><a href="./artwork.html">Artwork</a></li>
+            <li><a href="./Artist Portal.html">Artist Portal</a></li>
+            <li><a href="./pages/About.html">About</a></li>
+            <li><a href="./pages/Contact.html">Contact</a></li>
           </ul>
         </nav>
-      </header>
+
+        <!-- Right Buttons -->
+        <div class="nav-right">
+          <a href="./pages/Login.html" class="btn login-btn">Login</a>
+          <a href="./pages/Signup.html" class="btn signup-btn">Signup</a>
+        </div>
+      </div>
     </header>
+    <!-- Header ends here -->
+     
     <main>
       <section class="hero">
         <div class="hero-image">
@@ -130,75 +141,7 @@
         </div>
       </section>
 
-      <section id="about" class="about">
-        <h3>About Us</h3>
-        <p>
-          Dive into art with the Kala.ficial! 
-          We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information. 
-          Explore stunning artwork, learn about historical contexts, and ignite your passion for art - all from the comfort of your home. 
-          KaLA.ficial offers multilingual support and accessibility features, fostering a global and inclusive art community. 
-          Join us and discover the magic of art!
-        </p>
-        <div class="team-members">
-          <div class="team-member">
-            <img src="C1.png" alt="" />
-            <h4>Traditinal Art</h4>
-            <p>By Our Artist</p>
-          </div>
-          <div class="team-member">
-            <img src="C2.png" alt="" />
-            <h4>Moder Art</h4>
-            <p>By Our Artist</p>
-          </div>
-          <div class="team-member">
-            <img src="C3.png" alt="" />
-            <h4>Digital Art</h4>
-            <p>By Our Artist</p>
-          </div>
-        </div>
-      </section>
-      <section id="contact" class="contact">
-        <h3>Contact Us</h3>
-        <div class="contact-info">
-          <p>
-            Get in touch with us! 
-            We'd love to hear from you<br>
-            Have a question?<br>
-          </p>
-          <ul>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>123 Main St, Anytown india
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i
-              ><a href="mailto:kala.ficial@gmail.com">mypassion@kala.ficial.com</a
-              >
-            </li>
-            <li>
-              <i class="fas fa-phone-alt"></i
-              ><a href="tel:555-123-4567">+91 1234567890</a>
-            </li>
-          </ul>
-        </div>
-        <form action="#" class="form">
-          <div class="form-group">
-          </div>
-          <button type="submit">Send Message</button>
-        </form>
-      </section>
-      <section id="contact" class="contact">
-        <h3>For Collaboration</h3>
-        <div class="contact-info">
-          <p>
-            Get in touch with us! 
-            We'd love to hear from you<br>
-            Have a question?<br>
-          </p>
-        </div>
-        <form action="#" class="form">
-          <button type="submit">Send Information</button>
-        </form>
-      </section>
+      <!-- Footer Starts -->
       <footer>
         <div class="social-icons">
           <a href="https://www.facebook.com/" target="_blank"

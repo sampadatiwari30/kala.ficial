@@ -1,0 +1,109 @@
+body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #d97706, #92400e, #451a03);
+      background-size: cover;
+    }
+
+    .signup-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .signup-box h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+
+    .signup-box h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #b45309;
+      margin-bottom: 1.2rem;
+    }
+
+    .signup-box p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .footer-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-text a {
+      color: #d97706;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .home-btn 
+    {
+        position: absolute;   /* fixes it to the corner */
+        left: 20px;           /* space from the left edge */
+        top: 20px;            /* space from the top */
+        text-decoration: none;
+        color: #333;          /* button text color */
+        font-weight: bold;
+        font-size: 18px;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background-color: #f0f0f0;
+        transition: background 0.3s ease;
+    }
+
+    .home-btn:hover
+    {
+        background-color: #ddd;
+    }

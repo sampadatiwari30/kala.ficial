@@ -330,3 +330,108 @@ footer p{
         height: 250px;
     }
 }
+
+/* Navbar Base */
+    .navbar {
+  background: #111; /* dark background */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Left Logo */
+.logo 
+{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  left: 20px;
+  margin-right: 2rem; 
+
+}
+.logo span {
+  color: #f97316; /* orange highlight */
+}
+
+.menu-icon {
+  font-size: 1.4rem;
+  color: #f97316;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Nav Links */
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #f97316;
+}
+
+/* Buttons */
+.nav-right .btn {
+  padding: 0.6rem 1.4rem;
+  margin-left: 0.8rem;
+  border-radius: 25px; /* pill shape */
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background: #f97316;
+  color: #fff;
+}
+
+.login-btn:hover {
+  background: #fb923c;
+}
+
+.signup-btn {
+  background: #f97316;
+  color: #fff;
+}
+
+.signup-btn:hover {
+  background: #ea580c;
+}
+
+/* Responsive */
+@media (max-width: 768px) 
+{
+  .nav-menu ul {
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 1rem;
+  }
+
+  .nav-menu ul.active {
+    display: flex;
+  }
+}
