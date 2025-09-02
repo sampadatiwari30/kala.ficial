@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kala.ficial - Artist Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #1E1E1E;
+            border: 1px solid #333;
+        }
+        .input-field {
+            background-color: #2D2D2D;
+            border: 1px solid #444;
+            color: #E0E0E0;
+        }
+        .btn {
+            background-color: #6C63FF;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: #524BCC;
+            transform: translateY(-2px);
+        }
+        .message-box {
+            background-color: #2D2D2D;
+            border: 1px solid #444;
+            color: #E0E0E0;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .message-box.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="container rounded-2xl shadow-lg card">
+        <h1 id="form-title" class="text-3xl font-bold text-center mb-6">Sign Up</h1>
+
+        <form id="auth-form" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="yourname@gmail.com" required>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium">Password</label>
+                <input type="password" id="password" name="password" class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="********" required>
+            </div>
+            <div class="space-y-2">
+                <button type="submit" id="submit-btn" class="w-full px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">Sign Up</button>
+                <button type="button" id="toggle-btn" class="w-full text-center text-sm py-2 text-gray-400 hover:text-white transition-colors duration-200">Already have an account? Log in</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Message Box -->
+    <div id="message-box" class="message-box rounded-2xl p-6 shadow-xl">
+        <div id="message-content"></div>
+        <button id="close-btn" class="mt-4 w-full px-4 py-2 rounded-full text-white font-semibold btn">Close</button>
+    </div>
+
+    <script>
+        const formTitle = document.getElementById('form-title');
+        const authForm = document.getElementById('auth-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const messageBox = document.getElementById('message-box');
+        const messageContent = document.getElementById('message-content');
+        const closeBtn = document.getElementById('close-btn');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        let isLogin = false; // Default to signup
+
+        // Dummy "database" for demonstration. We use localStorage
+        // to save the data so it persists even if the page is reloaded.
+        const users = JSON.parse(localStorage.getItem('dummyUsers')) || {};
+
+        function showMessage(message) {
+            console.log("Showing message:", message);
+            messageContent.textContent = message;
+            messageBox.classList.add('show');
+        }
+
+        function hideMessage() {
+            messageBox.classList.remove('show');
+        }
+
+        // This function redirects to the main website page.
+        function redirectToMainPage() {
+            // Save a flag in localStorage to indicate a successful login
+            localStorage.setItem('isLoggedIn', 'true');
+            // Redirect the user to the main website page
+            window.location.href = 'index.html';
+        }
+
+        closeBtn.addEventListener('click', hideMessage);
+
+        toggleBtn.addEventListener('click', () => {
+            isLogin = !isLogin;
+            console.log("Toggling form. Is now Login:", isLogin);
+            if (isLogin) {
+                formTitle.textContent = 'Login';
+                submitBtn.textContent = 'Log In';
+                toggleBtn.textContent = 'New user? Sign up here';
+            } else {
+                formTitle.textContent = 'Sign Up';
+                submitBtn.textContent = 'Sign Up';
+                toggleBtn.textContent = 'Already have an account? Log in';
+            }
+        });
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            const password = passwordInput.value;
+
+            console.log("Form submitted. Email:", email, "Password:", password, "Mode: ", isLogin ? "Login" : "Signup");
+
+            // Simple validation
+            if (!email.includes('@gmail.com')) {
+                showMessage('Email must be a valid @gmail.com address.');
+                return;
+            }
+
+            if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+                showMessage('Password must contain both letters and numbers.');
+                return;
+            }
+
+            if (isLogin) {
+                // Handle Login
+                if (users[email] && users[email] === password) {
+                    showMessage('Login successful! Redirecting...');
+                    console.log('Login successful for:', email);
+                    redirectToMainPage();
+                } else if (!users[email]) {
+                    showMessage('Account does not exist. Please sign up.');
+                    console.log('Login failed. Account not found:', email);
+                } else {
+                    showMessage('Invalid email or password.');
+                    console.log('Login failed for:', email);
+                }
+            } else {
+                // Handle Signup
+                if (users[email]) {
+                    showMessage('This email is already in use. Please log in.');
+                    console.log('Signup failed. Email already exists:', email);
+                } else {
+                    users[email] = password;
+                    localStorage.setItem('dummyUsers', JSON.stringify(users));
+                    showMessage('Sign up successful! Redirecting...');
+                    console.log('New user signed up:', email);
+                    redirectToMainPage();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
