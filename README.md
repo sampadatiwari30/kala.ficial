@@ -150,29 +150,35 @@ Your insights are invaluable to us. Reach out to us team for any inquiries, feed
 
 <h2 id="submitting-pull-request">📥 Submitting a Pull Request</h2>
 
-Follow these steps to contribute your changes to **BakeGenuis-AI**:
+Follow these steps to contribute your changes to **kala.ficial**:
 
-1. **🌟 Star & Fork the Repository**  
+**1. 🌟 Star & Fork the Repository**  
+
    Click the **“Star”** button to support the project, then **“Fork”** the repo to create your own copy:  
-   👉 [https://github.com/supriya46788/BakeGenuis-AI](https://github.com/supriya46788/BakeGenuis-AI)
+   👉 [(https://github.com/sampadatiwari30/kala.ficial)](https://github.com/sampadatiwari30/kala.ficial)
 
-2. **📥 Clone Your Fork**  
+**2. 📥 Clone Your Fork**
+   
    Use the following command to clone your forked repository to your local machine:
    ```bash
-   git clone https://github.com/Your-Username/BakeGenuis-AI.git
+   git clone https://github.com/Your-Username/kala.ficial.git
    ```
- 3. Create a Branch
+
+ **3. Create a Branch**
+ 
     Navigate to the project directory and create a new branch for your changes:
 
     ```bash
-    cd BakeGenuis-AI
+    cd kala.ficial
     git checkout -b my-feature-branch
     ```
 
- 4. Make Changes
+ **4. Make Changes**
+ 
     Add your new ML projects, games, websites, or enhancements. Fix bugs or improve UI/UX as needed.
 
- 5. Commit Your Changes
+ **5. Commit Your Changes**
+ 
     Use a meaningful commit message:
 
     ```bash
@@ -180,21 +186,20 @@ Follow these steps to contribute your changes to **BakeGenuis-AI**:
     git commit -m "📦 [Feature Add] Add XYZ website project"
     ```
 
- 6. Push Your Changes
+ **6. Push Your Changes**
+
     Push your branch to your GitHub fork:
 
     ```bash
     git push origin my-feature-branch
     ```
- 7. Submit a Pull Request
-
-    Go to your fork on GitHub.
     
-    Click "Compare & pull request".
-
-    Add a descriptive title using one of the prefixes: [UI], [UX], [Feature Add].
-
-    Link the related issue (if any) and clearly describe your changes.
+ **7. Submit a Pull Request**
+ 
+ - Go to your fork on GitHub.
+ - Click "Compare & pull request".
+ - Add a descriptive title using one of the prefixes: [UI], [UX], [Feature Add].
+ - Link the related issue (if any) and clearly describe your changes.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
