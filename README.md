@@ -156,39 +156,43 @@ Follow these steps to contribute your changes to **kala.ficial**:
    <br>
    👉 [https://github.com/sampadatiwari30/kala.ficial](https://github.com/sampadatiwari30/kala.ficial)
 
-**2. 📥 Clone Your Fork**   
+**2. 📥 Clone Your Fork**  
+<br>
    Use the following command to clone your forked repository to your local machine:
-   
-   ```
-   git clone https://github.com/Your-Username/kala.ficial.git
-   ```
+
+```bash
+git clone https://github.com/Your-Username/kala.ficial.git
+```
 
  **3. Create a Branch**
+ <br>
  Navigate to the project directory and create a new branch for your changes:
-
-    ```
-    cd kala.ficial
-    git checkout -b my-feature-branch
-    ```
+ 
+```bash
+cd kala.ficial
+git checkout -b my-feature-branch
+```
 
  **4. Make Changes**
  
  - Add your new ML projects, games, websites, or enhancements. Fix bugs or improve UI/UX as needed.
 
  **5. Commit Your Changes**
+ <br>
  Use a meaningful commit message:
-
-    ```
-    git add .
-    git commit -m "📦 [Feature Add] Add XYZ website project"
-    ```
+ 
+ ```bash
+git add .
+git commit -m "📦 [Feature Add] Add XYZ website project"
+```
 
  **6. Push Your Changes**
+ <br>
  Push your branch to your GitHub fork:
-
-    ```
-    git push origin my-feature-branch
-    ```
+ 
+ ```bash
+git push origin my-feature-branch
+```
     
  **7. Submit a Pull Request**
  
