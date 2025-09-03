@@ -82,11 +82,11 @@ Experience kala.ficial live here:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-![Visitors](https://api.visitorbadge.io/api/Visitors?path=eccentriccoder01%2FSaralSeva%20&countColor=%23263759&style=flat)
-![GitHub Contributors](https://img.shields.io/github/contributors/eccentriccoder01/SaralSeva)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/eccentriccoder01/SaralSeva)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/eccentriccoder01/SaralSeva)
-![Github](https://img.shields.io/github/license/eccentriccoder01/SaralSeva)
+![Visitors](https://api.visitorbadge.io/api/Visitors?path=sampadatiwari30%2Fkala.ficial%20&countColor=%23263759&style=flat)
+![GitHub Contributors](https://img.shields.io/github/contributors/sampadatiwari30/kala.ficial)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/sampadatiwari30/kala.ficial)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/sampadatiwari30/kala.ficial)
+![Github](https://img.shields.io/github/license/sampadatiwari30/kala.ficial)
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
