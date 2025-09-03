@@ -92,14 +92,14 @@ Experience kala.ficial live here:
 
 <h2 id="screenshots"> 📸 Screenshots </h2>
 
-<img src="/kala.ficial/live 1.JPG">
-<img src="/kala.ficial/live 2.JPG">
-<img src="/kala.ficial/live 3.JPG">
-<img src="/kala.ficial/live 4.JPG">
+<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%201.JPG">
+<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%202.JPG">
+<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%203.JPG">
+<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%204.JPG">
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-![GSSoC Logo](/kala.ficial/gssoc%20logo.png)
+![GSSoC Logo](https://github.com/sampadatiwari30/kala.ficial/blob/main/gssoc%20logo.png)
 
 🌟 **Exciting News...**
 
