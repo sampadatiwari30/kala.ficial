@@ -77,13 +77,11 @@
 <h2 id="demo">🚀 Live Demo</h2>
 
 Experience kala.ficial live here:
+<br>
 👉 [![**kala.ficial**](https://img.shields.io/badge/View-Live%20Demo-orange?style=for-the-badge)](https://sampadatiwari30.github.io/kala.ficial/)
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
-![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat)
-![Built with Love](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red?style=for-the-badge)
 ![Visitors](https://api.visitorbadge.io/api/Visitors?path=eccentriccoder01%2FSaralSeva%20&countColor=%23263759&style=flat)
 ![GitHub Contributors](https://img.shields.io/github/contributors/eccentriccoder01/SaralSeva)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/eccentriccoder01/SaralSeva)
@@ -155,17 +153,17 @@ Follow these steps to contribute your changes to **kala.ficial**:
 **1. 🌟 Star & Fork the Repository**  
 
    Click the **“Star”** button to support the project, then **“Fork”** the repo to create your own copy:  
-   👉 [(https://github.com/sampadatiwari30/kala.ficial)](https://github.com/sampadatiwari30/kala.ficial)
+   <br>
+   👉 [https://github.com/sampadatiwari30/kala.ficial](https://github.com/sampadatiwari30/kala.ficial)
 
-**2. 📥 Clone Your Fork**
-   
+**2. 📥 Clone Your Fork**   
    Use the following command to clone your forked repository to your local machine:
+   
    ```bash
    git clone https://github.com/Your-Username/kala.ficial.git
    ```
 
  **3. Create a Branch**
- 
     Navigate to the project directory and create a new branch for your changes:
 
     ```bash
@@ -178,7 +176,6 @@ Follow these steps to contribute your changes to **kala.ficial**:
     Add your new ML projects, games, websites, or enhancements. Fix bugs or improve UI/UX as needed.
 
  **5. Commit Your Changes**
- 
     Use a meaningful commit message:
 
     ```bash
@@ -187,7 +184,6 @@ Follow these steps to contribute your changes to **kala.ficial**:
     ```
 
  **6. Push Your Changes**
-
     Push your branch to your GitHub fork:
 
     ```bash
