@@ -111,25 +111,44 @@
         font-size: 1.5rem;
         margin: 0 0.5rem;
       }
+      #logo {
+        padding-left: 20px;
+        width: 400px;
+        
+      }
     </style>
   </head>
   <body>
-    <header class="p-4 flex justify-between items-center bg-[#1E1E1E]">
-      <div class="logo">
-        <h1 class="text-2xl font-bold">KALA.Ficial</h1>
-      </div>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#" class="hover:text-[#6C63FF]">Home</a></li>
-          <li><a href="#about" class="hover:text-[#6C63FF]">About</a></li>
-          <li><a href="#exhibition" class="hover:text-[#6C63FF]">Exhibition Information</a></li>
-          <li><a href="#indian" class="hover:text-[#6C63FF]">Artwork For Sale</a></li>
-          <li><a href="#Artist Portal" class="hover:text-[#6C63FF]">Artist Portal</a></li>
-          <li><a href="#contact" class="hover:text-[#6C63FF]">Contact Us</a></li>
-          <li><button id="logout-btn" class="px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">Log Out</button></li>
-        </ul>
-      </nav>
-    </header>
+    <header class="p-4 flex justify-between items-center bg-white shadow-md sticky top-0 ">
+  <!-- Logo -->
+  <div class="logo flex items-center" id="logo">
+    <img src="logo.png" alt="KALA.Ficial Logo" 
+         class="h-24 w-auto mr-3 drop-shadow-lg transition-transform duration-300 hover:scale-105">
+    <span class="text-2xl font-bold tracking-wide text-gray-800">Kala.ficial</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-menu">
+    <ul class="flex space-x-8 font-medium text-gray-600">
+      <li><a href="#" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">Home</a></li>
+      <li><a href="#about" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">About</a></li>
+      <li><a href="exhibition.html" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">Exhibition Information</a></li>
+      <li><a href="artwork.html" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">Artwork for Sale</a></li>
+      <li><a href="Artist Portal.html" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">Artist Portal</a></li>
+      <li><a href="#contact" class="relative hover:text-gray-900 transition duration-300 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-gray-900 after:transition-all after:duration-300 hover:after:w-full">Contact</a></li>
+      <li>
+        <button id="logout-btn" 
+          class="px-6 py-2 rounded-full text-white font-semibold 
+                 bg-gradient-to-r from-indigo-500 to-purple-600 
+                 hover:from-purple-600 hover:to-indigo-500 
+                 transition-all duration-300 shadow-md hover:shadow-lg">
+          Log Out
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
 
     <main class="container">
       <section class="hero text-center py-16">
