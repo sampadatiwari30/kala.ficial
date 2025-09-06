@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KALA.Ficial Website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+      tailwind.config = {
+    darkMode: 'class'
+  }
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -50,63 +54,123 @@
         font-size: 1.5rem;
         margin: 0 0.5rem;
       }
+      #logo{
+        height: 100px;
+        width: 150px;
+        border-radius: 50% ;
+      }
     </style>
   </head>
-  <body>
-    <!-- Header -->
-    <header
-      class="p-4 flex justify-between items-center bg-white shadow-md sticky top-0 z-50"
-    >
-      <!-- Logo -->
-      <div
-        class="flex items-center max-w-[200px] sm:max-w-[300px] lg:max-w-[400px]"
-        id="logo"
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+   <!-- Header -->
+<header class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pb-6 p-4 sticky top-0 z-50 shadow-lg">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img id="logo" src="logo.png" alt="Logo" class="h-12 sm:h-16 lg:h-20 w-auto transition-transform duration-300 hover:scale-105">
+      <span class="font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide">Kala.ficial</span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex gap-6 font-semibold items-center">
+      <a href="#" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Home
+      </a>
+      <a href="#about" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        About
+      </a>
+      <a href="exhibition.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Exhibition
+      </a>
+      <a href="artwork.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Artwork
+      </a>
+      <a href="Artist Portal.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Artist Portal
+      </a>
+      <a href="contact.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Contact
+      </a>
+
+      <!-- Log Out Button -->
+      <button
+        id="logout-btn"
+        class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
       >
-        <img
-          src="logo.png"
-          alt="KALA.Ficial Logo"
-          class="h-12 sm:h-16 lg:h-20 w-auto mr-3 drop-shadow-lg transition-transform duration-300 hover:scale-105"
-        />
-        <span class="text-lg sm:text-2xl font-bold tracking-wide text-gray-800"
-          >Kala.ficial</span
-        >
-      </div>
+        Log Out
+      </button>
+    </nav>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex">
-        <ul
-          class="flex space-x-6 lg:space-x-8 font-medium text-gray-600 items-center"
-        >
-          <li><a href="#" class="hover:text-gray-900">Home</a></li>
-          <li><a href="#about" class="hover:text-gray-900">About</a></li>
-          <li>
-            <a href="exhibition.html" class="hover:text-gray-900">Exhibition</a>
-          </li>
-          <li>
-            <a href="artwork.html" class="hover:text-gray-900">Artwork</a>
-          </li>
-          <li>
-            <a href="Artist Portal.html" class="hover:text-gray-900"
-              >Artist Portal</a
-            >
-          </li>
-          <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
-          <li>
-            <button
-              id="logout-btn"
-              class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all shadow-md"
-            >
-              Log Out
-            </button>
-          </li>
-        </ul>
-      </nav>
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">☰</button>
+  </div>
 
-      <!-- Mobile Hamburger -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="text-gray-800 text-2xl">☰</button>
-      </div>
-    </header>
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="hidden bg-gradient-to-r from-indigo-800 to-purple-800 overflow-hidden transition-all duration-500 ease-in-out md:hidden">
+    <ul class="flex flex-col gap-4 p-4">
+      <li><a href="#" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Home</a></li>
+      <li><a href="#about" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">About</a></li>
+      <li><a href="exhibition.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Exhibition</a></li>
+      <li><a href="artwork.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artwork</a></li>
+      <li><a href="Artist Portal.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artist Portal</a></li>
+      <li><a href="#contact" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Contact</a></li>
+      
+      <!-- Log Out Button -->
+      <li>
+        <button
+          id="logout-btn-mobile"
+          class="w-full py-2 px-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 
+                 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+        >
+          Log Out
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <script>
+    // Toggle Mobile Menu with smooth height animation
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      } else {
+        mobileMenu.style.maxHeight = 0;
+        setTimeout(() => mobileMenu.classList.add('hidden'), 500);
+      }
+    });
+
+    // Logout functionality
+    function logoutUser() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "auth.html";
+    }
+    document.getElementById("logout-btn").addEventListener("click", logoutUser);
+    document.getElementById("logout-btn-mobile").addEventListener("click", logoutUser);
+  </script>
+</header>
 
     <!-- Mobile Menu -->
     <nav id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
@@ -116,7 +180,7 @@
         <li><a href="exhibition.html">Exhibition</a></li>
         <li><a href="artwork.html">Artwork</a></li>
         <li><a href="Artist Portal.html">Artist Portal</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li>
           <button
             id="logout-btn-mobile"
@@ -452,23 +516,68 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center p-8 bg-[#0d0d0d]">
-      <div class="flex justify-center flex-wrap gap-4 mb-4">
-        <a href="https://www.facebook.com/" target="_blank"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a href="https://www.twitter.com/" target="_blank"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a href="https://www.instagram.com/" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
-      </div>
-      <p class="text-sm">
-        &copy; 2024 Your exhibition Website. All Rights Reserved.
-      </p>
-    </footer>
+<!-- Footer -->
+<footer class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pt-4 pb-4">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
+    <!-- About -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">About Kala.ficial</h4>
+      <p class="text-gray-300 text-sm">
+        Kala.ficial is a platform connecting artists with art enthusiasts. Discover, explore, and buy unique artworks while supporting talented creators.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Quick Links</h4>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="#" class="hover:text-yellow-400 transition-colors">Home</a></li>
+        <li><a href="#about" class="hover:text-yellow-400 transition-colors">About</a></li>
+        <li><a href="exhibition.html" class="hover:text-yellow-400 transition-colors">Exhibition</a></li>
+        <li><a href="artwork.html" class="hover:text-yellow-400 transition-colors">Artwork</a></li>
+        <li><a href="Artist Portal.html" class="hover:text-yellow-400 transition-colors">Artist Portal</a></li>
+        <li><a href="contact.html" class="hover:text-yellow-400 transition-colors">Contact</a></li>
+        <li><a href="#" class="hover:text-yellow-400 transition-colors">Blog</a></li>
+        <li><a href="#" class="hover:text-yellow-400 transition-colors">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Contact Us</h4>
+      <ul class="space-y-3 text-gray-300 text-sm">
+        <li class="flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-yellow-400"></i> 123 Main St, Anytown, India
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fas fa-envelope text-yellow-400"></i>
+          <a href="mailto:mypassion@kala.ficial.com" class="hover:text-yellow-400 transition-colors">mypassion@kala.ficial.com</a>
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fas fa-phone-alt text-yellow-400"></i>
+          <a href="tel:+911234567890" class="hover:text-yellow-400 transition-colors">+91 1234567890</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Follow Us</h4>
+      <div class="flex space-x-4 mt-3">
+        <a href="https://www.facebook.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="text-center text-gray-400 text-md mt-10 border-t border-gray-700 pt-6">
+    &copy; 2024 Kala.ficial. All Rights Reserved.
+  </p>
+</footer>
     <script>
       // Auth check
       if (localStorage.getItem("isLoggedIn") !== "true") {
