@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kala.ficial - Artist Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,28 +14,34 @@
             background-color: #121212;
             color: #E0E0E0;
         }
+
         .container {
             max-width: 480px;
             margin: 0 auto;
             padding: 2rem;
         }
+
         .card {
             background-color: #1E1E1E;
             border: 1px solid #333;
         }
+
         .input-field {
             background-color: #2D2D2D;
             border: 1px solid #444;
             color: #E0E0E0;
         }
+
         .btn {
             background-color: #6C63FF;
             transition: background-color 0.3s, transform 0.2s;
         }
+
         .btn:hover {
             background-color: #524BCC;
             transform: translateY(-2px);
         }
+
         .message-box {
             background-color: #2D2D2D;
             border: 1px solid #444;
@@ -46,12 +54,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
         .message-box.show {
             opacity: 1;
             pointer-events: auto;
         }
     </style>
 </head>
+
 <body class="flex items-center justify-center min-h-screen">
 
     <div class="container rounded-2xl shadow-lg card">
@@ -60,15 +70,33 @@
         <form id="auth-form" class="space-y-4">
             <div>
                 <label for="email" class="block text-sm font-medium">Email</label>
-                <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="yourname@gmail.com" required>
+                <input type="email" id="email" name="email"
+                    class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="yourname@gmail.com" required>
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium">Password</label>
-                <input type="password" id="password" name="password" class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="********" required>
+                <input type="password" id="password" name="password"
+                    class="mt-1 block w-full px-4 py-2 rounded-lg input-field focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="********" required>
             </div>
+            <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin"
+                data-ux_mode="popup" data-callback="handleGoogleResponse" data-auto_prompt="false">
+            </div>
+
+            <div class="flex justify-center mt-4">
+                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                    data-text="signin_with" data-size="large" data-logo_alignment="left">
+                </div>
+            </div>
+
             <div class="space-y-2">
-                <button type="submit" id="submit-btn" class="w-full px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">Sign Up</button>
-                <button type="button" id="toggle-btn" class="w-full text-center text-sm py-2 text-gray-400 hover:text-white transition-colors duration-200">Already have an account? Log in</button>
+                <button type="submit" id="submit-btn"
+                    class="w-full px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">Sign
+                    Up</button>
+                <button type="button" id="toggle-btn"
+                    class="w-full text-center text-sm py-2 text-gray-400 hover:text-white transition-colors duration-200">Already
+                    have an account? Log in</button>
             </div>
         </form>
     </div>
@@ -176,5 +204,35 @@
             }
         });
     </script>
+
+    <script>
+  function handleGoogleResponse(response) {
+    // Decode JWT credential from Google
+    const data = parseJwt(response.credential);
+    console.log("Google User:", data);
+
+    // Save login state
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", data.email);
+    localStorage.setItem("userName", data.name);
+    localStorage.setItem("userPicture", data.picture);
+
+    // Show message & redirect
+    alert(`Welcome ${data.name}! Redirecting...`);
+    window.location.href = "index.html";
+  }
+
+  // Helper function to decode JWT
+  function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
+</script>
+
 </body>
+
 </html>
