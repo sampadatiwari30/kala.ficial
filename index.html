@@ -37,6 +37,38 @@
         background-color: #524bcc;
         transform: translateY(-2px);
       }
+      .message-box {
+        background-color: #2d2d2d;
+        border: 1px solid #444;
+        color: #e0e0e0;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .message-box.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .nav-menu ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .nav-menu li {
+        margin-right: 1.5rem;
+        
+      }
+      .nav-menu button {
+        margin-left: 1.5rem;
+      }
+      /* You can add or modify your custom styles here */
+
       section {
         padding: 4rem 0;
       }
@@ -92,6 +124,12 @@
           </li>
           <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
           <li>
+            <!-- User Info Section -->
+<div id="user-info" class="flex items-center space-x-200 hidden">
+  <img id="user-picture" class="w-10 h-10 rounded-full border-2 border-purple-500" alt="Profile Picture">
+  <span id="user-name" class="text-lg font-semibold text-white"></span>
+</div>
+
             <button
               id="logout-btn"
               class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all shadow-md"
@@ -492,5 +530,19 @@
         document.getElementById("mobile-menu").classList.toggle("hidden");
       });
     </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userName = localStorage.getItem("userName");
+    const userPicture = localStorage.getItem("userPicture");
+
+    if (isLoggedIn === "true" && userName && userPicture) {
+      document.getElementById("user-name").textContent = userName;
+      document.getElementById("user-picture").src = userPicture;
+      document.getElementById("user-info").classList.remove("hidden");
+    }
+  });
+</script>
+
   </body>
 </html>
