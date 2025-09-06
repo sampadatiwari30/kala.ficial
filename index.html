@@ -6,101 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KALA.Ficial Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
     <style>
       body {
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         background-color: #121212;
-        color: #E0E0E0;
-      }
-      .container {
-        max-width: 480px;
-        margin: 0 auto;
-        padding: 2rem;
+        color: #e0e0e0;
       }
       .card {
-        background-color: #1E1E1E;
+        background-color: #1e1e1e;
         border: 1px solid #333;
       }
       .input-field {
-        background-color: #2D2D2D;
+        background-color: #2d2d2d;
         border: 1px solid #444;
-        color: #E0E0E0;
+        color: #e0e0e0;
       }
       .btn {
-        background-color: #6C63FF;
+        background-color: #6c63ff;
         transition: background-color 0.3s, transform 0.2s;
       }
       .btn:hover {
-        background-color: #524BCC;
+        background-color: #524bcc;
         transform: translateY(-2px);
       }
-      .message-box {
-        background-color: #2D2D2D;
-        border: 1px solid #444;
-        color: #E0E0E0;
-        transition: opacity 0.5s ease-in-out;
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      .message-box.show {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-menu ul {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .nav-menu li {
-        margin-right: 1.5rem;
-      }
-      .nav-menu button {
-        margin-left: 1.5rem;
-      }
-      /* You can add or modify your custom styles here */
       section {
         padding: 4rem 0;
-      }
-      .exhibition-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-      .exhibition-item {
-        background-color: #1E1E1E;
-        padding: 1rem;
-        border-radius: 0.5rem;
-      }
-      .exhibition-item img {
-        width: 100%;
-        height: auto;
-        border-radius: 0.5rem;
-      }
-      .team-members {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-      }
-      .team-member {
-        text-align: center;
-      }
-      .team-member img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
       }
       footer {
         text-align: center;
@@ -108,202 +49,411 @@
         background-color: #0d0d0d;
       }
       .social-icons a {
-        color: #E0E0E0;
+        color: #e0e0e0;
         font-size: 1.5rem;
         margin: 0 0.5rem;
       }
     </style>
   </head>
   <body>
-    <header class="p-4 flex justify-between items-center bg-[#1E1E1E]">
-      <div class="logo">
-        <h1 class="text-2xl font-bold">KALA.Ficial</h1>
+    <!-- Header -->
+    <header
+      class="p-4 flex justify-between items-center bg-white shadow-md sticky top-0 z-50"
+    >
+      <!-- Logo -->
+      <div
+        class="flex items-center max-w-[200px] sm:max-w-[300px] lg:max-w-[400px]"
+        id="logo"
+      >
+        <img
+          src="logo.png"
+          alt="KALA.Ficial Logo"
+          class="h-12 sm:h-16 lg:h-20 w-auto mr-3 drop-shadow-lg transition-transform duration-300 hover:scale-105"
+        />
+        <span class="text-lg sm:text-2xl font-bold tracking-wide text-gray-800"
+          >Kala.ficial</span
+        >
       </div>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#" class="hover:text-[#6C63FF]">Home</a></li>
-          <li><a href="#about" class="hover:text-[#6C63FF]">About</a></li>
-          <li><a href="#exhibition" class="hover:text-[#6C63FF]">Exhibition Information</a></li>
-          <li><a href="#indian" class="hover:text-[#6C63FF]">Artwork For Sale</a></li>
-          <li><a href="#Artist Portal" class="hover:text-[#6C63FF]">Artist Portal</a></li>
-          <li><a href="#contact" class="hover:text-[#6C63FF]">Contact Us</a></li>
-          <li><button id="logout-btn" class="px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">Log Out</button></li>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex">
+        <ul
+          class="flex space-x-6 lg:space-x-8 font-medium text-gray-600 items-center"
+        >
+          <li><a href="#" class="hover:text-gray-900">Home</a></li>
+          <li><a href="#about" class="hover:text-gray-900">About</a></li>
+          <li>
+            <a href="exhibition.html" class="hover:text-gray-900">Exhibition</a>
+          </li>
+          <li>
+            <a href="artwork.html" class="hover:text-gray-900">Artwork</a>
+          </li>
+          <li>
+            <a href="Artist Portal.html" class="hover:text-gray-900"
+              >Artist Portal</a
+            >
+          </li>
+          <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
+          <li>
+            <button
+              id="logout-btn"
+              class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all shadow-md"
+            >
+              Log Out
+            </button>
+          </li>
         </ul>
       </nav>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-gray-800 text-2xl">☰</button>
+      </div>
     </header>
 
-    <main class="container">
-      <section class="hero text-center py-16">
-        <div class="hero-image">
-          <img src="homebg.png" alt="Hero image" class="rounded-lg mx-auto" />
+    <!-- Mobile Menu -->
+    <nav id="mobile-menu" class="hidden bg-white shadow-md md:hidden">
+      <ul class="flex flex-col space-y-4 p-4 text-gray-700 font-medium">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="exhibition.html">Exhibition</a></li>
+        <li><a href="artwork.html">Artwork</a></li>
+        <li><a href="Artist Portal.html">Artist Portal</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button
+            id="logout-btn-mobile"
+            class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all"
+          >
+            Log Out
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <main class="container mx-auto px-4">
+      <section class="text-center py-16">
+        <div>
+          <img
+            src="homebg.png"
+            alt="Hero image"
+            class="rounded-lg mx-auto w-full max-w-3xl"
+          />
         </div>
-        <div class="hero-content mt-8">
-          <h1 class="text-5xl font-bold">कला.ficial</h1><br>
-          <p class="text-xl mt-2">Where art transcends reality</p>
+        <div class="mt-8">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold">कला.ficial</h1>
+          <p class="text-base sm:text-lg lg:text-xl mt-2">
+            Where art transcends reality
+          </p>
         </div>
       </section>
 
+      <!-- Exhibition -->
       <section id="exhibition" class="py-12">
-        <h2 class="text-3xl font-bold text-center">Exhibition Information</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-center">
+          Exhibition Information
+        </h2>
         <div class="flex justify-center mt-4">
-          <a href="exhibition.html" class="text-[#6C63FF] hover:underline">More</a>
+          <a href="exhibition.html" class="text-[#6C63FF] hover:underline"
+            >More</a
+          >
         </div>
-        <div class="exhibition-grid">
-          <div class="exhibition-item rounded-lg">
-            <img src="eve1.jpg" alt="Peepletree Art Gallery" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Peepletree Art Gallery, Banglore</h3>
-            <p class="text-sm mt-2">
-              269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080<br>Date - 28th April 2024<br>Time - 12:00-18:00pm
-            </p>
-          </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="eve2.jpg" alt="Avisar Art Gallery" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Avisar Art Gallery, Kolata</h3>
-            <p class="text-sm mt-2">
-              33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034<br>Date - 30th May 2024<br>Time - 15:00-20:00pm
-            </p>
-          </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="eve3.jpg" alt="Raja Ravi Varma Art Gallery" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Raja Ravi Varma Art Gallery, Pune</h3>
-            <p class="text-sm mt-2">
-              Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005<br>Date - 20th June 2024<br>Time - 15:00-20:00pm
-            </p>
-          </div>
-        </div>
+        <div class="max-w-6xl mx-auto px-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+
+    <!-- Event 1 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="eve1.jpg"
+        alt="Peepletree Art Gallery"
+        class="w-full h-56 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-lg font-bold text-white">
+          Peepletree Art Gallery, Bangalore
+        </h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080
+          <br /><span class="block mt-2"><strong>Date:</strong> 28th April 2024</span>
+          <span class="block"><strong>Time:</strong> 12:00 – 18:00</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Event 2 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="eve2.jpg"
+        alt="Avisar Art Gallery"
+        class="w-full h-56 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-lg font-bold text-white">
+          Avisar Art Gallery, Kolkata
+        </h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034
+          <br /><span class="block mt-2"><strong>Date:</strong> 30th May 2024</span>
+          <span class="block"><strong>Time:</strong> 15:00 – 20:00</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Event 3 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="eve3.jpg"
+        alt="Raja Ravi Varma Art Gallery"
+        class="w-full h-56 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-lg font-bold text-white">
+          Raja Ravi Varma Art Gallery, Pune
+        </h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005
+          <br /><span class="block mt-2"><strong>Date:</strong> 20th June 2024</span>
+          <span class="block"><strong>Time:</strong> 15:00 – 20:00</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
       </section>
 
+      <!-- Artwork -->
       <section id="artwork-for-sale" class="py-12">
-        <h2 class="text-3xl font-bold text-center">Artwork For Sale</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-center">
+          Artwork For Sale
+        </h2>
         <div class="flex justify-center mt-4">
           <a href="artwork.html" class="text-[#6C63FF] hover:underline">More</a>
         </div>
-        <div class="exhibition-grid">
-          <div class="exhibition-item rounded-lg">
-            <img src="ap1.jpg" alt="Painting of Nature's Beauty" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Painting of Nature's Beauty</h3>
-            <p class="text-sm mt-2">
-              Artist - Swati Kale<br>
-              Contact Info. - swatikale@gmail.com<br>
-              Price - Rs.58000/-
-            </p>
-          </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="ap2.jpg" alt="Painting of a Lady" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Painting of a Lady</h3>
-            <p class="text-sm mt-2">
-              Artist - Etienne Quesnay<br>
-              Contact Info. - etiennequesnay@gmail.com<br>
-              Price - $1500
-            </p>
-          </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="ap3.jpg" alt="Painting of Buddha" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Painting of Buddha</h3>
-            <p class="text-sm mt-2">
-              Artist - Monica Gule<br>
-              Contact Info. - monicagule@gmail.com<br>
-              Price - Rs.60000/-
-            </p>
-          </div>
-        </div>
+        <div class="max-w-6xl mx-auto px-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+    
+    <!-- Card 1 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="ap1.jpg"
+        alt="Painting of Nature's Beauty"
+        class="w-full h-64 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-xl font-bold text-white">Painting of Nature's Beauty</h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          <span class="block"><strong>Artist:</strong> Swati Kale</span>
+          <span class="block"><strong>Contact:</strong> swatikale@gmail.com</span>
+          <span class="block"><strong>Price:</strong> Rs.58,000/-</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="ap2.jpg"
+        alt="Painting of a Lady"
+        class="w-full h-64 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-xl font-bold text-white">Painting of a Lady</h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          <span class="block"><strong>Artist:</strong> Etienne Quesnay</span>
+          <span class="block"><strong>Contact:</strong> etiennequesnay@gmail.com</span>
+          <span class="block"><strong>Price:</strong> $1500</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div
+      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
+             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+    >
+      <img
+        src="ap3.jpg"
+        alt="Painting of Buddha"
+        class="w-full h-64 object-cover"
+      />
+      <div class="p-5">
+        <h3 class="text-xl font-bold text-white">Painting of Buddha</h3>
+        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+          <span class="block"><strong>Artist:</strong> Monica Gule</span>
+          <span class="block"><strong>Contact:</strong> monicagule@gmail.com</span>
+          <span class="block"><strong>Price:</strong> Rs.60,000/-</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
       </section>
 
+      <!-- Artist Portal -->
       <section id="artist-portal" class="py-12">
-        <h2 class="text-3xl font-bold text-center">Artist Portal</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-center">
+          Artist Portal
+        </h2>
         <div class="flex justify-center mt-4">
-          <a href="Artist Portal.html" class="text-[#6C63FF] hover:underline">More</a>
+          <a href="Artist Portal.html" class="text-[#6C63FF] hover:underline"
+            >More</a
+          >
         </div>
-        <div class="exhibition-grid">
-          <div class="exhibition-item rounded-lg">
-            <img src="Ananda Das.webp" alt="Ananda Das" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Ananda Das</h3>
-            <p class="text-sm mt-2">
-              Ananda Das, a scion of artistic royalty from the vibrant heart of Calcutta, emerges as a beacon of contemporary Indian artistry. 
-              The son of the distinguished Lakshmi Narayan Das, Ananda's aesthetic voyage began under the tutelage of his father, whose acumen as a consummate commercial artist ignited the nascent genius within him.
-            </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <!-- Card 1 -->
+          <div
+            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+          >
+            <img
+              src="Ananda Das.webp"
+              alt="Ananda Das"
+              class="w-full h-60 object-cover"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-white">Ananda Das</h3>
+              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                Ananda Das, a scion of artistic royalty from the vibrant heart
+                of Calcutta, emerges as a beacon of contemporary Indian
+                artistry. The son of the distinguished Lakshmi Narayan Das,
+                Ananda's aesthetic voyage began under the tutelage of his
+                father, whose acumen as a consummate commercial artist ignited
+                the nascent genius within him.
+              </p>
+            </div>
           </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="Shiv Kumar Soni.jpg" alt="Shiv Kumar Soni" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Shiv Kumar Soni</h3>
-            <p class="text-sm mt-2">
-              Shiv Kumar's work primarily focuses on reminiscing his childhood times. 
-              He elaborately expresses the simple joys of those days that lie in moments with any kind of engagement. 
-              He marvels at the innocence that is deeply rooted in those formative days.
-            </p>
+
+          <!-- Card 2 -->
+          <div
+            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+          >
+            <img
+              src="Shiv Kumar Soni.jpg"
+              alt="Shiv Kumar Soni"
+              class="w-full h-60 object-cover"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-white">Shiv Kumar Soni</h3>
+              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                Shiv Kumar's work primarily focuses on reminiscing his childhood
+                times. He elaborately expresses the simple joys of those days
+                that lie in moments with any kind of engagement. He marvels at
+                the innocence that is deeply rooted in those formative days.
+              </p>
+            </div>
           </div>
-          <div class="exhibition-item rounded-lg">
-            <img src="Priyendra-Shuka-Artist.webp" alt="Priyendra Shuka" class="rounded-lg mb-4"/>
-            <h3 class="text-xl font-semibold">Priyendra Shuka</h3>
-            <p class="text-sm mt-2">
-              As the moment flashes by, leaving its color on my being, I try to hold on to it. 
-              For these colors fade away with time, pushed back into oblivion by fresh colors of new moments. Such are the workings of the ever changing panorama that is life. 
-              I long to internalize the moment and bring it to the realm of the tangible, where I can go back and live it again. 
-            </p>
+
+          <!-- Card 3 -->
+          <div
+            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+          >
+            <img
+              src="Priyendra-Shuka-Artist.webp"
+              alt="Priyendra Shuka"
+              class="w-full h-60 object-cover"
+            />
+            <div class="p-5">
+              <h3 class="text-xl font-bold text-white">Priyendra Shuka</h3>
+              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                As the moment flashes by, leaving its color on my being, I try
+                to hold on to it. For these colors fade away with time, pushed
+                back into oblivion by fresh colors of new moments. Such are the
+                workings of the ever changing panorama that is life. I long to
+                internalize the moment and bring it to the realm of the
+                tangible, where I can go back and live it again.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- About -->
       <section id="about" class="py-12 text-center">
-        <h3 class="text-3xl font-bold">About Us</h3>
-        <p class="mt-4 max-w-2xl mx-auto">
-          Dive into art with the Kala.ficial! 
-          We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information. 
-          Explore stunning artwork, learn about historical contexts, and ignite your passion for art - all from the comfort of your home. 
-          KaLA.ficial offers multilingual support and accessibility features, fostering a global and inclusive art community. 
-          Join us and discover the magic of art!
+        <h3 class="text-2xl sm:text-3xl font-bold">About Us</h3>
+        <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base">
+          Dive into art with the Kala.ficial! We empower artists and enrich
+          visitor experiences...
         </p>
-        <div class="team-members">
-          <div class="team-member">
-            <img src="C1.png" alt="Traditional Art" />
+        <div class="flex flex-wrap justify-center gap-6 mt-6">
+          <div class="text-center">
+            <img
+              src="C1.png"
+              alt="Traditional Art"
+              class="w-24 h-24 mx-auto rounded-full"
+            />
             <h4 class="mt-2 font-semibold">Traditional Art</h4>
-            <p class="text-sm">By Our Artist</p>
+            <p class="text-xs sm:text-sm">By Our Artist</p>
           </div>
-          <div class="team-member">
-            <img src="C2.png" alt="Modern Art" />
-            <h4 class="mt-2 font-semibold">Moder Art</h4>
-            <p class="text-sm">By Our Artist</p>
+          <div class="text-center">
+            <img
+              src="C2.png"
+              alt="Modern Art"
+              class="w-24 h-24 mx-auto rounded-full"
+            />
+            <h4 class="mt-2 font-semibold">Modern Art</h4>
+            <p class="text-xs sm:text-sm">By Our Artist</p>
           </div>
-          <div class="team-member">
-            <img src="C3.png" alt="Digital Art" />
+          <div class="text-center">
+            <img
+              src="C3.png"
+              alt="Digital Art"
+              class="w-24 h-24 mx-auto rounded-full"
+            />
             <h4 class="mt-2 font-semibold">Digital Art</h4>
-            <p class="text-sm">By Our Artist</p>
+            <p class="text-xs sm:text-sm">By Our Artist</p>
           </div>
         </div>
       </section>
 
+      <!-- Contact -->
       <section id="contact" class="py-12 text-center">
-        <h3 class="text-3xl font-bold">Contact Us</h3>
-        <div class="contact-info mt-4">
-          <p class="max-w-md mx-auto">
-            Get in touch with us! We'd love to hear from you.<br>
-            Have a question?
-          </p>
-          <ul class="mt-4 list-none p-0 flex flex-col items-center">
-            <li>
-              <i class="fas fa-map-marker-alt"></i>123 Main St, Anytown india
-            </li>
-            <li>
-              <i class="fas fa-envelope"></i><a href="mailto:kala.ficial@gmail.com">mypassion@kala.ficial.com</a>
-            </li>
-            <li>
-              <i class="fas fa-phone-alt"></i><a href="tel:555-123-4567">+91 1234567890</a>
-            </li>
-          </ul>
-        </div>
-        <form action="#" class="form mt-8">
-          <button type="submit" class="px-6 py-3 rounded-full text-white font-semibold btn">Send Message</button>
-        </form>
-        <h3 class="text-3xl font-bold mt-12">For Collaboration</h3>
-        <p class="mt-4 max-w-md mx-auto">
-          Get in touch with us! We'd love to hear from you.<br>
-          Have a question?
+        <h3 class="text-2xl sm:text-3xl font-bold">Contact Us</h3>
+        <p class="mt-4 max-w-md mx-auto text-sm sm:text-base">
+          Get in touch with us! We'd love to hear from you.
         </p>
-        <form action="#" class="form mt-4">
-          <button type="submit" class="px-6 py-3 rounded-full text-white font-semibold btn">Send Information</button>
+        <ul class="mt-6 space-y-2 text-sm sm:text-base">
+          <li>
+            <i class="fas fa-map-marker-alt"></i> 123 Main St, Anytown India
+          </li>
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:kala.ficial@gmail.com">mypassion@kala.ficial.com</a>
+          </li>
+          <li>
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:555-123-4567">+91 1234567890</a>
+          </li>
+        </ul>
+        <form action="https://wa.me/1234567890" target="_blank" class="mt-6">
+          <button
+            type="submit"
+            class="inline-flex items-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full px-6 py-3 gap-2 transition-all hover:scale-105"
+          >
+            <i class="fa-brands fa-whatsapp text-2xl"></i> Send Message
+          </button>
         </form>
       </section>
     </main>
+
 
     <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
   <!-- Floating Shapes -->
@@ -386,20 +536,28 @@
   </div>
 </footer>
 
+
     <script>
-      // Check if the user is logged in on page load
-      if (localStorage.getItem('isLoggedIn') !== 'true') {
-        window.location.href = 'auth.html';
+      // Auth check
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "auth.html";
       }
 
-      // --- LOGOUT LOGIC ---
-      const logoutBtn = document.getElementById('logout-btn');
+      // Logout
+      function logoutUser() {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "auth.html";
+      }
+      document
+        .getElementById("logout-btn")
+        .addEventListener("click", logoutUser);
+      document
+        .getElementById("logout-btn-mobile")
+        .addEventListener("click", logoutUser);
 
-      logoutBtn.addEventListener('click', () => {
-        // Clear the authentication flag from localStorage
-        localStorage.removeItem('isLoggedIn');
-        // Redirect the user back to the authentication page
-        window.location.href = 'auth.html';
+      // Toggle Mobile Menu
+      document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
       });
     </script>
   </body>
