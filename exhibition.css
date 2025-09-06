@@ -168,6 +168,7 @@ header.shadow .logo{
     color: #333;
     text-decoration: none;
     transition: 0.5s;
+    border-radius: 20px;
 }
 
 .btn2:hover{
