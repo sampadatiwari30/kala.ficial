@@ -175,6 +175,7 @@ header.shadow .logo{
     background: linear-gradient(90deg,rgb(255, 166, 0),red, rgb(185, 0, 0));
     border: none;
     color: #fff;
+    font-weight: 700;
 }
 
 .post-filter{
