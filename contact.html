@@ -42,13 +42,13 @@
 
     <!-- Desktop Menu -->
     <nav class="hidden md:flex gap-6 font-semibold items-center">
-      <a href="#" 
+      <a href="index.html" 
          class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
                 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
                 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
         Home
       </a>
-      <a href="#about" 
+      <a href="index.html#about" 
          class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
                 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
                 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
@@ -71,6 +71,12 @@
                 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
                 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
         Artist Portal
+      </a>
+      <a href="help.html" 
+         class="relative text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300">
+        Help
       </a>
       <a href="contact.html" 
          class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
@@ -96,12 +102,13 @@
   <!-- Mobile Menu -->
   <nav id="mobile-menu" class="hidden bg-gradient-to-r from-indigo-800 to-purple-800 overflow-hidden transition-all duration-500 ease-in-out md:hidden">
     <ul class="flex flex-col gap-4 p-4">
-      <li><a href="#" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Home</a></li>
-      <li><a href="#about" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">About</a></li>
+      <li><a href="index.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Home</a></li>
+      <li><a href="index.html#about" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">About</a></li>
       <li><a href="exhibition.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Exhibition</a></li>
       <li><a href="artwork.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artwork</a></li>
       <li><a href="Artist Portal.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artist Portal</a></li>
-      <li><a href="#contact" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Contact</a></li>
+      <li><a href="help.html" class="block py-2 px-3 rounded transition relative text-yellow-300 hover:pl-5">Help</a></li>
+      <li><a href="contact.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Contact</a></li>
       
       <!-- Log Out Button -->
       <li>
@@ -140,6 +147,7 @@
     document.getElementById("logout-btn-mobile").addEventListener("click", logoutUser);
   </script>
 </header>
+
 
     <main class="container mx-auto px-4 py-10">
 <section class="max-w-2xl mx-auto bg-[#1e1e1e] rounded-xl shadow-lg p-8 mt-16">
