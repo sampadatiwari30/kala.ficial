@@ -1,200 +1,931 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exhibition Portal</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="exhibition.css">
-    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kala.ficial — Exhibitions</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+     html {
+        scroll-behavior: smooth;
+      }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Animated background shapes */
+    .animated-shape {
+     
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Custom animation speeds */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes bounce-fast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+.animate-bounce-fast { animation: bounce-fast 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+ .floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 30%; left: 70%; animation-duration: 15s; }
+  .floating-shape:nth-child(3) { top: 60%; left: 40%; animation-duration: 18s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
+.animate-float{animation:float 10s ease-in-out infinite;}
+.animate-float-slow{animation:float 15s ease-in-out infinite;}
+.floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
+  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
+
+  
+    /* Floating micro-blobs animation */
+    @keyframes floatA { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px) translateX(6px)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)}50%{transform:translateY(-18px) translateX(-8px)} }
+    @keyframes floatC { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) translateX(10px)} }
+    .fA { animation: floatA 7s ease-in-out infinite; }
+    .fB { animation: floatB 9s ease-in-out infinite; }
+    .fC { animation: floatC 5.5s ease-in-out infinite; }
+
+    /* glass look used on some cards */
+    .glass {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    /* small helper for clamping description */
+    .desc-clamp { max-height: 4.5rem; overflow: hidden; }
+
+    /* modal transitions */
+    .modal-backdrop { transition: opacity .18s ease; }
+
+    /* horizontal timeline */
+    .timeline { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+    .timeline::-webkit-scrollbar { display: none; }
+    .nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #111827;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #111827;
+    font-weight: 600;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+  /* Mobile animation */
+  #mobile-menu {
+    animation: slideDown 0.4s ease forwards;
+  }
+  </style>
 </head>
-<body>
-    <header>
-        <div class="nav container">
-            <a href="index.html" class="back-btn">
-    <i class='bx bx-arrow-back'></i> Back to Home
-</a>
-            <a href="#" class="logo">Kala.<span>ficial</span></a>
-            <a href="/auth.html" class="login">Sign Up</a>
-        </div>
-    </header>
-
-    <section class="home" id="home">
-        <div class="home-text container">
-            <h2 class="home-title" style="color: aqua;">Exhibition Portal</h2>
-            <span class="home-subtitle" style="color: aqua;">Your source to explore Art</span>
-        </div>
-    </section>
-
-    <section class="about container" id="about">
-        <div class="contentBx">
-            <h2 class="titleText">Shakuntala – Raja Ravi Verma</h2>
-            <p class="title-text">
-                Shakuntala is an epic painting by celebrated Indian painter, Raja Ravi Varma. Ravi Varma, depicts Shakuntala, an important character of Mahabaratha, pretending to remove a thorn from her foot, while actually looking for her husband/lover, Dushyantha, while her friends call her bluff. Tapati Guha Thakurta, an art historian, wrote;
-                <br>“This very gesture – the twist and turn of head and body – draws the viewer into the narrative, inviting one to place this scene within an imagined sequence of images and events. On its own, the painting stands like a frozen tableau (like a still from a moving film), plucked out of an on-running spectacle of episodes.”
-            </p>
-            <a href="#" class="btn2">Read more</a>
-        </div>
-        <div class="imgBx">
-            <img src="ex3.jpg" alt="" class="fitBg">
-        </div>
-    </section>
-
-    <div class="post-filter container">
-        <span class="filter-item active-filter" data-filter="all">All</span>
-        <span class="filter-item" data-filter="tech">Upcoming Events</span>
-        <span class="filter-item" data-filter="food">Past Evets</span>
-        <span class="filter-item" data-filter="news">Our Famous Artwork</span>
-    </div>
+<body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
+<!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
-    <div class="post container">
-        <!-- Post 1 -->
-        <div class="post-box tech">
-            <img src="UE1.jpg" alt="" class="post-img">
-            <h2 class="category">Upcoming Events</h2>
-            <a href="#" class="post-title">The Bombay Art Society</a>
-            <span class="post-date">12 May 2024</span>
-            <p class="post-description">Opp Rangsharda Auditorium, KC Marg, Reclamation, Bandra West, Mumbai, Maharashtra 400050, India. <br> Time : 15:00-19:00pm Evening.</p>
-            <div class="profile">
-                <img src="UE1.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-3">
+      <img src="logo.png" alt="KALA.Ficial Logo" 
+           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button id="logout-btn" 
+        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+  </div>
+</header>
+
+  <!-- HERO -->
+  <main class="pt-28">
+    <section class="relative overflow-hidden pb-12">
+      <!-- many tiny floating colorful blobs (left + middle + right) -->
+      <!-- Left dense -->
+      <div class="absolute left-6 top-20 w-3 h-3 bg-pink-400 rounded-full opacity-80 fA"></div>
+      <div class="absolute left-14 top-32 w-2 h-2 bg-yellow-300 rounded-full opacity-70 fB"></div>
+      <div class="absolute left-4 top-44 w-2.5 h-2.5 bg-cyan-300 rounded-full opacity-85 fC"></div>
+
+      <!-- middle cluster -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        <div class="absolute top-0 left-0 w-2 h-2 bg-purple-400 rounded-full opacity-80 fB"></div>
+        <div class="absolute top-6 left-8 w-2 h-2 bg-rose-400 rounded-full opacity-75 fA"></div>
+        <div class="absolute top-8 left-[-10px] w-3 h-3 bg-sky-400 rounded-full opacity-75 fC"></div>
+        <div class="absolute top-[-12px] left-20 w-2 h-2 bg-lime-400 rounded-full opacity-70 fA"></div>
+        <div class="absolute top-10 left-28 w-2 h-2 bg-indigo-400 rounded-full opacity-80 fB"></div>
+        <div class="absolute top-2 left-36 w-2 h-2 bg-yellow-400 rounded-full opacity-70 fC"></div>
+        <div class="absolute top-12 left-44 w-2 h-2 bg-green-400 rounded-full opacity-75 fA"></div>
+        <div class="absolute top-24 left-10 w-2.5 h-2.5 bg-red-400 rounded-full opacity-80 fB"></div>
+        <div class="absolute top-[-6px] left-48 w-2 h-2 bg-teal-400 rounded-full opacity-75 fC"></div>
+        <div class="absolute top-18 left-56 w-2 h-2 bg-pink-300 rounded-full opacity-70 fA"></div>
+      </div>
+      <!-- Top Area -->
+<div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
+<div class="absolute top-20 right-1/3 w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute top-12 right-20 w-2 h-2 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
+
+<!-- Middle Scatter -->
+<div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
+<div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-2/5 right-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
+<div class="absolute top-1/2 right-1/2 w-3 h-3 bg-yellow-300 rounded-full opacity-65 animate-float-medium"></div>
+<div class="absolute top-[20%] left-[45%] w-2 h-2 bg-teal-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-[80%] left-[55%] w-2.5 h-2.5 bg-rose-400 rounded-full opacity-80 animate-float-slow"></div>
+
+<!-- Bottom Area -->
+<div class="absolute bottom-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute bottom-10 right-20 w-3 h-3 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute bottom-14 left-10 w-2 h-2 bg-red-400 rounded-full opacity-65 animate-float-fast"></div>
+<!-- Left Dense Floating Blobs -->
+<div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+<div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+<div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast"></div>
+
+
+      <!-- Right additions -->
+      <div class="absolute right-10 bottom-24 w-3 h-3 bg-indigo-400 rounded-full opacity-75 fC"></div>
+      <div class="absolute right-20 top-28 w-2 h-2 bg-yellow-400 rounded-full opacity-70 fA"></div>
+
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="z-10 space-y-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+              Current & Upcoming <br>
+              <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500">Exhibitions</span>
+            </h1>
+            <p class="text-gray-700 max-w-xl">
+              Explore immersive exhibitions from emerging and established artists — curated shows, virtual tours, and community events. Filter by type, location or date.
+            </p>
+
+            <div class="flex gap-3 flex-wrap">
+              <a href="#exhibitions" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 shadow-lg hover:scale-105 transition">
+                🎟️ Book Tickets
+              </a>
+              <a href="#exhibitions" class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-gray-200">Submit Event</a>
             </div>
-        </div>
-        <!-- Post 2 -->
-        <div class="post-box food">
-            <img src="PE1.jpg" alt="" class="post-img">
-            <h2 class="category">Past Events</h2>
-            <a href="#" class="post-title">Piramal Museum of Art</a>
-            <span class="post-date">12 November 2023</span>
-            <p class="post-description">B wing, Ground Floor, Piramal Tower,, Peninsula Corporate Park,, Lower Parel West,, Lower Parel West, Mumbai, Maharashtra 400013, India</p>
-            <div class="profile">
-                <img src="PE1.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+          </div>
+
+          <div class="relative flex justify-center z-10">
+            <div class="rounded-3xl overflow-hidden shadow-2xl glass p-4 w-full max-w-md">
+              <img src="ex3.jpg" alt="Featured exhibition" class="w-full h-64 object-cover rounded-lg" />
+              <div class="mt-4">
+                <h3 class="text-lg font-semibold">Featured — Shakuntala: Raja Ravi Varma</h3>
+                <p class="text-gray-600 text-sm mt-1">A classical masterpiece revisited — click view for details & booking.</p>
+                <div class="mt-3 flex gap-3">
+                  <button class="view-feature px-3 py-2 rounded-full bg-[#6C63FF] text-white">View</button>
+                  <a href="#" class="px-3 py-2 rounded-full border border-gray-200">Share</a>
+                </div>
+              </div>
             </div>
+          </div>
+
         </div>
-        <!-- Post 3 -->
-        <div class="post-box food">
-            <img src="PE2.jpg" alt="" class="post-img">
-            <h2 class="category">Past Events</h2>
-            <a href="#" class="post-title">Taj Art Gallery</a>
-            <span class="post-date">28 Feb 2024</span>
-            <p class="post-description">Apollo Bandar, Colaba, Mumbai, Maharashtra 400001, India</p>
-            <div class="profile">
-                <img src="PE2.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section id="filters" class="container mx-auto px-6 py-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex flex-wrap gap-2 items-center">
+          <!-- Type chips (data-type value used in JS) -->
+          <button class="type-chip px-3 py-2 rounded-full bg-indigo-50 text-indigo-700 text-sm" data-type="all">All</button>
+          <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="painting">Painting</button>
+          <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="sculpture">Sculpture</button>
+          <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="digital">Digital</button>
+          <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="photography">Photography</button>
+          <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="mixedmedia">Mixed Media</button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <select id="locationSelect" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
+            <option value="all">All Locations</option>
+            <option value="online">Online</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="delhi">Delhi</option>
+            <option value="bangalore">Bangalore</option>
+            <option value="kolkata">Kolkata</option>
+          </select>
+
+          <select id="dateSelect" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
+            <option value="all">All Dates</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="ongoing">Ongoing</option>
+            <option value="past">Past</option>
+          </select>
+
+          <input id="searchInput" type="search" placeholder="Search exhibitions..." class="px-3 py-2 rounded-lg border border-gray-200 text-sm w-48"/>
+          <select id="sortSelect" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
+            <option value="latest">Sort: Latest</option>
+            <option value="earliest">Sort: Earliest</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE (horizontal) -->
+    <section class="container mx-auto px-6 py-6">
+      <h4 class="text-lg font-semibold mb-3">Exhibition Timeline</h4>
+      <div class="timeline flex gap-4 overflow-x-auto py-3">
+        <!-- timeline items (click opens modal with details) -->
+        <button class="timeline-item p-4 bg-white rounded-2xl shadow min-w-[220px]" data-type="past" data-title="Piramal Museum of Art" data-date="2023-11-12" data-img="eve1.jpg" data-desc="Historic exhibits of modern Indian painters.">Piramal Museum — Nov 2023</button>
+        <button class="timeline-item p-4 bg-white rounded-2xl shadow min-w-[220px]" data-type="upcoming" data-title="Bombay Art Society" data-date="2024-05-12" data-img="eve2.jpg" data-desc="Contemporary & classical works evening.">Bombay Art — May 2024</button>
+        <button class="timeline-item p-4 bg-white rounded-2xl shadow min-w-[220px]" data-type="ongoing" data-title="Jehangir Art Gallery" data-date="2024-04-30" data-img="eve3.jpg" data-desc="Contemporary show in Kala Ghoda.">Jehangir — Apr 2024</button>
+        <button class="timeline-item p-4 bg-white rounded-2xl shadow min-w-[220px]" data-type="famous" data-title="Girdhari Lal Vyas Portrait" data-date="2022-02-12" data-img="eve4.jpg" data-desc="A celebrated portrait of rural India.">Famous Works — 2022</button>
+      </div>
+    </section>
+
+    <!-- GRID OF CARDS -->
+    <section id="exhibitions" class="container mx-auto px-6 py-6">
+      <div id="cardsGrid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- card (data- attributes: type, location, start, end, title, date) -->
+        <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" 
+                 data-type="painting" data-location="mumbai" data-start="2024-05-12" data-end="2024-05-12" data-title="The Bombay Art Society">
+          <img src="eve1.jpg" alt="" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Upcoming</span>
+              <span class="text-xs text-gray-500">12 May 2024</span>
             </div>
-        </div>
-        <!-- Post 4 -->
-        <div class="post-box news">
-            <img src="IA3.jpg" alt="" class="post-img">
-            <h2 class="category">Our Famous Artwork</h2>
-            <a href="#" class="post-title">Painting By Girdhari Lal Vyas</a>
-            <span class="post-date">12 Feb 2022</span>
-            <p class="post-description">The Portrait represents the beauty of women of Indian villagea.</p>
-            <div class="profile">
-                <img src="IA3.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+            <h3 class="mt-3 font-semibold text-lg">The Bombay Art Society</h3>
+            <p class="mt-2 text-sm text-gray-600 desc-clamp">Opp Rangsharda Auditorium, Bandra West — evening of contemporary and classical works.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="eve1.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+                <div>
+                  <p class="text-sm font-medium">K.f</p>
+                  <p class="text-xs text-gray-500">Organizer</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-view px-3 py-2 rounded-full bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-sm">View</button>
+                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+              </div>
             </div>
-        </div>
-        <!-- Post 5 -->
-        <div class="post-box tech">
-            <img src="UE2.jpg" alt="" class="post-img">
-            <h2 class="category">Upcoming Events</h2>
-            <a href="#" class="post-title">Jehangir Art Gallery</a>
-            <span class="post-date">30 April 2024</span>
-            <p class="post-description">161B, Mahatma Gandhi Road, Kala Ghoda, Fort, Kala Ghoda, Fort, Mumbai, Maharashtra 400001, India. <br>Timing :- 15:00-19:00pm evening.</p>
-            <div class="profile">
-                <img src="UE2.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+          </div>
+        </article>
+
+        <!-- card 2 -->
+        <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="painting" data-location="mumbai" data-start="2023-11-12" data-end="2023-11-12" data-title="Piramal Museum of Art">
+          <img src="eve2.jpg" alt="" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">Past</span>
+              <span class="text-xs text-gray-500">12 Nov 2023</span>
             </div>
-        </div>
-        <!-- Post 6 -->
-        <div class="post-box news">
-            <img src="IA2.jpg" alt="" class="post-img">
-            <h2 class="category">Our Famous Artwork</h2>
-            <a href="#" class="post-title">Painting by Minakshi Bajai</a>
-            <span class="post-date">12 Feb 2022</span>
-            <p class="post-description">This Painting Symbolizes the dignity of a Women in the Indian Cultural.</p>
-            <div class="profile">
-                <img src="IA2.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+            <h3 class="mt-3 font-semibold text-lg">Piramal Museum of Art</h3>
+            <p class="mt-2 text-sm text-gray-600 desc-clamp">Historic exhibits of modern Indian painters — a remarkable collection.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="eve2.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+                <div>
+                  <p class="text-sm font-medium">K.f</p>
+                  <p class="text-xs text-gray-500">Organizer</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+              </div>
             </div>
-        </div>
-        <!-- Post 7 -->
-        <div class="post-box tech">
-            <img src="UE3.png" alt="" class="post-img">
-            <h2 class="category">Upcoming Event</h2>
-            <a href="#" class="post-title">National Gallery of Modern Art, Bangalore</a>
-            <span class="post-date">12 Feb 2022</span>
-            <p class="post-description">No 49, Ministry Of Culture, Manikyavelu Mansion, Palace Road, Bangalore, Karnataka 560052 <br>Timing :- 15:00-19:00pm Evening.</p>
-            <div class="profile">
-                <img src="UE3.png" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+          </div>
+        </article>
+
+        <!-- card 3 -->
+        <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="mumbai" data-start="2024-04-01" data-end="2024-05-30" data-title="Jehangir Art Gallery">
+          <img src="eve3.jpg" alt="" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-800">Ongoing</span>
+              <span class="text-xs text-gray-500">30 Apr 2024</span>
             </div>
-        </div>
-        <!-- Post 1 -->
-        <div class="post-box news">
-            <img src="IA4.jpg" alt="" class="post-img">
-            <h2 class="category">Our Famous Artwork</h2>
-            <a href="#" class="post-title">Painting by Akanshi Priya</a>
-            <span class="post-date">12 Feb 2022</span>
-            <p class="post-description">The Artwork represents the beauty of a Rajasthani Women.</p>
-            <div class="profile">
-                <img src="IA4.jpg" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+            <h3 class="mt-3 font-semibold text-lg">Jehangir Art Gallery</h3>
+            <p class="mt-2 text-sm text-gray-600 desc-clamp">Kala Ghoda — contemporary show running through April.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="eve3.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+                <div>
+                  <p class="text-sm font-medium">K.f</p>
+                  <p class="text-xs text-gray-500">Organizer</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+              </div>
             </div>
+          </div>
+        </article>
+        <!-- card 4 - Painting -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="painting" data-location="delhi" data-start="2024-05-01" data-end="2024-06-15" data-title="National Gallery of Modern Art">
+  <img src="eve4.jpeg" alt="Painting Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-yellow-100 text-yellow-800">Upcoming</span>
+      <span class="text-xs text-gray-500">01 May 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">National Gallery of Modern Art</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">Showcasing rare 19th–20th century Indian paintings in New Delhi.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="eve4.jpeg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
         </div>
-        <!-- Post 9 -->
-        <div class="post-box food">
-            <img src="IA5.png" alt="" class="post-img">
-            <h2 class="category">Past Event</h2>
-            <a href="#" class="post-title">Aakriti Art Gallery</a>
-            <span class="post-date">12 Feb 2024</span>
-            <p class="post-description">Orbit Enclave, 12/3A, Hungerford Street, Mullick Bazar, Elgin, Kolkata, West Bengal 700017.</p>
-            <div class="profile">
-                <img src="IA5.png" alt="" class="profile-img">
-                <span class="profile-name">K.f</span>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 5 - Sculpture -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="bangalore" data-start="2024-06-01" data-end="2024-07-15" data-title="Stone & Metal Forms">
+  <img src="eve5.jpeg" alt="Sculpture Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-800">Upcoming</span>
+      <span class="text-xs text-gray-500">01 Jun 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">Stone & Metal Forms</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">An exhibition highlighting contemporary sculpture practices in Bangalore.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="eve5.jpeg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 6 - Digital -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="digital" data-location="online" data-start="2024-05-10" data-end="2024-06-10" data-title="Virtual Digital Showcase">
+  <img src="eve6.jpeg" alt="Digital Art Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-800">Ongoing</span>
+      <span class="text-xs text-gray-500">10 May 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">Virtual Digital Showcase</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">Online exhibition featuring NFTs, digital illustrations, and AR installations.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="eve6.jpeg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 7 - Photography -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="photography" data-location="kolkata" data-start="2024-04-15" data-end="2024-05-20" data-title="Frames of India">
+  <img src="eve7.jpeg" alt="Photography Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-800">Ongoing</span>
+      <span class="text-xs text-gray-500">15 Apr 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">Frames of India</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">Capturing landscapes, portraits, and culture through photography in Kolkata.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="eve7.jpeg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 8 - Mixed Media -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="mixed-media" data-location="delhi" data-start="2024-07-01" data-end="2024-08-15" data-title="Fusion of Forms">
+  <img src="eve8.jpeg" alt="Mixed Media Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-pink-100 text-pink-800">Upcoming</span>
+      <span class="text-xs text-gray-500">01 Jul 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">Fusion of Forms</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">An experimental show combining painting, sculpture, and digital art in Delhi.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="eve8.jpeg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+        <!-- card 4 - famous -->
+        <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="digital" data-location="online" data-start="2022-02-12" data-end="2022-02-12" data-title="Girdhari Lal Vyas Painting">
+          <img src="IA3.jpg" alt="" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-800">Famous</span>
+              <span class="text-xs text-gray-500">12 Feb 2022</span>
             </div>
+            <h3 class="mt-3 font-semibold text-lg">Painting By Girdhari Lal Vyas</h3>
+            <p class="mt-2 text-sm text-gray-600 desc-clamp">A celebrated portrait representing the beauty of rural India.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="IA3.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+                <div>
+                  <p class="text-sm font-medium">K.f</p>
+                  <p class="text-xs text-gray-500">Curator</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Additional cards: you can duplicate and update data-* attributes -->
+      </div>
+
+      <div class="mt-8 text-center">
+        <button id="loadMore" class="px-6 py-3 rounded-full bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white shadow-lg">Load more</button>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER CTA -->
+    <section id="newsletter" class="py-16 bg-gradient-to-r from-indigo-50 to-pink-50">
+      <div class="container mx-auto px-6 text-center">
+        <h3 class="text-2xl font-bold">Stay updated on new exhibitions</h3>
+        <p class="text-gray-700 mt-2">Subscribe for exhibition announcements & exclusive previews.</p>
+        <form id="newsletterForm" class="mt-4 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+          <input id="emailInput" type="email" placeholder="Your email" required class="px-4 py-2 rounded-lg border border-gray-300 flex-1"/>
+          <button class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 text-white">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- DETAILS MODAL -->
+    <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative w-full max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl z-10">
+        <div class="flex items-start justify-between p-4 border-b">
+          <h3 id="modalTitle" class="text-xl font-semibold">Title</h3>
+          <button id="modalClose" class="text-2xl text-gray-600 hover:text-gray-900">&times;</button>
         </div>
+        <div class="p-6 grid md:grid-cols-2 gap-6">
+          <img id="modalImg" src="ex3.jpg" alt="" class="w-full h-64 object-cover rounded-lg"/>
+          <div>
+            <p id="modalBadge" class="inline-block px-3 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800 mb-3">Upcoming</p>
+            <p id="modalDate" class="text-sm text-gray-500 mb-3">Date details</p>
+            <p id="modalDesc" class="text-gray-700 leading-relaxed">Full description appears here — artists, venue, timings, ticket links, and map</p>
+            <div class="mt-4 flex gap-3">
+              <a id="modalTicket" href="#" class="px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900">Book Tickets</a>
+              <a id="modalShare" href="#" class="px-4 py-2 rounded-full border border-gray-200">Share</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
+    <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10 text-gray-800">
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="mb-6 lg:mb-0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
+        </p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-twitter text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-2">
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+        </ul>
+        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+      </div>
+
+      <!-- Newsletter & Social -->
+     <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+  <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+  <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+  
+  <form class="flex flex-col gap-3">
+    <input 
+      type="email" 
+      placeholder="Your Email" 
+      class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300"
+    />
+    <button 
+      type="submit" 
+      class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+    >
+      Subscribe
+    </button>
+  </form>
+</div>
+
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
     </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="sec aboutus">
-                <h2>About Us</h2>
-                <p>Dive into art with the Kala.ficial! We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information. Explore stunning artwork, learn about historical contexts, and ignite your passion for art - all from the comfort of your home. NGVT offers multilingual support and accessibility features, fostering a global and inclusive art community. Join us and discover the magic of art!</p>
-                <ul class="sci">
-                    <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                    <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                    <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                    <li><a href="#"><i class="bx bxl-linkedin"></i></a></li>
-                </ul>
-            </div>
-            <div class="sec quicklinks">
-                <h2>Quick Links</h2>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-            <div class="sec contactBx">
-                <h2>Contact Info</h2>
-                <ul class="info">
-                    <li>
-                        <span><i class='bx bxs-map'></i></span>
-                        <span>6444 street <br> Jaipur, Rajasthan <br> India</span>
-                    </li>
-                    <li>
-                        <span><i class='bx bx-envelope' ></i></span>
-                        <p><a href="mail to: mypassion@gmail.com">mypassion@kalaficial.com</a></p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+  </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="exhibition.js"></script>
+ <script>
+  // mobile menu
+  const mobileBtn = document.getElementById('mobileBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // helper: parse date string "YYYY-MM-DD" or "YYYY/MM/DD" fallback
+  function parseDate(s) {
+    if (!s) return null;
+    const d = new Date(s);
+    if (isNaN(d)) {
+      const parts = s.split(/[-\/]/);
+      if (parts.length >= 3) return new Date(parts[0], parts[1] - 1, parts[2]);
+      return null;
+    }
+    return d;
+  }
+
+  // filter & search
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const typeChips = Array.from(document.querySelectorAll('.type-chip'));
+  const locationSelect = document.getElementById('locationSelect');
+  const dateSelect = document.getElementById('dateSelect');
+  const searchInput = document.getElementById('searchInput');
+  const sortSelect = document.getElementById('sortSelect');
+
+  // default active chip = all
+  if (typeChips.length) {
+    typeChips.forEach(ch => {
+      ch.addEventListener('click', () => {
+        typeChips.forEach(c => c.classList.remove('bg-indigo-50', 'text-indigo-700', 'ring', 'ring-indigo-200'));
+        ch.classList.add('bg-indigo-50', 'text-indigo-700', 'ring', 'ring-indigo-200');
+        applyFilters();
+      });
+    });
+
+    const allChip = typeChips.find(c => c.dataset.type === 'all');
+    if (allChip) {
+      allChip.classList.add('bg-indigo-50', 'text-indigo-700', 'ring', 'ring-indigo-200');
+    }
+  }
+
+  [locationSelect, dateSelect, searchInput, sortSelect].forEach(el => {
+    if (el) el.addEventListener('change', applyFilters);
+  });
+  if (searchInput) searchInput.addEventListener('input', applyFilters);
+
+  function dateCategory(startStr, endStr) {
+    const now = new Date();
+    const s = parseDate(startStr);
+    const e = parseDate(endStr);
+    if (!s && !e) return 'unknown';
+    if (s && e) {
+      if (now < s) return 'upcoming';
+      if (now > e) return 'past';
+      return 'ongoing';
+    }
+    if (s && !e) {
+      return now < s ? 'upcoming' : 'ongoing';
+    }
+    return 'unknown';
+  }
+
+  function applyFilters() {
+    const activeType = document.querySelector('.type-chip.bg-indigo-50')?.dataset.type || 'all';
+    const loc = locationSelect?.value || 'all';
+    const dateFilter = dateSelect?.value || 'all';
+    const q = searchInput?.value.trim().toLowerCase() || '';
+    const sort = sortSelect?.value || '';
+
+    let visible = cards.filter(card => {
+      if (activeType && activeType !== 'all' && card.dataset.type !== activeType) return false;
+      if (loc && loc !== 'all' && card.dataset.location !== loc) return false;
+      if (dateFilter && dateFilter !== 'all') {
+        const cat = dateCategory(card.dataset.start, card.dataset.end);
+        if (dateFilter !== cat) return false;
+      }
+      if (q) {
+        const title = (card.dataset.title || card.querySelector('h3')?.innerText || '').toLowerCase();
+        const desc = (card.querySelector('.desc-clamp')?.innerText || '').toLowerCase();
+        if (!(title.includes(q) || desc.includes(q))) return false;
+      }
+      return true;
+    });
+
+    visible.sort((a, b) => {
+      const da = parseDate(a.dataset.start) || new Date(0);
+      const db = parseDate(b.dataset.start) || new Date(0);
+      if (sort === 'latest') return db - da;
+      if (sort === 'earliest') return da - db;
+      return 0;
+    });
+
+    const grid = document.getElementById('cardsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    visible.forEach(c => grid.appendChild(c));
+  }
+
+  // initial filter apply
+  applyFilters();
+
+  // modal open
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalImg = document.getElementById('modalImg');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalDate = document.getElementById('modalDate');
+  const modalBadge = document.getElementById('modalBadge');
+
+  function openModalFromData(data) {
+    if (!modal || !modalTitle || !modalImg || !modalDesc || !modalDate || !modalBadge) return;
+
+    modalTitle.textContent = data.title || 'Exhibition';
+    modalDesc.textContent = data.desc || data.title || 'Details coming soon.';
+    modalDate.textContent = data.date || '';
+    modalImg.src = data.img || 'ex3.jpg';
+
+    modalBadge.innerText = (data.type || '').charAt(0).toUpperCase() + (data.type || '').slice(1) || 'Info';
+    modalBadge.className = 'inline-block px-3 py-1 rounded-full text-xs mb-3';
+    if (data.type === 'upcoming') modalBadge.classList.add('bg-yellow-100', 'text-yellow-800');
+    else if (data.type === 'ongoing') modalBadge.classList.add('bg-green-100', 'text-green-800');
+    else if (data.type === 'past') modalBadge.classList.add('bg-gray-100', 'text-gray-700');
+    else modalBadge.classList.add('bg-purple-100', 'text-purple-800');
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  document.querySelectorAll('.btn-view').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (!card) return;
+      const data = {
+        title: card.dataset.title,
+        date: card.dataset.start + (card.dataset.end ? ' — ' + card.dataset.end : ''),
+        img: card.querySelector('img')?.src,
+        desc: card.querySelector('.desc-clamp')?.innerText,
+        type: card.dataset.type
+      };
+      openModalFromData(data);
+    });
+  });
+
+  document.querySelectorAll('.timeline-item, .view-feature').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const data = {
+        title: el.dataset.title || 'Featured Exhibition',
+        date: el.dataset.date || '',
+        img: el.dataset.img || document.querySelector('.glass img')?.src || 'ex3.jpg',
+        desc: el.dataset.desc || el.closest('.glass')?.querySelector('p')?.innerText || 'Details coming soon.',
+        type: el.dataset.type || 'upcoming'
+      };
+      openModalFromData(data);
+    });
+  });
+
+  const modalClose = document.getElementById('modalClose');
+  if (modalClose && modal) {
+    modalClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // load more -> duplicates sample card (demo)
+  const loadMoreBtn = document.getElementById('loadMore');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      const grid = document.getElementById('cardsGrid');
+      if (!grid) return;
+      const sample = grid.querySelector('.card');
+      if (!sample) return;
+      const clone = sample.cloneNode(true);
+      clone.dataset.title = clone.dataset.title + ' (More)';
+      clone.querySelector('h3').innerText = clone.dataset.title;
+      grid.appendChild(clone);
+
+      clone.querySelectorAll('.btn-view').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const card = e.target.closest('.card');
+          const data = {
+            title: card.dataset.title,
+            date: card.dataset.start,
+            img: card.querySelector('img')?.src,
+            desc: card.querySelector('.desc-clamp')?.innerText,
+            type: card.dataset.type
+          };
+          openModalFromData(data);
+        });
+      });
+    });
+  }
+
+  // newsletter demo
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput')?.value;
+      if (!email) return alert('Please enter email');
+      alert('Thanks! Subscribed: ' + email);
+      e.target.reset();
+    });
+  }
+
+  // accessibility: press Esc to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+
 </body>
 </html>
