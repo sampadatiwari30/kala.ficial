@@ -168,12 +168,14 @@ header.shadow .logo{
     color: #333;
     text-decoration: none;
     transition: 0.5s;
+    border-radius: 20px;
 }
 
 .btn2:hover{
-    background-color: var(--second-color);
+    background: linear-gradient(90deg,rgb(255, 166, 0),red, rgb(185, 0, 0));
     border: none;
     color: #fff;
+    font-weight: 700;
 }
 
 .post-filter{
