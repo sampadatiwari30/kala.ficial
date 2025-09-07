@@ -5,993 +5,948 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KALA.Ficial Website</title>
-
-   <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: 'class'
-  }
-</script>
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-   <link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-  rel="stylesheet"
-/>
-
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap");
-
-      .animate-text {
-        font-family: "Merriweather", serif;
-        font-style: italic;
-        font-weight: 700;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-      .card {
-        background-color: #1e1e1e;
-        border: 1px solid #333;
-      }
-      .input-field {
-        background-color: #2d2d2d;
-        border: 1px solid #444;
-        color: #e0e0e0;
-      }
-      .btn {
-        background-color: #6c63ff;
-        transition: background-color 0.3s, transform 0.2s;
-      }
-      .btn:hover {
-        background-color: #524bcc;
-        transform: translateY(-2px);
-      }
-      .message-box {
-        background-color: #2d2d2d;
-        border: 1px solid #444;
-        color: #e0e0e0;
-        transition: opacity 0.5s ease-in-out;
-        opacity: 0;
-        pointer-events: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-      .message-box.show {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-menu ul {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .nav-menu li {
-        margin-right: 1.5rem;
-        
-      }
-      .nav-menu button {
-        margin-left: 1.5rem;
-      }
-      /* You can add or modify your custom styles here */
-
-      section {
-        padding: 4rem 0;
-      }
-      footer {
-        text-align: center;
-        padding: 2rem;
-        background-color: #0d0d0d;
-      }
-      .social-icons a {
-        color: #e0e0e0;
-        font-size: 1.5rem;
-        margin: 0 0.5rem;
-      }
-      #logo {
-        height: 100px;
-        width: 150px;
-        border-radius: 50%;
-      }
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .animate-text span {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(10px);
-        animation: fadeInUp 0.6s forwards;
-      }
-
-      .animate-text span:nth-child(1) {
-        animation-delay: 0s;
-      }
-      .animate-text span:nth-child(2) {
-        animation-delay: 0.1s;
-      }
-      .animate-text span:nth-child(3) {
-        animation-delay: 0.2s;
-      }
-      .animate-text span:nth-child(4) {
-        animation-delay: 0.3s;
-      }
-      .animate-text span:nth-child(5) {
-        animation-delay: 0.4s;
-      }
-      .animate-text span:nth-child(6) {
-        animation-delay: 0.5s;
-      }
-      .animate-text span:nth-child(7) {
-        animation-delay: 0.6s;
-      }
-      .animate-text span:nth-child(8) {
-        animation-delay: 0.7s;
-      }
-      .animate-text span:nth-child(9) {
-        animation-delay: 0.8s;
-      }
-      .animate-text span:nth-child(10) {
-        animation-delay: 0.9s;
-      }
-      .animate-text span:nth-child(11) {
-        animation-delay: 1s;
-      }
-      .animate-text span:nth-child(12) {
-        animation-delay: 1.1s;
-      }
-      .animate-text span:nth-child(13) {
-        animation-delay: 1.2s;
-      }
-      .animate-text span:nth-child(14) {
-        animation-delay: 1.3s;
-      }
-      .animate-text span:nth-child(15) {
-        animation-delay: 1.4s;
-      }
-      .animate-text span:nth-child(16) {
-        animation-delay: 1.5s;
-      }
-      .animate-text span:nth-child(17) {
-        animation-delay: 1.6s;
-      }
-      .animate-text span:nth-child(18) {
-        animation-delay: 1.7s;
-      }
-      .animate-text span:nth-child(19) {
-        animation-delay: 1.8s;
-      }
-      .animate-text span:nth-child(20) {
-        animation-delay: 1.9s;
-      }
-      .animate-text span:nth-child(21) {
-        animation-delay: 2s;
-      }
-      .animate-text span:nth-child(22) {
-        animation-delay: 2.1s;
-      }
-      .animate-text span:nth-child(23) {
-        animation-delay: 2.2s;
-      }
-      .animate-text span:nth-child(24) {
-        animation-delay: 2.3s;
-      }
-      .animate-text span:nth-child(25) {
-        animation-delay: 2.4s;
-      }
-      .animate-text span:nth-child(26) {
-        animation-delay: 2.5s;
-      }
-      .animate-text span:nth-child(27) {
-        animation-delay: 2.6s;
-      }
-      .animate-text span:nth-child(28) {
-        animation-delay: 2.7s;
-      }
-      .animate-text span:nth-child(29) {
-        animation-delay: 2.8s;
-      }
-      .animate-text span:nth-child(30) {
-        animation-delay: 2.9s;
-      }
-      @keyframes fadeSlideUp {
-        0% {
-          opacity: 0;
-          transform: translateY(40px) scale(0.95);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-
-      .animate-text {
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 900;
-        letter-spacing: 2px;
-        margin: 3rem 0;
-        color: #fff;
-        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-      }
-
-      .animate-text span {
-        display: inline-block;
-        opacity: 0;
-        animation: fadeSlideUp 0.8s forwards cubic-bezier(0.25, 1, 0.5, 1);
-      }
-
-      /* Gradient + Glow highlight */
-      .animate-text .highlight {
-        background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-      }
-
-      .animate-text .highlight::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -8px;
-        height: 4px;
-        width: 100%;
-        background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00ff);
-        border-radius: 4px;
-        animation: glow 1.5s infinite alternate;
-      }
-
-      @keyframes glow {
-        from {
-          opacity: 0.4;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      /* … continue nth-child delay jaise tumne pehle likha tha */
-    </style>
-  </head>
-  <body
-    class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300"
-  >
-    <!-- Header -->
-    <header
-      class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pb-6 p-4 sticky top-0 z-50 shadow-lg"
-    >
-      <div class="container mx-auto flex justify-between items-center">
-        <!-- Logo -->
-        <div class="flex items-center gap-3">
-          <img
-            id="logo"
-            src="logo.png"
-            alt="Logo"
-            class="h-12 sm:h-16 lg:h-20 w-auto transition-transform duration-300 hover:scale-105"
-          />
-          <span class="font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide"
-            >Kala.ficial</span
-          >
-        </div>
-
-        <!-- Desktop Menu -->
-        <nav class="hidden md:flex gap-6 font-semibold items-center">
-          <a
-            href="#"
-            class="relative text-gray-200 transition duration-300 
-                after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-300 
-                after:left-0 after:-bottom-1 after:transition-all after:duration-300"
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
-          >
-            About
-          </a>
-          <a
-            href="exhibition.html"
-            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Exhibition
-          </a>
-          <a
-            href="artwork.html"
-            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Artwork
-          </a>
-          <a
-            href="Artist Portal.html"
-            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Artist Portal
-          </a>
-          <a
-            href="contact.html"
-            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
-          >
-            Contact
-          </a>
-
-          <a href="help.html" 
-         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
-        Help
-      </a>
-          <!-- Log Out Button -->
-          <button
-            id="logout-btn"
-            class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
-          >
-            Log Out
-          </button>
-        </nav>
-
-        <!-- Mobile Hamburger -->
-        <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
-          ☰
-        </button>
-      </div>
-
-      <!-- Mobile Menu -->
-      <nav
-        id="mobile-menu"
-        class="hidden bg-gradient-to-r from-indigo-800 to-purple-800 overflow-hidden transition-all duration-500 ease-in-out md:hidden"
-      >
-        <ul class="flex flex-col gap-4 p-4">
-          <li>
-            <a
-              href="#"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#about"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="exhibition.html"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >Exhibition</a
-            >
-          </li>
-          <li>
-            <a
-              href="artwork.html"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >Artwork</a
-            >
-          </li>
-          <li>
-            <a
-              href="Artist Portal.html"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >Artist Portal</a
-            >
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
-              >Contact</a
-            >
-          </li>
-
-          <!-- Log Out Button -->
-          <li>
-            <!-- User Info Section -->
-<div id="user-info" class="flex items-center space-x-200 hidden">
-  <img id="user-picture" class="w-10 h-10 rounded-full border-2 border-purple-500" alt="Profile Picture">
-  <span id="user-name" class="text-lg font-semibold text-white"></span>
-</div>
-
-            <button
-              id="logout-btn-mobile"
-              class="w-full py-2 px-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
-            >
-              Log Out
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      <script>
-        // Toggle Mobile Menu with smooth height animation
-        const toggleBtn = document.getElementById("menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
-
-        toggleBtn.addEventListener("click", () => {
-          if (mobileMenu.classList.contains("hidden")) {
-            mobileMenu.classList.remove("hidden");
-            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-          } else {
-            mobileMenu.style.maxHeight = 0;
-            setTimeout(() => mobileMenu.classList.add("hidden"), 500);
-          }
-        });
-
-        // Logout functionality
-        function logoutUser() {
-          localStorage.removeItem("isLoggedIn");
-          window.location.href = "auth.html";
-        }
-        document
-          .getElementById("logout-btn")
-          .addEventListener("click", logoutUser);
-        document
-          .getElementById("logout-btn-mobile")
-          .addEventListener("click", logoutUser);
-      </script>
-    </header>
-
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
    
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Animated background shapes */
+    .animated-shape {
+     
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-    <!-- Hero -->
-    <main class="container mx-auto px-4">
-      <section class="text-center py-16">
-        <div>
+/* Custom animation speeds */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes bounce-fast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+.animate-bounce-fast { animation: bounce-fast 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+ .floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 30%; left: 70%; animation-duration: 15s; }
+  .floating-shape:nth-child(3) { top: 60%; left: 40%; animation-duration: 18s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
+.animate-float{animation:float 10s ease-in-out infinite;}
+.animate-float-slow{animation:float 15s ease-in-out infinite;}
+.floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
+  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+  .floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
+  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+
+  /* Read More button functionality */
+  .read-more-btn {
+    cursor: pointer;
+  }
+   .nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #111827;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #111827;
+    font-weight: 600;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+  /* Mobile animation */
+  #mobile-menu {
+    animation: slideDown 0.4s ease forwards;
+  }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-12px) translateX(8px); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-18px) translateX(-10px); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-25px) translateX(12px); }
+}
+
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+
+  </style>
+  </head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
+<!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-3">
+      <img src="logo.png" alt="KALA.Ficial Logo" 
+           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button id="logout-btn" 
+        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+  </div>
+</header>
+<!-- Hero Section -->
+<section id="hero" 
+  class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
+  bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden pt-28" style="padding-top: 60px;">
+
+  <!-- Decorative Animated Blobs -->
+  <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
+  <div class="absolute bottom-20 right-16 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-2xl animate-ping"></div>
+  <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 blur-xl animate-bounce"></div>
+
+  <!-- Hero Content -->
+  <div class="z-10 text-center md:text-left md:w-1/2 space-y-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+      Unleash Your <br>
+      <span class="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text text-transparent">
+        Creativity with KALA.Ficial
+      </span>
+    </h1>
+    <p class="text-lg md:text-xl text-gray-700 max-w-lg mx-auto md:mx-0">
+      A global platform for emerging artists. Showcase your artwork, 
+      collaborate with creators, and connect with exhibitions worldwide.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+      <a href="#explore" 
+         class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 
+         transition rounded-full font-semibold text-gray-900 shadow-lg hover:scale-105">
+        🎨 Explore Art
+      </a>
+      <a href="#join" 
+         class="px-8 py-3 border-2 border-gray-900 hover:bg-gray-900 hover:text-white 
+         transition rounded-full font-semibold text-gray-900 shadow-md hover:scale-105">
+        ✨ Join as Artist
+      </a>
+    </div>
+  </div>
+  <!-- Tiny Floating Blobs -->
+<div class="absolute top-40 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute top-30 left-1/3 w-2 h-2 bg-yellow-400 rounded-full opacity-60 animate-float-medium"></div>
+<div class="absolute top-1/2 left-1/4 w-3 h-3 bg-cyan-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-1/3 right-1/4 w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute bottom-24 left-1/2 w-3 h-3 bg-indigo-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute bottom-30 left-1/3 w-2 h-2 bg-red-400 rounded-full opacity-60 animate-float-fast"></div>
+<div class="absolute top-1/4 right-20 w-2.5 h-2.5 bg-purple-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
+<div class="absolute top-37 right-1/2 w-2 h-2 bg-yellow-300 rounded-full opacity-65 animate-float-fast"></div>
+<div class="absolute bottom-20 right-10 w-3 h-3 bg-teal-400 rounded-full opacity-70 animate-float-medium"></div>
+<!-- Floating Blobs Everywhere -->
+<!-- Top Area -->
+<div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
+<div class="absolute top-20 right-1/3 w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute top-12 right-20 w-2 h-2 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
+
+<!-- Middle Scatter -->
+<div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
+<div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-2/5 right-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
+<div class="absolute top-1/2 right-1/2 w-3 h-3 bg-yellow-300 rounded-full opacity-65 animate-float-medium"></div>
+<div class="absolute top-[20%] left-[45%] w-2 h-2 bg-teal-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-[80%] left-[55%] w-2.5 h-2.5 bg-rose-400 rounded-full opacity-80 animate-float-slow"></div>
+
+<!-- Bottom Area -->
+<div class="absolute bottom-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute bottom-10 right-20 w-3 h-3 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute bottom-14 left-10 w-2 h-2 bg-red-400 rounded-full opacity-65 animate-float-fast"></div>
+<!-- Left Dense Floating Blobs -->
+<div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+<div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+<div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
+<div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute top-[10%] left-[6%] w-2 h-2 bg-red-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[55%] left-[9%] w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute top-[60%] left-[12%] w-3 h-3 bg-pink-300 rounded-full opacity-75 animate-float-slow"></div>
+
+
+  
+
+  <!-- Hero Image -->
+  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center relative">
+    <img src="homebg.png" 
+         alt="Artist Showcase" 
+         class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10">
+    <!-- Floating Accent Shape -->
+    <div class="absolute -top-6 -left-6 w-16 h-16 bg-purple-400 rounded-full opacity-60 animate-spin-slow"></div>
+    
+  </div>
+</section>
+
+
+  <!-- Optional: Interactive Particle Canvas -->
+  <canvas id="particles" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
+  <section id="exhibition" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 
+bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
+  <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+  <!-- Hero Content -->
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-30"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-25"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Exhibition Information
+      </h2>
+      <p class="mt-2 text-gray-600">
+        Explore upcoming art exhibitions across India
+      </p>
+      <a
+        href="exhibition.html"
+        class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg"
+      >
+        More Info
+      </a>
+    </div>
+
+    <!-- Exhibition Grid -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Card 1 -->
+      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+        <div class="overflow-hidden">
           <img
-            src="homebg.png"
-            alt="Hero image"
-            class="rounded-lg mx-auto w-full max-w-3xl"
+            src="eve1.jpg"
+            alt="Peepletree Art Gallery"
+            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
           />
         </div>
-        <h1 class="tagline animate-text">
-          <span>W</span><span>h</span><span>e</span><span>r</span
-          ><span>e</span> <span>A</span><span>r</span><span>t</span>
-          <span>M</span><span>e</span><span>e</span><span>t</span
-          ><span>s</span> <span>S</span><span>o</span><span>u</span
-          ><span>l</span>
-          <span style="color: #ff3366">—</span>
-          <span style="color: #ff3366">K</span
-          ><span style="color: #ff3366">a</span
-          ><span style="color: #ff3366">l</span
-          ><span style="color: #ff3366">a</span
-          ><span style="color: #ff3366">.</span>
-          <span style="color: #ff3366">f</span
-          ><span style="color: #ff3366">i</span
-          ><span style="color: #ff3366">c</span
-          ><span style="color: #ff3366">i</span
-          ><span style="color: #ff3366">a</span
-          ><span style="color: #ff3366">l</span>
-        </h1>
-      </section>
-
-      <!-- Exhibition -->
-      <section id="exhibition" class="py-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center">
-          Exhibition Information
-        </h2>
-        <div class="flex justify-center mt-4">
-          <a href="exhibition.html" class="text-[#6C63FF] hover:underline"
-            >More</a
-          >
-        </div>
-        <div class="max-w-6xl mx-auto px-4">
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
-          >
-            <!-- Event 1 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="eve1.jpg"
-                alt="Peepletree Art Gallery"
-                class="w-full h-56 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-lg font-bold text-white">
-                  Peepletree Art Gallery, Bangalore
-                </h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru,
-                  Karnataka 560080
-                  <br /><span class="block mt-2"
-                    ><strong>Date:</strong> 28th April 2024</span
-                  >
-                  <span class="block"
-                    ><strong>Time:</strong> 12:00 – 18:00</span
-                  >
-                </p>
-              </div>
-            </div>
-
-            <!-- Event 2 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="eve2.jpg"
-                alt="Avisar Art Gallery"
-                class="w-full h-56 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-lg font-bold text-white">
-                  Avisar Art Gallery, Kolkata
-                </h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally,
-                  Behala, Kolkata, West Bengal 700034
-                  <br /><span class="block mt-2"
-                    ><strong>Date:</strong> 30th May 2024</span
-                  >
-                  <span class="block"
-                    ><strong>Time:</strong> 15:00 – 20:00</span
-                  >
-                </p>
-              </div>
-            </div>
-
-            <!-- Event 3 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="eve3.jpg"
-                alt="Raja Ravi Varma Art Gallery"
-                class="w-full h-56 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-lg font-bold text-white">
-                  Raja Ravi Varma Art Gallery, Pune
-                </h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp.
-                  Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005
-                  <br /><span class="block mt-2"
-                    ><strong>Date:</strong> 20th June 2024</span
-                  >
-                  <span class="block"
-                    ><strong>Time:</strong> 15:00 – 20:00</span
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Artwork -->
-      <section id="artwork-for-sale" class="py-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center">
-          Artwork For Sale
-        </h2>
-        <div class="flex justify-center mt-4">
-          <a href="artwork.html" class="text-[#6C63FF] hover:underline">More</a>
-        </div>
-        <div class="max-w-6xl mx-auto px-4">
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
-          >
-            <!-- Card 1 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="ap1.jpg"
-                alt="Painting of Nature's Beauty"
-                class="w-full h-64 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-xl font-bold text-white">
-                  Painting of Nature's Beauty
-                </h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  <span class="block"><strong>Artist:</strong> Swati Kale</span>
-                  <span class="block"
-                    ><strong>Contact:</strong> swatikale@gmail.com</span
-                  >
-                  <span class="block"><strong>Price:</strong> Rs.58,000/-</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="ap2.jpg"
-                alt="Painting of a Lady"
-                class="w-full h-64 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-xl font-bold text-white">Painting of a Lady</h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  <span class="block"
-                    ><strong>Artist:</strong> Etienne Quesnay</span
-                  >
-                  <span class="block"
-                    ><strong>Contact:</strong> etiennequesnay@gmail.com</span
-                  >
-                  <span class="block"><strong>Price:</strong> $1500</span>
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-            >
-              <img
-                src="ap3.jpg"
-                alt="Painting of Buddha"
-                class="w-full h-64 object-cover"
-              />
-              <div class="p-5">
-                <h3 class="text-xl font-bold text-white">Painting of Buddha</h3>
-                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                  <span class="block"
-                    ><strong>Artist:</strong> Monica Gule</span
-                  >
-                  <span class="block"
-                    ><strong>Contact:</strong> monicagule@gmail.com</span
-                  >
-                  <span class="block"><strong>Price:</strong> Rs.60,000/-</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Artist Portal -->
-      <section id="artist-portal" class="py-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center">
-          Artist Portal
-        </h2>
-        <div class="flex justify-center mt-4">
-          <a href="Artist Portal.html" class="text-[#6C63FF] hover:underline"
-            >More</a
-          >
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-          <!-- Card 1 -->
-          <div
-            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-          >
-            <img
-              src="Ananda Das.webp"
-              alt="Ananda Das"
-              class="w-full h-60 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-white">Ananda Das</h3>
-              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                Ananda Das, a scion of artistic royalty from the vibrant heart
-                of Calcutta, emerges as a beacon of contemporary Indian
-                artistry. The son of the distinguished Lakshmi Narayan Das,
-                Ananda's aesthetic voyage began under the tutelage of his
-                father, whose acumen as a consummate commercial artist ignited
-                the nascent genius within him.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div
-            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-          >
-            <img
-              src="Shiv Kumar Soni.jpg"
-              alt="Shiv Kumar Soni"
-              class="w-full h-60 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-white">Shiv Kumar Soni</h3>
-              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                Shiv Kumar's work primarily focuses on reminiscing his childhood
-                times. He elaborately expresses the simple joys of those days
-                that lie in moments with any kind of engagement. He marvels at
-                the innocence that is deeply rooted in those formative days.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div
-            class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-          >
-            <img
-              src="Priyendra-Shuka-Artist.webp"
-              alt="Priyendra Shuka"
-              class="w-full h-60 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="text-xl font-bold text-white">Priyendra Shuka</h3>
-              <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-                As the moment flashes by, leaving its color on my being, I try
-                to hold on to it. For these colors fade away with time, pushed
-                back into oblivion by fresh colors of new moments. Such are the
-                workings of the ever changing panorama that is life. I long to
-                internalize the moment and bring it to the realm of the
-                tangible, where I can go back and live it again.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="py-12 text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold">About Us</h3>
-        <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-          Dive into art with the Kala.ficial! We empower artists and enrich
-          visitor experiences...
-        </p>
-        <div class="flex flex-wrap justify-center gap-6 mt-6">
-          <div class="text-center">
-            <img
-              src="C1.png"
-              alt="Traditional Art"
-              class="w-24 h-24 mx-auto rounded-full"
-            />
-            <h4 class="mt-2 font-semibold">Traditional Art</h4>
-            <p class="text-xs sm:text-sm">By Our Artist</p>
-          </div>
-          <div class="text-center">
-            <img
-              src="C2.png"
-              alt="Modern Art"
-              class="w-24 h-24 mx-auto rounded-full"
-            />
-            <h4 class="mt-2 font-semibold">Modern Art</h4>
-            <p class="text-xs sm:text-sm">By Our Artist</p>
-          </div>
-          <div class="text-center">
-            <img
-              src="C3.png"
-              alt="Digital Art"
-              class="w-24 h-24 mx-auto rounded-full"
-            />
-            <h4 class="mt-2 font-semibold">Digital Art</h4>
-            <p class="text-xs sm:text-sm">By Our Artist</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="py-12 text-center">
-        <h3 class="text-2xl sm:text-3xl font-bold">Contact Us</h3>
-        <p class="mt-4 max-w-md mx-auto text-sm sm:text-base">
-          Get in touch with us! We'd love to hear from you.
-        </p>
-        <ul class="mt-6 space-y-2 text-sm sm:text-base">
-          <li>
-            <i class="fas fa-map-marker-alt"></i> 123 Main St, Anytown India
-          </li>
-          <li>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:kala.ficial@gmail.com">mypassion@kala.ficial.com</a>
-          </li>
-          <li>
-            <i class="fas fa-phone-alt"></i>
-            <a href="tel:555-123-4567">+91 1234567890</a>
-          </li>
-        </ul>
-        <form action="https://wa.me/1234567890" target="_blank" class="mt-6">
-          <button
-            type="submit"
-            class="inline-flex items-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full px-6 py-3 gap-2 transition-all hover:scale-105"
-          >
-            <i class="fa-brands fa-whatsapp text-2xl"></i> Send Message
-          </button>
-        </form>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <!-- Footer -->
-    <footer
-      class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pt-4 pb-4"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
-      >
-        <!-- About -->
-        <div>
-          <h4
-            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
-          >
-            About Kala.ficial
-          </h4>
-          <p class="text-gray-300 text-sm">
-            Kala.ficial is a platform connecting artists with art enthusiasts.
-            Discover, explore, and buy unique artworks while supporting talented
-            creators.
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+            Peepletree Art Gallery, Bangalore
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080<br />
+            <strong>Date:</strong> 28th April 2024<br />
+            <strong>Time:</strong> 12:00-18:00 pm
           </p>
         </div>
+      </div>
 
-        <!-- Quick Links -->
-        <div>
-          <h4
-            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
-          >
-            Quick Links
-          </h4>
-          <ul class="space-y-2 text-gray-300 text-sm">
-            <li>
-              <a href="#" class="hover:text-yellow-400 transition-colors"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a href="#about" class="hover:text-yellow-400 transition-colors"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="exhibition.html"
-                class="hover:text-yellow-400 transition-colors"
-                >Exhibition</a
-              >
-            </li>
-            <li>
-              <a
-                href="artwork.html"
-                class="hover:text-yellow-400 transition-colors"
-                >Artwork</a
-              >
-            </li>
-            <li>
-              <a
-                href="Artist Portal.html"
-                class="hover:text-yellow-400 transition-colors"
-                >Artist Portal</a
-              >
-            </li>
-            <li>
-              <a
-                href="contact.html"
-                class="hover:text-yellow-400 transition-colors"
-                >Contact</a
-              >
-            </li>
-            <li>
-              <a href="#" class="hover:text-yellow-400 transition-colors"
-                >Blog</a
-              >
-            </li>
-            <li>
-              <a href="#" class="hover:text-yellow-400 transition-colors"
-                >FAQs</a
-              >
-            </li>
-          </ul>
+      <!-- Card 2 -->
+      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+        <div class="overflow-hidden">
+          <img
+            src="eve2.jpg"
+            alt="Avisar Art Gallery"
+            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
+          />
         </div>
-
-        <!-- Contact Info -->
-        <div>
-          <h4
-            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
-          >
-            Contact Us
-          </h4>
-          <ul class="space-y-3 text-gray-300 text-sm">
-            <li class="flex items-center gap-2">
-              <i class="fas fa-map-marker-alt text-yellow-400"></i> 123 Main St,
-              Anytown, India
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="fas fa-envelope text-yellow-400"></i>
-              <a
-                href="mailto:mypassion@kala.ficial.com"
-                class="hover:text-yellow-400 transition-colors"
-                >mypassion@kala.ficial.com</a
-              >
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="fas fa-phone-alt text-yellow-400"></i>
-              <a
-                href="tel:+911234567890"
-                class="hover:text-yellow-400 transition-colors"
-                >+91 1234567890</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <!-- Social Media -->
-        <div>
-          <h4
-            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
-          >
-            Follow Us
-          </h4>
-          <div class="flex space-x-4 mt-3">
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              href="https://www.twitter.com/"
-              target="_blank"
-              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+            Avisar Art Gallery, Kolkata
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034<br />
+            <strong>Date:</strong> 30th May 2024<br />
+            <strong>Time:</strong> 15:00-20:00 pm
+          </p>
         </div>
       </div>
 
-      <p
-        class="text-center text-gray-400 text-md mt-10 border-t border-gray-700 pt-6"
-      >
-        &copy; 2024 Kala.ficial. All Rights Reserved.
+      <!-- Card 3 -->
+      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+        <div class="overflow-hidden">
+          <img
+            src="eve3.jpg"
+            alt="Raja Ravi Varma Art Gallery"
+            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+            Raja Ravi Varma Art Gallery, Pune
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005<br />
+            <strong>Date:</strong> 20th June 2024<br />
+            <strong>Time:</strong> 15:00-20:00 pm
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="artwork-for-sale" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+  <!-- Floating Background Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Artwork For Sale
+      </h2>
+      <p class="mt-2 text-gray-600">
+        Browse exclusive art pieces from talented artists
       </p>
-    </footer>
+      <a
+        href="artwork.html"
+        class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg"
+      >
+        More
+      </a>
+    </div>
+
+    <!-- Artwork Grid -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Artwork Card Template -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="ap1.jpg"
+          alt="Painting of Nature's Beauty"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <!-- Quick View Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of Nature's Beauty</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Swati Kale</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> swatikale@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> Rs. 58,000/-</p>
+        </div>
+      </div>
+
+      <!-- Artwork Card 2 -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="ap2.jpg"
+          alt="Painting of a Lady"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> $1,500</p>
+        </div>
+      </div>
+
+      <!-- Artwork Card 3 -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="ap3.jpg"
+          alt="Painting of Buddha"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of Buddha</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Monica Gule</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> monicagule@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> Rs. 60,000/-</p>
+        </div>
+      </div>
+       <!-- Artwork Card 4 -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="pea.jpg"
+          alt="Painting of a Peacock"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of a Girl</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> $2000</p>
+        </div>
+      </div>
+       <!-- Artwork Card 5 -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="IA2.jpg"
+          alt="Painting of a Lady"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> $1,500</p>
+        </div>
+      </div>
+       <!-- Artwork Card 6 -->
+      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img
+          src="IA4.jpg"
+          alt="Painting of a Lady"
+          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+          <p class="text-sm"><strong>Price:</strong> $1,500</p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+<section id="artist-portal" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Artist Portal
+      </h2>
+      <p class="mt-2 text-gray-600">
+        Meet the visionaries behind the masterpieces
+      </p>
+      <a href="Artist Portal.html" class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+        More
+      </a>
+    </div>
+
+    <!-- Artist Grid -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Artist Card 1 -->
+      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img src="Ananda Das.webp" alt="Ananda Das" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="p-6 relative">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Ananda Das</h3>
+          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+            Ananda Das, a scion of artistic royalty from Calcutta, emerges as a beacon of contemporary Indian artistry. The son of Lakshmi Narayan Das, Ananda's aesthetic voyage began under his father's tutelage.
+          </p>
+          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
+        </div>
+      </div>
+
+      <!-- Artist Card 2 -->
+      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img src="Shiv Kumar Soni.jpg" alt="Shiv Kumar Soni" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="p-6 relative">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Shiv Kumar Soni</h3>
+          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+            Shiv Kumar reminisces his childhood through his art. He portrays the simple joys and innocence of formative moments, capturing memories with vivid storytelling.
+          </p>
+          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
+        </div>
+      </div>
+
+      <!-- Artist Card 3 -->
+      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img src="Priyendra-Shuka-Artist.webp" alt="Priyendra Shuka" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="p-6 relative">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Priyendra Shuka</h3>
+          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+            Priyendra captures fleeting moments in color and form, bringing ephemeral experiences into tangible artistic expressions that invite the viewer to relive them.
+          </p>
+          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
+        </div>
+      </div>
+
+      <!-- Artist Card 4 (New Artist) -->
+      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img src="bharti-dayal1.jpeg" alt="Bharti Dayal" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="p-6 relative">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bharti Dayal</h3>
+          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+           Bharti Dayal is a renowned contemporary Madhubani artist from Bihar, India, celebrated for popularizing the art form globally by blending traditional techniques with modern media like acrylic on canvas, creating a fresh, contemporary aesthetic for Madhubani painting. She expanded the art's reach through international exhibitions and diverse applications, such as textile design and book illustrations, and supports other women artists through training programs.  
+          </p>
+          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
+        </div>
+      </div>
+
+      <!-- Artist Card 5 (New Artist) -->
+      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+        <img src="jamini-roy.jpeg" alt="Jamini Roy" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div class="p-6 relative">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Jamini Roy</h3>
+          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+             Jamini Roy was a pioneering modern Indian artist, renowned for his distinct visual style rooted in the folk art traditions of Bengal, particularly the Kalighat painting style. He moved away from Western academic styles to develop an indigenous aesthetic characterized by bold lines, flattened figures, vibrant earthy colors, and two-dimensional composition. Roy's subjects drew from rural life, mythological narratives, and figures like Mahatma Gandhi and Rabindranath Tagore, aiming to create art that was both culturally rooted and accessible to a wider audience.
+          </p>
+          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about" class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+  <!-- Floating Background Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    <span class="floating-shape bg-[#8b5cf6] opacity-10"></span>
+    <span class="floating-shape bg-[#f97316] opacity-10"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="md:flex md:items-center md:gap-12">
+      <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+        <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Us</h3>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          Dive into art with Kala.ficial! We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information. Explore stunning artwork, learn about historical contexts, and ignite your passion for art—all from the comfort of your home. Kala.ficial offers multilingual support and accessibility features, fostering a global and inclusive art community.
+        </p>
+        <a href="#exhibition" class="mt-6 inline-block text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+          Explore Exhibitions
+        </a>
+      </div>
+
+      <!-- Team / Art Styles Circle Cards -->
+<div class="md:w-2/3 mx-auto grid gap-10 sm:grid-cols-1 md:grid-cols-3 place-items-center text-center">
+  
+  <!-- Circle Card 1 -->
+  <div class="flex flex-col items-center">
+    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-purple-300 mb-4">
+      <img src="C1.png" alt="Traditional Art" class="w-full h-full object-cover"/>
+    </div>
+    <h4 class="text-xl font-semibold text-gray-800">Traditional Art</h4>
+    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+      Celebrating cultural heritage through timeless artistic styles.
+    </p>
+  </div>
+
+  <!-- Circle Card 2 -->
+  <div class="flex flex-col items-center">
+    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-pink-300 mb-4">
+      <img src="C2.png" alt="Modern Art" class="w-full h-full object-cover"/>
+    </div>
+    <h4 class="text-xl font-semibold text-gray-800">Modern Art</h4>
+    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+      Bold expressions and innovative creativity for the new era.
+    </p>
+  </div>
+
+  <!-- Circle Card 3 -->
+  <div class="flex flex-col items-center">
+    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-cyan-300 mb-4">
+      <img src="C3.png" alt="Digital Art" class="w-full h-full object-cover"/>
+    </div>
+    <h4 class="text-xl font-semibold text-gray-800">Digital Art</h4>
+    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+      Creative imagination brought to life with digital mastery.
+    </p>
+  </div>
+
+</div>
+
+       
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact" class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10 text-center">
+    <!-- Header -->
+    <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h3>
+    <p class="text-gray-700 max-w-2xl mx-auto text-lg leading-relaxed">
+      We'd love to hear from you! Whether you have a question, suggestion, or want to collaborate, reach out to us.
+    </p>
+
+    <!-- Contact Cards -->
+    <div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
+      <!-- Location Card -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+        <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
+        <h4 class="font-semibold text-xl mb-2">Location</h4>
+        <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
+      </div>
+
+      <!-- Email Card -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+        <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
+        <h4 class="font-semibold text-xl mb-2">Email</h4>
+        <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
+      </div>
+
+      <!-- Phone Card -->
+      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+        <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
+        <h4 class="font-semibold text-xl mb-2">Phone</h4>
+        <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
+      </div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        Send Message
+      </a>
+
+      <!-- Collaboration Button -->
+      <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+        <i class="fas fa-handshake text-xl"></i>
+        For Collaboration
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Collaboration Form Modal -->
+<div id="collabModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 relative transform scale-90 transition-all duration-300">
+    <button id="closeCollabForm" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl font-bold">&times;</button>
+    <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Collaboration Form</h3>
+    <p class="text-gray-600 mb-6 text-center">Fill in your details and we will get back to you soon!</p>
+    <form class="flex flex-col gap-4">
+      <input type="text" placeholder="Your Name" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
+      <input type="email" placeholder="Your Email" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
+      <textarea placeholder="Your Message" rows="4" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"></textarea>
+      <button type="submit" class="bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full px-6 py-3 transition-all duration-300 shadow-lg hover:scale-105">Send Information</button>
+    </form>
+  </div>
+</div>
+<footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
+    <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10 text-gray-800">
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="mb-6 lg:mb-0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
+        </p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-twitter text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-2">
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+        </ul>
+        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+      </div>
+
+      <!-- Newsletter & Social -->
+      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+        <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+        <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+        <form class="flex flex-col sm:flex-row gap-3">
+          <input 
+    type="email" 
+    placeholder="Your Email" 
+    class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] flex-1 text-sm transition-all duration-300"
+  />
+  <button 
+    type="submit" 
+    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+  >
+    Subscribe
+  </button>
+  </form>
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+  
+    // Simple floating particles
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
+
+    class Particle {const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Active link highlight on scroll
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      if (scrollY >= sectionTop) current = section.getAttribute("id");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for(let i=0; i<100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+
+     document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const p = button.previousElementSibling;
+      if (p.style.maxHeight === 'none') {
+        p.style.maxHeight = '6rem';
+        button.textContent = 'Read More';
+      } else {
+        p.style.maxHeight = 'none';
+        button.textContent = 'Show Less';
+      }
+    });
+  });
+  
+  </script>
     <script>
-      // Auth check
+      // Check if the user is logged in on page load
       if (localStorage.getItem("isLoggedIn") !== "true") {
         window.location.href = "auth.html";
       }
 
-      // Logout
-      function logoutUser() {
-        localStorage.removeItem("isLoggedIn");
-        window.location.href = "auth.html";
-      }
-      document
-        .getElementById("logout-btn")
-        .addEventListener("click", logoutUser);
-      document
-        .getElementById("logout-btn-mobile")
-        .addEventListener("click", logoutUser);
+      // --- LOGOUT LOGIC ---
+      const logoutBtn = document.getElementById("logout-btn");
 
-      // Toggle Mobile Menu
-      document.getElementById("menu-toggle").addEventListener("click", () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
+      logoutBtn.addEventListener("click", () => {
+        // Clear the authentication flag from localStorage
+        localStorage.removeItem("isLoggedIn");
+        // Redirect the user back to the authentication page
+        window.location.href = "auth.html";
       });
     </script>
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
-    const userName = localStorage.getItem("userName");
-    const userPicture = localStorage.getItem("userPicture");
-
-    if (isLoggedIn === "true" && userName && userPicture) {
-      document.getElementById("user-name").textContent = userName;
-      document.getElementById("user-picture").src = userPicture;
-      document.getElementById("user-info").classList.remove("hidden");
-    }
-  });
-</script>
-
   </body>
 </html>
