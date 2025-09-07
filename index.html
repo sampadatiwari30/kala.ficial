@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KALA.Ficial Website</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.tailwindcss.com">
+          tailwind.config = {
+        darkMode: 'class'
+      }
+    </script>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -14,7 +20,15 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       rel="stylesheet"
     />
+
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap");
+
+      .animate-text {
+        font-family: "Merriweather", serif;
+        font-style: italic;
+        font-weight: 700;
+      }
       body {
         font-family: "Inter", sans-serif;
         background-color: #121212;
@@ -50,51 +64,312 @@
         font-size: 1.5rem;
         margin: 0 0.5rem;
       }
+      #logo {
+        height: 100px;
+        width: 150px;
+        border-radius: 50%;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-text span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp 0.6s forwards;
+      }
+
+      .animate-text span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .animate-text span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .animate-text span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .animate-text span:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .animate-text span:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .animate-text span:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+      .animate-text span:nth-child(7) {
+        animation-delay: 0.6s;
+      }
+      .animate-text span:nth-child(8) {
+        animation-delay: 0.7s;
+      }
+      .animate-text span:nth-child(9) {
+        animation-delay: 0.8s;
+      }
+      .animate-text span:nth-child(10) {
+        animation-delay: 0.9s;
+      }
+      .animate-text span:nth-child(11) {
+        animation-delay: 1s;
+      }
+      .animate-text span:nth-child(12) {
+        animation-delay: 1.1s;
+      }
+      .animate-text span:nth-child(13) {
+        animation-delay: 1.2s;
+      }
+      .animate-text span:nth-child(14) {
+        animation-delay: 1.3s;
+      }
+      .animate-text span:nth-child(15) {
+        animation-delay: 1.4s;
+      }
+      .animate-text span:nth-child(16) {
+        animation-delay: 1.5s;
+      }
+      .animate-text span:nth-child(17) {
+        animation-delay: 1.6s;
+      }
+      .animate-text span:nth-child(18) {
+        animation-delay: 1.7s;
+      }
+      .animate-text span:nth-child(19) {
+        animation-delay: 1.8s;
+      }
+      .animate-text span:nth-child(20) {
+        animation-delay: 1.9s;
+      }
+      .animate-text span:nth-child(21) {
+        animation-delay: 2s;
+      }
+      .animate-text span:nth-child(22) {
+        animation-delay: 2.1s;
+      }
+      .animate-text span:nth-child(23) {
+        animation-delay: 2.2s;
+      }
+      .animate-text span:nth-child(24) {
+        animation-delay: 2.3s;
+      }
+      .animate-text span:nth-child(25) {
+        animation-delay: 2.4s;
+      }
+      .animate-text span:nth-child(26) {
+        animation-delay: 2.5s;
+      }
+      .animate-text span:nth-child(27) {
+        animation-delay: 2.6s;
+      }
+      .animate-text span:nth-child(28) {
+        animation-delay: 2.7s;
+      }
+      .animate-text span:nth-child(29) {
+        animation-delay: 2.8s;
+      }
+      .animate-text span:nth-child(30) {
+        animation-delay: 2.9s;
+      }
+      @keyframes fadeSlideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .animate-text {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin: 3rem 0;
+        color: #fff;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+
+      .animate-text span {
+        display: inline-block;
+        opacity: 0;
+        animation: fadeSlideUp 0.8s forwards cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      /* Gradient + Glow highlight */
+      .animate-text .highlight {
+        background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+      }
+
+      .animate-text .highlight::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00ff);
+        border-radius: 4px;
+        animation: glow 1.5s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      /* … continue nth-child delay jaise tumne pehle likha tha */
     </style>
   </head>
-  <body>
+  <body
+    class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300"
+  >
     <!-- Header -->
     <header
-      class="p-4 flex justify-between items-center bg-white shadow-md sticky top-0 z-50"
+      class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pb-6 p-4 sticky top-0 z-50 shadow-lg"
     >
-      <!-- Logo -->
-      <div
-        class="flex items-center max-w-[200px] sm:max-w-[300px] lg:max-w-[400px]"
-        id="logo"
-      >
-        <img
-          src="logo.png"
-          alt="KALA.Ficial Logo"
-          class="h-12 sm:h-16 lg:h-20 w-auto mr-3 drop-shadow-lg transition-transform duration-300 hover:scale-105"
-        />
-        <span class="text-lg sm:text-2xl font-bold tracking-wide text-gray-800"
-          >Kala.ficial</span
-        >
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img
+            id="logo"
+            src="logo.png"
+            alt="Logo"
+            class="h-12 sm:h-16 lg:h-20 w-auto transition-transform duration-300 hover:scale-105"
+          />
+          <span class="font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide"
+            >Kala.ficial</span
+          >
+        </div>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex gap-6 font-semibold items-center">
+          <a
+            href="#"
+            class="relative text-gray-200 transition duration-300 
+                after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300"
+          >
+            Home
+          </a>
+          <a
+            href="#about"
+            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+          >
+            About
+          </a>
+          <a
+            href="exhibition.html"
+            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Exhibition
+          </a>
+          <a
+            href="artwork.html"
+            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Artwork
+          </a>
+          <a
+            href="Artist Portal.html"
+            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Artist Portal
+          </a>
+          <a
+            href="contact.html"
+            class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+          >
+            Contact
+          </a>
+
+          <a href="help.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Help
+      </a>
+          <!-- Log Out Button -->
+          <button
+            id="logout-btn"
+            class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+          >
+            Log Out
+          </button>
+        </nav>
+
+        <!-- Mobile Hamburger -->
+        <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+          ☰
+        </button>
       </div>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex">
-        <ul
-          class="flex space-x-6 lg:space-x-8 font-medium text-gray-600 items-center"
-        >
-          <li><a href="#" class="hover:text-gray-900">Home</a></li>
-          <li><a href="#about" class="hover:text-gray-900">About</a></li>
+      <!-- Mobile Menu -->
+      <nav
+        id="mobile-menu"
+        class="hidden bg-gradient-to-r from-indigo-800 to-purple-800 overflow-hidden transition-all duration-500 ease-in-out md:hidden"
+      >
+        <ul class="flex flex-col gap-4 p-4">
           <li>
-            <a href="exhibition.html" class="hover:text-gray-900">Exhibition</a>
+            <a
+              href="#"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
+              >Home</a
+            >
           </li>
           <li>
-            <a href="artwork.html" class="hover:text-gray-900">Artwork</a>
+            <a
+              href="#about"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
+              >About</a
+            >
           </li>
           <li>
-            <a href="Artist Portal.html" class="hover:text-gray-900"
+            <a
+              href="exhibition.html"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
+              >Exhibition</a
+            >
+          </li>
+          <li>
+            <a
+              href="artwork.html"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
+              >Artwork</a
+            >
+          </li>
+          <li>
+            <a
+              href="Artist Portal.html"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
               >Artist Portal</a
             >
           </li>
-          <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
+          <li>
+            <a
+              href="#contact"
+              class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5"
+              >Contact</a
+            >
+          </li>
+
+          <!-- Log Out Button -->
           <li>
             <button
-              id="logout-btn"
-              class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all shadow-md"
+              id="logout-btn-mobile"
+              class="w-full py-2 px-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
             >
               Log Out
             </button>
@@ -102,10 +377,33 @@
         </ul>
       </nav>
 
-      <!-- Mobile Hamburger -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="text-gray-800 text-2xl">☰</button>
-      </div>
+      <script>
+        // Toggle Mobile Menu with smooth height animation
+        const toggleBtn = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        toggleBtn.addEventListener("click", () => {
+          if (mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.remove("hidden");
+            mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+          } else {
+            mobileMenu.style.maxHeight = 0;
+            setTimeout(() => mobileMenu.classList.add("hidden"), 500);
+          }
+        });
+
+        // Logout functionality
+        function logoutUser() {
+          localStorage.removeItem("isLoggedIn");
+          window.location.href = "auth.html";
+        }
+        document
+          .getElementById("logout-btn")
+          .addEventListener("click", logoutUser);
+        document
+          .getElementById("logout-btn-mobile")
+          .addEventListener("click", logoutUser);
+      </script>
     </header>
 
     <!-- Mobile Menu -->
@@ -116,7 +414,7 @@
         <li><a href="exhibition.html">Exhibition</a></li>
         <li><a href="artwork.html">Artwork</a></li>
         <li><a href="Artist Portal.html">Artist Portal</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li>
           <button
             id="logout-btn-mobile"
@@ -138,12 +436,25 @@
             class="rounded-lg mx-auto w-full max-w-3xl"
           />
         </div>
-        <div class="mt-8">
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold">कला.ficial</h1>
-          <p class="text-base sm:text-lg lg:text-xl mt-2">
-            Where art transcends reality
-          </p>
-        </div>
+        <h1 class="tagline animate-text">
+          <span>W</span><span>h</span><span>e</span><span>r</span
+          ><span>e</span> <span>A</span><span>r</span><span>t</span>
+          <span>M</span><span>e</span><span>e</span><span>t</span
+          ><span>s</span> <span>S</span><span>o</span><span>u</span
+          ><span>l</span>
+          <span style="color: #ff3366">—</span>
+          <span style="color: #ff3366">K</span
+          ><span style="color: #ff3366">a</span
+          ><span style="color: #ff3366">l</span
+          ><span style="color: #ff3366">a</span
+          ><span style="color: #ff3366">.</span>
+          <span style="color: #ff3366">f</span
+          ><span style="color: #ff3366">i</span
+          ><span style="color: #ff3366">c</span
+          ><span style="color: #ff3366">i</span
+          ><span style="color: #ff3366">a</span
+          ><span style="color: #ff3366">l</span>
+        </h1>
       </section>
 
       <!-- Exhibition -->
@@ -157,77 +468,88 @@
           >
         </div>
         <div class="max-w-6xl mx-auto px-4">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+          >
+            <!-- Event 1 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="eve1.jpg"
+                alt="Peepletree Art Gallery"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-white">
+                  Peepletree Art Gallery, Bangalore
+                </h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru,
+                  Karnataka 560080
+                  <br /><span class="block mt-2"
+                    ><strong>Date:</strong> 28th April 2024</span
+                  >
+                  <span class="block"
+                    ><strong>Time:</strong> 12:00 – 18:00</span
+                  >
+                </p>
+              </div>
+            </div>
 
-    <!-- Event 1 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="eve1.jpg"
-        alt="Peepletree Art Gallery"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-lg font-bold text-white">
-          Peepletree Art Gallery, Bangalore
-        </h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080
-          <br /><span class="block mt-2"><strong>Date:</strong> 28th April 2024</span>
-          <span class="block"><strong>Time:</strong> 12:00 – 18:00</span>
-        </p>
-      </div>
-    </div>
+            <!-- Event 2 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="eve2.jpg"
+                alt="Avisar Art Gallery"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-white">
+                  Avisar Art Gallery, Kolkata
+                </h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally,
+                  Behala, Kolkata, West Bengal 700034
+                  <br /><span class="block mt-2"
+                    ><strong>Date:</strong> 30th May 2024</span
+                  >
+                  <span class="block"
+                    ><strong>Time:</strong> 15:00 – 20:00</span
+                  >
+                </p>
+              </div>
+            </div>
 
-    <!-- Event 2 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="eve2.jpg"
-        alt="Avisar Art Gallery"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-lg font-bold text-white">
-          Avisar Art Gallery, Kolkata
-        </h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034
-          <br /><span class="block mt-2"><strong>Date:</strong> 30th May 2024</span>
-          <span class="block"><strong>Time:</strong> 15:00 – 20:00</span>
-        </p>
-      </div>
-    </div>
-
-    <!-- Event 3 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="eve3.jpg"
-        alt="Raja Ravi Varma Art Gallery"
-        class="w-full h-56 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-lg font-bold text-white">
-          Raja Ravi Varma Art Gallery, Pune
-        </h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005
-          <br /><span class="block mt-2"><strong>Date:</strong> 20th June 2024</span>
-          <span class="block"><strong>Time:</strong> 15:00 – 20:00</span>
-        </p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+            <!-- Event 3 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="eve3.jpg"
+                alt="Raja Ravi Varma Art Gallery"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-white">
+                  Raja Ravi Varma Art Gallery, Pune
+                </h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp.
+                  Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005
+                  <br /><span class="block mt-2"
+                    ><strong>Date:</strong> 20th June 2024</span
+                  >
+                  <span class="block"
+                    ><strong>Time:</strong> 15:00 – 20:00</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Artwork -->
@@ -239,71 +561,79 @@
           <a href="artwork.html" class="text-[#6C63FF] hover:underline">More</a>
         </div>
         <div class="max-w-6xl mx-auto px-4">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-    
-    <!-- Card 1 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="ap1.jpg"
-        alt="Painting of Nature's Beauty"
-        class="w-full h-64 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-xl font-bold text-white">Painting of Nature's Beauty</h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          <span class="block"><strong>Artist:</strong> Swati Kale</span>
-          <span class="block"><strong>Contact:</strong> swatikale@gmail.com</span>
-          <span class="block"><strong>Price:</strong> Rs.58,000/-</span>
-        </p>
-      </div>
-    </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"
+          >
+            <!-- Card 1 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="ap1.jpg"
+                alt="Painting of Nature's Beauty"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">
+                  Painting of Nature's Beauty
+                </h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  <span class="block"><strong>Artist:</strong> Swati Kale</span>
+                  <span class="block"
+                    ><strong>Contact:</strong> swatikale@gmail.com</span
+                  >
+                  <span class="block"><strong>Price:</strong> Rs.58,000/-</span>
+                </p>
+              </div>
+            </div>
 
-    <!-- Card 2 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="ap2.jpg"
-        alt="Painting of a Lady"
-        class="w-full h-64 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-xl font-bold text-white">Painting of a Lady</h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          <span class="block"><strong>Artist:</strong> Etienne Quesnay</span>
-          <span class="block"><strong>Contact:</strong> etiennequesnay@gmail.com</span>
-          <span class="block"><strong>Price:</strong> $1500</span>
-        </p>
-      </div>
-    </div>
+            <!-- Card 2 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="ap2.jpg"
+                alt="Painting of a Lady"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Painting of a Lady</h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  <span class="block"
+                    ><strong>Artist:</strong> Etienne Quesnay</span
+                  >
+                  <span class="block"
+                    ><strong>Contact:</strong> etiennequesnay@gmail.com</span
+                  >
+                  <span class="block"><strong>Price:</strong> $1500</span>
+                </p>
+              </div>
+            </div>
 
-    <!-- Card 3 -->
-    <div
-      class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg 
-             hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
-    >
-      <img
-        src="ap3.jpg"
-        alt="Painting of Buddha"
-        class="w-full h-64 object-cover"
-      />
-      <div class="p-5">
-        <h3 class="text-xl font-bold text-white">Painting of Buddha</h3>
-        <p class="text-sm text-gray-300 mt-3 leading-relaxed">
-          <span class="block"><strong>Artist:</strong> Monica Gule</span>
-          <span class="block"><strong>Contact:</strong> monicagule@gmail.com</span>
-          <span class="block"><strong>Price:</strong> Rs.60,000/-</span>
-        </p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+            <!-- Card 3 -->
+            <div
+              class="exhibition-item bg-[#1e1e1e] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+            >
+              <img
+                src="ap3.jpg"
+                alt="Painting of Buddha"
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-5">
+                <h3 class="text-xl font-bold text-white">Painting of Buddha</h3>
+                <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+                  <span class="block"
+                    ><strong>Artist:</strong> Monica Gule</span
+                  >
+                  <span class="block"
+                    ><strong>Contact:</strong> monicagule@gmail.com</span
+                  >
+                  <span class="block"><strong>Price:</strong> Rs.60,000/-</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Artist Portal -->
@@ -452,23 +782,159 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center p-8 bg-[#0d0d0d]">
-      <div class="flex justify-center flex-wrap gap-4 mb-4">
-        <a href="https://www.facebook.com/" target="_blank"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a href="https://www.twitter.com/" target="_blank"
-          ><i class="fab fa-twitter"></i
-        ></a>
-        <a href="https://www.instagram.com/" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pt-4 pb-4"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
+      >
+        <!-- About -->
+        <div>
+          <h4
+            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
+          >
+            About Kala.ficial
+          </h4>
+          <p class="text-gray-300 text-sm">
+            Kala.ficial is a platform connecting artists with art enthusiasts.
+            Discover, explore, and buy unique artworks while supporting talented
+            creators.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4
+            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
+          >
+            Quick Links
+          </h4>
+          <ul class="space-y-2 text-gray-300 text-sm">
+            <li>
+              <a href="#" class="hover:text-yellow-400 transition-colors"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="#about" class="hover:text-yellow-400 transition-colors"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="exhibition.html"
+                class="hover:text-yellow-400 transition-colors"
+                >Exhibition</a
+              >
+            </li>
+            <li>
+              <a
+                href="artwork.html"
+                class="hover:text-yellow-400 transition-colors"
+                >Artwork</a
+              >
+            </li>
+            <li>
+              <a
+                href="Artist Portal.html"
+                class="hover:text-yellow-400 transition-colors"
+                >Artist Portal</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                class="hover:text-yellow-400 transition-colors"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-yellow-400 transition-colors"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-yellow-400 transition-colors"
+                >FAQs</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4
+            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
+          >
+            Contact Us
+          </h4>
+          <ul class="space-y-3 text-gray-300 text-sm">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-yellow-400"></i> 123 Main St,
+              Anytown, India
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-envelope text-yellow-400"></i>
+              <a
+                href="mailto:mypassion@kala.ficial.com"
+                class="hover:text-yellow-400 transition-colors"
+                >mypassion@kala.ficial.com</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-phone-alt text-yellow-400"></i>
+              <a
+                href="tel:+911234567890"
+                class="hover:text-yellow-400 transition-colors"
+                >+91 1234567890</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h4
+            class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1"
+          >
+            Follow Us
+          </h4>
+          <div class="flex space-x-4 mt-3">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.twitter.com/"
+              target="_blank"
+              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
       </div>
-      <p class="text-sm">
-        &copy; 2024 Your exhibition Website. All Rights Reserved.
+
+      <p
+        class="text-center text-gray-400 text-md mt-10 border-t border-gray-700 pt-6"
+      >
+        &copy; 2024 Kala.ficial. All Rights Reserved.
       </p>
     </footer>
-
     <script>
       // Auth check
       if (localStorage.getItem("isLoggedIn") !== "true") {
