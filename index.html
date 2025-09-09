@@ -847,10 +847,9 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     let particlesArray = [];
     const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
 
-    class Particle {const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  menuBtn.addEventListener("click", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+     menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
 
@@ -871,6 +870,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     });
   });
+    class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
