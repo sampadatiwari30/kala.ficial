@@ -1,13 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kala.ficial - Auth Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="blog.css">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -19,9 +16,9 @@
       justify-content: center;
     }
     .card {
-      background: rgba(30, 30, 30, 0.9);
+      background: rgba(30,30,30,0.9);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .input-field {
       background-color: #2d2d2d;
@@ -51,53 +48,39 @@
   </style>
 </head>
 <body>
-
   <div class="container max-w-md w-full mx-auto p-8 card rounded-2xl shadow-xl fade-in">
-    
     <h1 id="form-title" class="text-4xl font-bold text-center mb-6">Sign Up</h1>
-    
     <form id="auth-form" class="space-y-5">
-      <!-- Username (only for signup) -->
       <div id="username-field">
         <label for="username" class="block text-sm font-medium">Username</label>
         <input type="text" id="username" name="username"
           class="mt-1 block w-full px-4 py-3 rounded-lg input-field focus:outline-none"
           placeholder="your username" required>
       </div>
-
-      <!-- Email -->
       <div>
         <label for="email" class="block text-sm font-medium">Email</label>
-        <input type="email" id="email" name="email" 
-          class="mt-1 block w-full px-4 py-3 rounded-lg input-field focus:outline-none" 
+        <input type="email" id="email" name="email"
+          class="mt-1 block w-full px-4 py-3 rounded-lg input-field focus:outline-none"
           placeholder="yourname@gmail.com" required>
       </div>
-
-      <!-- Password -->
       <div>
         <label for="password" class="block text-sm font-medium">Password</label>
-        <input type="password" id="password" name="password" 
-          class="mt-1 block w-full px-4 py-3 rounded-lg input-field focus:outline-none" 
+        <input type="password" id="password" name="password"
+          class="mt-1 block w-full px-4 py-3 rounded-lg input-field focus:outline-none"
           placeholder="********" required>
       </div>
-      
-      
-            <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin"
-                data-ux_mode="popup" data-callback="handleGoogleResponse" data-auto_prompt="false">
-            </div>
-
-            <div class="flex justify-center mt-4">
-                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-                    data-text="signin_with" data-size="large" data-logo_alignment="left">
-                </div>
-            </div>
-
-      <!-- Submit Button -->
+      <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-context="signin"
+          data-ux_mode="popup" data-callback="handleGoogleResponse" data-auto_prompt="false">
+      </div>
+      <div class="flex justify-center mt-4">
+          <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+              data-text="signin_with" data-size="large" data-logo_alignment="left">
+          </div>
+      </div>
       <button type="submit" id="submit-btn" 
         class="w-full px-4 py-3 rounded-full text-white font-semibold btn focus:outline-none">
         Sign Up
       </button>
-      
       <p class="text-center text-sm text-gray-400">
         <span id="toggle-btn" class="cursor-pointer text-indigo-400 hover:underline">
           Already have an account? Log in
@@ -105,7 +88,6 @@
       </p>
     </form>
   </div>
-
   <script>
     const formTitle = document.getElementById('form-title');
     const authForm = document.getElementById('auth-form');
@@ -115,38 +97,38 @@
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-
     let isLogin = false;
-    const users = JSON.parse(localStorage.getItem('dummyUsers')) || {};
-
+    function getUsers() {
+      return JSON.parse(localStorage.getItem('dummyUsers')) || {};
+    }
+    function saveUsers(users) {
+      localStorage.setItem('dummyUsers', JSON.stringify(users));
+    }
     function redirectToMainPage() {
       localStorage.setItem('isLoggedIn', 'true');
-      window.location.href = 'index.html'; // home page
+      window.location.href = 'index.html';
     }
-
     toggleBtn.addEventListener('click', () => {
       isLogin = !isLogin;
       if (isLogin) {
         formTitle.textContent = 'Login';
         submitBtn.textContent = 'Login';
         toggleBtn.textContent = 'New user? Sign up';
-        usernameField.style.display = 'none'; // hide username in login
+        usernameField.style.display = 'none';
         usernameInput.required = false;
       } else {
         formTitle.textContent = 'Sign Up';
         submitBtn.textContent = 'Sign Up';
         toggleBtn.textContent = 'Already have an account? Log in';
-        usernameField.style.display = 'block'; // show username in signup
+        usernameField.style.display = 'block';
         usernameInput.required = true;
       }
     });
-
-    authForm.addEventListener('submit', (e) => {
+    authForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const username = usernameInput.value.trim();
       const email = emailInput.value;
       const password = passwordInput.value;
-
       if (!email.includes('@gmail.com')) {
         alert('Please use a valid Gmail address.');
         return;
@@ -155,9 +137,9 @@
         alert('Password must include letters and numbers.');
         return;
       }
-
+      let users = getUsers();
       if (isLogin) {
-        // LOGIN
+        // LOGIN: Check for user object with matching password
         if (users[email] && users[email].password === password) {
           alert(`Welcome back, ${users[email].username}! Redirecting...`);
           redirectToMainPage();
@@ -165,108 +147,36 @@
           alert('Invalid email or password.');
         }
       } else {
-        // SIGNUP
+        // SIGNUP: Save new user object
         if (users[email]) {
           alert('Account already exists. Please log in.');
         } else {
           users[email] = { username, password };
-          localStorage.setItem('dummyUsers', JSON.stringify(users));
+          saveUsers(users);
           alert(`Signup successful! Welcome, ${username}! Redirecting...`);
           redirectToMainPage();
         }
- 
-
-        closeBtn.addEventListener('click', hideMessage);
-
-        toggleBtn.addEventListener('click', () => {
-            isLogin = !isLogin;
-            console.log("Toggling form. Is now Login:", isLogin);
-            if (isLogin) {
-                formTitle.textContent = 'Login';
-                submitBtn.textContent = 'Log In';
-                toggleBtn.textContent = 'New user? Sign up here';
-            } else {
-                formTitle.textContent = 'Sign Up';
-                submitBtn.textContent = 'Sign Up';
-                toggleBtn.textContent = 'Already have an account? Log in';
-            }
-        });
-
-        authForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = emailInput.value;
-            const password = passwordInput.value;
-
-            console.log("Form submitted. Email:", email, "Password:", password, "Mode: ", isLogin ? "Login" : "Signup");
-
-            // Simple validation
-            if (!email.includes('@gmail.com')) {
-                showMessage('Email must be a valid @gmail.com address.');
-                return;
-            }
-
-            if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
-                showMessage('Password must contain both letters and numbers.');
-                return;
-            }
-
-            if (isLogin) {
-                // Handle Login
-                if (users[email] && users[email] === password) {
-                    showMessage('Login successful! Redirecting...');
-                    console.log('Login successful for:', email);
-                    redirectToMainPage();
-                } else if (!users[email]) {
-                    showMessage('Account does not exist. Please sign up.');
-                    console.log('Login failed. Account not found:', email);
-                } else {
-                    showMessage('Invalid email or password.');
-                    console.log('Login failed for:', email);
-                }
-            } else {
-                // Handle Signup
-                if (users[email]) {
-                    showMessage('This email is already in use. Please log in.');
-                    console.log('Signup failed. Email already exists:', email);
-                } else {
-                    users[email] = password;
-                    localStorage.setItem('dummyUsers', JSON.stringify(users));
-                    showMessage('Sign up successful! Redirecting...');
-                    console.log('New user signed up:', email);
-                    redirectToMainPage();
-                }
-            }
-        });
-    </script>
-
-    <script>
-  function handleGoogleResponse(response) {
-    // Decode JWT credential from Google
-    const data = parseJwt(response.credential);
-    console.log("Google User:", data);
-
-    // Save login state
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("userEmail", data.email);
-    localStorage.setItem("userName", data.name);
-    localStorage.setItem("userPicture", data.picture);
-
-    // Show message & redirect
-    alert(`Welcome ${data.name}! Redirecting...`);
-    window.location.href = "index.html";
-  }
-
-  // Helper function to decode JWT
-  function parseJwt(token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-    return JSON.parse(jsonPayload);
-  }
-</script>
-
+      }
+    });
+    // GOOGLE SIGN-IN
+    function handleGoogleResponse(response) {
+      // Decode JWT credential from Google
+      const data = parseJwt(response.credential);
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userEmail", data.email);
+      localStorage.setItem("userName", data.name);
+      localStorage.setItem("userPicture", data.picture);
+      alert(`Welcome ${data.name}! Redirecting...`);
+      window.location.href = "index.html";
+    }
+    function parseJwt(token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
 </body>
-
 </html>

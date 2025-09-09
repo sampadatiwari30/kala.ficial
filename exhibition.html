@@ -139,6 +139,17 @@
     animation: slideDown 0.4s ease forwards;
   }
   </style>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+      localStorage.clear();
+      window.location.href = 'auth.html'; 
+    });
+  }
+});
+</script>
 </head>
 <body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
 <!-- Navbar -->
