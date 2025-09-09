@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help & FAQs - KALA.Ficial</title>
+    <script src="https://cdn.tailwindcss.com">
+      tailwind.config = {
+    darkMode: 'class'
+  }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      .card {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+      }
+      .input-field {
+        background-color: #2d2d2d;
+        border: 1px solid #444;
+        color: #e0e0e0;
+      }
+      .btn {
+        background-color: #6c63ff;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+      .btn:hover {
+        background-color: #524bcc;
+        transform: translateY(-2px);
+      }
+      section {
+        padding: 4rem 0;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #0d0d0d;
+      }
+      .social-icons a {
+        color: #e0e0e0;
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+      }
+      #logo{
+        height: 100px;
+        width: 150px;
+        border-radius: 50% ;
+      }
+      .faq-card {
+        background-color: #1e1e1e;
+        border-radius: 0.5rem;
+        border: 1px solid #333;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .faq-question {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+      }
+      .faq-answer {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        color: #b0b0b0;
+        line-height: 1.6;
+      }
+      .faq-card.active .faq-answer {
+        max-height: 300px;
+        padding: 0 1.5rem 1.5rem;
+      }
+      .faq-icon {
+        transition: transform 0.3s ease;
+      }
+      .faq-card.active .faq-icon {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+   <!-- Header -->
+<header class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pb-6 p-4 sticky top-0 z-50 shadow-lg">
+  <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img id="logo" src="logo.png" alt="Logo" class="h-12 sm:h-16 lg:h-20 w-auto transition-transform duration-300 hover:scale-105">
+      <span class="font-bold text-xl sm:text-2xl lg:text-3xl tracking-wide">Kala.ficial</span>
+    </div>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex gap-6 font-semibold items-center">
+      <a href="index.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Home
+      </a>
+      <a href="index.html#about" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        About
+      </a>
+      <a href="exhibition.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Exhibition
+      </a>
+      <a href="artwork.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Artwork
+      </a>
+      <a href="Artist Portal.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Artist Portal
+      </a>
+      <a href="help.html" 
+         class="relative text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300">
+        Help
+      </a>
+      <a href="contact.html" 
+         class="relative text-gray-200 hover:text-yellow-300 transition duration-300 
+                after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-yellow-300 
+                after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+        Contact
+      </a>
+
+      <!-- Log Out Button -->
+      <button
+        id="logout-btn"
+        class="px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+      >
+        Log Out
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="mobile-menu" class="hidden bg-gradient-to-r from-indigo-800 to-purple-800 overflow-hidden transition-all duration-500 ease-in-out md:hidden">
+    <ul class="flex flex-col gap-4 p-4">
+      <li><a href="index.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Home</a></li>
+      <li><a href="index.html#about" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">About</a></li>
+      <li><a href="exhibition.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Exhibition</a></li>
+      <li><a href="artwork.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artwork</a></li>
+      <li><a href="Artist Portal.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Artist Portal</a></li>
+      <li><a href="help.html" class="block py-2 px-3 rounded transition relative text-yellow-300 hover:pl-5">Help</a></li>
+      <li><a href="contact.html" class="block py-2 px-3 rounded transition relative hover:text-yellow-300 hover:pl-5">Contact</a></li>
+      
+      <!-- Log Out Button -->
+      <li>
+        <button
+          id="logout-btn-mobile"
+          class="w-full py-2 px-3 rounded-full text-white font-semibold bg-gradient-to-r from-indigo-500 to-purple-600 
+                 hover:from-purple-600 hover:to-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-md"
+        >
+          Log Out
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <script>
+    // Toggle Mobile Menu with smooth height animation
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      } else {
+        mobileMenu.style.maxHeight = 0;
+        setTimeout(() => mobileMenu.classList.add('hidden'), 500);
+      }
+    });
+
+    // Logout functionality
+    function logoutUser() {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "auth.html";
+    }
+    document.getElementById("logout-btn").addEventListener("click", logoutUser);
+    document.getElementById("logout-btn-mobile").addEventListener("click", logoutUser);
+  </script>
+</header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+      <section class="text-center mb-12">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">Help Center</h1>
+        <p class="text-base sm:text-lg lg:text-xl max-w-3xl mx-auto">
+          Find answers to frequently asked questions about purchasing artwork, artist registration, exhibitions, and more.
+        </p>
+      </section>
+
+      <!-- Search Section -->
+      <section class="max-w-4xl mx-auto mb-16">
+        <div class="relative">
+          <input 
+            type="text" 
+            placeholder="Search for help..." 
+            class="w-full py-4 px-6 rounded-2xl input-field focus:outline-none focus:ring-2 focus:ring-purple-500"
+          >
+          <button class="absolute right-2 top-2 bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- FAQ Categories -->
+      <section class="mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Browse by Category</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card rounded-2xl p-6 text-center cursor-pointer transition-transform hover:scale-105">
+            <div class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shopping-cart text-2xl"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Purchasing</h3>
+            <p class="text-sm text-gray-400">Buying artwork process</p>
+          </div>
+          
+          <div class="card rounded-2xl p-6 text-center cursor-pointer transition-transform hover:scale-105">
+            <div class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-palette text-2xl"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Artists</h3>
+            <p class="text-sm text-gray-400">Selling your artwork</p>
+          </div>
+          
+          <div class="card rounded-2xl p-6 text-center cursor-pointer transition-transform hover:scale-105">
+            <div class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-calendar-alt text-2xl"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Exhibitions</h3>
+            <p class="text-sm text-gray-400">Events and shows</p>
+          </div>
+          
+          <div class="card rounded-2xl p-6 text-center cursor-pointer transition-transform hover:scale-105">
+            <div class="bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-user-circle text-2xl"></i>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Account</h3>
+            <p class="text-sm text-gray-400">Profile and settings</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="max-w-4xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+          <!-- FAQ Item 1 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>How do I purchase artwork from Kala.ficial?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>To purchase artwork, simply browse our collection, select the piece you love, and click "Add to Cart." Proceed to checkout where you'll enter your shipping information and payment details. Once your order is confirmed, you'll receive a confirmation email with tracking information.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 2 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>How can I register as an artist on your platform?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>To register as an artist, visit our Artist Portal and click on "Register." You'll need to provide some basic information, upload samples of your work, and our curation team will review your application. Once approved, you can start uploading and selling your artwork on our platform.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 3 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>What is your return policy?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>We offer a 14-day return policy for all artwork. If you're not satisfied with your purchase, please contact us at returns@kala.ficial.com to initiate a return. The artwork must be returned in its original condition and packaging. Note that shipping costs for returns are the responsibility of the customer.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 4 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>How do I track my order?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Once your order has shipped, you'll receive an email with a tracking number and a link to track your package. You can also view your order status by logging into your account and visiting the "Order History" section.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 5 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>How are the artworks packaged for shipping?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>We take great care in packaging artworks to ensure they arrive safely. Paintings are wrapped in glassine paper, cushioned with foam corner protectors, and placed in custom-sized boxes. Fragile items are double-boxed with additional cushioning. Canvas works are shipped without frames to prevent damage during transit.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 6 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>Can I commission a custom artwork through Kala.ficial?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Yes, we offer custom commission services. Please visit our "Commission Art" page to submit a request. You'll need to provide details about your desired artwork including size, medium, style, and any reference images. Our team will match you with an appropriate artist and provide a quote.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 7 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>How do exhibitions work on Kala.ficial?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>We host both virtual and physical exhibitions. Virtual exhibitions can be accessed through our website, while physical exhibitions are held at partnered galleries. Tickets for physical exhibitions can be purchased through our website. Artists interested in exhibiting can apply through our Artist Portal.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 8 -->
+          <div class="faq-card rounded-2xl">
+            <div class="faq-question">
+              <span>What percentage does Kala.ficial take from artist sales?</span>
+              <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>We operate on a commission basis where artists receive 70% of the sale price, while Kala.ficial retains 30% to cover platform maintenance, marketing, payment processing, and customer service. There are no upfront fees for artists to join our platform.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Support -->
+      <section class="max-w-4xl mx-auto mt-16 text-center">
+        <div class="card rounded-2xl p-8">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4">Still need help?</h2>
+          <p class="mb-6">Can't find the answer you're looking for? Please get in touch with our support team.</p>
+          <a href="contact.html" class="btn inline-block px-6 py-3 rounded-full text-white font-semibold">
+            Contact Support
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+<footer class="bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 text-gray-100 pt-4 pb-4">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+    <!-- About -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">About Kala.ficial</h4>
+      <p class="text-gray-300 text-sm">
+        Kala.ficial is a platform connecting artists with art enthusiasts. Discover, explore, and buy unique artworks while supporting talented creators.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Quick Links</h4>
+      <ul class="space-y-2 text-gray-300 text-sm">
+        <li><a href="index.html" class="hover:text-yellow-400 transition-colors">Home</a></li>
+        <li><a href="index.html#about" class="hover:text-yellow-400 transition-colors">About</a></li>
+        <li><a href="exhibition.html" class="hover:text-yellow-400 transition-colors">Exhibition</a></li>
+        <li><a href="artwork.html" class="hover:text-yellow-400 transition-colors">Artwork</a></li>
+        <li><a href="Artist Portal.html" class="hover:text-yellow-400 transition-colors">Artist Portal</a></li>
+        <li><a href="help.html" class="hover:text-yellow-400 transition-colors">Help</a></li>
+        <li><a href="contact.html" class="hover:text-yellow-400 transition-colors">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Contact Us</h4>
+      <ul class="space-y-3 text-gray-300 text-sm">
+        <li class="flex items-center gap-2">
+          <i class="fas fa-map-marker-alt text-yellow-400"></i> 123 Main St, Anytown, India
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fas fa-envelope text-yellow-400"></i>
+          <a href="mailto:mypassion@kala.ficial.com" class="hover:text-yellow-400 transition-colors">mypassion@kala.ficial.com</a>
+        </li>
+        <li class="flex items-center gap-2">
+          <i class="fas fa-phone-alt text-yellow-400"></i>
+          <a href="tel:+911234567890" class="hover:text-yellow-400 transition-colors">+91 1234567890</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h4 class="font-bold text-xl mb-4 border-b-2 border-yellow-400 inline-block pb-1">Follow Us</h4>
+      <div class="flex space-x-4 mt-3">
+        <a href="https://www.facebook.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.twitter.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" class="hover:text-yellow-400 transition-transform transform hover:scale-110 text-2xl"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="text-center text-gray-400 text-md mt-10 border-t border-gray-700 pt-6">
+    &copy; 2024 Kala.ficial. All Rights Reserved.
+  </p>
+</footer>
+
+    <script>
+      // Auth check
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "auth.html";
+      }
+
+      // FAQ Toggle functionality
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const faqCard = question.parentElement;
+          faqCard.classList.toggle('active');
+        });
+      });
+
+      // Search functionality
+      const searchInput = document.querySelector('input[type="text"]');
+      const searchButton = document.querySelector('.fa-search').parentElement;
+      
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') performSearch();
+      });
+      
+      function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm.trim() === '') return;
+        
+        // Simple search implementation
+        const faqCards = document.querySelectorAll('.faq-card');
+        let found = false;
+        
+        faqCards.forEach(card => {
+          const question = card.querySelector('.faq-question span:first-child').textContent.toLowerCase();
+          const answer = card.querySelector('.faq-answer').textContent.toLowerCase();
+          
+          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+            card.style.display = 'block';
+            card.classList.add('active'); // Expand matching FAQs
+            found = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        if (!found) {
+          alert('No results found for: ' + searchTerm);
+          // Show all FAQs again
+          faqCards.forEach(card => {
+            card.style.display = 'block';
+            card.classList.remove('active');
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
