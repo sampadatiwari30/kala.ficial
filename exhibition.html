@@ -140,6 +140,10 @@
   }
   </style>
   <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   const logoutBtn = document.getElementById('logout-btn');
   if (logoutBtn) {
