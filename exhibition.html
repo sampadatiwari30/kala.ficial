@@ -11,11 +11,132 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
+    /* CSS Variables for Theme System */
+    :root {
+      /* Light Theme Colors */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --text-accent: #6366f1;
+      --border-color: #e5e7eb;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --shadow-medium: rgba(0, 0, 0, 0.15);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --navbar-bg: rgba(255, 255, 255, 0.7);
+      --gradient-from: #f5f7ff;
+      --gradient-via: #efe8ff;
+      --gradient-to: #ffffff;
+    }
+
+    /* Dark Theme Colors */
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-accent: #818cf8;
+      --border-color: #475569;
+      --shadow-light: rgba(0, 0, 0, 0.3);
+      --shadow-medium: rgba(0, 0, 0, 0.4);
+      --card-bg: rgba(30, 41, 59, 0.9);
+      --navbar-bg: rgba(15, 23, 42, 0.8);
+      --gradient-from: #0f172a;
+      --gradient-via: #1e293b;
+      --gradient-to: #334155;
+    }
+
+    /* Theme Transition */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
      html {
         scroll-behavior: smooth;
       }
     body {
       font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    /* Dark Theme Component Styles */
+    [data-theme="dark"] .bg-white { background-color: var(--bg-secondary) !important; }
+    [data-theme="dark"] .bg-gray-50 { background-color: var(--bg-tertiary) !important; }
+    [data-theme="dark"] .bg-gray-100 { background-color: var(--bg-tertiary) !important; }
+    [data-theme="dark"] .text-gray-900 { color: var(--text-primary) !important; }
+    [data-theme="dark"] .text-gray-800 { color: var(--text-primary) !important; }
+    [data-theme="dark"] .text-gray-700 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .text-gray-600 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .border-gray-200 { border-color: var(--border-color) !important; }
+    [data-theme="dark"] .shadow-lg { box-shadow: 0 10px 15px -3px var(--shadow-medium) !important; }
+    [data-theme="dark"] .shadow-xl { box-shadow: 0 20px 25px -5px var(--shadow-medium) !important; }
+    
+    /* Dark theme for cards and sections */
+    [data-theme="dark"] .bg-gradient-to-r { 
+      background: linear-gradient(to right, var(--bg-secondary), var(--bg-tertiary)) !important; 
+    }
+    [data-theme="dark"] .bg-gradient-to-b { 
+      background: linear-gradient(to bottom, var(--gradient-from), var(--gradient-via), var(--gradient-to)) !important; 
+    }
+    
+    /* Dark theme for navbar */
+    [data-theme="dark"] header { 
+      background: linear-gradient(to right, var(--navbar-bg), rgba(15, 23, 42, 0.6)) !important;
+    }
+    
+    /* Dark theme for body */
+    [data-theme="dark"] body {
+      background: linear-gradient(to bottom, var(--gradient-from), var(--gradient-via), var(--gradient-to)) !important;
+      color: var(--text-primary) !important;
+    }
+    
+    /* Ensure text visibility in dark mode */
+    [data-theme="dark"] .text-gray-900 {
+      color: var(--text-primary) !important;
+    }
+    
+    [data-theme="dark"] .text-gray-700 {
+      color: var(--text-secondary) !important;
+    }
+    
+    /* Dark mode for sections with light backgrounds */
+    [data-theme="dark"] .from-indigo-50 {
+      background: var(--bg-secondary) !important;
+    }
+    
+    [data-theme="dark"] .to-pink-50 {
+      background: var(--bg-tertiary) !important;
+    }
+    
+    /* Remove problematic backdrop filters in dark mode */
+    [data-theme="dark"] .backdrop-blur-xl {
+      backdrop-filter: blur(8px) !important;
+    }
+    
+    /* Ensure all main content is visible in dark mode */
+    [data-theme="dark"] main,
+    [data-theme="dark"] section {
+      background-color: transparent !important;
+    }
+    
+    /* Fix any overlay issues in dark mode */
+    [data-theme="dark"] .relative::before,
+    [data-theme="dark"] .absolute::before {
+      display: none !important;
+    }
+    
+    /* Ensure proper z-index for content over decorative elements */
+    [data-theme="dark"] .z-10 {
+      z-index: 10 !important;
+      position: relative !important;
+    }
+    
+    /* Dark theme mobile menu */
+    [data-theme="dark"] #mobile-menu { 
+      background: rgba(15, 23, 42, 0.95) !important; 
     }
     /* Animated background shapes */
     .animated-shape {
@@ -105,6 +226,49 @@
     /* horizontal timeline */
     .timeline { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
     .timeline::-webkit-scrollbar { display: none; }
+    
+    /* Comprehensive Dark Theme Styles */
+    [data-theme="dark"] body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+    }
+    
+    [data-theme="dark"] .bg-white { background-color: var(--bg-secondary) !important; }
+    [data-theme="dark"] .bg-gray-50 { background-color: var(--bg-tertiary) !important; }
+    [data-theme="dark"] .bg-gray-100 { background-color: var(--bg-tertiary) !important; }
+    [data-theme="dark"] .text-gray-900 { color: var(--text-primary) !important; }
+    [data-theme="dark"] .text-gray-800 { color: var(--text-primary) !important; }
+    [data-theme="dark"] .text-gray-700 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .text-gray-600 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .text-gray-500 { color: var(--text-secondary) !important; }
+    [data-theme="dark"] .text-black { color: var(--text-primary) !important; }
+    [data-theme="dark"] .border-gray-200 { border-color: var(--border-color) !important; }
+    
+    [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+    [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+      color: var(--text-primary) !important;
+    }
+    
+    [data-theme="dark"] p {
+      color: var(--text-secondary) !important;
+    }
+    
+    [data-theme="dark"] .card {
+      background-color: var(--card-bg) !important;
+      color: var(--text-primary) !important;
+    }
+    
+    /* Remove any problematic text selection highlights */
+    [data-theme="dark"] ::selection {
+      background-color: rgba(129, 140, 248, 0.3);
+      color: var(--text-primary);
+    }
+    
+    [data-theme="dark"] ::-moz-selection {
+      background-color: rgba(129, 140, 248, 0.3);
+      color: var(--text-primary);
+    }
+    
     .nav-link {
     position: relative;
     padding: 6px 0;
@@ -138,9 +302,62 @@
   #mobile-menu {
     animation: slideDown 0.4s ease forwards;
   }
+
+  /* Dark Mode Footer Improvements */
+  [data-theme="dark"] footer {
+    background: linear-gradient(to top, var(--gradient-from), var(--gradient-via), var(--gradient-to)) !important;
+  }
+
+  [data-theme="dark"] footer .text-gray-900 {
+    color: var(--text-primary) !important;
+  }
+
+  [data-theme="dark"] footer .text-gray-800 {
+    color: var(--text-primary) !important;
+  }
+
+  [data-theme="dark"] footer .text-gray-600 {
+    color: var(--text-secondary) !important;
+  }
+
+  [data-theme="dark"] footer .bg-white {
+    background-color: var(--bg-secondary) !important;
+  }
+
+  [data-theme="dark"] footer .border-gray-300 {
+    border-color: var(--border-color) !important;
+  }
+
+  [data-theme="dark"] footer .shadow-lg {
+    box-shadow: 0 10px 15px -3px var(--shadow-medium) !important;
+  }
+
+  [data-theme="dark"] footer .hover\:shadow-2xl:hover {
+    box-shadow: 0 25px 50px -12px var(--shadow-medium) !important;
+  }
+
+  [data-theme="dark"] footer input,
+  [data-theme="dark"] footer textarea {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  [data-theme="dark"] footer input::placeholder,
+  [data-theme="dark"] footer textarea::placeholder {
+    color: var(--text-secondary) !important;
+  }
+
+  [data-theme="dark"] footer .fab {
+    color: var(--text-accent) !important;
+  }
+
+  [data-theme="dark"] footer a:hover .fab {
+    color: #ff6bcb !important;
+  }
   </style>
 </head>
-<body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
+<body class="antialiased text-gray-900">
 <!-- Navbar -->
 <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -160,6 +377,15 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" 
+        class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 
+               hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 
+               focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
       <button id="logout-btn" 
         class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
@@ -184,6 +410,16 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+      
+      <!-- Mobile Theme Toggle -->
+      <button id="mobile-theme-toggle" 
+        class="self-start p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 
+               hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 
+               focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        <span class="ml-2">Toggle Theme</span>
+      </button>
+      
       <button class="px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
@@ -198,10 +434,10 @@
   <main class="pt-28">
     <section class="relative overflow-hidden pb-12">
       <!-- many tiny floating colorful blobs (left + middle + right) -->
-      <!-- Left dense -->
-      <div class="absolute left-6 top-20 w-3 h-3 bg-pink-400 rounded-full opacity-80 fA"></div>
-      <div class="absolute left-14 top-32 w-2 h-2 bg-yellow-300 rounded-full opacity-70 fB"></div>
-      <div class="absolute left-4 top-44 w-2.5 h-2.5 bg-cyan-300 rounded-full opacity-85 fC"></div>
+      <!-- Left dense - moved below header area -->
+      <div class="absolute left-6 top-32 w-3 h-3 bg-pink-400 rounded-full opacity-80 fA" style="top: 140px;"></div>
+      <div class="absolute left-14 top-44 w-2 h-2 bg-yellow-300 rounded-full opacity-70 fB" style="top: 160px;"></div>
+      <div class="absolute left-4 top-56 w-2.5 h-2.5 bg-cyan-300 rounded-full opacity-85 fC" style="top: 180px;"></div>
 
       <!-- middle cluster -->
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
@@ -253,7 +489,7 @@
           <div class="z-10 space-y-6">
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
               Current & Upcoming <br>
-              <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500">Exhibitions</span>
+              <span class="text-gray-900">Exhibitions</span>
             </h1>
             <p class="text-gray-700 max-w-xl">
               Explore immersive exhibitions from emerging and established artists — curated shows, virtual tours, and community events. Filter by type, location or date.
@@ -583,9 +819,9 @@
     </section>
 
     <!-- NEWSLETTER CTA -->
-    <section id="newsletter" class="py-16 bg-gradient-to-r from-indigo-50 to-pink-50">
+    <section id="newsletter" class="py-16">
       <div class="container mx-auto px-6 text-center">
-        <h3 class="text-2xl font-bold">Stay updated on new exhibitions</h3>
+        <h3 class="text-2xl font-bold text-gray-900">Stay updated on new exhibitions</h3>
         <p class="text-gray-700 mt-2">Subscribe for exhibition announcements & exclusive previews.</p>
         <form id="newsletterForm" class="mt-4 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
           <input id="emailInput" type="email" placeholder="Your email" required class="px-4 py-2 rounded-lg border border-gray-300 flex-1"/>
@@ -616,7 +852,7 @@
         </div>
       </div>
     </div>
-    <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+    <footer class="relative py-20 overflow-hidden">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
     <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
@@ -630,8 +866,8 @@
     <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="mb-6 lg:mb-0">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
-        <p class="text-gray-600 leading-relaxed">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 transition-colors duration-300">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed transition-colors duration-300">
           Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
         </p>
         <div class="flex gap-4 mt-6">
@@ -645,7 +881,7 @@
 
       <!-- Quick Links -->
       <div class="space-y-2">
-        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <h4 class="text-xl font-semibold mb-4 transition-colors duration-300">Quick Links</h4>
         <ul class="space-y-2">
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
@@ -657,19 +893,19 @@
 
       <!-- Contact Info -->
       <div>
-        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
-        <ul class="space-y-3 text-gray-600">
+        <h4 class="text-xl font-semibold mb-4 transition-colors duration-300">Contact Info</h4>
+        <ul class="space-y-3 text-gray-600 transition-colors duration-300">
           <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
           <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
           <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
         </ul>
-        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+        <p class="mt-4 text-gray-600 italic transition-colors duration-300">We reply within 24 hours!</p>
       </div>
 
       <!-- Newsletter & Social -->
      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
-  <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
-  <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+  <h4 class="text-xl font-semibold mb-4 text-gray-900 transition-colors duration-300">Stay Connected</h4>
+  <p class="text-gray-600 mb-4 transition-colors duration-300">Subscribe to our newsletter for latest updates.</p>
   
   <form class="flex flex-col gap-3">
     <input 
@@ -697,7 +933,7 @@
     </div>
 
     <!-- Footer Bottom -->
-    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm transition-colors duration-300">
       &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
     </div>
   </div>
@@ -712,6 +948,49 @@
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+  }
+
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+  const htmlElement = document.documentElement;
+
+  // Check for saved theme preference or default to 'light'
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  
+  // Apply the saved theme on page load
+  htmlElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcons(currentTheme);
+
+  function updateThemeIcons(theme) {
+    const isDark = theme === 'dark';
+    const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+    
+    if (themeIcon) {
+      themeIcon.className = `fas ${iconClass} text-lg`;
+    }
+    if (mobileThemeIcon) {
+      mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+    }
+  }
+
+  function toggleTheme() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcons(newTheme);
+  }
+
+  // Add event listeners for both desktop and mobile theme toggles
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
   }
 
   // helper: parse date string "YYYY-MM-DD" or "YYYY/MM/DD" fallback
@@ -928,6 +1207,8 @@
     }
   });
 </script>
+
+<script src="theme-toggle.js"></script>
 
 </body>
 </html>

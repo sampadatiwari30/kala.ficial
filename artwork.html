@@ -8,6 +8,133 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="index.css">
+    
+    <style>
+      /* CSS Variables for Theme System */
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+        --border-color: #e5e7eb;
+      }
+
+      [data-theme="dark"] {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --border-color: #475569;
+      }
+
+      * { transition: background-color 0.3s ease, color 0.3s ease; }
+      
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+
+      .theme-btn {
+        background: none;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-right: 1rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .theme-btn:hover {
+        background-color: var(--bg-secondary);
+      }
+      
+      /* Comprehensive Dark Theme Styles */
+      [data-theme="dark"] .header {
+        background-color: var(--bg-secondary);
+      }
+      
+      [data-theme="dark"] .home {
+        background-color: var(--bg-primary);
+      }
+      
+      [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3,
+      [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+        color: var(--text-primary) !important;
+      }
+      
+      [data-theme="dark"] p {
+        color: var(--text-secondary) !important;
+      }
+      
+      [data-theme="dark"] .box {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+      
+      [data-theme="dark"] .navbar a {
+        color: var(--text-primary) !important;
+      }
+      
+      [data-theme="dark"] .header {
+        background-color: var(--bg-secondary);
+      }
+      
+      [data-theme="dark"] .home {
+        background-color: var(--bg-primary);
+      }
+
+      /* Dark Mode Footer Improvements */
+      [data-theme="dark"] .footer {
+        background: linear-gradient(to top, var(--bg-primary), var(--bg-secondary)) !important;
+        color: var(--text-primary) !important;
+      }
+
+      [data-theme="dark"] .footer .logoName {
+        color: var(--text-primary) !important;
+      }
+
+      [data-theme="dark"] .footer p {
+        color: var(--text-secondary) !important;
+      }
+
+      [data-theme="dark"] .footer .box h3 {
+        color: var(--text-primary) !important;
+      }
+
+      [data-theme="dark"] .footer .box a {
+        color: var(--text-secondary) !important;
+        transition: color 0.3s ease;
+      }
+
+      [data-theme="dark"] .footer .box a:hover {
+        color: #6C63FF !important;
+      }
+
+      [data-theme="dark"] .footer .box a i {
+        color: var(--text-secondary) !important;
+      }
+
+      [data-theme="dark"] .footer .box a:hover i {
+        color: #6C63FF !important;
+      }
+
+      [data-theme="dark"] .footer .share a {
+        color: var(--text-secondary) !important;
+        background-color: var(--bg-secondary) !important;
+        border: 1px solid var(--border-color) !important;
+      }
+
+      [data-theme="dark"] .footer .share a:hover {
+        color: #ffffff !important;
+        background-color: #6C63FF !important;
+      }
+
+      [data-theme="dark"] .footer .credit {
+        color: var(--text-secondary) !important;
+      }
+    </style>
 
 </head>
 <body>
@@ -25,6 +152,10 @@
         </nav>
 
         <div class="icon">
+            <button id="theme-toggle" 
+              class="theme-btn">
+              <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
             <i class="fas fa-search" id="search"></i>
             <i class="fas fa-bars" id="menu-bar"></i>
         </div>
@@ -328,5 +459,6 @@
     </footer>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="index.js"></script>
+    <script src="theme-toggle.js"></script>
 </body>
 </html>

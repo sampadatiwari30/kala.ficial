@@ -16,12 +16,57 @@
     />
    
     <style>
+      /* CSS Variables for Theme System */
+      :root {
+        /* Light Theme Colors */
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+        --text-accent: #6366f1;
+        --border-color: #e5e7eb;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --shadow-medium: rgba(0, 0, 0, 0.15);
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --navbar-bg: rgba(255, 255, 255, 0.7);
+        --gradient-from: #f5f7ff;
+        --gradient-via: #efe8ff;
+        --gradient-to: #ffffff;
+      }
+
+      /* Dark Theme Colors */
+      [data-theme="dark"] {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-tertiary: #334155;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --text-accent: #818cf8;
+        --border-color: #475569;
+        --shadow-light: rgba(0, 0, 0, 0.3);
+        --shadow-medium: rgba(0, 0, 0, 0.4);
+        --card-bg: rgba(30, 41, 59, 0.9);
+        --navbar-bg: rgba(15, 23, 42, 0.8);
+        --gradient-from: #0f172a;
+        --gradient-via: #1e293b;
+        --gradient-to: #334155;
+      }
+
+      /* Theme Transition */
+      * {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      }
+
       html {
         scroll-behavior: smooth;
       }
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
     /* Animated background shapes */
     .animated-shape {
      
@@ -111,6 +156,55 @@
   .read-more-btn {
     cursor: pointer;
   }
+
+  /* Dark Theme Component Styles */
+  [data-theme="dark"] .bg-white { background-color: var(--bg-secondary) !important; }
+  [data-theme="dark"] .bg-gray-50 { background-color: var(--bg-tertiary) !important; }
+  [data-theme="dark"] .bg-gray-100 { background-color: var(--bg-tertiary) !important; }
+  [data-theme="dark"] .text-gray-900 { color: var(--text-primary) !important; }
+  [data-theme="dark"] .text-gray-800 { color: var(--text-primary) !important; }
+  [data-theme="dark"] .text-gray-700 { color: var(--text-secondary) !important; }
+  [data-theme="dark"] .text-gray-600 { color: var(--text-secondary) !important; }
+  [data-theme="dark"] .text-gray-500 { color: var(--text-secondary) !important; }
+  [data-theme="dark"] .text-gray-400 { color: var(--text-secondary) !important; }
+  [data-theme="dark"] .text-black { color: var(--text-primary) !important; }
+  [data-theme="dark"] .border-gray-200 { border-color: var(--border-color) !important; }
+  [data-theme="dark"] .shadow-lg { box-shadow: 0 10px 15px -3px var(--shadow-medium) !important; }
+  [data-theme="dark"] .shadow-xl { box-shadow: 0 20px 25px -5px var(--shadow-medium) !important; }
+  
+  /* Dark theme for cards and sections */
+  [data-theme="dark"] .bg-gradient-to-r { 
+    background: linear-gradient(to right, var(--bg-secondary), var(--bg-tertiary)) !important; 
+  }
+  [data-theme="dark"] .bg-gradient-to-b { 
+    background: linear-gradient(to bottom, var(--gradient-from), var(--gradient-via), var(--gradient-to)) !important; 
+  }
+  
+  /* Dark theme for navbar */
+  [data-theme="dark"] header { 
+    background: linear-gradient(to right, var(--navbar-bg), rgba(15, 23, 42, 0.4)) !important;
+  }
+  
+  /* Dark theme mobile menu */
+  [data-theme="dark"] #mobile-menu { 
+    background: rgba(15, 23, 42, 0.95) !important; 
+  }
+  
+  /* Fix specific text elements that might be invisible */
+  [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+  [data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+    color: var(--text-primary) !important;
+  }
+  
+  [data-theme="dark"] p {
+    color: var(--text-secondary) !important;
+  }
+  
+  [data-theme="dark"] .card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary) !important;
+  }
+
    .nav-link {
     position: relative;
     padding: 6px 0;
@@ -161,10 +255,42 @@
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 
+/* Hero Text Fix */
+#hero h1 {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+#hero .z-10 {
+  width: 100% !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #hero h1 {
+    font-size: 2rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
   </style>
   </head>
 
-<body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
+<body class="overflow-x-hidden">
 <!-- Navbar -->
 <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -184,6 +310,15 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" 
+        class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 
+               hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 
+               focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
       <button id="logout-btn" 
         class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
@@ -208,6 +343,16 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+      
+      <!-- Mobile Theme Toggle -->
+      <button id="mobile-theme-toggle" 
+        class="self-start p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 
+               hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 
+               focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        <span class="ml-2">Toggle Theme</span>
+      </button>
+      
       <button class="px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
@@ -220,18 +365,14 @@
 <!-- Hero Section -->
 <section id="hero" 
   class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
-  bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden pt-28" style="padding-top: 60px;">
-
-  <!-- Decorative Animated Blobs -->
-  <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
-  <div class="absolute bottom-20 right-16 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-2xl animate-ping"></div>
-  <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 blur-xl animate-bounce"></div>
+  overflow-hidden pt-28" style="padding-top: 60px;">
 
   <!-- Hero Content -->
-  <div class="z-10 text-center md:text-left md:w-1/2 space-y-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+  <div class="z-10 text-center md:text-left md:w-1/2 space-y-6" style="width: 100%; max-width: 600px;">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-900" 
+        style="line-height: 1.1; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
       Unleash Your <br>
-      <span class="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text text-transparent">
+      <span class="text-gray-900">
         Creativity with KALA.Ficial
       </span>
     </h1>
@@ -317,7 +458,7 @@
   <!-- Optional: Interactive Particle Canvas -->
   <canvas id="particles" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
   <section id="exhibition" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 
-bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
+overflow-hidden">
   <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
   <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
   <!-- Hero Content -->
@@ -411,7 +552,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </div>
   </div>
 </section>
-<section id="artwork-for-sale" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+<section id="artwork-for-sale" class="relative py-16 overflow-hidden">
   <!-- Floating Background Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
     <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
@@ -531,7 +672,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </div>
   </div>
 </section>
-<section id="artist-portal" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+<section id="artist-portal" class="relative py-16 overflow-hidden">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
     <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
@@ -853,6 +994,49 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     mobileMenu.classList.toggle("hidden");
   });
 
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+  const htmlElement = document.documentElement;
+
+  // Check for saved theme preference or default to 'light'
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  
+  // Apply the saved theme on page load
+  htmlElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcons(currentTheme);
+
+  function updateThemeIcons(theme) {
+    const isDark = theme === 'dark';
+    const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+    
+    if (themeIcon) {
+      themeIcon.className = `fas ${iconClass} text-lg`;
+    }
+    if (mobileThemeIcon) {
+      mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+    }
+  }
+
+  function toggleTheme() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcons(newTheme);
+  }
+
+  // Add event listeners for both desktop and mobile theme toggles
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+  }
+
   // Active link highlight on scroll
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav-link");
@@ -933,20 +1117,18 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   
   </script>
     <script>
-      // Check if the user is logged in on page load
-      if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.href = "auth.html";
-      }
-
       // --- LOGOUT LOGIC ---
       const logoutBtn = document.getElementById("logout-btn");
 
-      logoutBtn.addEventListener("click", () => {
-        // Clear the authentication flag from localStorage
-        localStorage.removeItem("isLoggedIn");
-        // Redirect the user back to the authentication page
-        window.location.href = "auth.html";
-      });
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          // Clear the authentication flag from localStorage
+          localStorage.removeItem("isLoggedIn");
+          // Redirect the user back to the authentication page
+          window.location.href = "auth.html";
+        });
+      }
     </script>
+    <script src="theme-toggle.js"></script>
   </body>
 </html>

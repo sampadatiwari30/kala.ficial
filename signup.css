@@ -120,6 +120,32 @@ button:hover{
     background: purple;
 }
 
+/* Navigation links styling */
+.form-footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signin-link, .home-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.signin-link:hover {
+    background-color: purple;
+    color: white;
+}
+
+.home-link:hover {
+    background-color: #333;
+    color: white;
+}
+
 @media (max-width: 767px){
     .inner{
         display: block;

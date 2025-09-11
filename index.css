@@ -105,24 +105,29 @@ html::-webkit-scrollbar-thumb{
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     background: url(1.png) no-repeat;
     background-size: cover;
     background-position: center center;
+    padding-top: 8rem; /* Account for fixed header */
 }
 .home .homeContent{
     width: 50%;
-    float: left;
+    max-width: 800px;
     text-align: center;
-    padding: 4rem;
+    padding: 4rem 2rem;
+    margin: 0 auto;
 }
 .home .homeContent h2{
-    font-size: 7rem;
+    font-size: 6rem;
     font-weight: bolder;
     margin-bottom: 2rem;
     text-align: center;
-    line-height: 7rem;
+    line-height: 1.2;
     color: var(--white);
     text-shadow: var(--box-shadow);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .home .homeContent p{
     font-size: 1.8rem;
@@ -467,11 +472,27 @@ html::-webkit-scrollbar-thumb{
     .home .homeContent{
         margin-left: 0;
         width: 90%;
+        padding: 3rem 1rem;
+    }
+    
+    .home .homeContent h2{
+        font-size: 4rem;
+        line-height: 1.1;
     }
 }
 
 @media (max-width:600px){
     html{
         font-size: 50%;
+    }
+    
+    .home .homeContent h2{
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
+    
+    .home .homeContent{
+        width: 95%;
+        padding: 2rem 1rem;
     }
 }

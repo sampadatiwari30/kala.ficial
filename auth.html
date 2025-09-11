@@ -9,25 +9,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="blog.css">
   <style>
+    /* CSS Variables for Theme System */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --auth-gradient: linear-gradient(135deg, #f5f7ff, #efe8ff, #e0e7ff);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --card-bg: rgba(30, 41, 59, 0.9);
+      --auth-gradient: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    }
+
+    * { transition: background-color 0.3s ease, color 0.3s ease; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-      color: #E0E0E0;
+      background: var(--auth-gradient);
+      color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
+
+    .theme-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0.8rem;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.1);
+    }
+    
     .card {
-      background: rgba(30, 30, 30, 0.9);
+      background: var(--card-bg);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
+    [data-theme="dark"] .card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
     .input-field {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--text-secondary);
+      color: var(--text-primary);
+      transition: 0.3s;
+    }
+    
+    [data-theme="dark"] .input-field {
       background-color: #2d2d2d;
       border: 1px solid #444;
       color: #fff;
-      transition: 0.3s;
     }
     .input-field:focus {
       border-color: #6C63FF;
@@ -51,6 +106,9 @@
   </style>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-btn">
+    <i id="theme-icon" class="fas fa-moon"></i>
+  </button>
 
   <div class="container max-w-md w-full mx-auto p-8 card rounded-2xl shadow-xl fade-in">
     
@@ -104,6 +162,17 @@
         </span>
       </p>
     </form>
+    
+    <!-- Back to Home Button -->
+    <div class="mt-6 text-center">
+      <a href="index.html" 
+         class="inline-flex items-center px-6 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 
+                hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 
+                border border-gray-300 dark:border-gray-600 rounded-full hover:border-indigo-400">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Back to Home
+      </a>
+    </div>
   </div>
 
   <script>
@@ -266,6 +335,8 @@
     return JSON.parse(jsonPayload);
   }
 </script>
+
+<script src="theme-toggle.js"></script>
 
 </body>
 

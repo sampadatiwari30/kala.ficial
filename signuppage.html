@@ -5,8 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+      }
+
+      [data-theme="dark"] {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+      }
+
+      * { transition: background-color 0.3s ease, color 0.3s ease; }
+      
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+      }
+
+      .theme-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--bg-secondary);
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0.8rem;
+        border-radius: 50%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .theme-btn:hover {
+        transform: scale(1.1);
+      }
+      
+      [data-theme="dark"] .wrapper {
+        background-color: var(--bg-primary);
+      }
+      
+      [data-theme="dark"] .inner {
+        background-color: var(--bg-secondary);
+      }
+      
+      [data-theme="dark"] h3 {
+        color: var(--text-primary) !important;
+      }
+      
+      [data-theme="dark"] .form-control {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        border-color: var(--text-secondary);
+      }
+
+      /* Enhanced navigation styling */
+      .form-footer {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .signin-link, .home-link {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px 20px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin: 5px;
+        border: 2px solid var(--text-primary);
+      }
+
+      .signin-link:hover {
+        background-color: #8b5cf6;
+        color: white;
+        border-color: #8b5cf6;
+      }
+
+      .home-link:hover {
+        background-color: var(--text-primary);
+        color: var(--bg-primary);
+      }
+
+      [data-theme="dark"] .signin-link,
+      [data-theme="dark"] .home-link {
+        color: var(--text-primary);
+        border-color: var(--text-primary);
+      }
+    </style>
 </head>
 <body>
+    <button id="theme-toggle" class="theme-btn">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+    
     <div class="wrapper">
       <div class="inner">
        <div class="image-holder">
@@ -44,10 +144,25 @@
             <input type="confirm password" placeholder="confirm password" class="form-control">
      </div>
         <button>Register</button>
-        <a href="#" ="already registered?"></a>
+        
+        <!-- Navigation Links -->
+        <div style="text-align: center; margin-top: 20px;">
+            <div style="margin: 10px 0;">
+                <a href="auth.html" class="signin-link" style="background-color: #8b5cf6; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold;" onclick="console.log('Clicking Sign In link'); window.location.href='auth.html'; return false;">Already registered? Sign In</a>
+            </div>
+            <div style="margin: 10px 0;">
+                <a href="index.html" class="home-link" style="background-color: #333; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold;" onclick="console.log('Clicking Home link'); window.location.href='index.html'; return false;">← Back to Home</a>
+            </div>
+            <div style="margin: 10px 0; font-size: 12px;">
+                <p>Current page: signuppage.html</p>
+                <p>Home should be: <a href="index.html" style="color: blue;">index.html</a></p>
+                <p>Auth should be: <a href="auth.html" style="color: blue;">auth.html</a></p>
+            </div>
+        </div>
         
        </form>
       </div>
     </div>
+    <script src="theme-toggle.js"></script>
 </body>
 </html>
