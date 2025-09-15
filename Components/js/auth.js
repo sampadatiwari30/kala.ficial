@@ -42,13 +42,18 @@ authForm.addEventListener("submit", (e) => {
     alert("Please use a valid Gmail address.");
     return;
   }
-  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
-    alert("Password must include letters and numbers.");
-    return;
+
+  // ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+  if (!isLogin) { // This means it's SIGN UP
+    if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+      alert("Password must include letters and numbers.");
+      return;
+    }
   }
+  // ⬆️ NO PASSWORD FORMAT VALIDATION FOR LOGIN ⬆️
 
   if (isLogin) {
-    // LOGIN
+    // LOGIN - No password format validation
     if (users[email] && users[email].password === password) {
       alert(`Welcome back, ${users[email].username}! Redirecting...`);
       redirectToMainPage();
@@ -56,7 +61,7 @@ authForm.addEventListener("submit", (e) => {
       alert("Invalid email or password.");
     }
   } else {
-    // SIGNUP
+    // SIGNUP - Password rules applied above
     if (users[email]) {
       alert("Account already exists. Please log in.");
     } else {
@@ -67,6 +72,7 @@ authForm.addEventListener("submit", (e) => {
     }
   }
 });
+
 function handleGoogleResponse(response) {
   const data = parseJwt(response.credential);
   console.log("Google User:", data);
