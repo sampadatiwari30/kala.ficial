@@ -105,7 +105,7 @@ html::-webkit-scrollbar-thumb{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: url(1.png) no-repeat;
+    background: url('assets/images/1.png') no-repeat;
     background-size: cover;
     background-position: center center;
 }
@@ -221,7 +221,7 @@ html::-webkit-scrollbar-thumb{
 }
 
 .blogs{
-    background: url(img2.jpg) no-repeat;
+    background: url('assets/images/img2.jpg') no-repeat;
     background-size: cover;
     background-position: center center;
 }
@@ -265,7 +265,7 @@ html::-webkit-scrollbar-thumb{
 }
  
 .newsletter{
-    background: url(gallery.jpeg) no-repeat;
+    background: url('assets/images/gallery.jpeg') no-repeat;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -348,7 +348,7 @@ html::-webkit-scrollbar-thumb{
 }
 
 .footer {
-    background: url(img1.jpg) no-repeat;
+    background: url('assets/images/img1.jpg') no-repeat;
     background-size: cover;
     background-position: center center;
 }
