@@ -14,8 +14,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/index.css" />
-  </head>
-  <body>
+
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
+}
+    </script>
+</head>
+<body>
     <header class="header">
       <div class="logoContent">
         <h1 class="logoName">KALA.Ficial</h1>

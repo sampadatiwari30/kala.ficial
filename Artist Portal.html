@@ -8,6 +8,11 @@
     <!-- Box-icon -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="assets/css/blog.css">
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
+}
+    </script>
 </head>
 <body>
     <a href="index.html" class="back-btn">
