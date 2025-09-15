@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 *{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -10,9 +10,9 @@
 
 /* root values */
 :root{
-    --container-color: #1a1e21;
-    --second-color: rgba(77, 228, 255);
-    --text-color: #172317;
+    --container-color: #f8f9ff;
+    --second-color: #6C63FF;
+    --text-color: #1B1722;
     --bg-color: #fff;
 }
 
@@ -100,7 +100,7 @@ header.shadow .logo{
 .home{
     width: 100%;
     min-height: 440px;
-    background: url("bg.png");
+    background: linear-gradient(135deg, #a855f7, #ec4899, #6366f1);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -413,7 +413,7 @@ footer p{
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background: #00bcd4;   /* aqua-blue */
+    background: #6C63FF;   /* purple to match theme */
     color: white;
     padding: 8px 15px;
     border-radius: 6px;
@@ -423,7 +423,7 @@ footer p{
     transition: 0.3s ease;
 }
 .back-btn:hover {
-    background: #0097a7;
+    background: #5750d3;
 }
 
 /* Responsive adjustments */
