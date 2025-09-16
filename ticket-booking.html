@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Booking - kala.ficial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 py-8 shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold text-center">🎟️ Book Your Tickets</h1>
+    <p class="text-center mt-2 text-lg md:text-xl">Reserve your spot for the exhibition</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-3xl shadow-xl">
+    <form id="ticketForm" class="space-y-6">
+
+      <!-- Date -->
+      <div>
+        <label for="date" class="block font-semibold mb-2">Select Date:</label>
+        <input type="date" id="date" name="date" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Time -->
+      <div>
+        <label for="time" class="block font-semibold mb-2">Select Time:</label>
+        <input type="time" id="time" name="time" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Tickets -->
+      <div>
+        <label for="tickets" class="block font-semibold mb-2">Number of Tickets:</label>
+        <input type="number" id="tickets" name="tickets" min="1" max="10" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Name -->
+      <div>
+        <label for="name" class="block font-semibold mb-2">Your Name:</label>
+        <input type="text" id="name" name="name" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block font-semibold mb-2">Your Email:</label>
+        <input type="email" id="email" name="email" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <label for="contact" class="block font-semibold mb-2">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required
+               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 font-bold shadow-lg hover:scale-105 transition transform">
+          🎫 Book Now
+        </button>
+      </div>
+
+    </form>
+
+    <!-- Success Message -->
+    <p id="successMessage" class="text-green-600 font-bold text-center mt-6 hidden">
+      ✅ Booking Successful! See you at the exhibition.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('ticketForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // prevent page refresh
+      successMessage.classList.remove('hidden'); // show message
+      form.reset(); // clear form
+    });
+  </script>
+</body>
+</html>
