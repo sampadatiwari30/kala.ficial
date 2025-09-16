@@ -48,12 +48,28 @@ authForm.addEventListener("submit", (e) => {
     return;
   }
 
+ // ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
   if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
     alert("Password must include letters and numbers.");
     return;
   }
+}
+
+  }
+  // ⬆️ NO PASSWORD FORMAT VALIDATION FOR LOGIN ⬆️
 
   if (isLogin) {
+// ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
+  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must include letters and numbers.");
+    return;
+  }
+} else {
+  // LOGIN - No password format validation
+}
+
     if (users[email] && users[email].password === password) {
       alert(`Welcome back, ${users[email].username}! Redirecting...`);
       redirectToMainPage();
@@ -61,6 +77,17 @@ authForm.addEventListener("submit", (e) => {
       alert("Invalid email or password.");
     }
   } else {
+// ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
+  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must include letters and numbers.");
+    return;
+  }
+} else {
+  // LOGIN - No password format validation
+  // SIGNUP - Password rules applied above
+}
+
     if (users[email]) {
       alert("Account already exists. Please log in.");
     } else {
@@ -71,6 +98,11 @@ authForm.addEventListener("submit", (e) => {
     }
   }
 });
+function handleGoogleResponse(response) {
+  const data = parseJwt(response.credential);
+  console.log("Google User:", data);
+}
+
 
 // -------------------- Firebase Google Sign-In --------------------
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
