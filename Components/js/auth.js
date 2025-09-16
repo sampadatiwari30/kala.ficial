@@ -1,4 +1,4 @@
-// DOM elements
+// -------------------- DOM Elements --------------------
 const formTitle = document.getElementById("form-title");
 const authForm = document.getElementById("auth-form");
 const submitBtn = document.getElementById("submit-btn");
@@ -7,18 +7,19 @@ const usernameField = document.getElementById("username-field");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
+const googleBtn = document.getElementById("google-signin-btn");
 
-// Toggle login/signup state
-let isLogin = false;
+// -------------------- State --------------------
+let isLogin = false; // false = Sign Up, true = Login
 const users = JSON.parse(localStorage.getItem("dummyUsers")) || {};
 
-// Redirect function
+// -------------------- Redirect Function --------------------
 function redirectToMainPage() {
   localStorage.setItem("isLoggedIn", "true");
   window.location.href = "index.html";
 }
 
-// Toggle login/signup
+// -------------------- Toggle Login/Signup --------------------
 toggleBtn.addEventListener("click", () => {
   isLogin = !isLogin;
   if (isLogin) {
@@ -36,11 +37,12 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-// Handle login/signup form submission
+// -------------------- Handle Login/Signup Form Submission --------------------
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const username = usernameInput.value.trim();
-  const email = emailInput.value;
+  const email = emailInput.value.trim();
   const password = passwordInput.value;
 
   if (!email.includes("@gmail.com")) {
@@ -48,12 +50,16 @@ authForm.addEventListener("submit", (e) => {
     return;
   }
 
-  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
-    alert("Password must include letters and numbers.");
-    return;
+  // Password validation ONLY for signup
+  if (!isLogin) {
+    if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+      alert("Password must include letters and numbers.");
+      return;
+    }
   }
 
   if (isLogin) {
+    // LOGIN
     if (users[email] && users[email].password === password) {
       alert(`Welcome back, ${users[email].username}! Redirecting...`);
       redirectToMainPage();
@@ -61,6 +67,7 @@ authForm.addEventListener("submit", (e) => {
       alert("Invalid email or password.");
     }
   } else {
+    // SIGNUP
     if (users[email]) {
       alert("Account already exists. Please log in.");
     } else {
@@ -78,9 +85,6 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstati
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-const googleBtn = document.getElementById("google-signin-btn");
-
-// Handle Google Sign-In click
 googleBtn.addEventListener("click", async () => {
   googleBtn.disabled = true; // Prevent multiple clicks
   try {

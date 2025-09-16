@@ -7,7 +7,12 @@
     <title>Artist Portal</title>
     <!-- Box-icon -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
+}
+    </script>
 </head>
 <body>
     <a href="index.html" class="back-btn">
@@ -33,7 +38,7 @@
             <a href="#" class="btn2">Read more</a>
         </div>
         <div class="imgBx">
-            <img src="picture1.png" alt="" class="fitBg">
+            <img src="assets/images/picture1.png" alt="" class="fitBg">
         </div>
     </section>
 
@@ -47,109 +52,109 @@
     <div class="post container">
         <!-- Post 1 -->
         <div class="post-box tech">
-            <img src="Swati-Kale.jpg" alt="" class="post-img">
+            <img src="assets/images/Swati-Kale.jpg" alt="" class="post-img">
             <h2 class="category">Indian Artist</h2>
             <a href="#" class="post-title">Swati Kale</a>
             <span class="post-date">24th April, 1972</span>
             <p class="post-description">Swati Kale's paintings are an indication of the best form of sublimation. Her obsession with flowers came about after the untimely death of her daughter, Disha, or as the artist says the "loss of a flower that was of my own creation." Her first intuition when she took to painting was to paint flowers.</p>
             <div class="profile">
-                <img src="Swati-Kale.jpg" alt="" class="profile-img">
+                <img src="assets/images/Swati-Kale.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 2 -->
         <div class="post-box food">
-            <img src="Chris Huen Sin Kan.jpg" alt="" class="post-img">
+            <img src="assets/images/Chris Huen Sin Kan.jpg" alt="" class="post-img">
             <h2 class="category">Asian Artist</h2>
             <a href="#" class="post-title">Chris Huen Sin Kan</a>
             <span class="post-date">born in 1991</span>
             <p class="post-description">Chris Huen Sin-Kan focuses on how people understand objects through 'seeing', with his paintings which mainly depict his family and everyday environments. With limited brushstrokes, Huen illustrates his subjects remarkably - a technique he developed from the influence of Chinese ink painting.</p>
             <div class="profile">
-                <img src="Chris Huen Sin Kan.jpg" alt="" class="profile-img">
+                <img src="assets/images/Chris Huen Sin Kan.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 3 -->
         <div class="post-box food">
-            <img src="Yukimasa Ida.jpg" alt="" class="post-img">
+            <img src="assets/images/Yukimasa Ida.jpg" alt="" class="post-img">
             <h2 class="category">Asian Artist</h2>
             <a href="#" class="post-title">Yukimasa Ida</a>
             <span class="post-date">Born in 1990</span>
             <p class="post-description">Yukimasa Ida (b. 1990 in Totori, Japan; lives and works in Tokyo, Japan) works between abstraction and realism to create paintings, primarily portraiture, infused with estrangement.</p>
             <div class="profile">
-                <img src="Yukimasa Ida.jpg" alt="" class="profile-img">
+                <img src="assets/images/Yukimasa Ida.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 4 -->
         <div class="post-box news">
-            <img src="Etienne Quesnay.jpg" alt="" class="post-img">
+            <img src="assets/images/Etienne Quesnay.jpg" alt="" class="post-img">
             <h2 class="category">All Over World Artist</h2>
             <a href="#" class="post-title">Etienne Quesnay</a>
             <span class="post-date">Born in 1995</span>
             <p class="post-description">Born in 1995 in Dieppe, Etienne Quesnay grew up in the countryside in Normandy where his father passed on his passion for drawing. Self-taught, he began to paint at an early age to express himself through his sketches and brushstrokes. For nearly 10 years, Etienne has been living and creating in Paris.</p>
             <div class="profile">
-                <img src="Etienne Quesnay.jpg" alt="" class="profile-img">
+                <img src="assets/images/Etienne Quesnay.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 5 -->
         <div class="post-box tech">
-            <img src="monica ghule.webp" alt="" class="post-img">
+            <img src="assets/images/monica ghule.webp" alt="" class="post-img">
             <h2 class="category">Indian Artist</h2>
             <a href="#" class="post-title">Monica Ghule</a>
             <span class="post-date">born in 1989</span>
             <p class="post-description">Monica Ghule (b. 1989) is an artist from Mumbai, India. She received her MFA from Nagpur University in 2013 (first in class), and since 2008 has exhibited her work in 10 group exhibitions to date across India, including the esteemed Jehangir Art Gallery of Mumbai.</p>
             <div class="profile">
-                <img src="monica ghule.webp" alt="" class="profile-img">
+                <img src="assets/images/monica ghule.webp" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 6 -->
         <div class="post-box news">
-            <img src="Miles Regis.jpg" alt="" class="post-img">
+            <img src="assets/images/Miles Regis.jpg" alt="" class="post-img">
             <h2 class="category">All Over World Artist</h2>
             <a href="#" class="post-title">Miles Regis</a>
             <span class="post-date"> 28 November 1967</span>
             <p class="post-description">Miles Regis, is a Los Angeles-based Trinidadian multimedia artist. His media includes oil, acrylic, charcoal, latex paint and occasional newspaper. He is a USC graduate and uses drip painting and collage work.</p>
             <div class="profile">
-                <img src="Miles Regis.jpg" alt="" class="profile-img">
+                <img src="assets/images/Miles Regis.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 7 -->
         <div class="post-box tech">
-            <img src="Anupam Pal.jpg" alt="" class="post-img">
+            <img src="assets/images/Anupam Pal.jpg" alt="" class="post-img">
             <h2 class="category">Indian Artist</h2>
             <a href="#" class="post-title">Anupam Pal</a>
             <span class="post-date">11th October 1991</span>
             <p class="post-description">Anupam Pal hails from the vibrant city of Jamshedpur and has devoted himself wholeheartedly to the realm of Indian-style painting, infusing his works with exclusive styles and unparalleled forms</p>
             <div class="profile">
-                <img src="Anupam Pal.jpg" alt="" class="profile-img">
+                <img src="assets/images/Anupam Pal.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 8 -->
         <div class="post-box news">
-            <img src="Edith Torony.jpeg" alt="" class="post-img">
+            <img src="assets/images/Edith Torony.jpeg" alt="" class="post-img">
             <h2 class="category">All Over World Artist</h2>
             <a href="#" class="post-title">Edith Torony</a>
             <span class="post-date">born in 1988</span>
             <p class="post-description">Edith Torony was born in 1988 in Timișoara, where she lives and works. She graduated in Painting from the Faculty of Arts and Design, West University of Timișoara. She earned her MA in the same field from the same institution in 2012. She has been a member of the Romanian Union of Artists, Timisoara branch, since 2011.</p>
             <div class="profile">
-                <img src="Edith Torony.jpeg" alt="" class="profile-img">
+                <img src="assets/images/Edith Torony.jpeg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
         <!-- Post 9 -->
         <div class="post-box food">
-            <img src="Roby Dwi Antono.jpg" alt="" class="post-img">
+            <img src="assets/images/Roby Dwi Antono.jpg" alt="" class="post-img">
             <h2 class="category">Asian Artist</h2>
             <a href="#" class="post-title">Roby Dwi Antono</a>
             <span class="post-date">31 October 1990</span>
             <p class="post-description">Roby Dwi Antono’s art is a window opening onto the fantastical visions of childhood. The artist’s world oscillates between graphic art, especially illustrations for children, and science fiction. Antono is inspired by themes from pop culture and employs macabre humor to highlight the contradictions of the human experience.</p>
             <div class="profile">
-                <img src="Roby Dwi Antono.jpg" alt="" class="profile-img">
+                <img src="assets/images/Roby Dwi Antono.jpg" alt="" class="profile-img">
                 <span class="profile-name">K.f</span>
             </div>
         </div>
@@ -191,6 +196,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="blog.js"></script>
+    <script src="assets/js/blog.js"></script>
 </body>
 </html>
