@@ -14,7 +14,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/index.css" />
-
+ <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
     <script>
         if (localStorage.getItem('isLoggedIn') !== 'true') {
   window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
@@ -389,6 +392,39 @@
         <a href="#" class="fab fa-pinterest"></a>
       </div>
     </footer>
+<button id="scroll-btn" class="fixed bottom-6 right-6 p-6 rounded-full shadow-lg bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl transition-all duration-300 z-50">
+  <i class="fas fa-arrow-down"></i>
+</button>
+<script>
+ const scrollBtn = document.getElementById('scroll-btn');
+
+const downArrowEnd = 0.3; 
+const upArrowStart = 0.4; 
+
+scrollBtn.addEventListener('click', () => {
+  const scrollPos = window.scrollY;
+  const pageHeight = document.body.scrollHeight - window.innerHeight;
+
+  if (scrollPos / pageHeight <= downArrowEnd) {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // down
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // up
+  }
+});
+
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY;
+  const pageHeight = document.body.scrollHeight - window.innerHeight;
+
+  if (scrollPos / pageHeight <= downArrowEnd) {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>';
+  } else if (scrollPos / pageHeight >= upArrowStart) {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  } else {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>'; // or fade/neutral
+  }
+});
+</script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="assets/js/index.js"></script>
   </body>

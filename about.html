@@ -408,7 +408,39 @@
     </div>
   </div>
 </footer>
+<button id="scroll-btn" class="fixed bottom-6 right-6 p-3 rounded-full shadow-lg bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white hover:scale-110 transition-all duration-300 z-50">
+  <i class="fas fa-arrow-down"></i>
+</button>
+<script>
+ const scrollBtn = document.getElementById('scroll-btn');
 
+const downArrowEnd = 0.3; 
+const upArrowStart = 0.4; 
+
+scrollBtn.addEventListener('click', () => {
+  const scrollPos = window.scrollY;
+  const pageHeight = document.body.scrollHeight - window.innerHeight;
+
+  if (scrollPos / pageHeight <= downArrowEnd) {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // down
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // up
+  }
+});
+
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY;
+  const pageHeight = document.body.scrollHeight - window.innerHeight;
+
+  if (scrollPos / pageHeight <= downArrowEnd) {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>';
+  } else if (scrollPos / pageHeight >= upArrowStart) {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  } else {
+    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>'; // or fade/neutral
+  }
+});
+</script>
 <!-- FontAwesome (icons must load for social links) -->
 <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
 
