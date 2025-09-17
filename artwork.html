@@ -176,8 +176,8 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-      <a href="#" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
@@ -283,7 +283,7 @@
       </div>
 
       <!-- controls -->
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center gap-3">
         <div class="relative">
           <input id="search" type="search" placeholder="Search title, artist..." class="px-3 py-2 rounded-lg border border-gray-200 w-48 text-sm" />
         </div>
@@ -1096,10 +1096,15 @@
     });
 
     // simple mobile toggle (if you want)
-    qs('#mobileToggle')?.addEventListener('click', () => {
-      // simplistic behaviour: show nav links in alert for demo or implement sliding menu
-      alert('Open mobile menu (implement as needed)');
-    });
+    const mobileBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
 
     // small keyboard accessibility: Esc closes modal
     document.addEventListener('keydown', (e) => {
