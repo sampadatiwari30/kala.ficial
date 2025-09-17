@@ -255,39 +255,70 @@
     © 2025 <span class="font-semibold">Kala.ficial</span>. All rights reserved. | Designed with <span class="text-pink-500">❤️</span> for creativity.
   </div>
 </footer>
-<button id="scroll-btn" class="fixed bottom-6 right-6 p-3 rounded-full shadow-lg bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white hover:scale-110 transition-all duration-300 z-50">
-  <i class="fas fa-arrow-down"></i>
+<!--scroll to top and bottom -->
+<button id="smartScrollBtn"
+          class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
+                 w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+                 transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Scroll">
+    <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" clip-rule="evenodd"/>
+    </svg>
 </button>
-<script>
- const scrollBtn = document.getElementById('scroll-btn');
+<script>(function () {
+  const scrollBtn = document.getElementById('smartScrollBtn');
+  const scrollIcon = document.getElementById('scrollIcon');
+  if (!scrollBtn || !scrollIcon) return;
 
-const downArrowEnd = 0.3; 
-const upArrowStart = 0.4; 
+  const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
 
-scrollBtn.addEventListener('click', () => {
-  const scrollPos = window.scrollY;
-  const pageHeight = document.body.scrollHeight - window.innerHeight;
+  const setIcon = (direction) => {
+    if (direction === 'down') {
+      // ↓ icon path
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+    } else {
+      // ↑ icon path
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    }
+  };
 
-  if (scrollPos / pageHeight <= downArrowEnd) {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); // down
-  } else {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // up
-  }
-});
+  const check = () => {
+    const threshold = updateThreshold();
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
 
-window.addEventListener('scroll', () => {
-  const scrollPos = window.scrollY;
-  const pageHeight = document.body.scrollHeight - window.innerHeight;
+    if (scrollTop < threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('down');
+    } else if (windowHeight + scrollTop >= docHeight - threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    } else {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    }
+  };
 
-  if (scrollPos / pageHeight <= downArrowEnd) {
-    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>';
-  } else if (scrollPos / pageHeight >= upArrowStart) {
-    scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-  } else {
-    scrollBtn.innerHTML = '<i class="fas fa-arrow-down"></i>'; // or fade/neutral
-  }
-});
-</script>
+  window.addEventListener('scroll', check);
+  window.addEventListener('resize', check);
+  check();
+
+  scrollBtn.addEventListener('click', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    const threshold = updateThreshold();
+
+    if (scrollTop < threshold) {
+      window.scrollTo({ top: docHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+})();</script>
 <!-- FontAwesome (for social icons) -->
 <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 
