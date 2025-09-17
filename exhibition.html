@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="mixedmedia">Mixed Media</button>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
           <select id="locationSelect" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
             <option value="all">All Locations</option>
             <option value="online">Online</option>
@@ -735,13 +735,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
  <script>
   // mobile menu
-  const mobileBtn = document.getElementById('mobileBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
   }
+
 
   // helper: parse date string "YYYY-MM-DD" or "YYYY/MM/DD" fallback
   function parseDate(s) {
