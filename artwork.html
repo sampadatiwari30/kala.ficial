@@ -1,404 +1,1118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KALA.Ficial</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link rel="stylesheet" href="assets/css/index.css" />
- <!-- Tailwind CDN -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kala.ficial — Artwork For Sale</title>
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Icons -->
+  <!-- Font / Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-    <script>
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
-  window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    /* micro blob animation */
+    @keyframes float1 { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px) translateX(6px)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0)}50%{transform:translateY(-18px) translateX(-8px)} }
+    @keyframes float3 { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) translateX(10px)} }
+    .f1 { animation: float1 8s ease-in-out infinite; }
+    .f2 { animation: float2 10s ease-in-out infinite; }
+    .f3 { animation: float3 6s ease-in-out infinite; }
+
+    /* glass */
+    .glass {
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    /* clamp desc */
+    .desc-clamp { max-height: 4.5rem; overflow: hidden; }
+
+    /* card hover overlay */
+    .card-overlay { transition: opacity .25s ease, transform .25s ease; }
+    .card:hover .card-overlay { opacity: 1; transform: translateY(0); }
+
+    /* floating input label using peer */
+    .peer-placeholder-shown\:top-4:placeholder-shown ~ label { top: 1rem; font-size: 1rem; color: #6b7280; }
+    /* Custom animation speeds */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
 }
-    </script>
+@keyframes bounce-fast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+.animate-bounce-fast { animation: bounce-fast 3s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+ .floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 30%; left: 70%; animation-duration: 15s; }
+  .floating-shape:nth-child(3) { top: 60%; left: 40%; animation-duration: 18s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
+.animate-float{animation:float 10s ease-in-out infinite;}
+.animate-float-slow{animation:float 15s ease-in-out infinite;}
+.floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
+  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+  .floating-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
+  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(15px); }
+  }
+
+  /* Read More button functionality */
+  .read-more-btn {
+    cursor: pointer;
+  }
+   .nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #111827;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #111827;
+    font-weight: 600;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+  /* Mobile animation */
+  #mobile-menu {
+    animation: slideDown 0.4s ease forwards;
+  }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-12px) translateX(8px); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-18px) translateX(-10px); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-25px) translateX(12px); }
+}
+
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+
+  </style>
 </head>
-<body>
-    <header class="header">
-      <div class="logoContent">
-        <h1 class="logoName">KALA.Ficial</h1>
-      </div>
-      <nav class="navbar">
-        <a href="index.html" class="back-btn">
-          <i class="bx bx-arrow-back"></i> Back to Home
-        </a>
-        <a href="#product">upcoming</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
-      </nav>
+<body class="bg-gradient-to-b from-[#f8f9ff] via-[#e9defc] to-white text-gray-900">
+    <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-3">
+      <img src="logo.png" alt="KALA.Ficial Logo" 
+           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+    </a>
 
-      <div class="icon">
-        <i class="fas fa-search" id="search"></i>
-        <i class="fas fa-bars" id="menu-bar"></i>
-      </div>
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button id="logout-btn" 
+        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
 
-      <div class="search">
-        <input type="search" placeholder="search..." />
-      </div>
-    </header>
-    <section class="home" id="home">
-      <div class="homeContent"></div>
-    </section>
-    <section class="product" id="product">
-      <div class="heading">
-        <h2>
-          The goal of sales engagement is for your salespeople to get a positive
-          response from their prospect at each touchpoint and keep the deal
-          moving forward.
-        </h2>
-      </div>
-      <div class="swiper product-row">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/img1.jpg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Modern Art By Chandra</h3>
-              <p>
-                Artist - Shraswati Chandra<br />
-                Contact - Shraswati@gmail.com<br />
-                Price - Rs.60000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/oil.jpg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Modern Art By Roy</h3>
-              <p>
-                Artist - Jamini Roy<br />
-                Contact - jamini@gmail.com<br />
-                Price - Rs.89000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/oil1.jpg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Modern Art By Bose</h3>
-              <p>
-                Artist - Nandalal Bose<br />
-                Contact - bose@gmail.com<br />
-                Price - Rs.79000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/img2.jpg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Modern Art By Tagore</h3>
-              <p>
-                Artist - Abanindranath Tagore<br />
-                Contact - tagore@gmail.com<br />
-                Price - Rs.89000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 
-      <div class="swiper product-row">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/port0.jpeg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Traditional Art By Baua</h3>
-              <p>
-                Artist - Baua Devi<br />
-                Contact - bauadevi@gmail.com<br />
-                Price - Rs.30000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/port.jpeg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Traditional Art By Shyam</h3>
-              <p>
-                Artist - Jangarh Singh Shyam<br />
-                Contact - shyam@gmail.com<br />
-                Price - Rs.89000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/images.jpg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Traditional Art By Bhajju</h3>
-              <p>
-                Artist - Bhajju Shyam<br />
-                Contact - jamini@gmail.com<br />
-                Price - Rs.39000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/port8.jpeg" alt="" />
-            </div>
-            <div class="product-content">
-              <h3>Traditional Art By Kalam</h3>
-              <p>
-                Artist - Kalam Patua<br />
-                Contact - kalampatua@gmail.com<br />
-                Price - Rs.75000/-
-              </p>
-              <a href="#" class="contact-btn">contact</a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </section>
-    <section class="blogs" id="blogs">
-      <div class="swiper blogs-row">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/tra1.jpg" alt="" />
-            </div>
-            <div class="content">
-              <h3>Raja Ravi varma Reproductional Painting</h3>
-              <p>
-                Reproductional works of Raja ravi Verma, an artist who is
-                credited with bringing about a momentous turn in the art of
-                India, are a treat to the eyes of on looker.
-              </p>
-              <p>
-                Artist - Raja Ravi varma<br />
-                Contact - rajaravi@gmail.com<br />
-                Price - Rs.90000/-
-              </p>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/girl.jpg" alt="" />
-            </div>
-            <div class="content">
-              <h3>Beautiful Indian Women Paintings</h3>
-              <p>
-                Bani Thani is a style of Indian miniature paintings from the
-                Kishangarh School of Art in Rajasthan. These paintings are known
-                for their delicate features, elaborate jewelry, and distinctive
-                eyes. They often depict Radha, the consort of Lord Krishna, and
-                other mythological female figures.
-              </p>
-              <p>
-                Artist - Bani Thani<br />
-                Contact - banithani@gmail.com<br />
-                Price - Rs.95000/-
-              </p>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="img">
-              <img src="assets/images/vill.jpg" alt="" /> //this image is not
-              available in the repo
-            </div>
-            <div class="content">
-              <h3>Village Life Paintings</h3>
-              <p>
-                M.F. Husain, often referred to as the "Picasso of India,"
-                created dynamic and colorful paintings depicting Indian village
-                life in his "Moods of the Village" series. These paintings
-                capture the vibrancy and diversity of rural India, with Husain's
-                characteristic use of bold lines and fluid forms.
-              </p>
-              <p>
-                Artist - M.F. Husain<br />
-                Contact - hussain@gmail.com<br />
-                Price - Rs.74500/-
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </section>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <button class="px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <section class="newsletter">
-      <form action="">
-        <h3>subscribe for latest update</h3>
-        <input
-          type="email"
-          name=""
-          placeholder="enter your email"
-          id=""
-          class="box"
-        />
-        <input type="button" value="subscribe" class="box2" />
-      </form>
-    </section>
-    <section class="review" id="review">
-      <div class="heading">
-        <h2>client review</h2>
-      </div>
-      <div class="swiper review-row">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide box">
-            <div class="client-review">
-              <p>
-                the modern Indian art pieces are a delightful fusion of
-                tradition and innovation. The artists' bold experimentation with
-                form, color, and concept is truly inspiring. I find myself drawn
-                to the thought-provoking narratives and the contemporary
-                expressions of Indian identity and spirituality.
-              </p>
-            </div>
-            <div class="client-info">
-              <div class="img">
-                <img src="assets/images/port3.jpeg" alt="" />
-              </div>
-              <div class="clientDetailed">
-                <h3>Hardy Devid</h3>
-                <p>UI / UX designer</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="client-review">
-              <p>
-                I recently purchased several paintings of Indian traditional and
-                modern art from Kala.ficial, and I must say, I am beyond
-                impressed with the quality and beauty of the artworks. Each
-                piece tells a captivating story and showcases the rich cultural
-                heritage of India in its own unique way.
-              </p>
-            </div>
-            <div class="client-info">
-              <div class="img">
-                <img src="assets/images/port8.jpeg" alt="" />
-              </div>
-              <div class="clientDetailed">
-                <h3>Hardy Devid</h3>
-                <p>UI / UX designer</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="client-review">
-              <p>
-                The paintings of Indian traditional and modern art I acquired
-                from Kala.ficial are simply breathtaking. The traditional pieces
-                evoke a sense of nostalgia and cultural richness, while the
-                modern works offer a refreshing perspective on Indian art.
-              </p>
-            </div>
-            <div class="client-info">
-              <div class="img">
-                <img src="assets/images/images.jpg" alt="" />
-              </div>
-              <div class="clientDetailed">
-                <h3>John</h3>
-                <p>Web developer</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide box">
-            <div class="client-review">
-              <p>
-                I recently purchased a selection of Indian traditional and
-                modern art paintings from Kala.ficial, and I couldn't be happier
-                with my choices. The traditional pieces exude a sense of
-                heritage and elegance, while the modern artworks offer a fresh
-                take on Indian culture.
-              </p>
-            </div>
-            <div class="client-info">
-              <div class="img">
-                <img src="assets/images/theme.jpg" alt="" />
-              </div>
-              <div class="clientDetailed">
-                <h3>john</h3>
-                <p>UI / UX designer</p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
-    <footer class="footer" id="contact">
-      <div class="box-container">
-        <div class="mainBox">
-          <div class="content">
-            <a href="#"><img src="assets/images/port3.jpeg" alt="" /></a>
-            <h1 class="logoName">KALA.Ficial</h1>
-          </div>
-          <p>
-            subscribe to our newsletter, follow you on social media, or explore
-            our art.
+
+  <!-- HERO -->
+  <section class="relative pt-28 pb-12 overflow-hidden">
+    <!-- many tiny floating colorful blobs -->
+    <div class="absolute left-6 top-36 w-2 h-2 bg-pink-400 rounded-full opacity-80 f1"></div>
+    <div class="absolute left-20 top-24 w-2.5 h-2.5 bg-yellow-300 rounded-full opacity-70 f2"></div>
+    <div class="absolute left-28 top-40 w-3 h-3 bg-cyan-300 rounded-full opacity-85 f3"></div>
+
+    <div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium"></div>
+<div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+<div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+<div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast"></div>
+<div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
+<div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+<div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
+<div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
+<div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
+
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            Discover & Collect <br />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500">Original Artworks</span>
+          </h1>
+          <p class="text-gray-700 max-w-xl">
+            Buy exclusive paintings, sculptures, digital art and mixed media directly from emerging and undiscovered artists worldwide.
           </p>
+
+          <div class="flex gap-3 flex-wrap">
+            <a href="#gallery" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 shadow-lg hover:scale-105 transition">Shop Now</a>
+            <a href="artist-portal.html" class="px-5 py-3 rounded-full border border-gray-200">Sell Your Art</a>
+          </div>
         </div>
-        <div class="box">
-          <h3>Quick link</h3>
-          <a href="#"> <i class="fas fa-arrow-right"></i>upcoming event</a>
-          <a href="#"> <i class="fas fa-arrow-right"></i>review</a>
-          <a href="#"> <i class="fas fa-arrow-right"></i>contact</a>
-        </div>
-        <div class="box">
-          <h3>Extra link</h3>
-          <a href="#"> <i class="fas fa-arrow-right"></i>Account info</a>
-          <a href="#"> <i class="fas fa-arrow-right"></i>privacy policy</a>
-        </div>
-        <div class="box">
-          <h3>Contact Info</h3>
-          <a href="#"> <i class="fas fa-phone"></i>+91 1234567890</a>
-          <a href="#">
-            <i class="fas fa-envelope"></i>mypassion@kalaficial.com</a
-          >
+
+        <div class="relative">
+          <div class="glass rounded-3xl p-4 shadow-2xl max-w-md mx-auto">
+            <img src="ap1.jpg" alt="Featured art" class="w-full h-60 object-cover rounded-lg shadow">
+            <div class="mt-4">
+              <h3 class="font-semibold text-lg">Featured — Nature's Quiet</h3>
+              <p class="text-sm text-gray-600 mt-1">Limited edition oil on canvas by Swati Kale.</p>
+              <div class="mt-3 flex gap-3">
+                <button class="px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+                <a class="px-3 py-2 rounded-full border border-gray-200 text-sm" href="#">Share</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-x-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-pinterest"></a>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="container mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <!-- chips -->
+      <div class="flex flex-wrap gap-2 items-center">
+        <button class="art-chip px-3 py-2 rounded-full bg-indigo-50 text-indigo-700 text-sm" data-type="all">All</button>
+        <button class="art-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="painting">Painting</button>
+        <button class="art-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="sculpture">Sculpture</button>
+        <button class="art-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="digital">Digital</button>
+        <button class="art-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="photography">Photography</button>
+        <button class="art-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="mixed">Mixed Media</button>
       </div>
-    </footer>
-<!--scroll to top and bottom -->
+
+      <!-- controls -->
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <input id="search" type="search" placeholder="Search title, artist..." class="px-3 py-2 rounded-lg border border-gray-200 w-48 text-sm" />
+        </div>
+
+        <select id="sort" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
+          <option value="latest">Sort: Latest</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+        </select>
+
+        <select id="priceRange" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
+          <option value="all">Price: All</option>
+          <option value="0-10000">Under ₹10,000</option>
+          <option value="10000-50000">₹10k - ₹50k</option>
+          <option value="50000-9999999">₹50k+</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section id="gallery" class="container mx-auto px-6 pb-12">
+    <div id="grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Sample card 1 -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" 
+               data-type="painting" data-price="58000" data-artist="Swati Kale" data-title="Nature's Quiet" data-id="a1">
+        <div class="relative">
+          <img src="ap1.jpg" alt="Nature's Quiet" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <!-- overlay -->
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Nature's Quiet</h4>
+              <p class="text-xs">Swati Kale — ₹58,000</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition" title="Add to wishlist">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Nature's Quiet</h3>
+              <p class="text-sm text-gray-500">Swati Kale</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">₹58,000</p>
+              <p class="text-xs text-gray-400">In stock</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- card 2 -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="painting" data-price="1500" data-artist="Etienne Quesnay" data-title="Lady in Bloom" data-id="a2">
+        <div class="relative">
+          <img src="ap2.jpg" alt="Lady in Bloom" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Lady in Bloom</h4>
+              <p class="text-xs">Etienne Quesnay — $1,500</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Lady in Bloom</h3>
+              <p class="text-sm text-gray-500">Etienne Quesnay</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">$1,500</p>
+              <p class="text-xs text-gray-400">In stock</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- card 3 -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="sculpture" data-price="60000" data-artist="Monica Gule" data-title="Meditative Form" data-id="a3">
+        <div class="relative">
+          <img src="ap3.jpg" alt="Meditative Form" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Meditative Form</h4>
+              <p class="text-xs">Monica Gule — ₹60,000</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Meditative Form</h3>
+              <p class="text-sm text-gray-500">Monica Gule</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">₹60,000</p>
+              <p class="text-xs text-gray-400">In stock</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- card 4 - digital -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="digital" data-price="4000" data-artist="R. Dutta" data-title="Neon Dreams" data-id="a4">
+        <div class="relative">
+          <img src="pea.jpg" alt="Neon Dreams" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Neon Dreams</h4>
+              <p class="text-xs">R. Dutta — ₹4,000</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Neon Dreams</h3>
+              <p class="text-sm text-gray-500">R. Dutta</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">₹4,000</p>
+              <p class="text-xs text-gray-400">Downloadable</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- card 5 - photography -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="photography" data-price="22000" data-artist="A. Sharma" data-title="Monsoon Light" data-id="a5">
+        <div class="relative">
+          <img src="IA1.jpg" alt="Monsoon Light" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Monsoon Light</h4>
+              <p class="text-xs">A. Sharma — ₹22,000</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Monsoon Light</h3>
+              <p class="text-sm text-gray-500">A. Sharma</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">₹22,000</p>
+              <p class="text-xs text-gray-400">Limited</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- card 6 - mixed -->
+      <article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="mixed" data-price="35000" data-artist="Priya Nair" data-title="Between Worlds" data-id="a6">
+        <div class="relative">
+          <img src="IA2.jpg" alt="Between Worlds" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+          <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+            <div>
+              <h4 class="font-semibold">Between Worlds</h4>
+              <p class="text-xs">Priya Nair — ₹35,000</p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+            </div>
+          </div>
+       
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-semibold text-lg">Between Worlds</h3>
+              <p class="text-sm text-gray-500">Priya Nair</p>
+            </div>
+            <div class="text-right">
+              <p class="font-semibold">₹35,000</p>
+              <p class="text-xs text-gray-400">In stock</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- card 5 - painting -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="painting" data-price="7000" data-artist="A. Verma" data-title="Golden Horizon" data-id="a5">
+  <div class="relative">
+    <img src="IA3.jpg" alt="Golden Horizon" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Golden Horizon</h4>
+        <p class="text-xs">A. Verma — ₹7,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold text-lg">Golden Horizon</h3>
+        <p class="text-sm text-gray-500">A. Verma</p>
+      </div>
+      <div class="text-right">
+        <p class="font-semibold">₹7,000</p>
+        <p class="text-xs text-gray-400">In Stock</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 6 - sculpture -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="sculpture" data-price="15000" data-artist="M. Sharma" data-title="Eternal Form" data-id="a6">
+  <div class="relative">
+    <img src="IA4.jpg" alt="Eternal Form" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Eternal Form</h4>
+        <p class="text-xs">M. Sharma — ₹15,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold text-lg">Eternal Form</h3>
+        <p class="text-sm text-gray-500">M. Sharma</p>
+      </div>
+      <div class="text-right">
+        <p class="font-semibold">₹15,000</p>
+        <p class="text-xs text-gray-400">Limited Edition</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 7 - photography -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="photography" data-price="5000" data-artist="S. Kapoor" data-title="Silent Streets" data-id="a7">
+  <div class="relative">
+    <img src="IA5.png" alt="Silent Streets" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Silent Streets</h4>
+        <p class="text-xs">S. Kapoor — ₹5,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold text-lg">Silent Streets</h3>
+        <p class="text-sm text-gray-500">S. Kapoor</p>
+      </div>
+      <div class="text-right">
+        <p class="font-semibold">₹5,000</p>
+        <p class="text-xs text-gray-400">Prints Available</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- card 8 - mixed media -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="mixed" data-price="12000" data-artist="N. Iyer" data-title="Chaos & Harmony" data-id="a8">
+  <div class="relative">
+    <img src="painting.jpeg" alt="Chaos & Harmony" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Chaos & Harmony</h4>
+        <p class="text-xs">N. Iyer — ₹12,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold text-lg">Chaos & Harmony</h3>
+        <p class="text-sm text-gray-500">N. Iyer</p>
+      </div>
+      <div class="text-right">
+        <p class="font-semibold">₹12,000</p>
+        <p class="text-xs text-gray-400">Original</p>
+      </div>
+    </div>
+  </div>
+</article>
+<!-- card 9 - painting -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="painting" data-price="9500" data-artist="P. Khanna" data-title="Blooming Silence" data-id="a9">
+  <div class="relative">
+    <img src="painting1.webp" alt="Blooming Silence" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Blooming Silence</h4>
+        <p class="text-xs">P. Khanna — ₹9,500</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Blooming Silence</h3>
+      <p class="text-sm text-gray-500">P. Khanna</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹9,500</p>
+      <p class="text-xs text-gray-400">In Stock</p>
+    </div>
+  </div>
+</article>
+
+<!-- card 10 - digital -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="digital" data-price="3500" data-artist="L. Mehta" data-title="Cyber Pulse" data-id="a10">
+  <div class="relative">
+    <img src="painting2.webp" alt="Cyber Pulse" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Cyber Pulse</h4>
+        <p class="text-xs">L. Mehta — ₹3,500</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Cyber Pulse</h3>
+      <p class="text-sm text-gray-500">L. Mehta</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹3,500</p>
+      <p class="text-xs text-gray-400">Downloadable</p>
+    </div>
+  </div>
+</article>
+
+<!-- card 11 - sculpture -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="sculpture" data-price="22000" data-artist="R. Nair" data-title="Stone Whisper" data-id="a11">
+  <div class="relative">
+    <img src="painting3.webp" alt="Stone Whisper" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Stone Whisper</h4>
+        <p class="text-xs">R. Nair — ₹22,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Stone Whisper</h3>
+      <p class="text-sm text-gray-500">R. Nair</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹22,000</p>
+      <p class="text-xs text-gray-400">Limited Edition</p>
+    </div>
+  </div>
+</article>
+
+<!-- card 12 - photography -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="photography" data-price="6000" data-artist="D. Bose" data-title="Ocean Calm" data-id="a12">
+  <div class="relative">
+    <img src="painting4.webp" alt="Ocean Calm" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Ocean Calm</h4>
+        <p class="text-xs">D. Bose — ₹6,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Ocean Calm</h3>
+      <p class="text-sm text-gray-500">D. Bose</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹6,000</p>
+      <p class="text-xs text-gray-400">Prints Available</p>
+    </div>
+  </div>
+</article>
+
+<!-- card 13 - mixed media -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="mixed" data-price="11000" data-artist="T. Rao" data-title="Urban Layers" data-id="a13">
+  <div class="relative">
+    <img src="Painting5.jpeg" alt="Urban Layers" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Urban Layers</h4>
+        <p class="text-xs">T. Rao — ₹11,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Urban Layers</h3>
+      <p class="text-sm text-gray-500">T. Rao</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹11,000</p>
+      <p class="text-xs text-gray-400">Original</p>
+    </div>
+  </div>
+</article>
+
+<!-- card 14 - painting -->
+<article class="art-card bg-white rounded-2xl overflow-hidden shadow hover:-translate-y-2 transition" data-type="painting" data-price="8000" data-artist="V. Singh" data-title="Evening Glow" data-id="a14">
+  <div class="relative">
+    <img src="painting6.webp" alt="Evening Glow" class="w-full h-56 object-cover transition-transform duration-500 transform hover:scale-105">
+    <div class="absolute inset-0 flex items-end justify-between p-4 card-overlay opacity-0 bg-gradient-to-t from-black/40 to-transparent text-white">
+      <div>
+        <h4 class="font-semibold">Evening Glow</h4>
+        <p class="text-xs">V. Singh — ₹8,000</p>
+      </div>
+      <div class="flex flex-col gap-2 items-end">
+        <button class="wishlist-btn w-10 h-10 rounded-full bg-white/20 backdrop-blur text-white flex items-center justify-center hover:scale-110 transition">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button class="view-btn bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] px-3 py-1 rounded-full text-xs font-semibold">View</button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 flex items-center justify-between">
+    <div>
+      <h3 class="font-semibold text-lg">Evening Glow</h3>
+      <p class="text-sm text-gray-500">V. Singh</p>
+    </div>
+    <div class="text-right">
+      <p class="font-semibold">₹8,000</p>
+      <p class="text-xs text-gray-400">In Stock</p>
+    </div>
+  </div>
+</article>
+
+
+    </div>
+
+    <div class="mt-8 text-center">
+      <button id="loadMore" class="px-6 py-3 rounded-full bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white shadow-lg">Load more</button>
+    </div>
+  </section>
+
+  <!-- MODAL: Artwork Details -->
+  <div id="artModal" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative w-full max-w-4xl mx-4 bg-white rounded-2xl overflow-hidden shadow-2xl z-10">
+      <div class="grid md:grid-cols-2">
+        <div class="p-4">
+          <img id="modalImg" src="ap1.jpg" alt="art" class="w-full h-96 object-cover rounded-lg">
+        </div>
+        <div class="p-6 flex flex-col">
+          <div class="flex items-start justify-between">
+            <div>
+              <h2 id="modalTitle" class="text-2xl font-bold"></h2>
+              <p id="modalArtist" class="text-sm text-gray-600 mt-1"></p>
+            </div>
+            <button id="closeModal" class="text-2xl text-gray-500 hover:text-gray-800">&times;</button>
+          </div>
+
+          <p id="modalPrice" class="text-xl font-semibold mt-4"></p>
+          <p id="modalMeta" class="text-sm text-gray-500 mt-1"></p>
+
+          <div id="modalDesc" class="text-gray-700 mt-4 leading-relaxed"></div>
+
+          <div class="mt-auto flex gap-3 items-center">
+            <button id="buyNowBtn" class="px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-gray-900 font-semibold shadow">Buy Now</button>
+            <button id="addToCartBtn" class="px-4 py-2 rounded-full border border-gray-200">Add to Cart</button>
+            <div id="modalWishlist" class="ml-auto">
+              <button class="wishlist-toggle px-3 py-2 rounded-full border border-gray-200"><i class="fa-regular fa-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="py-16 bg-indigo-50">
+    <div class="container mx-auto px-6 text-center">
+      <h3 class="text-2xl font-bold">Get notified about new artworks & auctions</h3>
+      <p class="text-gray-700 mt-2">Subscribe to Kala.ficial newsletter.</p>
+      <form id="newsletterForm" class="mt-4 max-w-md mx-auto flex gap-3">
+        <input id="newsletterEmail" type="email" placeholder="Your email" required class="flex-1 px-4 py-3 rounded-lg border border-gray-200" />
+        <button class="px-4 py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold">Subscribe</button>
+      </form>
+    </div>
+  </section>
+  <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
+    <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10 text-gray-800">
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="mb-6 lg:mb-0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
+        </p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-twitter text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-2">
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+        </ul>
+        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+      </div>
+
+      <!-- Newsletter & Social -->
+      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+        <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+        <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+        <form class="flex flex-col sm:flex-row gap-3">
+          <input 
+    type="email" 
+    placeholder="Your Email" 
+    class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] flex-1 text-sm transition-all duration-300"
+  />
+  <button 
+    type="submit" 
+    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+  >
+    Subscribe
+  </button>
+  </form>
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+<!-- SCRIPTS -->
+  <script>
+    // Utilities
+    const qs = (s, el=document) => el.querySelector(s);
+    const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
+
+    // Filter/Sort/Search
+    const chips = qsa('.art-chip');
+    const grid = qs('#grid');
+    const cards = () => qsa('.art-card', grid);
+    const search = qs('#search');
+    const sort = qs('#sort');
+    const priceRange = qs('#priceRange');
+
+    function applyFilters() {
+      const activeChip = qs('.art-chip.bg-indigo-50')?.dataset.type || 'all';
+      const q = (search.value || '').trim().toLowerCase();
+      const sortVal = sort.value;
+      const priceVal = priceRange.value;
+
+      let list = cards().filter(card => {
+        // type
+        if (activeChip !== 'all' && card.dataset.type !== activeChip) return false;
+        // search
+        const title = (card.dataset.title || '').toLowerCase();
+        const artist = (card.dataset.artist || '').toLowerCase();
+        if (q && !(title.includes(q) || artist.includes(q))) return false;
+        // price
+        const p = Number(card.dataset.price || 0);
+        if (priceVal !== 'all') {
+          if (priceVal === '0-10000' && p > 10000) return false;
+          if (priceVal === '10000-50000' && (p < 10000 || p > 50000)) return false;
+          if (priceVal === '50000-9999999' && p < 50000) return false;
+        }
+        return true;
+      });
+
+      // sort
+      if (sortVal === 'latest') {
+        // keep original order (cards are already in latest-first example)
+      } else if (sortVal === 'price-low') {
+        list.sort((a,b)=> Number(a.dataset.price)-Number(b.dataset.price));
+      } else if (sortVal === 'price-high') {
+        list.sort((a,b)=> Number(b.dataset.price)-Number(a.dataset.price));
+      }
+
+      // render list (simple: hide others)
+      cards().forEach(c => c.classList.add('hidden'));
+      list.forEach(c => c.classList.remove('hidden'));
+    }
+
+    // chips interactivity
+    chips.forEach(ch => {
+      ch.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('bg-indigo-50','text-indigo-700'));
+        ch.classList.add('bg-indigo-50','text-indigo-700');
+        applyFilters();
+      });
+    });
+    // set initial
+    chips.find(c => c.dataset.type === 'all')?.classList.add('bg-indigo-50','text-indigo-700');
+
+    [search, sort, priceRange].forEach(el => el && el.addEventListener('input', applyFilters));
+    // initial run
+    applyFilters();
+
+    // Wishlist toggles
+    qsa('.wishlist-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('i');
+        if (icon.classList.contains('fa-regular')) {
+          icon.classList.remove('fa-regular');
+          icon.classList.add('fa-solid');
+          btn.classList.add('bg-white'); // visual cue
+        } else {
+          icon.classList.remove('fa-solid');
+          icon.classList.add('fa-regular');
+          btn.classList.remove('bg-white');
+        }
+      });
+    });
+
+    // View button opens modal
+    const artModal = qs('#artModal');
+    const modalImg = qs('#modalImg');
+    const modalTitle = qs('#modalTitle');
+    const modalArtist = qs('#modalArtist');
+    const modalPrice = qs('#modalPrice');
+    const modalMeta = qs('#modalMeta');
+    const modalDesc = qs('#modalDesc');
+    const modalWishlist = qs('#modalWishlist');
+
+    function openModal(card) {
+      modalImg.src = card.querySelector('img').src;
+      modalTitle.textContent = card.dataset.title || '';
+      modalArtist.textContent = card.dataset.artist || '';
+      const price = card.dataset.price;
+      modalPrice.textContent = price ? (price.toString().includes('$') ? price : '₹' + Number(price).toLocaleString()) : '';
+      modalMeta.textContent = `Type: ${card.dataset.type} • ID: ${card.dataset.id || ''}`;
+      modalDesc.textContent = `Artist note, medium, size and year can go here. This is a place to add a longer description for "${card.dataset.title}".`;
+
+      artModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    qsa('.view-btn').forEach(btn => btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = btn.closest('.art-card');
+      openModal(card);
+    }));
+
+    // clicking card also opens modal
+    qsa('.art-card').forEach(card => card.addEventListener('click', (e) => {
+      // ignore clicks that are from buttons
+      if (e.target.closest('.view-btn') || e.target.closest('.wishlist-btn')) return;
+      openModal(card);
+    }));
+
+    // close modal
+    qs('#closeModal').addEventListener('click', () => {
+      artModal.classList.add('hidden'); document.body.style.overflow = '';
+    });
+    // close clicking backdrop
+    artModal.addEventListener('click', (e) => {
+      if (e.target === artModal) { artModal.classList.add('hidden'); document.body.style.overflow = ''; }
+    });
+
+    // Buy/add to cart basic flow
+    qs('#buyNowBtn').addEventListener('click', () => {
+      alert('Buy flow (demo): redirecting to checkout for ' + modalTitle.textContent);
+      // here you might redirect to checkout page or open purchase modal
+    });
+    qs('#addToCartBtn').addEventListener('click', () => {
+      alert('Added to cart: ' + modalTitle.textContent);
+    });
+    qs('.wishlist-toggle')?.addEventListener('click', (e) => {
+      const ic = e.currentTarget.querySelector('i');
+      if (ic.classList.contains('fa-regular')) { ic.classList.replace('fa-regular','fa-solid'); e.currentTarget.classList.add('bg-pink-50'); }
+      else { ic.classList.replace('fa-solid','fa-regular'); e.currentTarget.classList.remove('bg-pink-50'); }
+    });
+
+    // Load more (demo: clone last visible card)
+    qs('#loadMore').addEventListener('click', () => {
+      const visible = cards().find(c => !c.classList.contains('hidden'));
+      if (!visible) return;
+      const clone = visible.cloneNode(true);
+      // update data-id
+      clone.dataset.id = (clone.dataset.id || 'x') + '-more';
+      grid.appendChild(clone);
+      // attach events for clone
+      clone.querySelector('.view-btn')?.addEventListener('click', (e) => { e.stopPropagation(); openModal(clone); });
+      clone.addEventListener('click', () => openModal(clone));
+      clone.querySelector('.wishlist-btn')?.addEventListener('click', (e) => {
+        e.stopPropagation(); const icon = clone.querySelector('.wishlist-btn i'); icon.classList.toggle('fa-solid'); icon.classList.toggle('fa-regular');
+      });
+      applyFilters();
+    });
+
+    // newsletter demo
+    qs('#newsletterForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const mail = qs('#newsletterEmail').value;
+      if (!mail) { alert('Please enter email'); return; }
+      alert('Subscribed: ' + mail);
+      e.target.reset();
+    });
+
+    // simple mobile toggle (if you want)
+    qs('#mobileToggle')?.addEventListener('click', () => {
+      // simplistic behaviour: show nav links in alert for demo or implement sliding menu
+      alert('Open mobile menu (implement as needed)');
+    });
+
+    // small keyboard accessibility: Esc closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { if (!artModal.classList.contains('hidden')) { artModal.classList.add('hidden'); document.body.style.overflow=''; } }
+    });
+  </script>
+  <!--scroll to top and bottom -->
 <button id="smartScrollBtn"
           class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
-                 w-20 h-20 rounded-full shadow-lg flex items-center justify-center 
+                 w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
                  transition-all duration-300 hover:scale-110 z-50"
           aria-label="Scroll">
-    <svg id="scrollIcon" class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+    <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" clip-rule="evenodd"/>
     </svg>
 </button>
@@ -457,6 +1171,6 @@
   });
 })();</script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/js/index.js"></script>
-  </body>
+
+</body>
 </html>
