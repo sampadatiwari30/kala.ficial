@@ -5,7 +5,7 @@
 }
 body {
   font-family:sans-serif;
-  background-image: url('assets/images/images (3).jpeg');
+  background-image: url('../images/images (3).jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -100,7 +100,7 @@ header.shadow .logo{
 .home{
     width: 100%;
     min-height: 440px;
-    background: url("assets/images/ex2.jpg");
+    background: url("../images/ex2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -5,15 +5,15 @@
 }
 @font-face {
     font-family: "Dongle-light";
-    src: url("assets/images/scape4.jpeg");
+    src: url("../images/scape4.jpeg");
 }
 @font-face {
     font-family: "Dongle-regular";
-    src: url("assets/images/scape1.jpeg");
+    src: url("../images/scape1.jpeg");
 }
 @font-face {
     font-family: "Dongle-bold";
-    src: url("assets/images/scape1.jpeg");
+    src: url("../images/scape1.jpeg");
 }
 header{
     display: flex;
