@@ -1,3 +1,4 @@
+// DOM elements
 const formTitle = document.getElementById("form-title");
 const authForm = document.getElementById("auth-form");
 const submitBtn = document.getElementById("submit-btn");
@@ -7,31 +8,35 @@ const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
+// Toggle login/signup state
 let isLogin = false;
 const users = JSON.parse(localStorage.getItem("dummyUsers")) || {};
 
+// Redirect function
 function redirectToMainPage() {
   localStorage.setItem("isLoggedIn", "true");
-  window.location.href = "index.html"; // home page
+  window.location.href = "index.html";
 }
 
+// Toggle login/signup
 toggleBtn.addEventListener("click", () => {
   isLogin = !isLogin;
   if (isLogin) {
     formTitle.textContent = "Login";
     submitBtn.textContent = "Login";
     toggleBtn.textContent = "New user? Sign up";
-    usernameField.style.display = "none"; // hide username in login
+    usernameField.style.display = "none";
     usernameInput.required = false;
   } else {
     formTitle.textContent = "Sign Up";
     submitBtn.textContent = "Sign Up";
     toggleBtn.textContent = "Already have an account? Log in";
-    usernameField.style.display = "block"; // show username in signup
+    usernameField.style.display = "block";
     usernameInput.required = true;
   }
 });
 
+// Handle login/signup form submission
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const username = usernameInput.value.trim();
@@ -43,17 +48,28 @@ authForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
-  if (!isLogin) { // This means it's SIGN UP
-    if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
-      alert("Password must include letters and numbers.");
-      return;
-    }
+ // ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
+  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must include letters and numbers.");
+    return;
+  }
+}
+
   }
   // ⬆️ NO PASSWORD FORMAT VALIDATION FOR LOGIN ⬆️
 
   if (isLogin) {
-    // LOGIN - No password format validation
+// ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
+  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must include letters and numbers.");
+    return;
+  }
+} else {
+  // LOGIN - No password format validation
+}
+
     if (users[email] && users[email].password === password) {
       alert(`Welcome back, ${users[email].username}! Redirecting...`);
       redirectToMainPage();
@@ -61,7 +77,17 @@ authForm.addEventListener("submit", (e) => {
       alert("Invalid email or password.");
     }
   } else {
-    // SIGNUP - Password rules applied above
+// ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
+if (!isLogin) { // This means it's SIGN UP
+  if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+    alert("Password must include letters and numbers.");
+    return;
+  }
+} else {
+  // LOGIN - No password format validation
+  // SIGNUP - Password rules applied above
+}
+
     if (users[email]) {
       alert("Account already exists. Please log in.");
     } else {
@@ -72,30 +98,46 @@ authForm.addEventListener("submit", (e) => {
     }
   }
 });
-
 function handleGoogleResponse(response) {
   const data = parseJwt(response.credential);
   console.log("Google User:", data);
-
-  localStorage.setItem("isLoggedIn", "true");
-  localStorage.setItem("userEmail", data.email);
-  localStorage.setItem("userName", data.name);
-  localStorage.setItem("userPicture", data.picture);
-
-  alert(`Welcome ${data.name}! Redirecting...`);
-  window.location.href = "index.html";
 }
 
-function parseJwt(token) {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-  return JSON.parse(jsonPayload);
-}
+
+// -------------------- Firebase Google Sign-In --------------------
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
+
+const googleBtn = document.getElementById("google-signin-btn");
+
+// Handle Google Sign-In click
+googleBtn.addEventListener("click", async () => {
+  googleBtn.disabled = true; // Prevent multiple clicks
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // Save user info
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", user.email);
+    localStorage.setItem("userName", user.displayName);
+    localStorage.setItem("userPicture", user.photoURL);
+
+    alert(`Welcome ${user.displayName}! Redirecting...`);
+    redirectToMainPage();
+  } catch (error) {
+    console.error("Google sign-in error:", error);
+
+    if (error.code === "auth/cancelled-popup-request") {
+      alert("Popup was canceled. Please try again.");
+    } else if (error.code === "auth/unauthorized-domain") {
+      alert("This domain is not authorized. Add your domain in Firebase console.");
+    } else {
+      alert("Sign-in failed. Check console for details.");
+    }
+  } finally {
+    googleBtn.disabled = false;
+  }
+});
