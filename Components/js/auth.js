@@ -6,8 +6,10 @@ const usernameField = document.getElementById("username-field");
 const usernameInput = document.getElementById("username");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
+const formSubtitle = document.getElementById("form-subtitle");
 
-let isLogin = false;
+
+let isLogin = true;
 const users = JSON.parse(localStorage.getItem("dummyUsers")) || {};
 
 function redirectToMainPage() {
@@ -21,10 +23,12 @@ toggleBtn.addEventListener("click", () => {
     formTitle.textContent = "Login";
     submitBtn.textContent = "Login";
     toggleBtn.textContent = "New user? Sign up";
+    formSubtitle.textContent = "Sign in to continue to Kala.ficial"; //update subtitle text
     usernameField.style.display = "none"; // hide username in login
     usernameInput.required = false;
   } else {
     formTitle.textContent = "Sign Up";
+    formSubtitle.textContent = "Create your Kala.ficial account"; //update subtitle
     submitBtn.textContent = "Sign Up";
     toggleBtn.textContent = "Already have an account? Log in";
     usernameField.style.display = "block"; // show username in signup
