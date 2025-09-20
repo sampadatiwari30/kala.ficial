@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Test</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #ffffff;
+            --primary-text: #1a202c;
+        }
+
+        [data-theme="dark"] {
+            --primary-bg: #1a202c;
+            --primary-text: #f7fafc;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background-color: rgba(75, 85, 99, 0.9);
+            border-color: rgba(156, 163, 175, 0.5);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle i {
+            font-size: 20px;
+            color: #374151;
+        }
+
+        [data-theme="dark"] .theme-toggle i {
+            color: #fcd34d;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        [data-theme="light"] .status {
+            background-color: #e0f2fe;
+            color: #0277bd;
+        }
+
+        [data-theme="dark"] .status {
+            background-color: #1e293b;
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+
+    <div class="content">
+        <h1>Theme Toggle Test</h1>
+        <div class="status" id="status">Current theme: Light</div>
+        <p>This is a test page to verify that the theme toggle functionality is working correctly.</p>
+        <p>Click the toggle button in the top-right corner to switch between light and dark themes.</p>
+        <p>The background, text colors, and icon should change when you click the toggle.</p>
+        <p>Your preference should be saved and restored when you refresh the page.</p>
+    </div>
+
+    <script src="theme-toggle.js"></script>
+    <script>
+        // Additional status update
+        window.addEventListener('themeChanged', function(e) {
+            const status = document.getElementById('status');
+            const theme = e.detail.theme;
+            status.textContent = `Current theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`;
+            console.log('Theme changed event received:', theme);
+        });
+
+        // Update status on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const status = document.getElementById('status');
+            status.textContent = `Current theme: ${currentTheme.charAt(0).toUpperCase() + currentTheme.slice(1)}`;
+        });
+    </script>
+</body>
+</html>
