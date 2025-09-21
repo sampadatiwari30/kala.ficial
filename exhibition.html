@@ -262,15 +262,7 @@
   window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const logoutBtn = document.getElementById('logout-btn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', function() {
-      localStorage.clear();
-      window.location.href = 'auth.html'; 
-    });
-  }
-});
+
 </script>
 </head>
 <body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
@@ -293,14 +285,15 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+
       
       <!-- Theme Toggle Button -->
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
         <i id="theme-icon" class="fas fa-moon text-lg"></i>
       </button>
       
-      <button id="logout-btn" 
-        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      <button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -323,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+
       
       <!-- Mobile Theme Toggle -->
       <div class="flex items-center justify-between pt-4 border-t border-gray-200">
@@ -332,7 +326,8 @@ document.addEventListener("DOMContentLoaded", function() {
         </button>
       </div>
       
-      <button class="px-6 py-2 rounded-full text-white font-semibold 
+      <button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
                      transition-all duration-300 shadow-md hover:shadow-xl">
@@ -1131,6 +1126,7 @@ document.addEventListener("DOMContentLoaded", function() {
       e.target.reset();
     });
   }
+  
 
   // accessibility: press Esc to close modal
   document.addEventListener('keydown', (e) => {
@@ -1141,6 +1137,24 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 </script>
 
+<script>
+      // Check if the user is logged in on page load
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "auth.html";
+      }
+
+      // --- LOGOUT LOGIC ---
+      const logoutBtns = document.querySelectorAll(".logout-btn");
+
+      logoutBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Clear the authentication flag from localStorage
+            localStorage.removeItem("isLoggedIn");
+            // Redirect the user back to the authentication page
+            window.location.href = "auth.html";
+          });
+      });
+</script>                                            
 <script>
 // Theme toggle functionality
 (function() {

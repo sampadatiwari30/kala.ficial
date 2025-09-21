@@ -472,8 +472,8 @@
         <i id="theme-icon" class="fas fa-moon text-lg"></i>
       </button>
       
-      <button id="logout-btn" 
-        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+          <button 
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -505,7 +505,7 @@
         </button>
       </div>
       
-      <button class="px-6 py-2 rounded-full text-white font-semibold 
+      <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
                      transition-all duration-300 shadow-md hover:shadow-xl">
@@ -1303,14 +1303,17 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
 
       // --- LOGOUT LOGIC ---
-      const logoutBtn = document.getElementById("logout-btn");
+      const logoutBtns = document.querySelectorAll(".logout-btn");
 
-      logoutBtn.addEventListener("click", () => {
-        // Clear the authentication flag from localStorage
-        localStorage.removeItem("isLoggedIn");
-        // Redirect the user back to the authentication page
-        window.location.href = "auth.html";
+      logoutBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Clear the authentication flag from localStorage
+            localStorage.removeItem("isLoggedIn");
+            // Redirect the user back to the authentication page
+            window.location.href = "auth.html";
+          });
       });
+
     </script>
 
   />
