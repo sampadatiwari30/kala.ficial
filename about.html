@@ -44,6 +44,124 @@
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
+
+    /* Theme Toggle Styles */
+    :root {
+      --primary-bg: #ffffff;
+      --secondary-bg: #f8fafc;
+      --primary-text: #1a202c;
+      --secondary-text: #4a5568;
+      --accent-color: #8b5cf6;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --primary-bg: #1a202c;
+      --secondary-bg: #2d3748;
+      --primary-text: #f7fafc;
+      --secondary-text: #e2e8f0;
+      --accent-color: #9f7aea;
+      --border-color: #4a5568;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Theme toggle button styles */
+    .theme-toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background-color: rgba(75, 85, 99, 0.6);
+      border-color: rgba(75, 85, 99, 0.5);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+      background-color: rgba(55, 65, 81, 0.6);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .theme-toggle i {
+      color: #374151;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+      color: #fcd34d;
+    }
+
+    /* Apply theme to body and main elements */
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+    }
+
+    [data-theme="dark"] .bg-gradient-to-br {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+    }
+
+    /* Header theme styles */
+    [data-theme="dark"] header {
+      background: linear-gradient(to right, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6)) !important;
+      backdrop-filter: blur(20px);
+    }
+
+    [data-theme="dark"] .text-gray-900 {
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] .text-gray-700 {
+      color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .text-gray-800 {
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] .text-gray-600 {
+      color: #cbd5e0 !important;
+    }
+
+    /* Mobile menu theme */
+    [data-theme="dark"] #mobile-menu {
+      background: rgba(26, 32, 44, 0.95) !important;
+      backdrop-filter: blur(20px);
+    }
+
+    [data-theme="dark"] .border-gray-200 {
+      border-color: #4a5568 !important;
+    }
+
+    /* Cards and content sections */
+    [data-theme="dark"] .bg-white {
+      background-color: rgba(45, 55, 72, 0.8) !important;
+      backdrop-filter: blur(10px);
+    }
+
+    [data-theme="dark"] .bg-white\/95 {
+      background-color: rgba(45, 55, 72, 0.95) !important;
+    }
+
+    /* Ensure smooth transitions */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
     @keyframes float {
     0%,100%{transform:translateY(0) translateX(0);}
     50%{transform:translateY(-15px) translateX(10px);}
@@ -120,7 +238,7 @@
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-3">
+    <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
@@ -134,6 +252,12 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="contact.html" class="nav-link">Contact</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
       <button
         class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
@@ -157,7 +281,15 @@
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="nav-link">Contact</a>      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
       <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
@@ -523,6 +655,8 @@
       });
 
   </script>
+<!-- Theme Toggle Script -->
+<script src="theme-toggle.js"></script>
 
 <!-- FontAwesome (icons must load for social links) -->
 <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>

@@ -161,6 +161,288 @@
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 
+/* Theme Toggle Styles */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --primary-text: #1a202c;
+  --secondary-text: #4a5568;
+  --accent-color: #8b5cf6;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-bg: #1a202c;
+  --secondary-bg: #2d3748;
+  --primary-text: #f7fafc;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme Toggle Styles */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --primary-text: #1a202c;
+  --secondary-text: #4a5568;
+  --accent-color: #8b5cf6;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-bg: #1a202c;
+  --secondary-bg: #2d3748;
+  --primary-text: #f7fafc;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button styles with higher specificity */
+.theme-toggle {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(75, 85, 99, 0.9) !important;
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(55, 65, 81, 0.9) !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-toggle i {
+  color: #374151 !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.1rem !important;
+}
+
+[data-theme="dark"] .theme-toggle i {
+  color: #fcd34d !important;
+}
+
+/* Apply theme to body and main elements */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] .bg-gradient-to-r {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+}
+
+/* Header theme styles */
+[data-theme="dark"] header {
+  background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+/* Comprehensive text color fixes for dark mode */
+[data-theme="dark"] .text-gray-900,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-black {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-500 {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-gray-400 {
+  color: #cbd5e0 !important;
+}
+
+/* Navigation links in dark mode */
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #f7fafc !important;
+}
+
+/* Mobile menu theme with better visibility */
+[data-theme="dark"] #mobile-menu {
+  background: rgba(26, 32, 44, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border-top: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: #4a5568 !important;
+}
+
+/* Cards and content sections with better contrast */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-gray-100 {
+  background-color: rgba(45, 55, 72, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+[data-theme="dark"] .bg-white\/95 {
+  background-color: rgba(45, 55, 72, 0.98) !important;
+}
+
+/* Hero section and main content areas */
+[data-theme="dark"] section {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .bg-gradient-to-b {
+  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6), rgba(26, 32, 44, 0.9)) !important;
+}
+
+/* Floating shapes and animations in dark mode */
+[data-theme="dark"] .floating-shape,
+[data-theme="dark"] .animated-shape {
+  opacity: 0.06 !important;
+}
+
+/* All text elements - comprehensive coverage */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div:not(.theme-toggle),
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+  color: #e2e8f0 !important;
+}
+
+/* Links and interactive elements */
+[data-theme="dark"] a:not(.nav-link):not(button) {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] a:not(.nav-link):not(button):hover {
+  color: #dbeafe !important;
+}
+
+/* Button text visibility */
+[data-theme="dark"] button:not(.theme-toggle) {
+  color: #f7fafc !important;
+}
+
+/* Form elements */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: rgba(45, 55, 72, 0.8) !important;
+  color: #f7fafc !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+}
+
+/* Button styling improvements for dark theme */
+[data-theme="dark"] .hover\:from-purple-600:hover {
+  background: linear-gradient(to right, #805ad5, #667eea) !important;
+}
+
+/* Text content styling */
+[data-theme="dark"] .text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure all text is visible */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] p {
+  color: #e2e8f0 !important;
+}
+
+/* Override any potential conflicts with specific text classes */
+[data-theme="dark"] .text-4xl,
+[data-theme="dark"] .text-3xl,
+[data-theme="dark"] .text-2xl,
+[data-theme="dark"] .text-xl,
+[data-theme="dark"] .text-lg,
+[data-theme="dark"] .text-base,
+[data-theme="dark"] .text-sm,
+[data-theme="dark"] .text-xs {
+  color: inherit !important;
+}
+
+/* Catch-all for any remaining text that might be invisible */
+[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+  color: inherit !important;
+}
+
+/* Force visibility for any potentially invisible elements */
+[data-theme="dark"] [style*="color: #"] {
+  color: #e2e8f0 !important;
+}
+
+/* Main hero heading styling for dark mode */
+[data-theme="dark"] h1.text-5xl,
+[data-theme="dark"] h1.text-6xl {
+  color: #ffffff !important;
+}
+
+/* Remove gradient background from main heading text in dark mode */
+[data-theme="dark"] .bg-gradient-to-r.from-yellow-400.via-red-400.to-pink-500 {
+  background: none !important;
+  color: #ffffff !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Alternative selector to ensure the gradient text becomes white */
+[data-theme="dark"] .text-transparent {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+}
+
+/* Ensure smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
   </style>
   </head>
 
@@ -170,7 +452,7 @@
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-3">
+    <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
@@ -184,7 +466,14 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="contact.html" class="nav-link">Contact</a>
-      <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
+          <button 
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -207,7 +496,16 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="contact.html" class="nav-link">Contact</a>
-      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
+      <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
                      transition-all duration-300 shadow-md hover:shadow-xl">
@@ -1016,6 +1314,221 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
           });
       });
 
+    </script>
+
+  />
+  <button 
+    type="submit" 
+    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+  >
+    Subscribe
+  </button>
+  </form>
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+  
+    // Simple floating particles
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
+
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+     menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Active link highlight on scroll
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      if (scrollY >= sectionTop) current = section.getAttribute("id");
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for(let i=0; i<100; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particlesArray.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      init();
+    });
+
+     document.querySelectorAll('.read-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const p = button.previousElementSibling;
+      if (p.style.maxHeight === 'none') {
+        p.style.maxHeight = '6rem';
+        button.textContent = 'Read More';
+      } else {
+        p.style.maxHeight = 'none';
+        button.textContent = 'Show Less';
+      }
+    });
+  });
+  
+  </script>
+    <script>
+      // --- LOGOUT LOGIC ---
+      const logoutBtn = document.getElementById("logout-btn");
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          // Clear the authentication flag from localStorage
+          localStorage.removeItem("isLoggedIn");
+          // Redirect the user back to the authentication page
+          window.location.href = "auth.html";
+        });
+      }
+    </script>
+    <script src="theme-toggle.js"></script>
+    
+    <script>
+    // Backup inline theme toggle functionality
+    (function() {
+      'use strict';
+      
+      function initInlineTheme() {
+        console.log('Initializing inline theme system...');
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        const htmlElement = document.documentElement;
+        
+        if (!themeToggle) {
+          console.log('Theme toggle button not found!');
+          return;
+        }
+        
+        // Get current theme or default to light
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        
+        function updateIcons(theme) {
+          const isDark = theme === 'dark';
+          const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+          
+          if (themeIcon) {
+            themeIcon.className = `fas ${iconClass} text-lg`;
+          }
+          if (mobileThemeIcon) {
+            mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+          }
+        }
+        
+        function toggleTheme() {
+          console.log('Toggling theme...');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          currentTheme = newTheme;
+          
+          htmlElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateIcons(newTheme);
+          
+          console.log('Theme switched to:', newTheme);
+        }
+        
+        // Set initial icons
+        updateIcons(currentTheme);
+        
+        // Add click listeners
+        themeToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('Desktop theme button clicked');
+          toggleTheme();
+        });
+        
+        if (mobileThemeToggle) {
+          mobileThemeToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile theme button clicked');
+            toggleTheme();
+          });
+        }
+        
+        console.log('Inline theme toggle initialized successfully');
+      }
+      
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initInlineTheme);
+      } else {
+        initInlineTheme();
+      }
+    })();
     </script>
   </body>
 </html>

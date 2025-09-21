@@ -97,7 +97,7 @@
     animation: float 12s ease-in-out infinite;
   }
 
-  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
+  .floating-shape:nth-child(1) { top: 20%; left: 15%; animation-duration: 12s; }
   .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
   .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
 
@@ -160,6 +160,109 @@
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 
+/* Theme CSS Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --secondary-text: #6b7280;
+  --accent-color: #8b5cf6;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1f2937;
+  --text-color: #f9fafb;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button styles with higher specificity */
+.theme-toggle {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(75, 85, 99, 0.9) !important;
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(55, 65, 81, 0.9) !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-toggle i {
+  color: #374151 !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.1rem !important;
+}
+
+[data-theme="dark"] .theme-toggle i {
+  color: #fcd34d !important;
+}
+
+/* Apply theme to body and main elements */
+[data-theme="dark"] body {
+  background: linear-gradient(to bottom, #1f2937, #111827, #0f172a) !important;
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] header {
+  background: linear-gradient(to right, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.4)) !important;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #fcd34d !important;
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] p, [data-theme="dark"] span:not(.theme-toggle *) {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #1f2937 !important;
+}
+
+[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+  border-color: #4a5568 !important;
+}
+
   </style>
 </head>
 <body class="bg-gradient-to-b from-[#f8f9ff] via-[#e9defc] to-white text-gray-900">
@@ -168,7 +271,7 @@
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-3">
+    <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
@@ -182,6 +285,13 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
+
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
       <button
         class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
@@ -206,7 +316,17 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
+<button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
                      transition-all duration-300 shadow-md hover:shadow-xl">
@@ -1197,6 +1317,85 @@
   });
 })();</script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+// Theme toggle functionality
+(function() {
+  'use strict';
+  
+  function initInlineTheme() {
+    console.log('Initializing inline theme system...');
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle) {
+      console.log('Theme toggle button not found!');
+      return;
+    }
+    
+    // Get current theme or default to light
+    let currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    
+    function updateIcons(theme) {
+      const isDark = theme === 'dark';
+      const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+      
+      if (themeIcon) {
+        themeIcon.className = `fas ${iconClass} text-lg`;
+      }
+      if (mobileThemeIcon) {
+        mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+      }
+    }
+    
+    function toggleTheme() {
+      console.log('Toggling theme...');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      currentTheme = newTheme;
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcons(newTheme);
+      
+      console.log('Theme switched to:', newTheme);
+    }
+    
+    // Set initial icons
+    updateIcons(currentTheme);
+    
+    // Add click listeners
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Desktop theme button clicked');
+      toggleTheme();
+    });
+    
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile theme button clicked');
+        toggleTheme();
+      });
+    }
+    
+    console.log('Inline theme toggle initialized successfully');
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInlineTheme);
+  } else {
+    initInlineTheme();
+  }
+})();
+</script>
 
 </body>
 </html>
