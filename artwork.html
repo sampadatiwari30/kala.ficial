@@ -182,8 +182,8 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <button id="logout-btn" 
-        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      <button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -206,7 +206,7 @@
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <button class="px-6 py-2 rounded-full text-white font-semibold 
+      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
                      bg-gradient-to-r from-indigo-500 to-purple-600 
                      hover:from-purple-600 hover:to-indigo-500 
                      transition-all duration-300 shadow-md hover:shadow-xl">
@@ -1111,6 +1111,27 @@
       if (e.key === 'Escape') { if (!artModal.classList.contains('hidden')) { artModal.classList.add('hidden'); document.body.style.overflow=''; } }
     });
   </script>
+
+  <!-- Logout logic -->
+   <script>
+      // Check if the user is logged in on page load
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "auth.html";
+      }
+
+      // --- LOGOUT LOGIC ---
+      const logoutBtns = document.querySelectorAll(".logout-btn");
+
+      logoutBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Clear the authentication flag from localStorage
+            localStorage.removeItem("isLoggedIn");
+            // Redirect the user back to the authentication page
+            window.location.href = "auth.html";
+          });
+      });
+
+    </script>
   <!--scroll to top and bottom -->
 <button id="smartScrollBtn"
           class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
