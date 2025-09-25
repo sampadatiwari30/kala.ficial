@@ -4,9 +4,10 @@ body {
   color: #2d3748;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;   /* <-- ensures vertical centering */
+  padding: 20px;         /* allows scroll when content is taller */
+  overflow-x: hidden;    /* no sideways scroll */
   position: relative;
 }
 
@@ -169,6 +170,16 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
+button.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;   /* space between icon & text */
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  white-space: nowrap; /* prevent text wrapping */
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -250,5 +261,87 @@ label {
   }
   50% {
     transform: scale(1.05);
+  }
+}
+
+/* Responsive tweaks */
+.container {
+  width: 100%;
+  max-width: 420px;   /* laptops/desktops */
+}
+
+/* Tablet view */
+@media (max-width: 768px) {
+  body {
+    padding: 30px 15px;  /* more breathing room */
+  }
+
+  .container {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .auth-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  input,
+  button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 15px;
+    border-radius: 16px; /* smaller radius for small screens */
+  }
+
+  .auth-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  input,
+  button {
+    font-size: 0.85rem;
+    padding: 9px 12px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .toggle-link {
+    font-size: 0.85rem;
   }
 }
