@@ -448,6 +448,53 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Logout Modal Base */
+#logoutModal .modal-content {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 22rem;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Heading + text */
+#logoutModal h2 {
+  color: var(--primary-text);
+}
+#logoutModal p {
+  color: var(--secondary-text);
+}
+
+/* Buttons */
+#confirmLogout {
+  background: linear-gradient(to right, #ef4444, #ec4899); /* red → pink */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#confirmLogout:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#cancelLogout {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#cancelLogout:hover {
+  background-color: var(--border-color);
+}
+
   </style>
   </head>
 
@@ -477,7 +524,7 @@
         <i id="theme-icon" class="fas fa-moon text-lg"></i>
       </button>
       
-          <button 
+          <button id="logout-btn"
                class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
@@ -510,10 +557,10 @@
         </button>
       </div>
       
-      <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
-                     bg-gradient-to-r from-indigo-500 to-purple-600 
-                     hover:from-purple-600 hover:to-indigo-500 
-                     transition-all duration-300 shadow-md hover:shadow-xl">
+      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
         Log Out
       </button>
     </nav>
@@ -1304,16 +1351,35 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     <script>
 
       // --- LOGOUT LOGIC ---
-      const logoutBtns = document.querySelectorAll(".logout-btn");
+  document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtns = [
+    document.getElementById("logout-btn"),
+    document.getElementById("logout-btn-mobile")
+  ].filter(Boolean); // remove nulls if one button missing
 
-      logoutBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            // Clear the authentication flag from localStorage
-            localStorage.removeItem("isLoggedIn");
-            // Redirect the user back to the authentication page
-            window.location.href = "auth.html";
-          });
-      });
+  const modal = document.getElementById("logoutModal");
+  const confirmBtn = document.getElementById("confirmLogout");
+  const cancelBtn = document.getElementById("cancelLogout");
+
+  logoutBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+  confirmBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "auth.html";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+});
+
+</script>
 
     </script>
 
@@ -1340,6 +1406,17 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </div>
   </div>
 </footer>
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+  <div class="modal-content">
+    <h2 class="text-xl font-semibold">Confirm Logout</h2>
+    <p class="mt-3">Are you sure you want to log out?</p>
+    <div class="flex justify-center gap-4 mt-6">
+      <button id="confirmLogout">Yes, Logout</button>
+      <button id="cancelLogout">Cancel</button>
+    </div>
+  </div>
+</div>
 
 
   <script>
@@ -1438,19 +1515,6 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   });
   
   </script>
-    <script>
-      // --- LOGOUT LOGIC ---
-      const logoutBtn = document.getElementById("logout-btn");
-
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-          // Clear the authentication flag from localStorage
-          localStorage.removeItem("isLoggedIn");
-          // Redirect the user back to the authentication page
-          window.location.href = "auth.html";
-        });
-      }
-    </script>
     <script src="theme-toggle.js"></script>
     
     <script>

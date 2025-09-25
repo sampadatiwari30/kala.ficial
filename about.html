@@ -21,6 +21,33 @@
       rel="stylesheet"
     />
   <style>
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --secondary-text: #6b7280;
+  --accent-color: #8b5cf6;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  /* Add for modal */
+  --modal-bg: #ffffff;   /* white for light mode */
+  --modal-text: #1f2937;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1f2937;
+  --text-color: #f9fafb;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+
+  /* Dark modal */
+  --modal-bg: #374151;   /* grayish background */
+  --modal-text: #f9fafb;
+}
+
     html { scroll-behavior: smooth; }
     body { font-family: 'Poppins', sans-serif; }
 
@@ -235,6 +262,54 @@
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
   }
+
+  /* Logout Modal Base */
+#logoutModal .modal-content {
+  background-color: var(--modal-bg) !important;
+  color: var(--modal-text) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 1rem !important;
+  padding: 2rem !important;
+  max-width: 22rem !important;
+  width: 100% !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+
+/* Heading + text */
+#logoutModal h2 {
+  color: var(--primary-text);
+}
+#logoutModal p {
+  color: var(--secondary-text);
+}
+
+/* Buttons */
+#confirmLogout {
+  background: linear-gradient(to right, #ef4444, #ec4899); /* red → pink */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#confirmLogout:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#cancelLogout {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#cancelLogout:hover {
+  background-color: var(--border-color);
+}
   </style>
 </head>
 <body class="relative bg-white">
@@ -263,8 +338,8 @@
         <i id="theme-icon" class="fas fa-moon text-lg"></i>
       </button>
       
-      <button
-        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+          <button id="logout-btn"
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -295,10 +370,10 @@
         </button>
       </div>
       
-      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
-                     bg-gradient-to-r from-indigo-500 to-purple-600 
-                     hover:from-purple-600 hover:to-indigo-500 
-                     transition-all duration-300 shadow-md hover:shadow-xl">
+      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
         Log Out
       </button>
     </nav>
@@ -561,6 +636,17 @@
     </div>
   </div>
 </footer>
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+  <div class="modal-content">
+    <h2 class="text-xl font-semibold">Confirm Logout</h2>
+    <p class="mt-3">Are you sure you want to log out?</p>
+    <div class="flex justify-center gap-4 mt-6">
+      <button id="confirmLogout">Yes, Logout</button>
+      <button id="cancelLogout">Cancel</button>
+    </div>
+  </div>
+</div>
 
 <!--scroll to top and bottom -->
 <button id="smartScrollBtn"
@@ -639,27 +725,38 @@
     });
   }
 </script>
-
-<!-- Logout logic -->
- <script>
-      // Check if the user is logged in on page load
-      if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.href = "auth.html";
-      }
-
+<script>
       // --- LOGOUT LOGIC ---
-      const logoutBtns = document.querySelectorAll(".logout-btn");
+  document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtns = [
+    document.getElementById("logout-btn"),
+    document.getElementById("logout-btn-mobile")
+  ].filter(Boolean); // remove nulls if one button missing
 
-      logoutBtns.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            // Clear the authentication flag from localStorage
-            localStorage.removeItem("isLoggedIn");
-            // Redirect the user back to the authentication page
-            window.location.href = "auth.html";
-          });
-      });
+  const modal = document.getElementById("logoutModal");
+  const confirmBtn = document.getElementById("confirmLogout");
+  const cancelBtn = document.getElementById("cancelLogout");
 
-  </script>
+  logoutBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+  confirmBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "auth.html";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+});
+</script>
+
+
 <!-- Theme Toggle Script -->
 <script src="theme-toggle.js"></script>
 
