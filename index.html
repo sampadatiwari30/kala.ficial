@@ -495,10 +495,90 @@
   background-color: var(--border-color);
 }
 
+/*Loading page*/
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #a78bfa, #f472b6, #6366f1);
+    color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader i {
+    font-size: 4.5rem;
+    animation: spin 2s linear infinite;
+}
+
+.loader h2 {
+    margin-top: 1.5rem;
+    font-size: 2.1rem;
+}
+
+.dots::after {
+    content: "";
+    display: inline-block;
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: "";
+    }
+    20% {
+        content: ".";
+    }
+    40% {
+        content: "..";
+    }
+    60% {
+        content: "...";
+    }
+    80%{
+        content: "....";
+    }
+    100% {
+        content: "";
+    }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
   </style>
   </head>
 
 <body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
+
+<!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <i class="fa-solid fa-spinner"></i>
+            <h2>Bringing Art to Life<span class="dots"></span></h2>
+        </div>
+    </div>
 <!-- Navbar -->
 <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -1594,6 +1674,23 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
         initInlineTheme();
       }
     })();
+
+    document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+                document.title = 'Kala.ficial - Your Virtual Art Gallery';
+            } else {
+                document.title = 'Come back to Website';
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const loadingScreen = document.getElementById("loading-screen");
+        
+            // Set a timeout to hide the loading screen
+            setTimeout(() => {
+                loadingScreen.classList.add("hidden");
+            }, 7000); // 7000ms = 7 seconds (adjust as needed)
+        });
     </script>
 
     <script>
