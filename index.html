@@ -1595,5 +1595,19 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     })();
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
