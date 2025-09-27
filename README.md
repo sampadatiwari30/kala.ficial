@@ -37,7 +37,7 @@
 
 <h2 id="overview">🔍 Overview</h2>
 
-> 🎨 kala.ficial is a global platform for emerging and undiscovered artists to showcase their artwork through online and offline exhibitions. Artists can connect, collaborate, and get notified about upcoming exhibitions worldwide. It's a space where hidden talent meets global opportunities. 🌍🖌️
+> 🎨 kala.ficial is a dynamic global platform for emerging and undiscovered artists to showcase their artwork through online and offline exhibitions. Artists can upload, manage, and sell their artwork through our comprehensive dashboard system. The platform features a robust backend with image upload capabilities, SQLite database for artwork metadata, and role-based access for artists. It's a space where hidden talent meets global opportunities with modern technology. 🌍🖌️✨
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -73,6 +73,48 @@
         </tr>
     </tbody>
 </table>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<h2 id="features">✨ Dynamic Features</h2>
+
+### 🎨 Artist Dashboard
+- **Upload Artwork**: Easy drag-and-drop interface for image uploads
+- **Manage Portfolio**: Edit, update, and delete artwork
+- **Real-time Stats**: Track total artworks, views, and sales
+- **Image Management**: Support for PNG, JPG, GIF, WEBP formats (up to 10MB)
+
+### 🔧 Backend Infrastructure
+- **Express.js Server**: Robust RESTful API
+- **SQLite Database**: Lightweight, portable data storage
+- **Image Upload System**: Secure file handling with validation
+- **CORS Support**: Cross-origin resource sharing enabled
+
+### 📊 Database Schema
+- **Artworks Table**: Stores title, description, price, artist info, image URLs
+- **Artists Table**: Manages artist profiles and contact information
+- **Timestamps**: Automatic creation and update tracking
+
+### 🌐 API Endpoints
+- `GET /api/artworks` - Fetch all artworks
+- `POST /api/artworks` - Upload new artwork
+- `PUT /api/artworks/:id` - Update existing artwork
+- `DELETE /api/artworks/:id` - Remove artwork
+- `GET /api/artists` - Get artist information
+
+### 🚀 Quick Start
+```bash
+# Install dependencies
+npm install
+
+# Initialize database
+npm run init-db
+
+# Start the server
+npm start
+```
+
+Visit `http://localhost:3000` to see the dynamic platform in action!
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 

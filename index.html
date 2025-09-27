@@ -739,97 +739,13 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </div>
 
     <!-- Artwork Grid -->
-    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Artwork Card Template -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap1.jpg"
-          alt="Painting of Nature's Beauty"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <!-- Quick View Overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of Nature's Beauty</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Swati Kale</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> swatikale@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> Rs. 58,000/-</p>
-        </div>
+    <div id="artwork-grid" class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Artworks will be loaded dynamically here -->
+      <div class="text-center py-12 col-span-full">
+        <i class="fas fa-spinner fa-spin text-4xl text-gray-400 mb-4"></i>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Loading artworks...</h3>
+        <p class="text-gray-500">Please wait while we fetch the latest artwork</p>
       </div>
-
-      <!-- Artwork Card 2 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap2.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-
-      <!-- Artwork Card 3 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap3.jpg"
-          alt="Painting of Buddha"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of Buddha</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Monica Gule</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> monicagule@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> Rs. 60,000/-</p>
-        </div>
-      </div>
-       <!-- Artwork Card 4 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/pea.jpg"
-          alt="Painting of a Peacock"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Girl</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $2000</p>
-        </div>
-      </div>
-       <!-- Artwork Card 5 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/IA2.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-       <!-- Artwork Card 6 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/IA4.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-
-
-
     </div>
   </div>
 </section>
@@ -1342,102 +1258,6 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
 </footer>
 
 
-  <script>
-  
-    // Simple floating particles
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particlesArray = [];
-    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
-
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-     menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  // Active link highlight on scroll
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      if (scrollY >= sectionTop) current = section.getAttribute("id");
-    });
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      for(let i=0; i<100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-
-     document.querySelectorAll('.read-more-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const p = button.previousElementSibling;
-      if (p.style.maxHeight === 'none') {
-        p.style.maxHeight = '6rem';
-        button.textContent = 'Read More';
-      } else {
-        p.style.maxHeight = 'none';
-        button.textContent = 'Show Less';
-      }
-    });
-  });
-  
-  </script>
     <script>
       // --- LOGOUT LOGIC ---
       const logoutBtn = document.getElementById("logout-btn");
@@ -1454,6 +1274,63 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     <script src="theme-toggle.js"></script>
     
     <script>
+    // Load artworks dynamically
+    async function loadArtworks() {
+      try {
+        const response = await fetch('/api/artworks');
+        const artworks = await response.json();
+        displayArtworks(artworks);
+      } catch (error) {
+        console.error('Error loading artworks:', error);
+        displayError();
+      }
+    }
+
+    function displayArtworks(artworks) {
+      const grid = document.getElementById('artwork-grid');
+      
+      if (artworks.length === 0) {
+        grid.innerHTML = `
+          <div class="text-center py-12 col-span-full">
+            <i class="fas fa-palette text-4xl text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No artworks available</h3>
+            <p class="text-gray-500">Check back later for new artwork</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = artworks.map(artwork => `
+        <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img
+            src="${artwork.image_url}"
+            alt="${artwork.title}"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">${artwork.title}</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> ${artwork.artist_name}</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> ${artwork.artist_email}</p>
+            <p class="text-sm"><strong>Price:</strong> $${artwork.price || '0'}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function displayError() {
+      const grid = document.getElementById('artwork-grid');
+      grid.innerHTML = `
+        <div class="text-center py-12 col-span-full">
+          <i class="fas fa-exclamation-triangle text-4xl text-red-400 mb-4"></i>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">Error loading artworks</h3>
+          <p class="text-gray-500">Please refresh the page to try again</p>
+        </div>
+      `;
+    }
+
+    // Load artworks when page loads
+    document.addEventListener('DOMContentLoaded', loadArtworks);
+
     // Backup inline theme toggle functionality
     (function() {
       'use strict';
