@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Dashboard - KALA.Ficial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.replace("auth.html");
+        }
+    </script>
+    <style>
+        .upload-area {
+            border: 2px dashed #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        .upload-area.dragover {
+            border-color: #6366f1;
+            background-color: #f0f4ff;
+        }
+        .artwork-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .artwork-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <img src="assets/images/logo.png" alt="KALA.Ficial Logo" class="h-10 w-auto">
+                        <span class="text-xl font-bold text-gray-900">Kala.ficial</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-home mr-1"></i>Home
+                    </a>
+                    <button onclick="logout()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-sign-out-alt mr-1"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="px-4 py-6 sm:px-0">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+                        Artist Dashboard
+                    </h2>
+                    <p class="mt-1 text-sm text-gray-500">
+                        Upload and manage your artwork
+                    </p>
+                </div>
+                <div class="mt-4 flex md:mt-0 md:ml-4">
+                    <button onclick="openUploadModal()" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <i class="fas fa-plus mr-2"></i>
+                        Upload Artwork
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-palette text-2xl text-indigo-600"></i>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Artworks</dt>
+                                <dd class="text-lg font-medium text-gray-900" id="total-artworks">0</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-eye text-2xl text-green-600"></i>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Views</dt>
+                                <dd class="text-lg font-medium text-gray-900">1,234</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-heart text-2xl text-red-600"></i>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Likes</dt>
+                                <dd class="text-lg font-medium text-gray-900">567</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-dollar-sign text-2xl text-yellow-600"></i>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Sales</dt>
+                                <dd class="text-lg font-medium text-gray-900">$12,345</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Artworks Section -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">My Artworks</h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    Manage your uploaded artwork
+                </p>
+            </div>
+            <div class="border-t border-gray-200">
+                <div id="artworks-container" class="p-6">
+                    <div class="text-center py-12">
+                        <i class="fas fa-palette text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">No artworks yet</h3>
+                        <p class="text-gray-500 mb-4">Upload your first artwork to get started</p>
+                        <button onclick="openUploadModal()" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                            <i class="fas fa-plus mr-2"></i>
+                            Upload Artwork
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Upload New Artwork</h3>
+                    <button onclick="closeUploadModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artwork Title</label>
+                        <input type="text" id="artwork-title" name="title" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea id="artwork-description" name="description" rows="3" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Price ($)</label>
+                        <input type="number" id="artwork-price" name="price" step="0.01" min="0" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artist Name</label>
+                        <input type="text" id="artist-name" name="artist_name" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artist Email</label>
+                        <input type="email" id="artist-email" name="artist_email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Image</label>
+                        <div id="upload-area" class="upload-area border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-indigo-500">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-sm text-gray-600">Click to upload or drag and drop</p>
+                            <p class="text-xs text-gray-500 mt-1">PNG, JPG, GIF, WEBP up to 10MB</p>
+                            <input type="file" id="image-input" name="image" accept="image/*" class="hidden" required>
+                        </div>
+                        <div id="image-preview" class="mt-4 hidden">
+                            <img id="preview-img" class="max-w-full h-32 object-cover rounded-lg">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" onclick="closeUploadModal()" 
+                                class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button type="submit" 
+                                class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Upload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden z-50">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Edit Artwork</h3>
+                    <button onclick="closeEditModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="edit-form" enctype="multipart/form-data">
+                    <input type="hidden" id="edit-artwork-id">
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artwork Title</label>
+                        <input type="text" id="edit-artwork-title" name="title" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea id="edit-artwork-description" name="description" rows="3" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Price ($)</label>
+                        <input type="number" id="edit-artwork-price" name="price" step="0.01" min="0" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artist Name</label>
+                        <input type="text" id="edit-artist-name" name="artist_name" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Artist Email</label>
+                        <input type="email" id="edit-artist-email" name="artist_email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">New Image (optional)</label>
+                        <div id="edit-upload-area" class="upload-area border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-indigo-500">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-sm text-gray-600">Click to upload new image</p>
+                            <p class="text-xs text-gray-500 mt-1">PNG, JPG, GIF, WEBP up to 10MB</p>
+                            <input type="file" id="edit-image-input" name="image" accept="image/*" class="hidden">
+                        </div>
+                        <div id="edit-image-preview" class="mt-4">
+                            <img id="edit-preview-img" class="max-w-full h-32 object-cover rounded-lg">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" onclick="closeEditModal()" 
+                                class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button type="submit" 
+                                class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Update
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let artworks = [];
+        let currentEditingId = null;
+
+        // Load artworks on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArtworks();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Upload form
+            document.getElementById('upload-form').addEventListener('submit', handleUpload);
+            
+            // Edit form
+            document.getElementById('edit-form').addEventListener('submit', handleEdit);
+            
+            // File upload areas
+            setupFileUpload('upload-area', 'image-input', 'image-preview', 'preview-img');
+            setupFileUpload('edit-upload-area', 'edit-image-input', 'edit-image-preview', 'edit-preview-img');
+        }
+
+        function setupFileUpload(areaId, inputId, previewId, imgId) {
+            const uploadArea = document.getElementById(areaId);
+            const fileInput = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const img = document.getElementById(imgId);
+
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    showImagePreview(files[0], preview, img);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    showImagePreview(e.target.files[0], preview, img);
+                }
+            });
+        }
+
+        function showImagePreview(file, preview, img) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                img.src = e.target.result;
+                preview.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        async function loadArtworks() {
+            try {
+                const response = await fetch('/api/artworks');
+                artworks = await response.json();
+                displayArtworks();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading artworks:', error);
+                showNotification('Error loading artworks', 'error');
+            }
+        }
+
+        function displayArtworks() {
+            const container = document.getElementById('artworks-container');
+            
+            if (artworks.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-palette text-4xl text-gray-400 mb-4"></i>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">No artworks yet</h3>
+                        <p class="text-gray-500 mb-4">Upload your first artwork to get started</p>
+                        <button onclick="openUploadModal()" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                            <i class="fas fa-plus mr-2"></i>
+                            Upload Artwork
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const artworksGrid = document.createElement('div');
+            artworksGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6';
+            
+            artworks.forEach(artwork => {
+                const artworkCard = createArtworkCard(artwork);
+                artworksGrid.appendChild(artworkCard);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(artworksGrid);
+        }
+
+        function createArtworkCard(artwork) {
+            const card = document.createElement('div');
+            card.className = 'artwork-card bg-white rounded-lg shadow-md overflow-hidden';
+            
+            card.innerHTML = `
+                <div class="aspect-w-16 aspect-h-12">
+                    <img src="${artwork.image_url}" alt="${artwork.title}" class="w-full h-48 object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">${artwork.title}</h3>
+                    <p class="text-sm text-gray-600 mb-2 line-clamp-2">${artwork.description || 'No description'}</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-lg font-bold text-indigo-600">$${artwork.price || '0'}</span>
+                        <span class="text-sm text-gray-500">${artwork.artist_name}</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="editArtwork(${artwork.id})" class="flex-1 bg-indigo-600 text-white px-3 py-2 rounded-md text-sm hover:bg-indigo-700">
+                            <i class="fas fa-edit mr-1"></i>Edit
+                        </button>
+                        <button onclick="deleteArtwork(${artwork.id})" class="flex-1 bg-red-600 text-white px-3 py-2 rounded-md text-sm hover:bg-red-700">
+                            <i class="fas fa-trash mr-1"></i>Delete
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function updateStats() {
+            document.getElementById('total-artworks').textContent = artworks.length;
+        }
+
+        async function handleUpload(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            
+            try {
+                const response = await fetch('/api/artworks', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    showNotification('Artwork uploaded successfully!', 'success');
+                    closeUploadModal();
+                    loadArtworks();
+                    e.target.reset();
+                    document.getElementById('image-preview').classList.add('hidden');
+                } else {
+                    const error = await response.json();
+                    showNotification(error.error || 'Upload failed', 'error');
+                }
+            } catch (error) {
+                console.error('Upload error:', error);
+                showNotification('Upload failed', 'error');
+            }
+        }
+
+        async function handleEdit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const artworkId = currentEditingId;
+            
+            try {
+                const response = await fetch(`/api/artworks/${artworkId}`, {
+                    method: 'PUT',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    showNotification('Artwork updated successfully!', 'success');
+                    closeEditModal();
+                    loadArtworks();
+                } else {
+                    const error = await response.json();
+                    showNotification(error.error || 'Update failed', 'error');
+                }
+            } catch (error) {
+                console.error('Update error:', error);
+                showNotification('Update failed', 'error');
+            }
+        }
+
+        function editArtwork(id) {
+            const artwork = artworks.find(a => a.id === id);
+            if (!artwork) return;
+            
+            currentEditingId = id;
+            
+            // Populate edit form
+            document.getElementById('edit-artwork-id').value = id;
+            document.getElementById('edit-artwork-title').value = artwork.title;
+            document.getElementById('edit-artwork-description').value = artwork.description || '';
+            document.getElementById('edit-artwork-price').value = artwork.price || '';
+            document.getElementById('edit-artist-name').value = artwork.artist_name;
+            document.getElementById('edit-artist-email').value = artwork.artist_email;
+            
+            // Show current image
+            const previewImg = document.getElementById('edit-preview-img');
+            previewImg.src = artwork.image_url;
+            document.getElementById('edit-image-preview').classList.remove('hidden');
+            
+            openEditModal();
+        }
+
+        async function deleteArtwork(id) {
+            if (!confirm('Are you sure you want to delete this artwork?')) return;
+            
+            try {
+                const response = await fetch(`/api/artworks/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    showNotification('Artwork deleted successfully!', 'success');
+                    loadArtworks();
+                } else {
+                    const error = await response.json();
+                    showNotification(error.error || 'Delete failed', 'error');
+                }
+            } catch (error) {
+                console.error('Delete error:', error);
+                showNotification('Delete failed', 'error');
+            }
+        }
+
+        function openUploadModal() {
+            document.getElementById('upload-modal').classList.remove('hidden');
+        }
+
+        function closeUploadModal() {
+            document.getElementById('upload-modal').classList.add('hidden');
+            document.getElementById('upload-form').reset();
+            document.getElementById('image-preview').classList.add('hidden');
+        }
+
+        function openEditModal() {
+            document.getElementById('edit-modal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+            document.getElementById('edit-form').reset();
+            currentEditingId = null;
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'auth.html';
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            const uploadModal = document.getElementById('upload-modal');
+            const editModal = document.getElementById('edit-modal');
+            
+            if (e.target === uploadModal) {
+                closeUploadModal();
+            }
+            if (e.target === editModal) {
+                closeEditModal();
+            }
+        });
+    </script>
+</body>
+</html>
