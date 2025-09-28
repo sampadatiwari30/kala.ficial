@@ -43,14 +43,28 @@ authForm.addEventListener("submit", (e) => {
   const password = passwordInput.value;
 
   if (!email.includes("@gmail.com")) {
-    alert("Please use a valid Gmail address.");
+    Toastify({
+      text: "Please use a valid Gmail address.",
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#ff4444",
+      stopOnFocus: true
+    }).showToast();
     return;
   }
 
   // ⬇️ ONLY APPLY PASSWORD RULES FOR SIGNUP (NEW ACCOUNTS) ⬇️
   if (!isLogin) { // This means it's SIGN UP
     if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
-      alert("Password must include letters and numbers.");
+      Toastify({
+        text: "Password must include letters and numbers.",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#ff4444",
+        stopOnFocus: true
+      }).showToast();
       return;
     }
   }
@@ -59,20 +73,48 @@ authForm.addEventListener("submit", (e) => {
   if (isLogin) {
     // LOGIN - No password format validation
     if (users[email] && users[email].password === password) {
-      alert(`Welcome back, ${users[email].username}! Redirecting...`);
-      redirectToMainPage();
+      Toastify({
+        text: `Welcome back, ${users[email].username}! Redirecting...`,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#00b09b",
+        stopOnFocus: true
+      }).showToast();
+      setTimeout(redirectToMainPage, 2000);
     } else {
-      alert("Invalid email or password.");
+      Toastify({
+        text: "Invalid email or password.",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#ff4444",
+        stopOnFocus: true
+      }).showToast();
     }
   } else {
     // SIGNUP - Password rules applied above
     if (users[email]) {
-      alert("Account already exists. Please log in.");
+      Toastify({
+        text: "Account already exists. Please log in.",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#ff4444",
+        stopOnFocus: true
+      }).showToast();
     } else {
       users[email] = { username, password };
       localStorage.setItem("dummyUsers", JSON.stringify(users));
-      alert(`Signup successful! Welcome, ${username}! Redirecting...`);
-      redirectToMainPage();
+      Toastify({
+        text: `Signup successful! Welcome, ${username}! Redirecting...`,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#00b09b",
+        stopOnFocus: true
+      }).showToast();
+      setTimeout(redirectToMainPage, 2000);
     }
   }
 });
@@ -86,8 +128,15 @@ function handleGoogleResponse(response) {
   localStorage.setItem("userName", data.name);
   localStorage.setItem("userPicture", data.picture);
 
-  alert(`Welcome ${data.name}! Redirecting...`);
-  window.location.href = "index.html";
+  Toastify({
+    text: `Welcome ${data.name}! Redirecting...`,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    backgroundColor: "#00b09b",
+    stopOnFocus: true
+  }).showToast();
+  setTimeout(() => { window.location.href = "index.html"; }, 2000);
 }
 
 function parseJwt(token) {
