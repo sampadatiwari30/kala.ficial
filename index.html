@@ -567,6 +567,202 @@
     }
 }
 
+/* This is the base state (no rotation) */
+.exhibition-item:hover,
+.artwork-item:hover,
+.artist-item:hover,
+.flex.flex-col.items-center:hover {
+  /* We use CSS variables for the rotation, which JS will update */
+  transform: perspective(1000px) 
+             rotateX(var(--rotateX, 0deg)) 
+             rotateY(var(--rotateY, 0deg)) 
+             scale(1.03); /* Keep your scale effect */
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* Add this new rule for a smooth transition back to center when the mouse leaves */
+.exhibition-item,
+.artwork-item,
+.artist-item,
+.flex.flex-col.items-center {
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  /* Add the new variables to your existing transition */
+  transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease, 
+              --rotateX 0.6s ease-out, --rotateY 0.6s ease-out; 
+}
+/* Layered neon shadow glow */
+/* Layered neon shadow glow - lighter overlay */
+.exhibition-item::before,
+.artwork-item::before,
+.artist-item::before,
+.flex.flex-col.items-center::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(45deg, rgba(139,92,246,0.12), rgba(99,102,241,0.12)); /* softer overlay */
+  opacity: 0;
+  transform: scale(0.9) rotate(0deg);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.exhibition-item:hover::before,
+.artwork-item:hover::before,
+.artist-item:hover::before,
+.flex.flex-col.items-center:hover::before {
+  opacity: 0.8; /* keep it noticeable but softer */
+  transform: scale(1.05) rotate(3deg);
+}
+
+
+/* Image zoom and subtle tilt */
+.exhibition-item img,
+.artwork-item img,
+.artist-item img,
+.flex.flex-col.items-center img {
+  transition: transform 0.6s ease, filter 0.6s ease;
+  z-index: 2;
+}
+
+.exhibition-item:hover img,
+.artwork-item:hover img,
+.artist-item:hover img,
+.flex.flex-col.items-center:hover img {
+  transform: scale(1.1) rotate(1.5deg);
+  filter: brightness(1.1);
+}
+
+/* Neon glow on text */
+.exhibition-item h3,
+.artwork-item h3,
+.artist-item h3,
+.flex.flex-col.items-center h4 {
+  transition: text-shadow 0.6s ease, color 0.6s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.exhibition-item:hover h3,
+.artwork-item:hover h3,
+.artist-item:hover h3,
+.flex.flex-col.items-center:hover h4 {
+  text-shadow: 
+    0 0 4px rgba(139,92,246,0.6), 
+    0 0 8px rgba(99,102,241,0.4);
+  color: #b682ff; /* light but visible on dark overlay */
+}
+
+/* Floating gradient streak animation */
+.exhibition-item::after,
+.artwork-item::after,
+.artist-item::after,
+.flex.flex-col.items-center::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: rotate(30deg) translateX(-100%);
+  animation: streak 1.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes streak {
+  0% { transform: rotate(30deg) translateX(-100%); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: rotate(30deg) translateX(100%); opacity: 0; }
+}
+
+/* Circle cards extra pop */
+.flex.flex-col.items-center:hover .w-44 {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 0 0 25px rgba(139,92,246,0.4), 0 0 50px rgba(99,102,241,0.2);
+}
+
+/* Quick-view / overlay content fade */
+.artwork-item .absolute,
+.artist-item .absolute {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 3;
+}
+
+.artwork-item:hover .absolute,
+.artist-item:hover .absolute {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Contact Us Cards: enhanced hover effect */
+.mt-12.grid > div {
+  --rotateX: 0deg !important;
+  --rotateY: 0deg !important;
+  transform: none !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.mt-12.grid > div:hover {
+  /* Lift and subtle scale */
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.06);
+  filter: brightness(1.05);
+  z-index: 1;
+}
+
+/* Add gentle glowing border pseudo-element */
+.mt-12.grid > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(108, 99, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.mt-12.grid > div:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Keep text and icons clear */
+.mt-12.grid > div h4,
+.mt-12.grid > div p,
+.mt-12.grid > div a,
+.mt-12.grid > div i {
+  color: var(--primary-text) !important;
+  text-shadow: none !important;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: subtle icon pop on hover */
+.mt-12.grid > div:hover i {
+  transform: scale(1.1);
+  color: #6C63FF; /* keeps the brand accent color */
+}
+/* Prevent any 3D tilt or scale on contact buttons */
+a[href*="wa.me"],
+#openCollabForm {
+  transform: none !important;   /* no rotation/scale */
+  --rotateX: 0deg !important;   /* override JS vars if applied */
+  --rotateY: 0deg !important;
+}
+
+/* Optional: simple emboss effect on hover */
+a[href*="wa.me"]:hover,
+#openCollabForm:hover {
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.2),
+              inset -2px -2px 6px rgba(255,255,255,0.3);
+  transform: none !important; /* ensure no tilt or scaling */
+}
   </style>
   </head>
 
@@ -597,6 +793,7 @@
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact</a>
       
       <!-- Theme Toggle Button -->
@@ -627,6 +824,7 @@
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact</a>
       
       <!-- Mobile Theme Toggle -->
@@ -1127,46 +1325,44 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       We'd love to hear from you! Whether you have a question, suggestion, or want to collaborate, reach out to us.
     </p>
 
-    <!-- Contact Cards -->
-    <div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
-      <!-- Location Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Location</h4>
-        <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
-      </div>
-
-      <!-- Email Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Email</h4>
-        <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
-      </div>
-
-      <!-- Phone Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Phone</h4>
-        <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
-      </div>
-    </div>
-
-    <!-- Buttons Section -->
-    <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
-      <!-- WhatsApp Button -->
-      <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-        Send Message
-      </a>
-
-      <!-- Collaboration Button -->
-      <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-        <i class="fas fa-handshake text-xl"></i>
-        For Collaboration
-      </button>
-    </div>
+<!-- Contact Cards -->
+<div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
+  <!-- Location Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Location</h4>
+    <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
   </div>
-</section>
+
+  <!-- Email Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Email</h4>
+    <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
+  </div>
+
+  <!-- Phone Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Phone</h4>
+    <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
+  </div>
+</div>
+
+<!-- Buttons Section -->
+<div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    Send Message
+  </a>
+
+  <!-- Collaboration Button -->
+  <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+    <i class="fas fa-handshake text-xl"></i>
+    For Collaboration
+  </button>
+</div>
 
 <!-- Collaboration Form Modal -->
 <div id="collabModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
@@ -1182,6 +1378,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </form>
   </div>
 </div>
+
 <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -1197,9 +1394,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       <!-- Brand -->
       <div class="mb-6 lg:mb-0">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
-        <p class="text-gray-600 leading-relaxed">
-          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
-        </p>
+        <p class="text-gray-600 leading-relaxed">Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.</p>
         <div class="flex gap-4 mt-6">
           <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
           <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
@@ -1216,6 +1411,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="faq.html">FAQ</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1235,23 +1431,13 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
         <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
         <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
-
-  <form class="flex flex-col gap-3">
-    <input 
-      type="email" 
-      placeholder="Your Email" 
-      class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300"
-    />
-    <button 
-      type="submit" 
-      class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
-    >
-      Subscribe
-    </button>
-  </form>
+        <form class="flex flex-col sm:flex-row gap-3">
+          <input type="email" placeholder="Your Email" class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
+          <button type="submit" class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 transition-all duration-300 shadow-lg hover:scale-105">Subscribe</button>
+        </form>
         <div class="flex gap-4 mt-6 justify-center sm:justify-start">
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
         </div>
@@ -1265,20 +1451,19 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   </div>
 </footer>
 
-     <!--scroll to top and bottom -->
+<!-- Scroll to Top/Bottom Button -->
 <button id="smartScrollBtn"
-          class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white  font-bold 
-                 w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
-                 transition-all duration-300 hover:scale-110 z-50"
-          aria-label="Scroll">
-    <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" clip-rule="evenodd"/>
-    </svg>
+        class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white font-bold 
+               w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+               transition-all duration-300 hover:scale-110 z-50"
+        aria-label="Scroll">
+  <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd"/>
+  </svg>
 </button>
 
-    <!-- Buttons End here -->
-  </header>
-<script>(function () {
+<script>
+(function () {
   const scrollBtn = document.getElementById('smartScrollBtn');
   const scrollIcon = document.getElementById('scrollIcon');
   if (!scrollBtn || !scrollIcon) return;
@@ -1287,12 +1472,10 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
 
   const setIcon = (direction) => {
     if (direction === 'down') {
-      // ↓ icon path
       scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
       scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
     } else {
-      // ↑ icon path
-      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>`;
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l-4 4a1 1 0 010 1.414z"/>`;
       scrollBtn.setAttribute('aria-label', 'Scroll to top');
     }
   };
@@ -1304,13 +1487,10 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     const docHeight = document.body.scrollHeight;
 
     if (scrollTop < threshold) {
-      scrollBtn.classList.add('show');
       setIcon('down');
     } else if (windowHeight + scrollTop >= docHeight - threshold) {
-      scrollBtn.classList.add('show');
       setIcon('up');
     } else {
-      scrollBtn.classList.add('show');
       setIcon('up');
     }
   };
@@ -1331,11 +1511,13 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
-})();</script>
-  <script>
-  
-    // Simple floating particles
-    const canvas = document.getElementById('particles');
+})();
+</script>
+
+<script>
+  // Floating particles
+  const canvas = document.getElementById('particles');
+  if (canvas) {
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -1343,29 +1525,6 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     let particlesArray = [];
     const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
 
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-     menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  // Active link highlight on scroll
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      if (scrollY >= sectionTop) current = section.getAttribute("id");
-    });
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -1389,63 +1548,37 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     }
 
-    function init() {
+    function initParticles() {
       particlesArray = [];
       for(let i=0; i<100; i++) {
         particlesArray.push(new Particle());
       }
     }
 
-    function animate() {
+    function animateParticles() {
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
     }
 
-    init();
-    animate();
+    initParticles();
+    animateParticles();
 
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      init();
+      initParticles();
+    });
+  }
+
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
     });
 
-     document.querySelectorAll('.read-more-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const p = button.previousElementSibling;
-      if (p.style.maxHeight === 'none') {
-        p.style.maxHeight = '6rem';
-        button.textContent = 'Read More';
-      } else {
-        p.style.maxHeight = 'none';
-        button.textContent = 'Show Less';
-      }
-    });
-  });
-  
-  </script>
-    <script>
-
-      // --- LOGOUT LOGIC ---
-  document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtns = [
-    document.getElementById("logout-btn"),
-    document.getElementById("logout-btn-mobile")
-  ].filter(Boolean); // remove nulls if one button missing
-
-  const modal = document.getElementById("logoutModal");
-  const confirmBtn = document.getElementById("confirmLogout");
-  const cancelBtn = document.getElementById("cancelLogout");
-
-  logoutBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal.classList.remove("hidden");
-    });
   });
 
   cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
@@ -1461,9 +1594,6 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
 
 </script>
 
-    </script>
-
-  />
   <button 
     type="submit" 
     class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
@@ -1515,6 +1645,8 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
      menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
+    
+  }
 
   // Active link highlight on scroll
   const sections = document.querySelectorAll("section");
@@ -1533,55 +1665,9 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     });
   });
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
 
-    function init() {
-      particlesArray = [];
-      for(let i=0; i<100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-
-     document.querySelectorAll('.read-more-btn').forEach(button => {
+  // Read More Toggle
+  document.querySelectorAll('.read-more-btn').forEach(button => {
     button.addEventListener('click', () => {
       const p = button.previousElementSibling;
       if (p.style.maxHeight === 'none') {
@@ -1593,105 +1679,97 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     });
   });
-  
-  </script>
-    <script src="theme-toggle.js"></script>
-    
-    <script>
-    // Backup inline theme toggle functionality
-    (function() {
-      'use strict';
-      
-      function initInlineTheme() {
-        console.log('Initializing inline theme system...');
-        
-        const themeToggle = document.getElementById('theme-toggle');
-        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-        const htmlElement = document.documentElement;
-        
-        if (!themeToggle) {
-          console.log('Theme toggle button not found!');
-          return;
-        }
-        
-        // Get current theme or default to light
-        let currentTheme = localStorage.getItem('theme') || 'light';
+</script>
+
+<script>
+  // Logout Logic
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtns = [
+      document.getElementById("logout-btn"),
+      document.getElementById("logout-btn-mobile")
+    ].filter(Boolean);
+
+    const modal = document.getElementById("logoutModal");
+    const confirmBtn = document.getElementById("confirmLogout");
+    const cancelBtn = document.getElementById("cancelLogout");
+
+    logoutBtns.forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        modal.classList.remove("hidden");
+      });
+    });
+
+    cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+    confirmBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "auth.html";
+    });
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+  });
+</script>
+
+<script src="theme-toggle.js"></script>
+
+<script>
+  // Inline theme toggle backup
+  (function() {
+    'use strict';
+    function initInlineTheme() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+      const htmlElement = document.documentElement;
+      if (!themeToggle) return;
+
+      let currentTheme = localStorage.getItem('theme') || 'light';
+      htmlElement.setAttribute('data-theme', currentTheme);
+
+      function updateIcons(theme) {
+        const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+        if (themeIcon) themeIcon.className = `fas ${iconClass} text-lg`;
+        if (mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+      }
+
+      function toggleTheme() {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
         htmlElement.setAttribute('data-theme', currentTheme);
-        
-        function updateIcons(theme) {
-          const isDark = theme === 'dark';
-          const iconClass = isDark ? 'fa-sun' : 'fa-moon';
-          
-          if (themeIcon) {
-            themeIcon.className = `fas ${iconClass} text-lg`;
-          }
-          if (mobileThemeIcon) {
-            mobileThemeIcon.className = `fas ${iconClass} text-lg`;
-          }
-        }
-        
-        function toggleTheme() {
-          console.log('Toggling theme...');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          currentTheme = newTheme;
-          
-          htmlElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateIcons(newTheme);
-          
-          console.log('Theme switched to:', newTheme);
-        }
-        
-        // Set initial icons
+        localStorage.setItem('theme', currentTheme);
         updateIcons(currentTheme);
-        
-        // Add click listeners
-        themeToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('Desktop theme button clicked');
-          toggleTheme();
-        });
-        
-        if (mobileThemeToggle) {
-          mobileThemeToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Mobile theme button clicked');
-            toggleTheme();
-          });
-        }
-        
-        console.log('Inline theme toggle initialized successfully');
       }
-      
-      // Initialize when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initInlineTheme);
-      } else {
-        initInlineTheme();
-      }
-    })();
 
-    document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible') {
-                document.title = 'Kala.ficial - Your Virtual Art Gallery';
-            } else {
-                document.title = 'Come back to Website';
-            }
-        });
+      updateIcons(currentTheme);
+      themeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+    }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const loadingScreen = document.getElementById("loading-screen");
-        
-            // Set a timeout to hide the loading screen
-            setTimeout(() => {
-                loadingScreen.classList.add("hidden");
-            }, 7000); // 7000ms = 7 seconds (adjust as needed)
-        });
-    </script>
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initInlineTheme);
+    } else {
+      initInlineTheme();
+    }
+  })();
+
+    // Title change on visibility
+  document.addEventListener('visibilitychange', function() {
+    document.title = document.visibilityState === 'visible' ? 
+                     'Kala.ficial - Your Virtual Art Gallery' : 
+                     'Come back to Website';
+  });
+
+  // Loading screen hide
+  document.addEventListener("DOMContentLoaded", function () {
+    const loadingScreen = document.getElementById("loading-screen");
+    if (loadingScreen) {
+      setTimeout(() => loadingScreen.classList.add("hidden"), 7000);
+    }
+  });
+</script>
+<script src="assets/js/card-hover-home.js"></script>
 
     <script>
   document.addEventListener("DOMContentLoaded", function () {
