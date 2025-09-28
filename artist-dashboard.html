@@ -374,7 +374,16 @@
 
         async function loadArtworks() {
             try {
-                const response = await fetch('/api/artworks');
+                // Get current user ID from localStorage
+                const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('dummyUsers') ? 
+                    Object.keys(JSON.parse(localStorage.getItem('dummyUsers') || '{}'))[0] : null;
+                
+                if (!userEmail) {
+                    showNotification('Please log in to view your artworks', 'error');
+                    return;
+                }
+                
+                const response = await fetch(`/api/artworks?user_id=${encodeURIComponent(userEmail)}`);
                 artworks = await response.json();
                 displayArtworks();
                 updateStats();
@@ -450,7 +459,17 @@
         async function handleUpload(e) {
             e.preventDefault();
             
+            // Get current user ID from localStorage
+            const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('dummyUsers') ? 
+                Object.keys(JSON.parse(localStorage.getItem('dummyUsers') || '{}'))[0] : null;
+            
+            if (!userEmail) {
+                showNotification('Please log in to upload artworks', 'error');
+                return;
+            }
+            
             const formData = new FormData(e.target);
+            formData.append('user_id', userEmail);
             
             try {
                 const response = await fetch('/api/artworks', {
@@ -477,7 +496,17 @@
         async function handleEdit(e) {
             e.preventDefault();
             
+            // Get current user ID from localStorage
+            const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('dummyUsers') ? 
+                Object.keys(JSON.parse(localStorage.getItem('dummyUsers') || '{}'))[0] : null;
+            
+            if (!userEmail) {
+                showNotification('Please log in to edit artworks', 'error');
+                return;
+            }
+            
             const formData = new FormData(e.target);
+            formData.append('user_id', userEmail);
             const artworkId = currentEditingId;
             
             try {
@@ -525,8 +554,17 @@
         async function deleteArtwork(id) {
             if (!confirm('Are you sure you want to delete this artwork?')) return;
             
+            // Get current user ID from localStorage
+            const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('dummyUsers') ? 
+                Object.keys(JSON.parse(localStorage.getItem('dummyUsers') || '{}'))[0] : null;
+            
+            if (!userEmail) {
+                showNotification('Please log in to delete artworks', 'error');
+                return;
+            }
+            
             try {
-                const response = await fetch(`/api/artworks/${id}`, {
+                const response = await fetch(`/api/artworks/${id}?user_id=${encodeURIComponent(userEmail)}`, {
                     method: 'DELETE'
                 });
                 

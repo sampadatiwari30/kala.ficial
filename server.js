@@ -68,6 +68,7 @@ function initializeDatabase() {
       artist_name TEXT NOT NULL,
       artist_email TEXT NOT NULL,
       image_url TEXT NOT NULL,
+      user_id TEXT NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
@@ -102,10 +103,22 @@ function initializeDatabase() {
 
 // API Routes
 
-// Get all artworks
+// Get all artworks (for public gallery) or user-specific artworks
 app.get('/api/artworks', (req, res) => {
-  const sql = 'SELECT * FROM artworks ORDER BY created_at DESC';
-  db.all(sql, [], (err, rows) => {
+  const userId = req.query.user_id;
+  
+  let sql, params;
+  if (userId) {
+    // Get artworks for specific user
+    sql = 'SELECT * FROM artworks WHERE user_id = ? ORDER BY created_at DESC';
+    params = [userId];
+  } else {
+    // Get all artworks for public gallery
+    sql = 'SELECT * FROM artworks ORDER BY created_at DESC';
+    params = [];
+  }
+  
+  db.all(sql, params, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -132,20 +145,24 @@ app.get('/api/artworks/:id', (req, res) => {
 
 // Upload new artwork
 app.post('/api/artworks', upload.single('image'), (req, res) => {
-  const { title, description, price, artist_name, artist_email } = req.body;
+  const { title, description, price, artist_name, artist_email, user_id } = req.body;
   
   if (!req.file) {
     return res.status(400).json({ error: 'No image file provided' });
   }
 
+  if (!user_id) {
+    return res.status(400).json({ error: 'User ID is required' });
+  }
+
   const image_url = `/uploads/${req.file.filename}`;
   
   const sql = `
-    INSERT INTO artworks (title, description, price, artist_name, artist_email, image_url)
-    VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO artworks (title, description, price, artist_name, artist_email, image_url, user_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
   
-  db.run(sql, [title, description, price, artist_name, artist_email, image_url], function(err) {
+  db.run(sql, [title, description, price, artist_name, artist_email, image_url, user_id], function(err) {
     if (err) {
       // Delete uploaded file if database insert fails
       fs.unlinkSync(path.join(uploadsDir, req.file.filename));
@@ -161,6 +178,7 @@ app.post('/api/artworks', upload.single('image'), (req, res) => {
       artist_name,
       artist_email,
       image_url,
+      user_id,
       message: 'Artwork uploaded successfully'
     });
   });
@@ -168,52 +186,72 @@ app.post('/api/artworks', upload.single('image'), (req, res) => {
 
 // Update artwork
 app.put('/api/artworks/:id', upload.single('image'), (req, res) => {
-  const { title, description, price, artist_name, artist_email } = req.body;
+  const { title, description, price, artist_name, artist_email, user_id } = req.body;
   const artworkId = req.params.id;
   
-  let sql, params;
-  
-  if (req.file) {
-    // New image provided
-    const image_url = `/uploads/${req.file.filename}`;
-    sql = `
-      UPDATE artworks 
-      SET title = ?, description = ?, price = ?, artist_name = ?, artist_email = ?, image_url = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `;
-    params = [title, description, price, artist_name, artist_email, image_url, artworkId];
-  } else {
-    // No new image
-    sql = `
-      UPDATE artworks 
-      SET title = ?, description = ?, price = ?, artist_name = ?, artist_email = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `;
-    params = [title, description, price, artist_name, artist_email, artworkId];
-  }
-  
-  db.run(sql, params, function(err) {
+  // First check if the artwork belongs to the user
+  const checkSql = 'SELECT user_id FROM artworks WHERE id = ?';
+  db.get(checkSql, [artworkId], (err, row) => {
     if (err) {
-      if (req.file) {
-        // Delete uploaded file if database update fails
-        fs.unlinkSync(path.join(uploadsDir, req.file.filename));
-      }
       res.status(500).json({ error: err.message });
       return;
     }
     
-    if (this.changes === 0) {
+    if (!row) {
       res.status(404).json({ error: 'Artwork not found' });
       return;
     }
     
-    res.json({ message: 'Artwork updated successfully' });
+    if (row.user_id !== user_id) {
+      res.status(403).json({ error: 'You can only update your own artworks' });
+      return;
+    }
+    
+    let sql, params;
+    
+    if (req.file) {
+      // New image provided
+      const image_url = `/uploads/${req.file.filename}`;
+      sql = `
+        UPDATE artworks 
+        SET title = ?, description = ?, price = ?, artist_name = ?, artist_email = ?, image_url = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `;
+      params = [title, description, price, artist_name, artist_email, image_url, artworkId];
+    } else {
+      // No new image
+      sql = `
+        UPDATE artworks 
+        SET title = ?, description = ?, price = ?, artist_name = ?, artist_email = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `;
+      params = [title, description, price, artist_name, artist_email, artworkId];
+    }
+    
+    db.run(sql, params, function(err) {
+      if (err) {
+        if (req.file) {
+          // Delete uploaded file if database update fails
+          fs.unlinkSync(path.join(uploadsDir, req.file.filename));
+        }
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      
+      if (this.changes === 0) {
+        res.status(404).json({ error: 'Artwork not found' });
+        return;
+      }
+      
+      res.json({ message: 'Artwork updated successfully' });
+    });
   });
 });
 
 // Delete artwork
 app.delete('/api/artworks/:id', (req, res) => {
-  const sql = 'SELECT image_url FROM artworks WHERE id = ?';
+  const { user_id } = req.query;
+  const sql = 'SELECT image_url, user_id FROM artworks WHERE id = ?';
   
   db.get(sql, [req.params.id], (err, row) => {
     if (err) {
@@ -223,6 +261,12 @@ app.delete('/api/artworks/:id', (req, res) => {
     
     if (!row) {
       res.status(404).json({ error: 'Artwork not found' });
+      return;
+    }
+    
+    // Check if user owns this artwork
+    if (row.user_id !== user_id) {
+      res.status(403).json({ error: 'You can only delete your own artworks' });
       return;
     }
     
