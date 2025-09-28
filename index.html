@@ -1344,94 +1344,41 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   });
   
   </script>
-    <script>
 
-      // --- LOGOUT LOGIC ---
-  document.addEventListener("DOMContentLoaded", () => {
-  const logoutBtns = [
-    document.getElementById("logout-btn"),
-    document.getElementById("logout-btn-mobile")
-  ].filter(Boolean); // remove nulls if one button missing
+  <script>
+    // Logout Logic
+    document.addEventListener("DOMContentLoaded", () => {
+      const logoutBtns = [
+        document.getElementById("logout-btn"),
+        document.getElementById("logout-btn-mobile")
+      ].filter(Boolean);
 
-  const modal = document.getElementById("logoutModal");
-  const confirmBtn = document.getElementById("confirmLogout");
-  const cancelBtn = document.getElementById("cancelLogout");
+      const modal = document.getElementById("logoutModal");
+      const confirmBtn = document.getElementById("confirmLogout");
+      const cancelBtn = document.getElementById("cancelLogout");
 
-  logoutBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal.classList.remove("hidden");
-    });
-  });
-
-  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
-  confirmBtn.addEventListener("click", () => {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "auth.html";
-  });
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden");
-  });
-});
-
-</script>
-
-    </script>
-
-  />
-  <button 
-    type="submit" 
-    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
-  >
-    Subscribe
-  </button>
-  </form>
-        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
-      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
-    </div>
-  </div>
-</footer>
-<!-- Logout Confirmation Modal -->
-<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
-  <div class="modal-content">
-    <h2 class="text-xl font-semibold">Confirm Logout</h2>
-    <p class="mt-3">Are you sure you want to log out?</p>
-    <div class="flex justify-center gap-4 mt-6">
-      <button id="confirmLogout">Yes, Logout</button>
-      <button id="cancelLogout">Cancel</button>
-    </div>
-  </div>
-</div>
-
-
-    <script>
-      // --- LOGOUT LOGIC ---
-      const logoutBtn = document.getElementById("logout-btn");
-
-      if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-          // Clear the authentication flag from localStorage
-          localStorage.removeItem("isLoggedIn");
-          // Redirect the user back to the authentication page
-          window.location.href = "auth.html";
+      logoutBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          modal.classList.remove("hidden");
         });
-      }
-    </script>
+      });
 
-    <script src="theme-toggle.js"></script>
+      cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+      confirmBtn.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "auth.html";
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.add("hidden");
+      });
+    });
+  </script>
+
+  <script src="theme-toggle.js"></script>
     
-    <script>
+  <script>
     // Load artworks dynamically
     async function loadArtworks() {
       try {
@@ -1488,77 +1435,43 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
 
     // Load artworks when page loads
     document.addEventListener('DOMContentLoaded', loadArtworks);
+  </script>
 
-    // Backup inline theme toggle functionality
+  <script>
+    // Inline theme toggle backup
     (function() {
       'use strict';
       
       function initInlineTheme() {
-        console.log('Initializing inline theme system...');
-        
         const themeToggle = document.getElementById('theme-toggle');
         const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const mobileThemeIcon = document.getElementById('mobile-theme-icon');
         const htmlElement = document.documentElement;
         
-        if (!themeToggle) {
-          console.log('Theme toggle button not found!');
-          return;
-        }
+        if (!themeToggle) return;
         
-        // Get current theme or default to light
         let currentTheme = localStorage.getItem('theme') || 'light';
         htmlElement.setAttribute('data-theme', currentTheme);
         
         function updateIcons(theme) {
-          const isDark = theme === 'dark';
-          const iconClass = isDark ? 'fa-sun' : 'fa-moon';
-          
-          if (themeIcon) {
-            themeIcon.className = `fas ${iconClass} text-lg`;
-          }
-          if (mobileThemeIcon) {
-            mobileThemeIcon.className = `fas ${iconClass} text-lg`;
-          }
+          const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+          if (themeIcon) themeIcon.className = `fas ${iconClass} text-lg`;
+          if (mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass} text-lg`;
         }
         
         function toggleTheme() {
-          console.log('Toggling theme...');
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          currentTheme = newTheme;
-          
-          htmlElement.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateIcons(newTheme);
-          
-          console.log('Theme switched to:', newTheme);
+          currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlElement.setAttribute('data-theme', currentTheme);
+          localStorage.setItem('theme', currentTheme);
+          updateIcons(currentTheme);
         }
         
-        // Set initial icons
         updateIcons(currentTheme);
-        
-        // Add click listeners
-        themeToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('Desktop theme button clicked');
-          toggleTheme();
-        });
-        
-        if (mobileThemeToggle) {
-          mobileThemeToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Mobile theme button clicked');
-            toggleTheme();
-          });
-        }
-        
-        console.log('Inline theme toggle initialized successfully');
+        themeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
       }
       
-      // Initialize when DOM is ready
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initInlineTheme);
       } else {
@@ -1566,22 +1479,22 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     })();
 
-    document.addEventListener('visibilitychange', function () {
-            if (document.visibilityState === 'visible') {
-                document.title = 'Kala.ficial - Your Virtual Art Gallery';
-            } else {
-                document.title = 'Come back to Website';
-            }
-        });
+    // Title change on visibility
+    document.addEventListener('visibilitychange', function() {
+      document.title = document.visibilityState === 'visible' ? 
+                       'Kala.ficial - Your Virtual Art Gallery' : 
+                       'Come back to Website';
+    });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const loadingScreen = document.getElementById("loading-screen");
-        
-            // Set a timeout to hide the loading screen
-            setTimeout(() => {
-                loadingScreen.classList.add("hidden");
-            }, 7000); 
-        });
-    </script>
+    // Loading screen hide
+    document.addEventListener("DOMContentLoaded", function () {
+      const loadingScreen = document.getElementById("loading-screen");
+      if (loadingScreen) {
+        setTimeout(() => loadingScreen.classList.add("hidden"), 7000);
+      }
+    });
+  </script>
+  
+  <script src="assets/js/card-hover-home.js"></script>
   </body>
 </html>
