@@ -1,1774 +1,2048 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KALA.Ficial Website</title>
-    <script>
-      if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.replace("auth.html"); 
-      }
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      rel="stylesheet"
-    />
-   
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KALA.Ficial Website</title>
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.replace("auth.html");
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
     }
+
     /* Animated background shapes */
     .animated-shape {
-     
+
       border-radius: 50%;
       opacity: 0.5;
       animation: float 6s ease-in-out infinite;
     }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
     }
+
     .text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* Custom animation speeds */
-@keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-@keyframes bounce-fast {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes spin-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
-.animate-bounce-fast { animation: bounce-fast 3s ease-in-out infinite; }
-.animate-spin-slow { animation: spin-slow 20s linear infinite; }
- .floating-shape {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    animation: float 10s ease-in-out infinite;
-  }
-
-  .floating-shape:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; }
-  .floating-shape:nth-child(2) { top: 30%; left: 70%; animation-duration: 15s; }
-  .floating-shape:nth-child(3) { top: 60%; left: 40%; animation-duration: 18s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(15px); }
-  }
-  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)} }
-.animate-float{animation:float 10s ease-in-out infinite;}
-.animate-float-slow{animation:float 15s ease-in-out infinite;}
-.floating-shape {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    animation: float 12s ease-in-out infinite;
-  }
-
-  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
-  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
-  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(15px); }
-  }
-  .floating-shape {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    animation: float 12s ease-in-out infinite;
-  }
-
-  .floating-shape:nth-child(1) { top: 10%; left: 15%; animation-duration: 12s; }
-  .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
-  .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(15px); }
-  }
-
-  /* Read More button functionality */
-  .read-more-btn {
-    cursor: pointer;
-  }
-   .nav-link {
-    position: relative;
-    padding: 6px 0;
-    transition: color 0.3s ease;
-  }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -2px;
-    left: 0;
-    background: linear-gradient(to right, #6366f1, #a855f7);
-    border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-  .nav-link:hover {
-    color: #111827;
-  }
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  .nav-link.active {
-    color: #111827;
-    font-weight: 600;
-  }
-  .nav-link.active::after {
-    width: 100%;
-  }
-  /* Mobile animation */
-  #mobile-menu {
-    animation: slideDown 0.4s ease forwards;
-  }
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-12px) translateX(8px); }
-}
-@keyframes float-medium {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-18px) translateX(-10px); }
-}
-@keyframes float-fast {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-25px) translateX(12px); }
-}
-
-.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
-.animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
-.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
-
-/* Theme Toggle Styles */
-:root {
-  --primary-bg: #ffffff;
-  --secondary-bg: #f8fafc;
-  --primary-text: #1a202c;
-  --secondary-text: #4a5568;
-  --accent-color: #8b5cf6;
-  --border-color: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] {
-  --primary-bg: #1a202c;
-  --secondary-bg: #2d3748;
-  --primary-text: #f7fafc;
-  --secondary-text: #e2e8f0;
-  --accent-color: #9f7aea;
-  --border-color: #4a5568;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-}
-
-/* Theme Toggle Styles */
-:root {
-  --primary-bg: #ffffff;
-  --secondary-bg: #f8fafc;
-  --primary-text: #1a202c;
-  --secondary-text: #4a5568;
-  --accent-color: #8b5cf6;
-  --border-color: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] {
-  --primary-bg: #1a202c;
-  --secondary-bg: #2d3748;
-  --primary-text: #f7fafc;
-  --secondary-text: #e2e8f0;
-  --accent-color: #9f7aea;
-  --border-color: #4a5568;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-}
-
-/* Theme toggle button styles with higher specificity */
-.theme-toggle {
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 3rem !important;
-  height: 3rem !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(16px) !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-  z-index: 10 !important;
-}
-
-[data-theme="dark"] .theme-toggle {
-  background-color: rgba(75, 85, 99, 0.9) !important;
-  border-color: rgba(156, 163, 175, 0.5) !important;
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-  background-color: rgba(55, 65, 81, 0.9) !important;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1) !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-}
-
-.theme-toggle i {
-  color: #374151 !important;
-  transition: all 0.3s ease !important;
-  font-size: 1.1rem !important;
-}
-
-[data-theme="dark"] .theme-toggle i {
-  color: #fcd34d !important;
-}
-
-/* Apply theme to body and main elements */
-[data-theme="dark"] body {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
-  color: #f7fafc !important;
-}
-
-[data-theme="dark"] .bg-gradient-to-r {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
-}
-
-/* Header theme styles */
-[data-theme="dark"] header {
-  background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
-  backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
-}
-
-/* Comprehensive text color fixes for dark mode */
-[data-theme="dark"] .text-gray-900,
-[data-theme="dark"] .text-gray-800,
-[data-theme="dark"] .text-gray-700,
-[data-theme="dark"] .text-black {
-  color: #f7fafc !important;
-}
-
-[data-theme="dark"] .text-gray-600,
-[data-theme="dark"] .text-gray-500 {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .text-gray-400 {
-  color: #cbd5e0 !important;
-}
-
-/* Navigation links in dark mode */
-[data-theme="dark"] .nav-link {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .nav-link:hover {
-  color: #f7fafc !important;
-}
-
-/* Mobile menu theme with better visibility */
-[data-theme="dark"] #mobile-menu {
-  background: rgba(26, 32, 44, 0.98) !important;
-  backdrop-filter: blur(20px) !important;
-  border-top: 1px solid rgba(156, 163, 175, 0.2) !important;
-}
-
-[data-theme="dark"] .border-gray-200 {
-  border-color: #4a5568 !important;
-}
-
-/* Cards and content sections with better contrast */
-[data-theme="dark"] .bg-white,
-[data-theme="dark"] .bg-gray-50,
-[data-theme="dark"] .bg-gray-100 {
-  background-color: rgba(45, 55, 72, 0.9) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(75, 85, 99, 0.3) !important;
-}
-
-[data-theme="dark"] .bg-white\/95 {
-  background-color: rgba(45, 55, 72, 0.98) !important;
-}
-
-/* Hero section and main content areas */
-[data-theme="dark"] section {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .bg-gradient-to-b {
-  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6), rgba(26, 32, 44, 0.9)) !important;
-}
-
-/* Floating shapes and animations in dark mode */
-[data-theme="dark"] .floating-shape,
-[data-theme="dark"] .animated-shape {
-  opacity: 0.06 !important;
-}
-
-/* All text elements - comprehensive coverage */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2, 
-[data-theme="dark"] h3, 
-[data-theme="dark"] h4, 
-[data-theme="dark"] h5, 
-[data-theme="dark"] h6 {
-  color: #f7fafc !important;
-}
-
-[data-theme="dark"] p,
-[data-theme="dark"] span,
-[data-theme="dark"] div:not(.theme-toggle),
-[data-theme="dark"] li,
-[data-theme="dark"] td,
-[data-theme="dark"] th {
-  color: #e2e8f0 !important;
-}
-
-/* Links and interactive elements */
-[data-theme="dark"] a:not(.nav-link):not(button) {
-  color: #93c5fd !important;
-}
-
-[data-theme="dark"] a:not(.nav-link):not(button):hover {
-  color: #dbeafe !important;
-}
-
-/* Button text visibility */
-[data-theme="dark"] button:not(.theme-toggle) {
-  color: #f7fafc !important;
-}
-
-/* Form elements */
-[data-theme="dark"] input,
-[data-theme="dark"] textarea,
-[data-theme="dark"] select {
-  background-color: rgba(45, 55, 72, 0.8) !important;
-  color: #f7fafc !important;
-  border-color: rgba(75, 85, 99, 0.5) !important;
-}
-
-/* Button styling improvements for dark theme */
-[data-theme="dark"] .hover\:from-purple-600:hover {
-  background: linear-gradient(to right, #805ad5, #667eea) !important;
-}
-
-/* Text content styling */
-[data-theme="dark"] .text-white {
-  color: #ffffff !important;
-}
-
-/* Ensure all text is visible */
-[data-theme="dark"] h1, 
-[data-theme="dark"] h2, 
-[data-theme="dark"] h3, 
-[data-theme="dark"] h4, 
-[data-theme="dark"] h5, 
-[data-theme="dark"] h6 {
-  color: #f7fafc !important;
-}
-
-[data-theme="dark"] p {
-  color: #e2e8f0 !important;
-}
-
-/* Override any potential conflicts with specific text classes */
-[data-theme="dark"] .text-4xl,
-[data-theme="dark"] .text-3xl,
-[data-theme="dark"] .text-2xl,
-[data-theme="dark"] .text-xl,
-[data-theme="dark"] .text-lg,
-[data-theme="dark"] .text-base,
-[data-theme="dark"] .text-sm,
-[data-theme="dark"] .text-xs {
-  color: inherit !important;
-}
-
-/* Catch-all for any remaining text that might be invisible */
-[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
-  color: inherit !important;
-}
-
-/* Force visibility for any potentially invisible elements */
-[data-theme="dark"] [style*="color: #"] {
-  color: #e2e8f0 !important;
-}
-
-/* Main hero heading styling for dark mode */
-[data-theme="dark"] h1.text-5xl,
-[data-theme="dark"] h1.text-6xl {
-  color: #ffffff !important;
-}
-
-/* Remove gradient background from main heading text in dark mode */
-[data-theme="dark"] .bg-gradient-to-r.from-yellow-400.via-red-400.to-pink-500 {
-  background: none !important;
-  color: #ffffff !important;
-  -webkit-background-clip: unset !important;
-  background-clip: unset !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-/* Alternative selector to ensure the gradient text becomes white */
-[data-theme="dark"] .text-transparent {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
-}
-
-/* Ensure smooth transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Logout Modal Base */
-#logoutModal .modal-content {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 22rem;
-  width: 100%;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-/* Heading + text */
-#logoutModal h2 {
-  color: var(--primary-text);
-}
-#logoutModal p {
-  color: var(--secondary-text);
-}
-
-/* Buttons */
-#confirmLogout {
-  background: linear-gradient(to right, #ef4444, #ec4899); /* red → pink */
-  color: #fff;
-  font-weight: 600;
-  border-radius: 9999px;
-  padding: 0.5rem 1.25rem;
-  transition: all 0.3s ease;
-}
-#confirmLogout:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-#cancelLogout {
-  background-color: var(--secondary-bg);
-  color: var(--primary-text);
-  border-radius: 9999px;
-  padding: 0.5rem 1.25rem;
-  transition: all 0.3s ease;
-}
-#cancelLogout:hover {
-  background-color: var(--border-color);
-}
-
-/*Loading page*/
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to right, #a78bfa, #f472b6, #6366f1);
-    color: #f3f4f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#loading-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader {
-    text-align: center;
-}
-
-.loader i {
-    font-size: 4.5rem;
-    animation: spin 2s linear infinite;
-}
-
-.loader h2 {
-    margin-top: 1.5rem;
-    font-size: 2.1rem;
-}
-
-.dots::after {
-    content: "";
-    display: inline-block;
-    animation: dots 1.5s steps(5, end) infinite;
-}
-
-@keyframes dots {
-    0% {
-        content: "";
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
-    20% {
-        content: ".";
-    }
-    40% {
-        content: "..";
-    }
-    60% {
-        content: "...";
-    }
-    80%{
-        content: "....";
-    }
-    100% {
-        content: "";
-    }
-}
 
-/* Spin Animation */
-@keyframes spin {
-    from {
+    /* Custom animation speeds */
+    @keyframes bounce-slow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes bounce-fast {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes spin-slow {
+      0% {
         transform: rotate(0deg);
-    }
-    to {
+      }
+
+      100% {
         transform: rotate(360deg);
+      }
     }
-}
 
-/* This is the base state (no rotation) */
-.exhibition-item:hover,
-.artwork-item:hover,
-.artist-item:hover,
-.flex.flex-col.items-center:hover {
-  /* We use CSS variables for the rotation, which JS will update */
-  transform: perspective(1000px) 
-             rotateX(var(--rotateX, 0deg)) 
-             rotateY(var(--rotateY, 0deg)) 
-             scale(1.03); /* Keep your scale effect */
-  filter: brightness(1.05) saturate(1.1);
-}
+    .animate-bounce-slow {
+      animation: bounce-slow 6s ease-in-out infinite;
+    }
 
-/* Add this new rule for a smooth transition back to center when the mouse leaves */
-.exhibition-item,
-.artwork-item,
-.artist-item,
-.flex.flex-col.items-center {
-  --rotateX: 0deg;
-  --rotateY: 0deg;
-  /* Add the new variables to your existing transition */
-  transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease, 
-              --rotateX 0.6s ease-out, --rotateY 0.6s ease-out; 
-}
-/* Layered neon shadow glow */
-/* Layered neon shadow glow - lighter overlay */
-.exhibition-item::before,
-.artwork-item::before,
-.artist-item::before,
-.flex.flex-col.items-center::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  background: linear-gradient(45deg, rgba(139,92,246,0.12), rgba(99,102,241,0.12)); /* softer overlay */
-  opacity: 0;
-  transform: scale(0.9) rotate(0deg);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-  z-index: 1;
-}
+    .animate-bounce-fast {
+      animation: bounce-fast 3s ease-in-out infinite;
+    }
 
-.exhibition-item:hover::before,
-.artwork-item:hover::before,
-.artist-item:hover::before,
-.flex.flex-col.items-center:hover::before {
-  opacity: 0.8; /* keep it noticeable but softer */
-  transform: scale(1.05) rotate(3deg);
-}
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 30%;
+      left: 70%;
+      animation-duration: 15s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 60%;
+      left: 40%;
+      animation-duration: 18s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-20px)
+      }
+    }
+
+    .animate-float {
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+      animation: float 15s ease-in-out infinite;
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 40%;
+      left: 75%;
+      animation-duration: 16s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 70%;
+      left: 30%;
+      animation-duration: 20s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 40%;
+      left: 75%;
+      animation-duration: 16s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 70%;
+      left: 30%;
+      animation-duration: 20s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    /* Read More button functionality */
+    .read-more-btn {
+      cursor: pointer;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #111827;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Mobile animation */
+    #mobile-menu {
+      animation: slideDown 0.4s ease forwards;
+    }
+
+    @keyframes float-slow {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-12px) translateX(8px);
+      }
+    }
+
+    @keyframes float-medium {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-18px) translateX(-10px);
+      }
+    }
+
+    @keyframes float-fast {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-25px) translateX(12px);
+      }
+    }
+
+    .animate-float-slow {
+      animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .animate-float-medium {
+      animation: float-medium 6s ease-in-out infinite;
+    }
+
+    .animate-float-fast {
+      animation: float-fast 4s ease-in-out infinite;
+    }
+
+    /* Theme Toggle Styles */
+    :root {
+      --primary-bg: #ffffff;
+      --secondary-bg: #f8fafc;
+      --primary-text: #1a202c;
+      --secondary-text: #4a5568;
+      --accent-color: #8b5cf6;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --primary-bg: #1a202c;
+      --secondary-bg: #2d3748;
+      --primary-text: #f7fafc;
+      --secondary-text: #e2e8f0;
+      --accent-color: #9f7aea;
+      --border-color: #4a5568;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Theme Toggle Styles */
+    :root {
+      --primary-bg: #ffffff;
+      --secondary-bg: #f8fafc;
+      --primary-text: #1a202c;
+      --secondary-text: #4a5568;
+      --accent-color: #8b5cf6;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --primary-bg: #1a202c;
+      --secondary-bg: #2d3748;
+      --primary-text: #f7fafc;
+      --secondary-text: #e2e8f0;
+      --accent-color: #9f7aea;
+      --border-color: #4a5568;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Theme toggle button styles with higher specificity */
+    .theme-toggle {
+      position: relative !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 3rem !important;
+      height: 3rem !important;
+      background-color: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(16px) !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+      z-index: 10 !important;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background-color: rgba(75, 85, 99, 0.9) !important;
+      border-color: rgba(156, 163, 175, 0.5) !important;
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+      background-color: rgba(55, 65, 81, 0.9) !important;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1) !important;
+      background-color: rgba(255, 255, 255, 1) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .theme-toggle i {
+      color: #374151 !important;
+      transition: all 0.3s ease !important;
+      font-size: 1.1rem !important;
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+      color: #fcd34d !important;
+    }
+
+    /* Apply theme to body and main elements */
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] .bg-gradient-to-r {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+    }
+
+    /* Header theme styles */
+    [data-theme="dark"] header {
+      background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
+    }
+
+    /* Comprehensive text color fixes for dark mode */
+    [data-theme="dark"] .text-gray-900,
+    [data-theme="dark"] .text-gray-800,
+    [data-theme="dark"] .text-gray-700,
+    [data-theme="dark"] .text-black {
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] .text-gray-600,
+    [data-theme="dark"] .text-gray-500 {
+      color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .text-gray-400 {
+      color: #cbd5e0 !important;
+    }
+
+    /* Navigation links in dark mode */
+    [data-theme="dark"] .nav-link {
+      color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .nav-link:hover {
+      color: #f7fafc !important;
+    }
+
+    /* Mobile menu theme with better visibility */
+    [data-theme="dark"] #mobile-menu {
+      background: rgba(26, 32, 44, 0.98) !important;
+      backdrop-filter: blur(20px) !important;
+      border-top: 1px solid rgba(156, 163, 175, 0.2) !important;
+    }
+
+    [data-theme="dark"] .border-gray-200 {
+      border-color: #4a5568 !important;
+    }
+
+    /* Cards and content sections with better contrast */
+    [data-theme="dark"] .bg-white,
+    [data-theme="dark"] .bg-gray-50,
+    [data-theme="dark"] .bg-gray-100 {
+      background-color: rgba(45, 55, 72, 0.9) !important;
+      backdrop-filter: blur(10px) !important;
+      border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    }
+
+    [data-theme="dark"] .bg-white\/95 {
+      background-color: rgba(45, 55, 72, 0.98) !important;
+    }
+
+    /* Hero section and main content areas */
+    [data-theme="dark"] section {
+      color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .bg-gradient-to-b {
+      background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6), rgba(26, 32, 44, 0.9)) !important;
+    }
+
+    /* Floating shapes and animations in dark mode */
+    [data-theme="dark"] .floating-shape,
+    [data-theme="dark"] .animated-shape {
+      opacity: 0.06 !important;
+    }
+
+    /* All text elements - comprehensive coverage */
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5,
+    [data-theme="dark"] h6 {
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] p,
+    [data-theme="dark"] span,
+    [data-theme="dark"] div:not(.theme-toggle),
+    [data-theme="dark"] li,
+    [data-theme="dark"] td,
+    [data-theme="dark"] th {
+      color: #e2e8f0 !important;
+    }
+
+    /* Links and interactive elements */
+    [data-theme="dark"] a:not(.nav-link):not(button) {
+      color: #93c5fd !important;
+    }
+
+    [data-theme="dark"] a:not(.nav-link):not(button):hover {
+      color: #dbeafe !important;
+    }
+
+    /* Button text visibility */
+    [data-theme="dark"] button:not(.theme-toggle) {
+      color: #f7fafc !important;
+    }
+
+    /* Form elements */
+    [data-theme="dark"] input,
+    [data-theme="dark"] textarea,
+    [data-theme="dark"] select {
+      background-color: rgba(45, 55, 72, 0.8) !important;
+      color: #f7fafc !important;
+      border-color: rgba(75, 85, 99, 0.5) !important;
+    }
+
+    /* Button styling improvements for dark theme */
+    [data-theme="dark"] .hover\:from-purple-600:hover {
+      background: linear-gradient(to right, #805ad5, #667eea) !important;
+    }
+
+    /* Text content styling */
+    [data-theme="dark"] .text-white {
+      color: #ffffff !important;
+    }
+
+    /* Ensure all text is visible */
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4,
+    [data-theme="dark"] h5,
+    [data-theme="dark"] h6 {
+      color: #f7fafc !important;
+    }
+
+    [data-theme="dark"] p {
+      color: #e2e8f0 !important;
+    }
+
+    /* Override any potential conflicts with specific text classes */
+    [data-theme="dark"] .text-4xl,
+    [data-theme="dark"] .text-3xl,
+    [data-theme="dark"] .text-2xl,
+    [data-theme="dark"] .text-xl,
+    [data-theme="dark"] .text-lg,
+    [data-theme="dark"] .text-base,
+    [data-theme="dark"] .text-sm,
+    [data-theme="dark"] .text-xs {
+      color: inherit !important;
+    }
+
+    /* Catch-all for any remaining text that might be invisible */
+    [data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+      color: inherit !important;
+    }
+
+    /* Force visibility for any potentially invisible elements */
+    [data-theme="dark"] [style*="color: #"] {
+      color: #e2e8f0 !important;
+    }
+
+    /* Main hero heading styling for dark mode */
+    [data-theme="dark"] h1.text-5xl,
+    [data-theme="dark"] h1.text-6xl {
+      color: #ffffff !important;
+    }
+
+    /* Remove gradient background from main heading text in dark mode */
+    [data-theme="dark"] .bg-gradient-to-r.from-yellow-400.via-red-400.to-pink-500 {
+      background: none !important;
+      color: #ffffff !important;
+      -webkit-background-clip: unset !important;
+      background-clip: unset !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    /* Alternative selector to ensure the gradient text becomes white */
+    [data-theme="dark"] .text-transparent {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      background: none !important;
+    }
+
+    /* Ensure smooth transitions */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Logout Modal Base */
+    #logoutModal .modal-content {
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 22rem;
+      width: 100%;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Heading + text */
+    #logoutModal h2 {
+      color: var(--primary-text);
+    }
+
+    #logoutModal p {
+      color: var(--secondary-text);
+    }
+
+    /* Buttons */
+    #confirmLogout {
+      background: linear-gradient(to right, #ef4444, #ec4899);
+      /* red → pink */
+      color: #fff;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    #confirmLogout:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    #cancelLogout {
+      background-color: var(--secondary-bg);
+      color: var(--primary-text);
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    #cancelLogout:hover {
+      background-color: var(--border-color);
+    }
+
+    /*Loading page*/
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to right, #a78bfa, #f472b6, #6366f1);
+      color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      text-align: center;
+    }
+
+    .loader i {
+      font-size: 4.5rem;
+      animation: spin 2s linear infinite;
+    }
+
+    .loader h2 {
+      margin-top: 1.5rem;
+      font-size: 2.1rem;
+    }
+
+    .dots::after {
+      content: "";
+      display: inline-block;
+      animation: dots 1.5s steps(5, end) infinite;
+    }
+
+    @keyframes dots {
+      0% {
+        content: "";
+      }
+
+      20% {
+        content: ".";
+      }
+
+      40% {
+        content: "..";
+      }
+
+      60% {
+        content: "...";
+      }
+
+      80% {
+        content: "....";
+      }
+
+      100% {
+        content: "";
+      }
+    }
+
+    /* Spin Animation */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* This is the base state (no rotation) */
+    .exhibition-item:hover,
+    .artwork-item:hover,
+    .artist-item:hover,
+    .flex.flex-col.items-center:hover {
+      /* We use CSS variables for the rotation, which JS will update */
+      transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) scale(1.03);
+      /* Keep your scale effect */
+      filter: brightness(1.05) saturate(1.1);
+    }
+
+    /* Add this new rule for a smooth transition back to center when the mouse leaves */
+    .exhibition-item,
+    .artwork-item,
+    .artist-item,
+    .flex.flex-col.items-center {
+      --rotateX: 0deg;
+      --rotateY: 0deg;
+      /* Add the new variables to your existing transition */
+      transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease,
+        --rotateX 0.6s ease-out, --rotateY 0.6s ease-out;
+    }
+
+    /* Layered neon shadow glow */
+    /* Layered neon shadow glow - lighter overlay */
+    .exhibition-item::before,
+    .artwork-item::before,
+    .artist-item::before,
+    .flex.flex-col.items-center::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      background: linear-gradient(45deg, rgba(139, 92, 246, 0.12), rgba(99, 102, 241, 0.12));
+      /* softer overlay */
+      opacity: 0;
+      transform: scale(0.9) rotate(0deg);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .exhibition-item:hover::before,
+    .artwork-item:hover::before,
+    .artist-item:hover::before,
+    .flex.flex-col.items-center:hover::before {
+      opacity: 0.8;
+      /* keep it noticeable but softer */
+      transform: scale(1.05) rotate(3deg);
+    }
 
 
-/* Image zoom and subtle tilt */
-.exhibition-item img,
-.artwork-item img,
-.artist-item img,
-.flex.flex-col.items-center img {
-  transition: transform 0.6s ease, filter 0.6s ease;
-  z-index: 2;
-}
+    /* Image zoom and subtle tilt */
+    .exhibition-item img,
+    .artwork-item img,
+    .artist-item img,
+    .flex.flex-col.items-center img {
+      transition: transform 0.6s ease, filter 0.6s ease;
+      z-index: 2;
+    }
 
-.exhibition-item:hover img,
-.artwork-item:hover img,
-.artist-item:hover img,
-.flex.flex-col.items-center:hover img {
-  transform: scale(1.1) rotate(1.5deg);
-  filter: brightness(1.1);
-}
+    .exhibition-item:hover img,
+    .artwork-item:hover img,
+    .artist-item:hover img,
+    .flex.flex-col.items-center:hover img {
+      transform: scale(1.1) rotate(1.5deg);
+      filter: brightness(1.1);
+    }
 
-/* Neon glow on text */
-.exhibition-item h3,
-.artwork-item h3,
-.artist-item h3,
-.flex.flex-col.items-center h4 {
-  transition: text-shadow 0.6s ease, color 0.6s ease;
-  position: relative;
-  z-index: 2;
-}
+    /* Neon glow on text */
+    .exhibition-item h3,
+    .artwork-item h3,
+    .artist-item h3,
+    .flex.flex-col.items-center h4 {
+      transition: text-shadow 0.6s ease, color 0.6s ease;
+      position: relative;
+      z-index: 2;
+    }
 
-.exhibition-item:hover h3,
-.artwork-item:hover h3,
-.artist-item:hover h3,
-.flex.flex-col.items-center:hover h4 {
-  text-shadow: 
-    0 0 4px rgba(139,92,246,0.6), 
-    0 0 8px rgba(99,102,241,0.4);
-  color: #b682ff; /* light but visible on dark overlay */
-}
+    .exhibition-item:hover h3,
+    .artwork-item:hover h3,
+    .artist-item:hover h3,
+    .flex.flex-col.items-center:hover h4 {
+      text-shadow:
+        0 0 4px rgba(139, 92, 246, 0.6),
+        0 0 8px rgba(99, 102, 241, 0.4);
+      color: #b682ff;
+      /* light but visible on dark overlay */
+    }
 
-/* Floating gradient streak animation */
-.exhibition-item::after,
-.artwork-item::after,
-.artist-item::after,
-.flex.flex-col.items-center::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  transform: rotate(30deg) translateX(-100%);
-  animation: streak 1.5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 2;
-}
+    /* Floating gradient streak animation */
+    .exhibition-item::after,
+    .artwork-item::after,
+    .artist-item::after,
+    .flex.flex-col.items-center::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      transform: rotate(30deg) translateX(-100%);
+      animation: streak 1.5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
 
-@keyframes streak {
-  0% { transform: rotate(30deg) translateX(-100%); opacity: 0; }
-  50% { opacity: 0.6; }
-  100% { transform: rotate(30deg) translateX(100%); opacity: 0; }
-}
+    @keyframes streak {
+      0% {
+        transform: rotate(30deg) translateX(-100%);
+        opacity: 0;
+      }
 
-/* Circle cards extra pop */
-.flex.flex-col.items-center:hover .w-44 {
-  transform: scale(1.15) rotate(-3deg);
-  box-shadow: 0 0 25px rgba(139,92,246,0.4), 0 0 50px rgba(99,102,241,0.2);
-}
+      50% {
+        opacity: 0.6;
+      }
 
-/* Quick-view / overlay content fade */
-.artwork-item .absolute,
-.artist-item .absolute {
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  z-index: 3;
-}
+      100% {
+        transform: rotate(30deg) translateX(100%);
+        opacity: 0;
+      }
+    }
 
-.artwork-item:hover .absolute,
-.artist-item:hover .absolute {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Contact Us Cards: enhanced hover effect */
-.mt-12.grid > div {
-  --rotateX: 0deg !important;
-  --rotateY: 0deg !important;
-  transform: none !important;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
-  position: relative;
-  z-index: 0;
-}
+    /* Circle cards extra pop */
+    .flex.flex-col.items-center:hover .w-44 {
+      transform: scale(1.15) rotate(-3deg);
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.4), 0 0 50px rgba(99, 102, 241, 0.2);
+    }
 
-.mt-12.grid > div:hover {
-  /* Lift and subtle scale */
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.06);
-  filter: brightness(1.05);
-  z-index: 1;
-}
+    /* Quick-view / overlay content fade */
+    .artwork-item .absolute,
+    .artist-item .absolute {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      z-index: 3;
+    }
 
-/* Add gentle glowing border pseudo-element */
-.mt-12.grid > div::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(108, 99, 255, 0.1));
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-  z-index: -1;
-}
+    .artwork-item:hover .absolute,
+    .artist-item:hover .absolute {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.mt-12.grid > div:hover::before {
-  opacity: 1;
-  transform: scale(1.05);
-}
+    /* Contact Us Cards: enhanced hover effect */
+    .mt-12.grid>div {
+      --rotateX: 0deg !important;
+      --rotateY: 0deg !important;
+      transform: none !important;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+      position: relative;
+      z-index: 0;
+    }
 
-/* Keep text and icons clear */
-.mt-12.grid > div h4,
-.mt-12.grid > div p,
-.mt-12.grid > div a,
-.mt-12.grid > div i {
-  color: var(--primary-text) !important;
-  text-shadow: none !important;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
+    .mt-12.grid>div:hover {
+      /* Lift and subtle scale */
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12), 0 6px 12px rgba(0, 0, 0, 0.06);
+      filter: brightness(1.05);
+      z-index: 1;
+    }
 
-/* Optional: subtle icon pop on hover */
-.mt-12.grid > div:hover i {
-  transform: scale(1.1);
-  color: #6C63FF; /* keeps the brand accent color */
-}
-/* Prevent any 3D tilt or scale on contact buttons */
-a[href*="wa.me"],
-#openCollabForm {
-  transform: none !important;   /* no rotation/scale */
-  --rotateX: 0deg !important;   /* override JS vars if applied */
-  --rotateY: 0deg !important;
-}
+    /* Add gentle glowing border pseudo-element */
+    .mt-12.grid>div::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(108, 99, 255, 0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-/* Optional: simple emboss effect on hover */
-a[href*="wa.me"]:hover,
-#openCollabForm:hover {
-  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.2),
-              inset -2px -2px 6px rgba(255,255,255,0.3);
-  transform: none !important; /* ensure no tilt or scaling */
-}
+    .mt-12.grid>div:hover::before {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Keep text and icons clear */
+    .mt-12.grid>div h4,
+    .mt-12.grid>div p,
+    .mt-12.grid>div a,
+    .mt-12.grid>div i {
+      color: var(--primary-text) !important;
+      text-shadow: none !important;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Optional: subtle icon pop on hover */
+    .mt-12.grid>div:hover i {
+      transform: scale(1.1);
+      color: #6C63FF;
+      /* keeps the brand accent color */
+    }
+
+    /* Prevent any 3D tilt or scale on contact buttons */
+    a[href*="wa.me"],
+    #openCollabForm {
+      transform: none !important;
+      /* no rotation/scale */
+      --rotateX: 0deg !important;
+      /* override JS vars if applied */
+      --rotateY: 0deg !important;
+    }
+
+    /* Optional: simple emboss effect on hover */
+    a[href*="wa.me"]:hover,
+    #openCollabForm:hover {
+      box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2),
+        inset -2px -2px 6px rgba(255, 255, 255, 0.3);
+      transform: none !important;
+      /* ensure no tilt or scaling */
+    }
   </style>
-  </head>
+</head>
 
 <body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
 
-<!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader">
-            <i class="fa-solid fa-spinner"></i>
-            <h2>Bringing Art to Life<span class="dots"></span></h2>
-        </div>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader">
+      <i class="fa-solid fa-spinner"></i>
+      <h2>Bringing Art to Life<span class="dots"></span></h2>
     </div>
-<!-- Navbar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
-  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-    
-    <!-- Logo -->
-    <a href="index.html" class="flex items-center space-x-3">
-      <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
-           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
-      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
-    </a>
-
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="exhibition.html" class="nav-link">Exhibition</a>
-      <a href="artwork.html" class="nav-link">Artwork</a>
-      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-      <a href="faq.html" class="nav-link">FAQ</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      
-      <!-- Theme Toggle Button -->
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-        <i id="theme-icon" class="fas fa-moon text-lg"></i>
-      </button>
-      
-          <button id="logout-btn"
-               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
-               bg-gradient-to-r from-indigo-500 to-purple-600 
-               hover:from-purple-600 hover:to-indigo-500 
-               transition-all duration-300 shadow-md hover:shadow-xl">
-        Log Out
-      </button>
-    </nav>
-
-    <!-- Mobile Hamburger -->
-    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
-      <i class="fas fa-bars"></i>
-    </button>
   </div>
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
-    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
-      <a href="#" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="exhibition.html" class="nav-link">Exhibition</a>
-      <a href="artwork.html" class="nav-link">Artwork</a>
-      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-      <a href="faq.html" class="nav-link">FAQ</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      
-      <!-- Mobile Theme Toggle -->
-      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-        <span class="text-gray-700">Theme</span>
-        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="assets/images/logo.png" alt="KALA.Ficial Logo"
+          class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+        <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="theme-icon" class="fas fa-moon text-lg"></i>
         </button>
-      </div>
-      
-      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+
+        <button id="logout-btn" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
-        Log Out
+          Log Out
+        </button>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+        <i class="fas fa-bars"></i>
       </button>
-    </nav>
-  </div>
-</header>
-<!-- Hero Section -->
-<section id="hero" 
-  class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+      <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+        <a href="#" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+
+        <!-- Mobile Theme Toggle -->
+        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+          <span class="text-gray-700">Theme</span>
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+          </button>
+        </div>
+
+        <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+          Log Out
+        </button>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section id="hero" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
   bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden pt-28" style="padding-top: 60px;">
 
-  <!-- Decorative Animated Blobs -->
-  <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
-  <div class="absolute bottom-20 right-16 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-2xl animate-ping"></div>
-  <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 blur-xl animate-bounce"></div>
-
-  <!-- Hero Content -->
-  <div class="z-10 text-center md:text-left md:w-1/2 space-y-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
-      Unleash Your <br>
-      <span class="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text text-transparent">
-        Creativity with KALA.Ficial
-      </span>
-    </h1>
-    <p class="text-lg md:text-xl text-gray-700 max-w-lg mx-auto md:mx-0">
-      A global platform for emerging artists. Showcase your artwork, 
-      collaborate with creators, and connect with exhibitions worldwide.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-      <a href="#explore" 
-         class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 
-         transition rounded-full font-semibold text-gray-900 shadow-lg hover:scale-105">
-        🎨 Explore Art
-      </a>
-      <a href="#join" 
-         class="px-8 py-3 border-2 border-gray-900 hover:bg-gray-900 hover:text-white 
-         transition rounded-full font-semibold text-gray-900 shadow-md hover:scale-105">
-        ✨ Join as Artist
-      </a>
+    <!-- Decorative Animated Blobs -->
+    <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-16 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-2xl animate-ping">
     </div>
-  </div>
-  <!-- Tiny Floating Blobs -->
-<div class="absolute top-40 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
-<div class="absolute top-30 left-1/3 w-2 h-2 bg-yellow-400 rounded-full opacity-60 animate-float-medium"></div>
-<div class="absolute top-1/2 left-1/4 w-3 h-3 bg-cyan-400 rounded-full opacity-80 animate-float-fast"></div>
-<div class="absolute top-1/3 right-1/4 w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
-<div class="absolute bottom-24 left-1/2 w-3 h-3 bg-indigo-400 rounded-full opacity-75 animate-float-medium"></div>
-<div class="absolute bottom-30 left-1/3 w-2 h-2 bg-red-400 rounded-full opacity-60 animate-float-fast"></div>
-<div class="absolute top-1/4 right-20 w-2.5 h-2.5 bg-purple-400 rounded-full opacity-70 animate-float-medium"></div>
-<div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
-<div class="absolute top-37 right-1/2 w-2 h-2 bg-yellow-300 rounded-full opacity-65 animate-float-fast"></div>
-<div class="absolute bottom-20 right-10 w-3 h-3 bg-teal-400 rounded-full opacity-70 animate-float-medium"></div>
-<!-- Floating Blobs Everywhere -->
-<!-- Top Area -->
-<div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
-<div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
-<div class="absolute top-20 right-1/3 w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-medium"></div>
-<div class="absolute top-12 right-20 w-2 h-2 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 blur-xl animate-bounce"></div>
 
-<!-- Middle Scatter -->
-<div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
-<div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
-<div class="absolute top-2/5 right-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
-<div class="absolute top-1/2 right-1/2 w-3 h-3 bg-yellow-300 rounded-full opacity-65 animate-float-medium"></div>
-<div class="absolute top-[20%] left-[45%] w-2 h-2 bg-teal-400 rounded-full opacity-70 animate-float-fast"></div>
-<div class="absolute top-[80%] left-[55%] w-2.5 h-2.5 bg-rose-400 rounded-full opacity-80 animate-float-slow"></div>
+    <!-- Hero Content -->
+    <div class="z-10 text-center md:text-left md:w-1/2 space-y-6">
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+        Unleash Your <br>
+        <span class="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text text-transparent">
+          Creativity with KALA.Ficial
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 max-w-lg mx-auto md:mx-0">
+        A global platform for emerging artists. Showcase your artwork,
+        collaborate with creators, and connect with exhibitions worldwide.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <a href="#explore" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 
+         transition rounded-full font-semibold text-gray-900 shadow-lg hover:scale-105">
+          🎨 Explore Art
+        </a>
+        <a href="#join" class="px-8 py-3 border-2 border-gray-900 hover:bg-gray-900 hover:text-white 
+         transition rounded-full font-semibold text-gray-900 shadow-md hover:scale-105">
+          ✨ Join as Artist
+        </a>
+      </div>
+    </div>
+    <!-- Tiny Floating Blobs -->
+    <div class="absolute top-40 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-30 left-1/3 w-2 h-2 bg-yellow-400 rounded-full opacity-60 animate-float-medium"></div>
+    <div class="absolute top-1/2 left-1/4 w-3 h-3 bg-cyan-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-1/3 right-1/4 w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute bottom-24 left-1/2 w-3 h-3 bg-indigo-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute bottom-30 left-1/3 w-2 h-2 bg-red-400 rounded-full opacity-60 animate-float-fast"></div>
+    <div class="absolute top-1/4 right-20 w-2.5 h-2.5 bg-purple-400 rounded-full opacity-70 animate-float-medium"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-3 h-3 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
+    <div class="absolute top-37 right-1/2 w-2 h-2 bg-yellow-300 rounded-full opacity-65 animate-float-fast"></div>
+    <div class="absolute bottom-20 right-10 w-3 h-3 bg-teal-400 rounded-full opacity-70 animate-float-medium"></div>
+    <!-- Floating Blobs Everywhere -->
+    <!-- Top Area -->
+    <div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
+    <div class="absolute top-20 right-1/3 w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-12 right-20 w-2 h-2 bg-green-400 rounded-full opacity-70 animate-float-slow"></div>
 
-<!-- Bottom Area -->
-<div class="absolute bottom-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-70 animate-float-medium"></div>
-<div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
-<div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow"></div>
-<div class="absolute bottom-10 right-20 w-3 h-3 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
-<div class="absolute bottom-14 left-10 w-2 h-2 bg-red-400 rounded-full opacity-65 animate-float-fast"></div>
-<!-- Left Dense Floating Blobs -->
-<div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
-<div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium"></div>
-<div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
-<div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
-<div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast"></div>
-<div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
-<div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
-<div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
-<div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
-<div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
-<div class="absolute top-[10%] left-[6%] w-2 h-2 bg-red-400 rounded-full opacity-80 animate-float-fast"></div>
-<div class="absolute top-[55%] left-[9%] w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-medium"></div>
-<div class="absolute top-[60%] left-[12%] w-3 h-3 bg-pink-300 rounded-full opacity-75 animate-float-slow"></div>
+    <!-- Middle Scatter -->
+    <div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
+    <div class="absolute top-2/5 right-1/4 w-2 h-2 bg-pink-500 rounded-full opacity-80 animate-float-slow"></div>
+    <div class="absolute top-1/2 right-1/2 w-3 h-3 bg-yellow-300 rounded-full opacity-65 animate-float-medium"></div>
+    <div class="absolute top-[20%] left-[45%] w-2 h-2 bg-teal-400 rounded-full opacity-70 animate-float-fast"></div>
+    <div class="absolute top-[80%] left-[55%] w-2.5 h-2.5 bg-rose-400 rounded-full opacity-80 animate-float-slow"></div>
+
+    <!-- Bottom Area -->
+    <div class="absolute bottom-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-70 animate-float-medium"></div>
+    <div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow">
+    </div>
+    <div class="absolute bottom-10 right-20 w-3 h-3 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute bottom-14 left-10 w-2 h-2 bg-red-400 rounded-full opacity-65 animate-float-fast"></div>
+    <!-- Left Dense Floating Blobs -->
+    <div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+    <div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast">
+    </div>
+    <div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
+    <div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[10%] left-[6%] w-2 h-2 bg-red-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[55%] left-[9%] w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-[60%] left-[12%] w-3 h-3 bg-pink-300 rounded-full opacity-75 animate-float-slow"></div>
 
 
-  
 
-  <!-- Hero Image -->
-  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center relative">
-    <img src="assets/images/homebg.png" 
-         alt="Artist Showcase" 
-         class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10">
-    <!-- Floating Accent Shape -->
-    <div class="absolute -top-6 -left-6 w-16 h-16 bg-purple-400 rounded-full opacity-60 animate-spin-slow"></div>
-    
-  </div>
-</section>
+
+    <!-- Hero Image -->
+    <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center relative">
+      <img src="assets/images/homebg.png" alt="Artist Showcase"
+        class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10">
+      <!-- Floating Accent Shape -->
+      <div class="absolute -top-6 -left-6 w-16 h-16 bg-purple-400 rounded-full opacity-60 animate-spin-slow"></div>
+
+    </div>
+  </section>
 
 
   <!-- Optional: Interactive Particle Canvas -->
   <canvas id="particles" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
   <section id="exhibition" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 
 bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
-  <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
-  <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
-  <!-- Hero Content -->
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-30"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-25"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-        Exhibition Information
-      </h2>
-      <p class="mt-2 text-gray-600">
-        Explore upcoming art exhibitions across India
-      </p>
-      <a
-        href="exhibition.html"
-        class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg"
-      >
-        More Info
-      </a>
+    <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+    <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+    <!-- Hero Content -->
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full pointer-events-none">
+      <span class="floating-shape bg-[#6C63FF] opacity-30"></span>
+      <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
+      <span class="floating-shape bg-[#06b6d4] opacity-25"></span>
     </div>
 
-    <!-- Exhibition Grid -->
-    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Card 1 -->
-      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
-        <div class="overflow-hidden">
-          <img
-            src="assets/images/eve1.jpg"
-            alt="Peepletree Art Gallery"
-            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
-            Peepletree Art Gallery, Bangalore
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080<br />
-            <strong>Date:</strong> 28th April 2024<br />
-            <strong>Time:</strong> 12:00-18:00 pm
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
-        <div class="overflow-hidden">
-          <img
-            src="assets/images/eve2.jpg"
-            alt="Avisar Art Gallery"
-            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
-            Avisar Art Gallery, Kolkata
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034<br />
-            <strong>Date:</strong> 30th May 2024<br />
-            <strong>Time:</strong> 15:00-20:00 pm
-          </p>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
-        <div class="overflow-hidden">
-          <img
-            src="assets/images/eve3.jpg"
-            alt="Raja Ravi Varma Art Gallery"
-            class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">
-            Raja Ravi Varma Art Gallery, Pune
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune, Maharashtra 411005<br />
-            <strong>Date:</strong> 20th June 2024<br />
-            <strong>Time:</strong> 15:00-20:00 pm
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="artwork-for-sale" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
-  <!-- Floating Background Shapes -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-        Artwork For Sale
-      </h2>
-      <p class="mt-2 text-gray-600">
-        Browse exclusive art pieces from talented artists
-      </p>
-      <a
-        href="artwork.html"
-        class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg"
-      >
-        More
-      </a>
-    </div>
-
-    <!-- Artwork Grid -->
-    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Artwork Card Template -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap1.jpg"
-          alt="Painting of Nature's Beauty"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <!-- Quick View Overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of Nature's Beauty</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Swati Kale</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> swatikale@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> Rs. 58,000/-</p>
-        </div>
-      </div>
-
-      <!-- Artwork Card 2 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap2.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-
-      <!-- Artwork Card 3 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/ap3.jpg"
-          alt="Painting of Buddha"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of Buddha</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Monica Gule</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> monicagule@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> Rs. 60,000/-</p>
-        </div>
-      </div>
-       <!-- Artwork Card 4 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/pea.jpg"
-          alt="Painting of a Peacock"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Girl</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $2000</p>
-        </div>
-      </div>
-       <!-- Artwork Card 5 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/IA2.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-       <!-- Artwork Card 6 -->
-      <div class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img
-          src="assets/images/IA4.jpg"
-          alt="Painting of a Lady"
-          class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
-          <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
-          <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
-          <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
-          <p class="text-sm"><strong>Price:</strong> $1,500</p>
-        </div>
-      </div>
-
-
-
-    </div>
-  </div>
-</section>
-<section id="artist-portal" class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
-  <!-- Floating Shapes -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-        Artist Portal
-      </h2>
-      <p class="mt-2 text-gray-600">
-        Meet the visionaries behind the masterpieces
-      </p>
-      <a href="Artist Portal.html" class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
-        More
-      </a>
-    </div>
-
-    <!-- Artist Grid -->
-    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Artist Card 1 -->
-      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img src="assets/images/Ananda Das.webp" alt="Ananda Das" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="p-6 relative">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Ananda Das</h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
-            Ananda Das, a scion of artistic royalty from Calcutta, emerges as a beacon of contemporary Indian artistry. The son of Lakshmi Narayan Das, Ananda's aesthetic voyage began under his father's tutelage.
-          </p>
-          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
-        </div>
-      </div>
-
-      <!-- Artist Card 2 -->
-      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img src="assets/images/Shiv Kumar Soni.jpg" alt="Shiv Kumar Soni" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="p-6 relative">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Shiv Kumar Soni</h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
-            Shiv Kumar reminisces his childhood through his art. He portrays the simple joys and innocence of formative moments, capturing memories with vivid storytelling.
-          </p>
-          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
-        </div>
-      </div>
-
-      <!-- Artist Card 3 -->
-      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img src="assets/images/Priyendra-Shuka-Artist.webp" alt="Priyendra Shuka" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="p-6 relative">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Priyendra Shuka</h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
-            Priyendra captures fleeting moments in color and form, bringing ephemeral experiences into tangible artistic expressions that invite the viewer to relive them.
-          </p>
-          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
-        </div>
-      </div>
-
-      <!-- Artist Card 4 (New Artist) -->
-      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img src="assets/images/bharti-dayal1.jpeg" alt="Bharti Dayal" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="p-6 relative">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bharti Dayal</h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
-           Bharti Dayal is a renowned contemporary Madhubani artist from Bihar, India, celebrated for popularizing the art form globally by blending traditional techniques with modern media like acrylic on canvas, creating a fresh, contemporary aesthetic for Madhubani painting. She expanded the art's reach through international exhibitions and diverse applications, such as textile design and book illustrations, and supports other women artists through training programs.  
-          </p>
-          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
-        </div>
-      </div>
-
-      <!-- Artist Card 5 (New Artist) -->
-      <div class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
-        <img src="assets/images/jamini-roy.jpeg" alt="Jamini Roy" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
-        <div class="p-6 relative">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-2">Jamini Roy</h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
-             Jamini Roy was a pioneering modern Indian artist, renowned for his distinct visual style rooted in the folk art traditions of Bengal, particularly the Kalighat painting style. He moved away from Western academic styles to develop an indigenous aesthetic characterized by bold lines, flattened figures, vibrant earthy colors, and two-dimensional composition. Roy's subjects drew from rural life, mythological narratives, and figures like Mahatma Gandhi and Rabindranath Tagore, aiming to create art that was both culturally rooted and accessible to a wider audience.
-          </p>
-          <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read More</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="about" class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
-  <!-- Floating Background Shapes -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
-    <span class="floating-shape bg-[#8b5cf6] opacity-10"></span>
-    <span class="floating-shape bg-[#f97316] opacity-10"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10">
-    <!-- Section Header -->
-    <div class="md:flex md:items-center md:gap-12">
-      <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
-        <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Us</h3>
-        <p class="text-gray-700 text-lg leading-relaxed">
-          Dive into art with Kala.ficial! We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information. Explore stunning artwork, learn about historical contexts, and ignite your passion for art—all from the comfort of your home. Kala.ficial offers multilingual support and accessibility features, fostering a global and inclusive art community.
+    <div class="container mx-auto px-4 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          Exhibition Information
+        </h2>
+        <p class="mt-2 text-gray-600">
+          Explore upcoming art exhibitions across India
         </p>
-        <a href="#exhibition" class="mt-6 inline-block text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
-          Explore Exhibitions
+        <a href="exhibition.html"
+          class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+          More Info
         </a>
       </div>
 
-      <!-- Team / Art Styles Circle Cards -->
-<div class="md:w-2/3 mx-auto grid gap-10 sm:grid-cols-1 md:grid-cols-3 place-items-center text-center">
-  
-  <!-- Circle Card 1 -->
-  <div class="flex flex-col items-center">
-    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-purple-300 mb-4">
-      <img src="assets/images/C1.png" alt="Traditional Art" class="w-full h-full object-cover"/>
-    </div>
-    <h4 class="text-xl font-semibold text-gray-800">Traditional Art</h4>
-    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
-      Celebrating cultural heritage through timeless artistic styles.
-    </p>
-  </div>
-
-  <!-- Circle Card 2 -->
-  <div class="flex flex-col items-center">
-    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-pink-300 mb-4">
-      <img src="assets/images/C2.png" alt="Modern Art" class="w-full h-full object-cover"/>
-    </div>
-    <h4 class="text-xl font-semibold text-gray-800">Modern Art</h4>
-    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
-      Bold expressions and innovative creativity for the new era.
-    </p>
-  </div>
-
-  <!-- Circle Card 3 -->
-  <div class="flex flex-col items-center">
-    <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-cyan-300 mb-4">
-      <img src="assets/images/C3.png" alt="Digital Art" class="w-full h-full object-cover"/>
-    </div>
-    <h4 class="text-xl font-semibold text-gray-800">Digital Art</h4>
-    <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
-      Creative imagination brought to life with digital mastery.
-    </p>
-  </div>
-
-</div>
-
-       
-      </div>
-    </div>
-  </div>
-</section>
-<section id="contact" class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
-  <!-- Floating Shapes -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10 text-center">
-    <!-- Header -->
-    <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h3>
-    <p class="text-gray-700 max-w-2xl mx-auto text-lg leading-relaxed">
-      We'd love to hear from you! Whether you have a question, suggestion, or want to collaborate, reach out to us.
-    </p>
-
-<!-- Contact Cards -->
-<div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
-  <!-- Location Card -->
-  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-    <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
-    <h4 class="font-semibold text-xl mb-2">Location</h4>
-    <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
-  </div>
-
-  <!-- Email Card -->
-  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-    <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
-    <h4 class="font-semibold text-xl mb-2">Email</h4>
-    <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
-  </div>
-
-  <!-- Phone Card -->
-  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-    <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
-    <h4 class="font-semibold text-xl mb-2">Phone</h4>
-    <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
-  </div>
-</div>
-
-<!-- Buttons Section -->
-<div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-    <i class="fa-brands fa-whatsapp text-2xl"></i>
-    Send Message
-  </a>
-
-  <!-- Collaboration Button -->
-  <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-    <i class="fas fa-handshake text-xl"></i>
-    For Collaboration
-  </button>
-</div>
-
-<!-- Collaboration Form Modal -->
-<div id="collabModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 relative transform scale-90 transition-all duration-300">
-    <button id="closeCollabForm" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl font-bold">&times;</button>
-    <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Collaboration Form</h3>
-    <p class="text-gray-600 mb-6 text-center">Fill in your details and we will get back to you soon!</p>
-    <form class="flex flex-col gap-4">
-      <input type="text" placeholder="Your Name" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
-      <input type="email" placeholder="Your Email" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
-      <textarea placeholder="Your Message" rows="4" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"></textarea>
-      <button type="submit" class="bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full px-6 py-3 transition-all duration-300 shadow-lg hover:scale-105">Send Information</button>
-    </form>
-  </div>
-</div>
-
-<footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
-  <!-- Floating Shapes -->
-  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
-    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
-    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
-    <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
-    <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
-  </div>
-
-  <div class="container mx-auto px-4 relative z-10 text-gray-800">
-    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-      <!-- Brand -->
-      <div class="mb-6 lg:mb-0">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
-        <p class="text-gray-600 leading-relaxed">Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.</p>
-        <div class="flex gap-4 mt-6">
-          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+      <!-- Exhibition Grid -->
+      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card 1 -->
+        <div
+          class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+          <div class="overflow-hidden">
+            <img src="assets/images/eve1.jpg" alt="Peepletree Art Gallery"
+              class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+              Peepletree Art Gallery, Bangalore
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              269, 17th Cross Rd, Sadashiva Nagar, Armane Nagar, Bengaluru, Karnataka 560080<br />
+              <strong>Date:</strong> 28th April 2024<br />
+              <strong>Time:</strong> 12:00-18:00 pm
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Quick Links -->
-      <div class="space-y-2">
-        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="faq.html">FAQ</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+        <!-- Card 2 -->
+        <div
+          class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+          <div class="overflow-hidden">
+            <img src="assets/images/eve2.jpg" alt="Avisar Art Gallery"
+              class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+              Avisar Art Gallery, Kolkata
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              33, Brahmo Samaj Rd, New Bakshi Bagan, Vivekananda Pally, Behala, Kolkata, West Bengal 700034<br />
+              <strong>Date:</strong> 30th May 2024<br />
+              <strong>Time:</strong> 15:00-20:00 pm
+            </p>
+          </div>
+        </div>
 
-      <!-- Contact Info -->
-      <div>
-        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
-        <ul class="space-y-3 text-gray-600">
-          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
-          <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
-          <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
-        </ul>
-        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
-      </div>
-
-      <!-- Newsletter & Social -->
-      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
-        <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
-        <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
-        <form class="flex flex-col sm:flex-row gap-3">
-          <input type="email" placeholder="Your Email" class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
-          <button type="submit" class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 transition-all duration-300 shadow-lg hover:scale-105">Subscribe</button>
-        </form>
-        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Card 3 -->
+        <div
+          class="exhibition-item bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden relative z-10">
+          <div class="overflow-hidden">
+            <img src="assets/images/eve3.jpg" alt="Raja Ravi Varma Art Gallery"
+              class="w-full h-60 object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+              Raja Ravi Varma Art Gallery, Pune
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Pandit Jawaharlal Nehru Cultural Center, Ghole Rd, opp. Mahatma Phule Museum, Shivajinagar, Pune,
+              Maharashtra 411005<br />
+              <strong>Date:</strong> 20th June 2024<br />
+              <strong>Time:</strong> 15:00-20:00 pm
+            </p>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Footer Bottom -->
-    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
-      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+  </section>
+  <section id="artwork-for-sale"
+    class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+      <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+      <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
     </div>
-  </div>
-</footer>
 
-<!-- Scroll to Top/Bottom Button -->
-<button id="smartScrollBtn"
-        class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white font-bold 
+    <div class="container mx-auto px-4 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          Artwork For Sale
+        </h2>
+        <p class="mt-2 text-gray-600">
+          Browse exclusive art pieces from talented artists
+        </p>
+        <a href="artwork.html"
+          class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+          More
+        </a>
+      </div>
+
+      <!-- Artwork Grid -->
+      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Artwork Card Template -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/ap1.jpg" alt="Painting of Nature's Beauty"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <!-- Quick View Overlay -->
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of Nature's Beauty</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Swati Kale</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> swatikale@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> Rs. 58,000/-</p>
+          </div>
+        </div>
+
+        <!-- Artwork Card 2 -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/ap2.jpg" alt="Painting of a Lady"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> $1,500</p>
+          </div>
+        </div>
+
+        <!-- Artwork Card 3 -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/ap3.jpg" alt="Painting of Buddha"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of Buddha</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Monica Gule</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> monicagule@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> Rs. 60,000/-</p>
+          </div>
+        </div>
+        <!-- Artwork Card 4 -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/pea.jpg" alt="Painting of a Peacock"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of a Girl</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> $2000</p>
+          </div>
+        </div>
+        <!-- Artwork Card 5 -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/IA2.jpg" alt="Painting of a Lady"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> $1,500</p>
+          </div>
+        </div>
+        <!-- Artwork Card 6 -->
+        <div
+          class="artwork-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/IA4.jpg" alt="Painting of a Lady"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center text-white px-4">
+            <h3 class="text-xl font-semibold mb-2">Painting of a Lady</h3>
+            <p class="text-sm mb-1"><strong>Artist:</strong> Etienne Quesnay</p>
+            <p class="text-sm mb-1"><strong>Contact:</strong> etiennequesnay@gmail.com</p>
+            <p class="text-sm"><strong>Price:</strong> $1,500</p>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+  <section id="artist-portal"
+    class="relative py-16 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+    <!-- Floating Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+      <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+      <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          Artist Portal
+        </h2>
+        <p class="mt-2 text-gray-600">
+          Meet the visionaries behind the masterpieces
+        </p>
+        <a href="Artist Portal.html"
+          class="inline-block mt-4 text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+          More
+        </a>
+      </div>
+
+      <!-- Artist Grid -->
+      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Artist Card 1 -->
+        <div
+          class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/Ananda Das.webp" alt="Ananda Das"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Ananda Das</h3>
+            <p
+              class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+              Ananda Das, a scion of artistic royalty from Calcutta, emerges as a beacon of contemporary Indian
+              artistry. The son of Lakshmi Narayan Das, Ananda's aesthetic voyage began under his father's tutelage.
+            </p>
+            <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read
+              More</button>
+          </div>
+        </div>
+
+        <!-- Artist Card 2 -->
+        <div
+          class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/Shiv Kumar Soni.jpg" alt="Shiv Kumar Soni"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Shiv Kumar Soni</h3>
+            <p
+              class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+              Shiv Kumar reminisces his childhood through his art. He portrays the simple joys and innocence of
+              formative moments, capturing memories with vivid storytelling.
+            </p>
+            <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read
+              More</button>
+          </div>
+        </div>
+
+        <!-- Artist Card 3 -->
+        <div
+          class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/Priyendra-Shuka-Artist.webp" alt="Priyendra Shuka"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Priyendra Shuka</h3>
+            <p
+              class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+              Priyendra captures fleeting moments in color and form, bringing ephemeral experiences into tangible
+              artistic expressions that invite the viewer to relive them.
+            </p>
+            <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read
+              More</button>
+          </div>
+        </div>
+
+        <!-- Artist Card 4 (New Artist) -->
+        <div
+          class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/bharti-dayal1.jpeg" alt="Bharti Dayal"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bharti Dayal</h3>
+            <p
+              class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+              Bharti Dayal is a renowned contemporary Madhubani artist from Bihar, India, celebrated for popularizing
+              the art form globally by blending traditional techniques with modern media like acrylic on canvas,
+              creating a fresh, contemporary aesthetic for Madhubani painting. She expanded the art's reach through
+              international exhibitions and diverse applications, such as textile design and book illustrations, and
+              supports other women artists through training programs.
+            </p>
+            <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read
+              More</button>
+          </div>
+        </div>
+
+        <!-- Artist Card 5 (New Artist) -->
+        <div
+          class="artist-item relative bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 group">
+          <img src="assets/images/jamini-roy.jpeg" alt="Jamini Roy"
+            class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="p-6 relative">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Jamini Roy</h3>
+            <p
+              class="text-gray-600 text-sm leading-relaxed max-h-24 overflow-hidden group-hover:max-h-96 transition-all duration-500">
+              Jamini Roy was a pioneering modern Indian artist, renowned for his distinct visual style rooted in the
+              folk art traditions of Bengal, particularly the Kalighat painting style. He moved away from Western
+              academic styles to develop an indigenous aesthetic characterized by bold lines, flattened figures, vibrant
+              earthy colors, and two-dimensional composition. Roy's subjects drew from rural life, mythological
+              narratives, and figures like Mahatma Gandhi and Rabindranath Tagore, aiming to create art that was both
+              culturally rooted and accessible to a wider audience.
+            </p>
+            <button class="read-more-btn mt-2 text-[#6C63FF] font-semibold hover:underline block md:hidden">Read
+              More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+      <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+      <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+      <span class="floating-shape bg-[#8b5cf6] opacity-10"></span>
+      <span class="floating-shape bg-[#f97316] opacity-10"></span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <!-- Section Header -->
+      <div class="md:flex md:items-center md:gap-12">
+        <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+          <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Us</h3>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            Dive into art with Kala.ficial! We empower artists and enrich visitor experiences through immersive virtual
+            tours, artist spotlights, and comprehensive exhibition information. Explore stunning artwork, learn about
+            historical contexts, and ignite your passion for art—all from the comfort of your home. Kala.ficial offers
+            multilingual support and accessibility features, fostering a global and inclusive art community.
+          </p>
+          <a href="#exhibition"
+            class="mt-6 inline-block text-white bg-[#6C63FF] hover:bg-[#5750d3] font-semibold px-6 py-2 rounded-lg transition-all duration-300 shadow-lg">
+            Explore Exhibitions
+          </a>
+        </div>
+
+        <!-- Team / Art Styles Circle Cards -->
+        <div class="md:w-2/3 mx-auto grid gap-10 sm:grid-cols-1 md:grid-cols-3 place-items-center text-center">
+
+          <!-- Circle Card 1 -->
+          <div class="flex flex-col items-center">
+            <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-purple-300 mb-4">
+              <img src="assets/images/C1.png" alt="Traditional Art" class="w-full h-full object-cover" />
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800">Traditional Art</h4>
+            <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+              Celebrating cultural heritage through timeless artistic styles.
+            </p>
+          </div>
+
+          <!-- Circle Card 2 -->
+          <div class="flex flex-col items-center">
+            <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-pink-300 mb-4">
+              <img src="assets/images/C2.png" alt="Modern Art" class="w-full h-full object-cover" />
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800">Modern Art</h4>
+            <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+              Bold expressions and innovative creativity for the new era.
+            </p>
+          </div>
+
+          <!-- Circle Card 3 -->
+          <div class="flex flex-col items-center">
+            <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-cyan-300 mb-4">
+              <img src="assets/images/C3.png" alt="Digital Art" class="w-full h-full object-cover" />
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800">Digital Art</h4>
+            <p class="text-sm text-gray-500 mt-2 max-w-[200px]">
+              Creative imagination brought to life with digital mastery.
+            </p>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="contact"
+    class="relative py-20 bg-gradient-to-b from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] overflow-hidden">
+    <!-- Floating Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+      <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+      <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <!-- Header -->
+      <h3 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h3>
+      <p class="text-gray-700 max-w-2xl mx-auto text-lg leading-relaxed">
+        We'd love to hear from you! Whether you have a question, suggestion, or want to collaborate, reach out to us.
+      </p>
+
+      <!-- Contact Cards -->
+      <div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
+        <!-- Location Card -->
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+          <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
+          <h4 class="font-semibold text-xl mb-2">Location</h4>
+          <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
+        </div>
+
+        <!-- Email Card -->
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+          <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
+          <h4 class="font-semibold text-xl mb-2">Email</h4>
+          <a href="mailto:mypassion@kala.ficial.com"
+            class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
+        </div>
+
+        <!-- Phone Card -->
+        <div
+          class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+          <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
+          <h4 class="font-semibold text-xl mb-2">Phone</h4>
+          <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
+        </div>
+      </div>
+
+      <!-- Buttons Section -->
+      <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/1234567890" target="_blank"
+          class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          Send Message
+        </a>
+
+        <!-- Collaboration Button -->
+        <button id="openCollabForm"
+          class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+          <i class="fas fa-handshake text-xl"></i>
+          For Collaboration
+        </button>
+      </div>
+
+      <!-- Collaboration Form Modal -->
+      <div id="collabModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+        <div
+          class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 relative transform scale-90 transition-all duration-300">
+          <button id="closeCollabForm"
+            class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl font-bold">&times;</button>
+          <h3 class="text-3xl font-bold text-gray-900 mb-4 text-center">Collaboration Form</h3>
+          <p class="text-gray-600 mb-6 text-center">Fill in your details and we will get back to you soon!</p>
+          <form class="flex flex-col gap-4">
+            <input type="text" placeholder="Your Name"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]" />
+            <input type="email" placeholder="Your Email"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]" />
+            <textarea placeholder="Your Message" rows="4"
+              class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"></textarea>
+            <button type="submit"
+              class="bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full px-6 py-3 transition-all duration-300 shadow-lg hover:scale-105">Send
+              Information</button>
+          </form>
+        </div>
+      </div>
+
+      <footer
+        class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] pt-16 pb-10 md:pt-20 md:pb-12 overflow-hidden"
+        style="margin-top: 40px ; margin-bottom: 0px; margin-left: 0px; margin-right: 0px">
+        <!-- Floating Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+          <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+          <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+          <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
+          <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-10 relative z-10 text-gray-800">
+          <!-- Top Footer Grid -->
+          <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+
+            <!-- Brand -->
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+              <p class="text-gray-600 leading-relaxed">
+                Empowering artists, enriching art lovers, and making art accessible to all.
+              </p>
+              <div class="flex gap-3 mt-6">
+                <a href="#"
+                  class="p-2 bg-white rounded-full shadow-md hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300">
+                  <i class="fab fa-facebook-f text-[#6C63FF]"></i>
+                </a>
+                <a href="#"
+                  class="p-2 bg-white rounded-full shadow-md hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300">
+                  <i class="fab fa-x-twitter text-[#6C63FF]"></i>
+                </a>
+                <a href="#"
+                  class="p-2 bg-white rounded-full shadow-md hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300">
+                  <i class="fab fa-instagram text-[#6C63FF]"></i>
+                </a>
+                <a href="#"
+                  class="p-2 bg-white rounded-full shadow-md hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300">
+                  <i class="fab fa-linkedin-in text-[#6C63FF]"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2">
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="#about">About Us</a>
+                </li>
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="#exhibition">Exhibitions</a>
+                </li>
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="#artwork-for-sale">Artwork For Sale</a>
+                </li>
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="#artist-portal">Artist Portal</a>
+                </li>
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="faq.html">FAQ</a>
+                </li>
+                <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300">
+                  <i class="fas fa-angle-right group-hover:translate-x-1 transition-transform"></i>
+                  <a href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+              <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-envelope text-[#6C63FF]"></i>
+                  <a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fas fa-phone-alt text-[#6C63FF]"></i>
+                  <a href="tel:+911234567890" class="hover:underline">+91 1234567890</a>
+                </li>
+              </ul>
+              <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="relative bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+              <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+              <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+
+              <!-- FIXED FORM -->
+              <form style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:12px;">
+                <input type="email" placeholder="Your Email" style="
+        flex:1; 
+        min-width:200px;
+        padding:10px 14px; 
+        border:1px solid #d1d5db; 
+        border-radius:8px; 
+        font-size:14px;
+        outline:none;
+      " onfocus="this.style.borderColor='#6C63FF'; this.style.boxShadow='0 0 0 2px rgba(108,99,255,0.4)';"
+                  onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='none';" />
+
+                <button type="submit" style="
+        white-space:nowrap; 
+        background:linear-gradient(to right, #6C63FF, #ff6bcb); 
+        color:#fff; 
+        font-weight:600; 
+        border:none; 
+        border-radius:8px; 
+        padding:10px 20px; 
+        font-size:14px; 
+        cursor:pointer; 
+        box-shadow:0 4px 6px rgba(0,0,0,0.1);
+        transition:transform 0.2s ease-in-out;
+      " onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+            <div
+              class="mt-12 border-t border-gray-300 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm w-full gap-4" style="padding-left: 190px">
+
+              <p class="text-center md:text-left flex-shrink-0">
+                &copy; 2025 Kala.ficial. All rights reserved. Crafted with
+                <span class="text-red-500">♥</span>
+              </p>
+
+              <div class="flex gap-4 flex-shrink-0">
+                <a href="#" class="hover:text-[#6C63FF]">Privacy Policy</a>
+                <a href="#" class="hover:text-[#6C63FF]">Terms of Service</a>
+              </div>
+            </div>
+
+      </footer>
+
+      <!-- Scroll to Top/Bottom Button -->
+      <button id="smartScrollBtn" class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white font-bold 
                w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
-               transition-all duration-300 hover:scale-110 z-50"
-        aria-label="Scroll">
-  <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-    <path fill-rule="evenodd" clip-rule="evenodd"/>
-  </svg>
-</button>
+               transition-all duration-300 hover:scale-110 z-50" aria-label="Scroll">
+        <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" clip-rule="evenodd" />
+        </svg>
+      </button>
 
-<script>
-(function () {
-  const scrollBtn = document.getElementById('smartScrollBtn');
-  const scrollIcon = document.getElementById('scrollIcon');
-  if (!scrollBtn || !scrollIcon) return;
+      <script>
+        (function () {
+          const scrollBtn = document.getElementById('smartScrollBtn');
+          const scrollIcon = document.getElementById('scrollIcon');
+          if (!scrollBtn || !scrollIcon) return;
 
-  const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
+          const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
 
-  const setIcon = (direction) => {
-    if (direction === 'down') {
-      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
-      scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
-    } else {
-      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l-4 4a1 1 0 010 1.414z"/>`;
-      scrollBtn.setAttribute('aria-label', 'Scroll to top');
-    }
-  };
+          const setIcon = (direction) => {
+            if (direction === 'down') {
+              scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+              scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+            } else {
+              scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l-4 4a1 1 0 010 1.414z"/>`;
+              scrollBtn.setAttribute('aria-label', 'Scroll to top');
+            }
+          };
 
-  const check = () => {
-    const threshold = updateThreshold();
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.body.scrollHeight;
+          const check = () => {
+            const threshold = updateThreshold();
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.body.scrollHeight;
 
-    if (scrollTop < threshold) {
-      setIcon('down');
-    } else if (windowHeight + scrollTop >= docHeight - threshold) {
-      setIcon('up');
-    } else {
-      setIcon('up');
-    }
-  };
+            if (scrollTop < threshold) {
+              setIcon('down');
+            } else if (windowHeight + scrollTop >= docHeight - threshold) {
+              setIcon('up');
+            } else {
+              setIcon('up');
+            }
+          };
 
-  window.addEventListener('scroll', check);
-  window.addEventListener('resize', check);
-  check();
+          window.addEventListener('scroll', check);
+          window.addEventListener('resize', check);
+          check();
 
-  scrollBtn.addEventListener('click', () => {
-    const scrollTop = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.body.scrollHeight;
-    const threshold = updateThreshold();
+          scrollBtn.addEventListener('click', () => {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.body.scrollHeight;
+            const threshold = updateThreshold();
 
-    if (scrollTop < threshold) {
-      window.scrollTo({ top: docHeight, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-})();
-</script>
+            if (scrollTop < threshold) {
+              window.scrollTo({ top: docHeight, behavior: 'smooth' });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        })();
+      </script>
 
-<script>
-  // Floating particles
-  const canvas = document.getElementById('particles');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      <script>
+        // Floating particles
+        const canvas = document.getElementById('particles');
+        if (canvas) {
+          const ctx = canvas.getContext('2d');
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
 
-    let particlesArray = [];
-    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
+          let particlesArray = [];
+          const colors = ['#FFD700', '#FF69B4', '#7B68EE', '#00FFFF'];
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
+          class Particle {
+            constructor() {
+              this.x = Math.random() * canvas.width;
+              this.y = Math.random() * canvas.height;
+              this.size = Math.random() * 3 + 1;
+              this.color = colors[Math.floor(Math.random() * colors.length)];
+              this.speedX = Math.random() * 1 - 0.5;
+              this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+              this.x += this.speedX;
+              this.y += this.speedY;
+              if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+              if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+              ctx.fillStyle = this.color;
+              ctx.beginPath();
+              ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
 
-    function initParticles() {
-      particlesArray = [];
-      for(let i=0; i<100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
+          function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 100; i++) {
+              particlesArray.push(new Particle());
+            }
+          }
 
-    function animateParticles() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animateParticles);
-    }
+          function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+          }
 
-    initParticles();
-    animateParticles();
+          initParticles();
+          animateParticles();
 
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initParticles();
-    });
-  }
+          window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+          });
+        }
 
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
 
-  });
+        });
 
-  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
-  confirmBtn.addEventListener("click", () => {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "auth.html";
-  });
+        cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+        confirmBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          window.location.href = "auth.html";
+        });
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden");
-  });
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.classList.add("hidden");
+        });
 });
 
-</script>
+      </script>
 
-  <button 
-    type="submit" 
-    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
-  >
-    Subscribe
-  </button>
-  </form>
-        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+      <!-- Logout Confirmation Modal -->
+      <div id="logoutModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+        <div class="modal-content">
+          <h2 class="text-xl font-semibold">Confirm Logout</h2>
+          <p class="mt-3">Are you sure you want to log out?</p>
+          <div class="flex justify-center gap-4 mt-6">
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
-      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
-    </div>
-  </div>
-</footer>
-<!-- Logout Confirmation Modal -->
-<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
-  <div class="modal-content">
-    <h2 class="text-xl font-semibold">Confirm Logout</h2>
-    <p class="mt-3">Are you sure you want to log out?</p>
-    <div class="flex justify-center gap-4 mt-6">
-      <button id="confirmLogout">Yes, Logout</button>
-      <button id="cancelLogout">Cancel</button>
-    </div>
-  </div>
-</div>
 
 
-  <script>
-  
-    // Simple floating particles
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+      <script>
 
-    let particlesArray = [];
-    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
+        // Simple floating particles
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-     menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
+        let particlesArray = [];
+        const colors = ['#FFD700', '#FF69B4', '#7B68EE', '#00FFFF'];
+
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
     
   }
 
-  // Active link highlight on scroll
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
+        // Active link highlight on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-link");
 
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 80;
-      if (scrollY >= sectionTop) current = section.getAttribute("id");
-    });
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
+        window.addEventListener("scroll", () => {
+          let current = "";
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80;
+            if (scrollY >= sectionTop) current = section.getAttribute("id");
+          });
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
+        });
 
-  // Read More Toggle
-  document.querySelectorAll('.read-more-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const p = button.previousElementSibling;
-      if (p.style.maxHeight === 'none') {
-        p.style.maxHeight = '6rem';
-        button.textContent = 'Read More';
-      } else {
-        p.style.maxHeight = 'none';
-        button.textContent = 'Show Less';
-      }
-    });
-  });
-</script>
+        // Read More Toggle
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            const p = button.previousElementSibling;
+            if (p.style.maxHeight === 'none') {
+              p.style.maxHeight = '6rem';
+              button.textContent = 'Read More';
+            } else {
+              p.style.maxHeight = 'none';
+              button.textContent = 'Show Less';
+            }
+          });
+        });
+      </script>
 
-<script>
-  // Logout Logic
-  document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtns = [
-      document.getElementById("logout-btn"),
-      document.getElementById("logout-btn-mobile")
-    ].filter(Boolean);
+      <script>
+        // Logout Logic
+        document.addEventListener("DOMContentLoaded", () => {
+          const logoutBtns = [
+            document.getElementById("logout-btn"),
+            document.getElementById("logout-btn-mobile")
+          ].filter(Boolean);
 
-    const modal = document.getElementById("logoutModal");
-    const confirmBtn = document.getElementById("confirmLogout");
-    const cancelBtn = document.getElementById("cancelLogout");
+          const modal = document.getElementById("logoutModal");
+          const confirmBtn = document.getElementById("confirmLogout");
+          const cancelBtn = document.getElementById("cancelLogout");
 
-    logoutBtns.forEach(btn => {
-      btn.addEventListener("click", e => {
-        e.preventDefault();
-        modal.classList.remove("hidden");
-      });
-    });
+          logoutBtns.forEach(btn => {
+            btn.addEventListener("click", e => {
+              e.preventDefault();
+              modal.classList.remove("hidden");
+            });
+          });
 
-    cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
-    confirmBtn.addEventListener("click", () => {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "auth.html";
-    });
+          cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+          confirmBtn.addEventListener("click", () => {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "auth.html";
+          });
 
-    modal.addEventListener("click", e => {
-      if (e.target === modal) modal.classList.add("hidden");
-    });
-  });
-</script>
+          modal.addEventListener("click", e => {
+            if (e.target === modal) modal.classList.add("hidden");
+          });
+        });
+      </script>
 
-<script src="theme-toggle.js"></script>
+      <script src="theme-toggle.js"></script>
 
-<script>
-  // Inline theme toggle backup
-  (function() {
-    'use strict';
-    function initInlineTheme() {
-      const themeToggle = document.getElementById('theme-toggle');
-      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-      const themeIcon = document.getElementById('theme-icon');
-      const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-      const htmlElement = document.documentElement;
-      if (!themeToggle) return;
+      <script>
+        // Inline theme toggle backup
+        (function () {
+          'use strict';
+          function initInlineTheme() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+            const htmlElement = document.documentElement;
+            if (!themeToggle) return;
 
-      let currentTheme = localStorage.getItem('theme') || 'light';
-      htmlElement.setAttribute('data-theme', currentTheme);
+            let currentTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', currentTheme);
 
-      function updateIcons(theme) {
-        const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
-        if (themeIcon) themeIcon.className = `fas ${iconClass} text-lg`;
-        if (mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass} text-lg`;
-      }
+            function updateIcons(theme) {
+              const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+              if (themeIcon) themeIcon.className = `fas ${iconClass} text-lg`;
+              if (mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+            }
 
-      function toggleTheme() {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        htmlElement.setAttribute('data-theme', currentTheme);
-        localStorage.setItem('theme', currentTheme);
-        updateIcons(currentTheme);
-      }
+            function toggleTheme() {
+              currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+              htmlElement.setAttribute('data-theme', currentTheme);
+              localStorage.setItem('theme', currentTheme);
+              updateIcons(currentTheme);
+            }
 
-      updateIcons(currentTheme);
-      themeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
-      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
-    }
+            updateIcons(currentTheme);
+            themeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+          }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initInlineTheme);
-    } else {
-      initInlineTheme();
-    }
-  })();
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initInlineTheme);
+          } else {
+            initInlineTheme();
+          }
+        })();
 
-  // Title change on visibility
-  document.addEventListener('visibilitychange', function() {
-    document.title = document.visibilityState === 'visible' ? 
-                     'Kala.ficial - Your Virtual Art Gallery' : 
-                     'Come back to Website';
-  });
+        // Title change on visibility
+        document.addEventListener('visibilitychange', function () {
+          document.title = document.visibilityState === 'visible' ?
+            'Kala.ficial - Your Virtual Art Gallery' :
+            'Come back to Website';
+        });
 
-  // Loading screen hide
-  document.addEventListener("DOMContentLoaded", function () {
-    const loadingScreen = document.getElementById("loading-screen");
-    if (loadingScreen) {
-      setTimeout(() => loadingScreen.classList.add("hidden"), 7000);
-    }
-  });
-</script>
-<script src="assets/js/card-hover-home.js"></script>
-  </body>
+        // Loading screen hide
+        document.addEventListener("DOMContentLoaded", function () {
+          const loadingScreen = document.getElementById("loading-screen");
+          if (loadingScreen) {
+            setTimeout(() => loadingScreen.classList.add("hidden"), 7000);
+          }
+        });
+      </script>
+      <script src="assets/js/card-hover-home.js"></script>
+</body>
+
 </html>
