@@ -1758,7 +1758,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     }
   })();
 
-  // Title change on visibility
+    // Title change on visibility
   document.addEventListener('visibilitychange', function() {
     document.title = document.visibilityState === 'visible' ? 
                      'Kala.ficial - Your Virtual Art Gallery' : 
@@ -1774,5 +1774,19 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   });
 </script>
 <script src="assets/js/card-hover-home.js"></script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
