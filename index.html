@@ -19,6 +19,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
    
     <style>
       html {
@@ -1518,85 +1520,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
 })();
 </script>
 
-<script>
-  // Floating particles
-  const canvas = document.getElementById('particles');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 
-    let particlesArray = [];
-    const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
-
-    function initParticles() {
-      particlesArray = [];
-      for(let i=0; i<100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animateParticles);
-    }
-
-    initParticles();
-    animateParticles();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initParticles();
-    });
-  }
-
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-
-  });
-
-  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
-  confirmBtn.addEventListener("click", () => {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "auth.html";
-  });
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden");
-  });
-});
-
-</script>
 
   <button 
     type="submit" 
@@ -1644,13 +1568,11 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     let particlesArray = [];
     const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
 
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-     menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-    
-  }
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+   menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
 
   // Active link highlight on scroll
   const sections = document.querySelectorAll("section");
