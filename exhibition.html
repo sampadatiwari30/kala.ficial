@@ -46,6 +46,7 @@
     .glass {
       background: rgba(255,255,255,0.6);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     /* small helper for clamping description */
@@ -190,6 +191,7 @@
   height: 3rem !important;
   background-color: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 50% !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   cursor: pointer !important;
@@ -232,6 +234,7 @@
 [data-theme="dark"] header {
   background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
   backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
 }
 
@@ -1299,6 +1302,19 @@
     initInlineTheme();
   }
 })();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
 </script>
 
 </body>
