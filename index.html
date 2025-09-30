@@ -952,83 +952,86 @@
   </style>
 </head>
 
+
 <body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
 
-  <!-- Loading Screen -->
-  <div id="loading-screen">
-    <div class="loader">
-      <i class="fa-solid fa-spinner"></i>
-      <h2>Bringing Art to Life<span class="dots"></span></h2>
-    </div>
-  </div>
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center space-x-3">
-        <img src="assets/images/logo.png" alt="KALA.Ficial Logo"
-          class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
-        <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="exhibition.html" class="nav-link">Exhibition</a>
-        <a href="artwork.html" class="nav-link">Artwork</a>
-        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-          <i id="theme-icon" class="fas fa-moon text-lg"></i>
-        </button>
-
-        <button id="logout-btn" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
-               bg-gradient-to-r from-indigo-500 to-purple-600 
-               hover:from-purple-600 hover:to-indigo-500 
-               transition-all duration-300 shadow-md hover:shadow-xl">
-          Log Out
-        </button>
-      </nav>
-
-      <!-- Mobile Hamburger -->
-      <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
-      <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
-        <a href="#" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="exhibition.html" class="nav-link">Exhibition</a>
-        <a href="artwork.html" class="nav-link">Artwork</a>
-        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-
-        <!-- Mobile Theme Toggle -->
-        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-          <span class="text-gray-700">Theme</span>
-          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-            <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
-          </button>
+<!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <i class="fa-solid fa-spinner"></i>
+            <h2>Bringing Art to Life<span class="dots"></span></h2>
         </div>
+    </div>
+<!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-3">
+      <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
+           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+    </a>
 
-        <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
+          <button id="logout-btn"
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
-          Log Out
+        Log Out
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+      <a href="#" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
         </button>
-      </nav>
-    </div>
-  </header>
+      </div>
+      
+      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+  </div>
+</header>
+
   <!-- Hero Section -->
   <section id="hero" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
   bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden pt-28" style="padding-top: 60px;">
