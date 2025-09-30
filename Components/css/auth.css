@@ -9,7 +9,6 @@ body {
   overflow: hidden;
   position: relative;
 }
-
 /* Enhanced floating shapes background */
 .floating-shape {
   position: absolute;
@@ -75,7 +74,6 @@ body {
     transform: translateY(-15px) translateX(-10px) rotate(270deg) scale(1.05);
   }
 }
-
 .card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(25px);
