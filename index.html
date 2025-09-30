@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KALA.Ficial Website</title>
+    <script>
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.replace("auth.html"); 
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
@@ -14,6 +19,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
    
     <style>
       html {
@@ -161,16 +168,625 @@
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 
+/* Theme Toggle Styles */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --primary-text: #1a202c;
+  --secondary-text: #4a5568;
+  --accent-color: #8b5cf6;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-bg: #1a202c;
+  --secondary-bg: #2d3748;
+  --primary-text: #f7fafc;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme Toggle Styles */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --primary-text: #1a202c;
+  --secondary-text: #4a5568;
+  --accent-color: #8b5cf6;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-bg: #1a202c;
+  --secondary-bg: #2d3748;
+  --primary-text: #f7fafc;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button styles with higher specificity */
+.theme-toggle {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(75, 85, 99, 0.9) !important;
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(55, 65, 81, 0.9) !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-toggle i {
+  color: #374151 !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.1rem !important;
+}
+
+[data-theme="dark"] .theme-toggle i {
+  color: #fcd34d !important;
+}
+
+/* Apply theme to body and main elements */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] .bg-gradient-to-r {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+}
+
+/* Header theme styles */
+[data-theme="dark"] header {
+  background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+/* Comprehensive text color fixes for dark mode */
+[data-theme="dark"] .text-gray-900,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-black {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-500 {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-gray-400 {
+  color: #cbd5e0 !important;
+}
+
+/* Navigation links in dark mode */
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #f7fafc !important;
+}
+
+/* Mobile menu theme with better visibility */
+[data-theme="dark"] #mobile-menu {
+  background: rgba(26, 32, 44, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: #4a5568 !important;
+}
+
+/* Cards and content sections with better contrast */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-gray-100 {
+  background-color: rgba(45, 55, 72, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+[data-theme="dark"] .bg-white\/95 {
+  background-color: rgba(45, 55, 72, 0.98) !important;
+}
+
+/* Hero section and main content areas */
+[data-theme="dark"] section {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .bg-gradient-to-b {
+  background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6), rgba(26, 32, 44, 0.9)) !important;
+}
+
+/* Floating shapes and animations in dark mode */
+[data-theme="dark"] .floating-shape,
+[data-theme="dark"] .animated-shape {
+  opacity: 0.06 !important;
+}
+
+/* All text elements - comprehensive coverage */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div:not(.theme-toggle),
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+  color: #e2e8f0 !important;
+}
+
+/* Links and interactive elements */
+[data-theme="dark"] a:not(.nav-link):not(button) {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] a:not(.nav-link):not(button):hover {
+  color: #dbeafe !important;
+}
+
+/* Button text visibility */
+[data-theme="dark"] button:not(.theme-toggle) {
+  color: #f7fafc !important;
+}
+
+/* Form elements */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: rgba(45, 55, 72, 0.8) !important;
+  color: #f7fafc !important;
+  border-color: rgba(75, 85, 99, 0.5) !important;
+}
+
+/* Button styling improvements for dark theme */
+[data-theme="dark"] .hover\:from-purple-600:hover {
+  background: linear-gradient(to right, #805ad5, #667eea) !important;
+}
+
+/* Text content styling */
+[data-theme="dark"] .text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure all text is visible */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: #f7fafc !important;
+}
+
+[data-theme="dark"] p {
+  color: #e2e8f0 !important;
+}
+
+/* Override any potential conflicts with specific text classes */
+[data-theme="dark"] .text-4xl,
+[data-theme="dark"] .text-3xl,
+[data-theme="dark"] .text-2xl,
+[data-theme="dark"] .text-xl,
+[data-theme="dark"] .text-lg,
+[data-theme="dark"] .text-base,
+[data-theme="dark"] .text-sm,
+[data-theme="dark"] .text-xs {
+  color: inherit !important;
+}
+
+/* Catch-all for any remaining text that might be invisible */
+[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+  color: inherit !important;
+}
+
+/* Force visibility for any potentially invisible elements */
+[data-theme="dark"] [style*="color: #"] {
+  color: #e2e8f0 !important;
+}
+
+/* Main hero heading styling for dark mode */
+[data-theme="dark"] h1.text-5xl,
+[data-theme="dark"] h1.text-6xl {
+  color: #ffffff !important;
+}
+
+/* Remove gradient background from main heading text in dark mode */
+[data-theme="dark"] .bg-gradient-to-r.from-yellow-400.via-red-400.to-pink-500 {
+  background: none !important;
+  color: #ffffff !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Alternative selector to ensure the gradient text becomes white */
+[data-theme="dark"] .text-transparent {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+}
+
+/* Ensure smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Logout Modal Base */
+#logoutModal .modal-content {
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 22rem;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Heading + text */
+#logoutModal h2 {
+  color: var(--primary-text);
+}
+#logoutModal p {
+  color: var(--secondary-text);
+}
+
+/* Buttons */
+#confirmLogout {
+  background: linear-gradient(to right, #ef4444, #ec4899); /* red → pink */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#confirmLogout:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#cancelLogout {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#cancelLogout:hover {
+  background-color: var(--border-color);
+}
+
+/*Loading page*/
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #a78bfa, #f472b6, #6366f1);
+    color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader i {
+    font-size: 4.5rem;
+    animation: spin 2s linear infinite;
+}
+
+.loader h2 {
+    margin-top: 1.5rem;
+    font-size: 2.1rem;
+}
+
+.dots::after {
+    content: "";
+    display: inline-block;
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: "";
+    }
+    20% {
+        content: ".";
+    }
+    40% {
+        content: "..";
+    }
+    60% {
+        content: "...";
+    }
+    80%{
+        content: "....";
+    }
+    100% {
+        content: "";
+    }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* This is the base state (no rotation) */
+.exhibition-item:hover,
+.artwork-item:hover,
+.artist-item:hover,
+.flex.flex-col.items-center:hover {
+  /* We use CSS variables for the rotation, which JS will update */
+  transform: perspective(1000px) 
+             rotateX(var(--rotateX, 0deg)) 
+             rotateY(var(--rotateY, 0deg)) 
+             scale(1.03); /* Keep your scale effect */
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* Add this new rule for a smooth transition back to center when the mouse leaves */
+.exhibition-item,
+.artwork-item,
+.artist-item,
+.flex.flex-col.items-center {
+  --rotateX: 0deg;
+  --rotateY: 0deg;
+  /* Add the new variables to your existing transition */
+  transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease, 
+              --rotateX 0.6s ease-out, --rotateY 0.6s ease-out; 
+}
+/* Layered neon shadow glow */
+/* Layered neon shadow glow - lighter overlay */
+.exhibition-item::before,
+.artwork-item::before,
+.artist-item::before,
+.flex.flex-col.items-center::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(45deg, rgba(139,92,246,0.12), rgba(99,102,241,0.12)); /* softer overlay */
+  opacity: 0;
+  transform: scale(0.9) rotate(0deg);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.exhibition-item:hover::before,
+.artwork-item:hover::before,
+.artist-item:hover::before,
+.flex.flex-col.items-center:hover::before {
+  opacity: 0.8; /* keep it noticeable but softer */
+  transform: scale(1.05) rotate(3deg);
+}
+
+
+/* Image zoom and subtle tilt */
+.exhibition-item img,
+.artwork-item img,
+.artist-item img,
+.flex.flex-col.items-center img {
+  transition: transform 0.6s ease, filter 0.6s ease;
+  z-index: 2;
+}
+
+.exhibition-item:hover img,
+.artwork-item:hover img,
+.artist-item:hover img,
+.flex.flex-col.items-center:hover img {
+  transform: scale(1.1) rotate(1.5deg);
+  filter: brightness(1.1);
+}
+
+/* Neon glow on text */
+.exhibition-item h3,
+.artwork-item h3,
+.artist-item h3,
+.flex.flex-col.items-center h4 {
+  transition: text-shadow 0.6s ease, color 0.6s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.exhibition-item:hover h3,
+.artwork-item:hover h3,
+.artist-item:hover h3,
+.flex.flex-col.items-center:hover h4 {
+  text-shadow: 
+    0 0 4px rgba(139,92,246,0.6), 
+    0 0 8px rgba(99,102,241,0.4);
+  color: #b682ff; /* light but visible on dark overlay */
+}
+
+/* Floating gradient streak animation */
+.exhibition-item::after,
+.artwork-item::after,
+.artist-item::after,
+.flex.flex-col.items-center::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: rotate(30deg) translateX(-100%);
+  animation: streak 1.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes streak {
+  0% { transform: rotate(30deg) translateX(-100%); opacity: 0; }
+  50% { opacity: 0.6; }
+  100% { transform: rotate(30deg) translateX(100%); opacity: 0; }
+}
+
+/* Circle cards extra pop */
+.flex.flex-col.items-center:hover .w-44 {
+  transform: scale(1.15) rotate(-3deg);
+  box-shadow: 0 0 25px rgba(139,92,246,0.4), 0 0 50px rgba(99,102,241,0.2);
+}
+
+/* Quick-view / overlay content fade */
+.artwork-item .absolute,
+.artist-item .absolute {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 3;
+}
+
+.artwork-item:hover .absolute,
+.artist-item:hover .absolute {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Contact Us Cards: enhanced hover effect */
+.mt-12.grid > div {
+  --rotateX: 0deg !important;
+  --rotateY: 0deg !important;
+  transform: none !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.mt-12.grid > div:hover {
+  /* Lift and subtle scale */
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.06);
+  filter: brightness(1.05);
+  z-index: 1;
+}
+
+/* Add gentle glowing border pseudo-element */
+.mt-12.grid > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(108, 99, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.mt-12.grid > div:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Keep text and icons clear */
+.mt-12.grid > div h4,
+.mt-12.grid > div p,
+.mt-12.grid > div a,
+.mt-12.grid > div i {
+  color: var(--primary-text) !important;
+  text-shadow: none !important;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Optional: subtle icon pop on hover */
+.mt-12.grid > div:hover i {
+  transform: scale(1.1);
+  color: #6C63FF; /* keeps the brand accent color */
+}
+/* Prevent any 3D tilt or scale on contact buttons */
+a[href*="wa.me"],
+#openCollabForm {
+  transform: none !important;   /* no rotation/scale */
+  --rotateX: 0deg !important;   /* override JS vars if applied */
+  --rotateY: 0deg !important;
+}
+
+/* Optional: simple emboss effect on hover */
+a[href*="wa.me"]:hover,
+#openCollabForm:hover {
+  box-shadow: inset 2px 2px 6px rgba(0,0,0,0.2),
+              inset -2px -2px 6px rgba(255,255,255,0.3);
+  transform: none !important; /* ensure no tilt or scaling */
+}
   </style>
   </head>
 
 <body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
+
+<!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <i class="fa-solid fa-spinner"></i>
+            <h2>Bringing Art to Life<span class="dots"></span></h2>
+        </div>
+    </div>
 <!-- Navbar -->
 <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-3">
+    <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
@@ -178,14 +794,21 @@
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-      <a href="#" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link">About</a>
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact</a>
-      <button id="logout-btn" 
-        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
+          <button id="logout-btn"
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -207,11 +830,21 @@
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact</a>
-      <button class="px-6 py-2 rounded-full text-white font-semibold 
-                     bg-gradient-to-r from-indigo-500 to-purple-600 
-                     hover:from-purple-600 hover:to-indigo-500 
-                     transition-all duration-300 shadow-md hover:shadow-xl">
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
+      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
         Log Out
       </button>
     </nav>
@@ -698,46 +1331,44 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       We'd love to hear from you! Whether you have a question, suggestion, or want to collaborate, reach out to us.
     </p>
 
-    <!-- Contact Cards -->
-    <div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
-      <!-- Location Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Location</h4>
-        <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
-      </div>
-
-      <!-- Email Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Email</h4>
-        <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
-      </div>
-
-      <!-- Phone Card -->
-      <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
-        <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
-        <h4 class="font-semibold text-xl mb-2">Phone</h4>
-        <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
-      </div>
-    </div>
-
-    <!-- Buttons Section -->
-    <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
-      <!-- WhatsApp Button -->
-      <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
-        Send Message
-      </a>
-
-      <!-- Collaboration Button -->
-      <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
-        <i class="fas fa-handshake text-xl"></i>
-        For Collaboration
-      </button>
-    </div>
+<!-- Contact Cards -->
+<div class="mt-12 grid gap-8 sm:grid-cols-1 md:grid-cols-3">
+  <!-- Location Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-map-marker-alt text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Location</h4>
+    <p class="text-gray-600 text-center">123 Main St, Anytown, India</p>
   </div>
-</section>
+
+  <!-- Email Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-envelope text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Email</h4>
+    <a href="mailto:mypassion@kala.ficial.com" class="text-[#6C63FF] hover:underline">mypassion@kala.ficial.com</a>
+  </div>
+
+  <!-- Phone Card -->
+  <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:shadow-2xl transition-shadow duration-300">
+    <i class="fas fa-phone-alt text-4xl text-[#6C63FF] mb-4"></i>
+    <h4 class="font-semibold text-xl mb-2">Phone</h4>
+    <a href="tel:+911234567890" class="text-[#6C63FF] hover:underline">+91 1234567890</a>
+  </div>
+</div>
+
+<!-- Buttons Section -->
+<div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-6">
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/1234567890" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    Send Message
+  </a>
+
+  <!-- Collaboration Button -->
+  <button id="openCollabForm" class="inline-flex items-center justify-center bg-[#6C63FF] hover:bg-[#5750d3] text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-6 py-3 gap-3">
+    <i class="fas fa-handshake text-xl"></i>
+    For Collaboration
+  </button>
+</div>
 
 <!-- Collaboration Form Modal -->
 <div id="collabModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
@@ -753,6 +1384,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     </form>
   </div>
 </div>
+
 <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -768,9 +1400,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       <!-- Brand -->
       <div class="mb-6 lg:mb-0">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
-        <p class="text-gray-600 leading-relaxed">
-          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
-        </p>
+        <p class="text-gray-600 leading-relaxed">Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.</p>
         <div class="flex gap-4 mt-6">
           <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
           <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
@@ -787,6 +1417,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="faq.html">FAQ</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -806,23 +1437,13 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
         <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
         <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
-
-  <form class="flex flex-col gap-3">
-    <input 
-      type="email" 
-      placeholder="Your Email" 
-      class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300"
-    />
-    <button 
-      type="submit" 
-      class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
-    >
-      Subscribe
-    </button>
-  </form>
+        <form class="flex flex-col sm:flex-row gap-3">
+          <input type="email" placeholder="Your Email" class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF]"/>
+          <button type="submit" class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 transition-all duration-300 shadow-lg hover:scale-105">Subscribe</button>
+        </form>
         <div class="flex gap-4 mt-6 justify-center sm:justify-start">
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
         </div>
@@ -836,6 +1457,105 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
   </div>
 </footer>
 
+<!-- Scroll to Top/Bottom Button -->
+<button id="smartScrollBtn"
+        class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white font-bold 
+               w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+               transition-all duration-300 hover:scale-110 z-50"
+        aria-label="Scroll">
+  <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd"/>
+  </svg>
+</button>
+
+<script>
+(function () {
+  const scrollBtn = document.getElementById('smartScrollBtn');
+  const scrollIcon = document.getElementById('scrollIcon');
+  if (!scrollBtn || !scrollIcon) return;
+
+  const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
+
+  const setIcon = (direction) => {
+    if (direction === 'down') {
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+    } else {
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l-4 4a1 1 0 010 1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    }
+  };
+
+  const check = () => {
+    const threshold = updateThreshold();
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+
+    if (scrollTop < threshold) {
+      setIcon('down');
+    } else if (windowHeight + scrollTop >= docHeight - threshold) {
+      setIcon('up');
+    } else {
+      setIcon('up');
+    }
+  };
+
+  window.addEventListener('scroll', check);
+  window.addEventListener('resize', check);
+  check();
+
+  scrollBtn.addEventListener('click', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    const threshold = updateThreshold();
+
+    if (scrollTop < threshold) {
+      window.scrollTo({ top: docHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+})();
+</script>
+
+
+
+  <button 
+    type="submit" 
+    class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+  >
+    Subscribe
+  </button>
+  </form>
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+  <div class="modal-content">
+    <h2 class="text-xl font-semibold">Confirm Logout</h2>
+    <p class="mt-3">Are you sure you want to log out?</p>
+    <div class="flex justify-center gap-4 mt-6">
+      <button id="confirmLogout">Yes, Logout</button>
+      <button id="cancelLogout">Cancel</button>
+    </div>
+  </div>
+</div>
+
 
   <script>
   
@@ -848,11 +1568,11 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
     let particlesArray = [];
     const colors = ['#FFD700','#FF69B4','#7B68EE','#00FFFF'];
 
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-     menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+   menuBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
 
   // Active link highlight on scroll
   const sections = document.querySelectorAll("section");
@@ -871,55 +1591,9 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     });
   });
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-        ctx.fill();
-      }
-    }
 
-    function init() {
-      particlesArray = [];
-      for(let i=0; i<100; i++) {
-        particlesArray.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particlesArray.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      init();
-    });
-
-     document.querySelectorAll('.read-more-btn').forEach(button => {
+  // Read More Toggle
+  document.querySelectorAll('.read-more-btn').forEach(button => {
     button.addEventListener('click', () => {
       const p = button.previousElementSibling;
       if (p.style.maxHeight === 'none') {
@@ -931,23 +1605,110 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
       }
     });
   });
-  
-  </script>
-    <script>
-      // Check if the user is logged in on page load
-      if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.href = "auth.html";
+</script>
+
+<script>
+  // Logout Logic
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtns = [
+      document.getElementById("logout-btn"),
+      document.getElementById("logout-btn-mobile")
+    ].filter(Boolean);
+
+    const modal = document.getElementById("logoutModal");
+    const confirmBtn = document.getElementById("confirmLogout");
+    const cancelBtn = document.getElementById("cancelLogout");
+
+    logoutBtns.forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        modal.classList.remove("hidden");
+      });
+    });
+
+    cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+    confirmBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "auth.html";
+    });
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+  });
+</script>
+
+<script src="theme-toggle.js"></script>
+
+<script>
+  // Inline theme toggle backup
+  (function() {
+    'use strict';
+    function initInlineTheme() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+      const htmlElement = document.documentElement;
+      if (!themeToggle) return;
+
+      let currentTheme = localStorage.getItem('theme') || 'light';
+      htmlElement.setAttribute('data-theme', currentTheme);
+
+      function updateIcons(theme) {
+        const iconClass = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+        if (themeIcon) themeIcon.className = `fas ${iconClass} text-lg`;
+        if (mobileThemeIcon) mobileThemeIcon.className = `fas ${iconClass} text-lg`;
       }
 
-      // --- LOGOUT LOGIC ---
-      const logoutBtn = document.getElementById("logout-btn");
+      function toggleTheme() {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        updateIcons(currentTheme);
+      }
 
-      logoutBtn.addEventListener("click", () => {
-        // Clear the authentication flag from localStorage
-        localStorage.removeItem("isLoggedIn");
-        // Redirect the user back to the authentication page
-        window.location.href = "auth.html";
-      });
-    </script>
+      updateIcons(currentTheme);
+      themeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', e => { e.preventDefault(); toggleTheme(); });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initInlineTheme);
+    } else {
+      initInlineTheme();
+    }
+  })();
+
+    // Title change on visibility
+  document.addEventListener('visibilitychange', function() {
+    document.title = document.visibilityState === 'visible' ? 
+                     'Kala.ficial - Your Virtual Art Gallery' : 
+                     'Come back to Website';
+  });
+
+  // Loading screen hide
+  document.addEventListener("DOMContentLoaded", function () {
+    const loadingScreen = document.getElementById("loading-screen");
+    if (loadingScreen) {
+      setTimeout(() => loadingScreen.classList.add("hidden"), 7000);
+    }
+  });
+</script>
+<script src="assets/js/card-hover-home.js"></script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
   </body>
 </html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KALA.Ficial - FAQ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.replace("auth.html");
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f5f7ff, #e9e3ff, #ffffff);
+    }
+    .animated-shape {
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes bounce-fast {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+    .animate-bounce-fast { animation: bounce-fast 3s ease-in-out infinite; }
+    .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite;
+    }
+    .floating-shape:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; background: rgba(167, 139, 250, 0.15); }
+    .floating-shape:nth-child(2) { top: 30%; left: 70%; animation-duration: 15s; background: rgba(244, 114, 182, 0.15); }
+    .floating-shape:nth-child(3) { top: 60%; left: 40%; animation-duration: 18s; background: rgba(96, 165, 250, 0.15); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(15px); }
+    }
+    .nav-link {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #111827;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link.active {
+      color: #111827;
+      font-weight: 600;
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* FAQ Specific Styles */
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+    .faq-item:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-5px);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      cursor: pointer;
+      background: white;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      transition: background-color 0.2s ease;
+    }
+    .faq-question:hover {
+      background-color: #f8f9fa;
+    }
+    .faq-question:focus {
+      outline: 2px solid #a855f7;
+      outline-offset: -2px;
+    }
+    .faq-icon {
+      font-size: 1.2rem;
+      color: #a855f7;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 1.5rem 1.5rem;
+    }
+    .faq-answer p, .faq-answer ul {
+      margin-bottom: 1rem;
+    }
+    .faq-answer ul {
+      padding-left: 1.5rem;
+    }
+    .faq-answer li {
+      margin-bottom: 0.5rem;
+    }
+    .glow-wrap {
+      position: relative;
+    }
+    .glow-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #a855f7, #ec4899, #a855f7, transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .glow-wrap:hover::before {
+      opacity: 1;
+    }
+
+/* Theme CSS Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1f2937;
+  --secondary-text: #6b7280;
+  --accent-color: #8b5cf6;
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1f2937;
+  --text-color: #f9fafb;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button styles with higher specificity */
+.theme-toggle {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(75, 85, 99, 0.9) !important;
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(55, 65, 81, 0.9) !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-toggle i {
+  color: #374151 !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.1rem !important;
+}
+
+[data-theme="dark"] .theme-toggle i {
+  color: #fcd34d !important;
+}
+
+/* Apply theme to body and main elements */
+[data-theme="dark"] body {
+  background: linear-gradient(to bottom, #1f2937, #111827, #0f172a) !important;
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] header {
+  background: linear-gradient(to right, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.4)) !important;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #fcd34d !important;
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] p, [data-theme="dark"] span:not(.theme-toggle *) {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #1f2937 !important;
+}
+
+[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+  border-color: #4a5568 !important;
+}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="h-16 w-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-md">K</div>
+        <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="faq.html" class="nav-link active">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+        
+        <button id="logout-btn" 
+          class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+                 bg-gradient-to-r from-indigo-500 to-purple-600 
+                 hover:from-purple-600 hover:to-indigo-500 
+                 transition-all duration-300 shadow-md hover:shadow-xl">
+          Log Out
+        </button>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+      <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="faq.html" class="nav-link active">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        
+        <!-- Mobile Theme Toggle -->
+        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+          <span class="text-gray-700">Theme</span>
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+          </button>
+        </div>
+        
+        <button class="px-6 py-2 rounded-full text-white font-semibold 
+                       bg-gradient-to-r from-indigo-500 to-purple-600 
+                       hover:from-purple-600 hover:to-indigo-500 
+                       transition-all duration-300 shadow-md hover:shadow-xl">
+          Log Out
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- FAQ Hero Section -->
+  <section class="relative w-full min-h-[40vh] flex items-center justify-center px-6 md:px-20 pt-28 overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+    </div>
+
+    <div class="container mx-auto text-center relative z-10">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6">
+        Frequently Asked <span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Questions</span>
+      </h1>
+      <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+        Find answers to common questions about Kala.ficial, our services, and how to make the most of your artistic journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="relative py-16 bg-gradient-to-b from-white via-purple-50 to-white overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="faq-container">
+        <!-- FAQ List -->
+        <div class="faq-list">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>What is Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-question"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Kala.ficial is a global platform for emerging artists to showcase their artwork, collaborate with other creators, and connect with exhibitions worldwide. We empower artists and enrich visitor experiences through immersive virtual tours, artist spotlights, and comprehensive exhibition information.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>How can I showcase my artwork on Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-paint-brush"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>To showcase your artwork on Kala.ficial, you need to create an artist account. Once registered, you can upload high-quality images of your artwork, add descriptions, set prices, and manage your portfolio. Our team will review your submission to ensure it meets our quality standards before it goes live.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>How do I purchase artwork from Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-shopping-cart"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Purchasing artwork is simple. Browse our collection, select the piece you love, and click "Purchase." You'll be guided through a secure checkout process. We accept various payment methods including credit cards, PayPal, and bank transfers. Once purchased, we'll coordinate shipping directly with you.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>Can I participate in exhibitions through Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-images"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! We regularly organize both physical and virtual exhibitions. As a registered artist, you'll receive notifications about upcoming exhibition opportunities. You can submit your work for consideration, and if selected, we'll guide you through the participation process.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>What are the fees for using Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-money-bill-wave"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Creating an artist profile and browsing artwork is free. We charge a commission only when artwork is sold through our platform. Exhibition participation may have separate fees depending on the event. All fees are transparently displayed before any transaction.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>How does Kala.ficial support emerging artists?</span>
+              <div class="faq-icon"><i class="fas fa-hands-helping"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>We're committed to supporting emerging artists through:</p>
+              <ul>
+                <li>Visibility through our platform and social media channels</li>
+                <li>Exhibition opportunities both online and offline</li>
+                <li>Educational resources and workshops</li>
+                <li>Networking events with galleries and collectors</li>
+                <li>Fair commission structures that prioritize artist earnings</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ Item 7 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>What types of art does Kala.ficial accept?</span>
+              <div class="faq-icon"><i class="fas fa-palette"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>We welcome diverse art forms including:</p>
+              <ul>
+                <li>Paintings (oil, acrylic, watercolor, etc.)</li>
+                <li>Sculptures and installations</li>
+                <li>Photography and digital art</li>
+                <li>Mixed media artworks</li>
+                <li>Prints and limited editions</li>
+                <li>Textile and fiber art</li>
+              </ul>
+              <p>All artwork must be original creations by the submitting artist.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 8 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>Is my personal information safe on Kala.ficial?</span>
+              <div class="faq-icon"><i class="fas fa-shield-alt"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>We use secure encryption and privacy practices to protect your data. Your information is never shared with third parties without your consent. See our Privacy Policy for details.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 9 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>How do I report inappropriate content or copyright issues?</span>
+              <div class="faq-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>If you encounter content that violates our guidelines or infringes copyright, use the "Report" button on the artwork page or contact support. We investigate all reports promptly.</p>
+            </div>
+          </div>
+
+          <!-- FAQ Item 10 -->
+          <div class="faq-item glow-wrap">
+            <button class="faq-question">
+              <span>How do I contact customer support?</span>
+              <div class="faq-icon"><i class="fas fa-headset"></i></div>
+            </button>
+            <div class="faq-answer">
+              <p>Our customer support team is available through multiple channels:</p>
+              <ul>
+                <li>Email: support@kala.ficial.com (response within 24 hours)</li>
+                <li>Live chat: Available on our website during business hours</li>
+                <li>Phone: +1 (555) 123-4567 (Monday-Friday, 9AM-5PM EST)</li>
+                <li>Social media: DM us on Instagram or Twitter</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Help Section -->
+        <div class="mt-16 text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Still have questions?</h2>
+          <p class="text-gray-700 mb-8">We're here to help you with any other questions you might have.</p>
+          <a href="contact.html" class="inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105 px-8 py-4">
+            <i class="fas fa-envelope mr-3"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative bg-gradient-to-t from-purple-50 to-white py-12 overflow-hidden">
+    <!-- Floating Shapes -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+      <span class="floating-shape"></span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-gray-800">
+      <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-4">
+        <!-- Brand -->
+        <div class="mb-6 lg:mb-0">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+          <p class="text-gray-600 leading-relaxed">
+            Empowering artists, enriching art lovers, and making art accessible to all.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-2">
+          <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Home</a></li>
+            <li><a href="about.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">About</a></li>
+            <li><a href="exhibition.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Exhibitions</a></li>
+            <li><a href="artwork.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Artwork</a></li>
+          </ul>
+        </div>
+
+        <!-- More Links -->
+        <div class="space-y-2">
+          <h4 class="text-xl font-semibold mb-4">More</h4>
+          <ul class="space-y-2">
+            <li><a href="Artist Portal.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Artist Portal</a></li>
+            <li><a href="faq.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">FAQ</a></li>
+            <li><a href="contact.html" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Contact</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-purple-600 transition-colors duration-300">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-purple-600"></i>123 Art Street, Creative City</li>
+            <li class="flex items-center gap-2"><i class="fas fa-envelope text-purple-600"></i><a href="mailto:info@kala.ficial.com" class="hover:underline">info@kala.ficial.com</a></li>
+            <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-purple-600"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+        &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // FAQ functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      // Add click event to each FAQ question
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          const faqItem = this.parentElement;
+          faqItem.classList.toggle('active');
+        });
+      });
+    });
+
+    // Check if the user is logged in on page load
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.href = "auth.html";
+    }
+
+    // Logout logic
+    const logoutBtn = document.getElementById("logout-btn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "auth.html";
+      });
+    }
+  </script>
+
+  <script>
+// Theme toggle functionality
+(function() {
+  'use strict';
+  
+  function initInlineTheme() {
+    console.log('Initializing inline theme system...');
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle) {
+      console.log('Theme toggle button not found!');
+      return;
+    }
+    
+    // Get current theme or default to light
+    let currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    
+    function updateIcons(theme) {
+      const isDark = theme === 'dark';
+      const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+      
+      if (themeIcon) {
+        themeIcon.className = `fas ${iconClass} text-lg`;
+      }
+      if (mobileThemeIcon) {
+        mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+      }
+    }
+    
+    function toggleTheme() {
+      console.log('Toggling theme...');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      currentTheme = newTheme;
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcons(newTheme);
+      
+      console.log('Theme switched to:', newTheme);
+    }
+    
+    // Set initial icons
+    updateIcons(currentTheme);
+    
+    // Add click listeners
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Desktop theme button clicked');
+      toggleTheme();
+    });
+    
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile theme button clicked');
+        toggleTheme();
+      });
+    }
+    
+    console.log('Inline theme toggle initialized successfully');
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInlineTheme);
+  } else {
+    initInlineTheme();
+  }
+})();
+</script>
+</body>
+</html>

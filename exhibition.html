@@ -9,6 +9,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.replace("auth.html");
+    }
+  </script>
 
   <style>
      html {
@@ -28,6 +33,80 @@
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-20px) rotate(180deg); }
     }
+  
+    /* Floating micro-blobs animation */
+    @keyframes floatA { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px) translateX(6px)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)}50%{transform:translateY(-18px) translateX(-8px)} }
+    @keyframes floatC { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) translateX(10px)} }
+    .fA { animation: floatA 7s ease-in-out infinite; }
+    .fB { animation: floatB 9s ease-in-out infinite; }
+    .fC { animation: floatC 5.5s ease-in-out infinite; }
+
+    /* glass look used on some cards */
+    .glass {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    /* small helper for clamping description */
+    .desc-clamp { max-height: 4.5rem; overflow: hidden; }
+
+    /* modal transitions */
+    .modal-backdrop { transition: opacity .18s ease; }
+
+    /* horizontal timeline */
+    .timeline { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+    .timeline::-webkit-scrollbar { display: none; }
+    .nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  /* Mobile animation */
+  #mobile-menu {
+    animation: slideDown 0.4s ease forwards;
+  }
+  .inline-flex{
+     transition: transform 0.3s ease-in-out;
+  }
+  .inline-flex:hover{
+    transform: scale(1.05);
+    background:linear-gradient(90deg, orange);
+    box-shadow: 0 5px 11px rgba(128, 128, 128, 0.24);
+  }
+ .nav-link:hover {
+    color: #111827;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #111827;
+    font-weight: 600;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+  .rounded-3xl{
+    transition: transform 0.3s ease-in-out;
+  }
+  .rounded-3xl:hover{
+     transform: scale(1.02);
+  }
+
     .text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
@@ -81,93 +160,169 @@
   .floating-shape:nth-child(2) { top: 40%; left: 75%; animation-duration: 16s; }
   .floating-shape:nth-child(3) { top: 70%; left: 30%; animation-duration: 20s; }
 
-  
-    /* Floating micro-blobs animation */
-    @keyframes floatA { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px) translateX(6px)} }
-    @keyframes floatB { 0%,100%{transform:translateY(0)}50%{transform:translateY(-18px) translateX(-8px)} }
-    @keyframes floatC { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px) translateX(10px)} }
-    .fA { animation: floatA 7s ease-in-out infinite; }
-    .fB { animation: floatB 9s ease-in-out infinite; }
-    .fC { animation: floatC 5.5s ease-in-out infinite; }
+/* Theme CSS Variables */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --primary-text: #1a202c;
+  --secondary-text: #4a5568;
+  --accent-color: #8b5cf6;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
-    /* glass look used on some cards */
-    .glass {
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(6px);
-    }
+[data-theme="dark"] {
+  --primary-bg: #1a202c;
+  --secondary-bg: #2d3748;
+  --primary-text: #f7fafc;
+  --secondary-text: #e2e8f0;
+  --accent-color: #9f7aea;
+  --border-color: #4a5568;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
 
-    /* small helper for clamping description */
-    .desc-clamp { max-height: 4.5rem; overflow: hidden; }
+/* Theme toggle button styles with higher specificity */
+.theme-toggle {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+}
 
-    /* modal transitions */
-    .modal-backdrop { transition: opacity .18s ease; }
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(75, 85, 99, 0.9) !important;
+  border-color: rgba(156, 163, 175, 0.5) !important;
+}
 
-    /* horizontal timeline */
-    .timeline { -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-    .timeline::-webkit-scrollbar { display: none; }
-    .nav-link {
-    position: relative;
-    padding: 6px 0;
-    transition: color 0.3s ease;
-  }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -2px;
-    left: 0;
-    background: linear-gradient(to right, #6366f1, #a855f7);
-    border-radius: 2px;
-    transition: width 0.3s ease;
-  }
-  .nav-link:hover {
-    color: #111827;
-  }
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  .nav-link.active {
-    color: #111827;
-    font-weight: 600;
-  }
-  .nav-link.active::after {
-    width: 100%;
-  }
-  /* Mobile animation */
-  #mobile-menu {
-    animation: slideDown 0.4s ease forwards;
-  }
-  .inline-flex{
-     transition: transform 0.3s ease-in-out;
-  }
-  .inline-flex:hover{
-    transform: scale(1.05);
-    background:linear-gradient(90deg, orange);
-    box-shadow: 0 5px 11px rgba(128, 128, 128, 0.24);
-  }
-  .rounded-3xl{
-    transition: transform 0.3s ease-in-out;
-  }
-  .rounded-3xl:hover{
-     transform: scale(1.02);
-  }
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(55, 65, 81, 0.9) !important;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.theme-toggle i {
+  color: #374151 !important;
+  transition: all 0.3s ease !important;
+  font-size: 1.1rem !important;
+}
+
+[data-theme="dark"] .theme-toggle i {
+  color: #fcd34d !important;
+}
+
+/* Apply theme to body and main elements */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
+  color: var(--primary-text) !important;
+}
+
+[data-theme="dark"] header {
+  background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
+}
+
+
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #fcd34d !important;
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] p, [data-theme="dark"] span:not(.theme-toggle *) {
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-gray-700,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #1f2937 !important;
+}
+
+[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
+  border-color: #4a5568 !important;
+}
  
+/* Logout Modal Base */
+#logoutModal .modal-content {
+  background-color: var(--primary-bg) !important;
+  color: var(--primary-text) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 1rem !important;
+  padding: 2rem !important;
+  max-width: 22rem !important;
+  width: 100% !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Heading + text */
+#logoutModal h2 {
+  color: var(--primary-text);
+}
+#logoutModal p {
+  color: var(--secondary-text);
+}
+
+/* Buttons */
+#confirmLogout {
+  background: linear-gradient(to right, #ef4444, #ec4899); /* red → pink */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#confirmLogout:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#cancelLogout {
+  background-color: var(--secondary-bg);
+  color: var(--primary-text);
+  border-radius: 9999px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+}
+#cancelLogout:hover {
+  background-color: var(--border-color);
+}
   </style>
   <script>
     if (localStorage.getItem('isLoggedIn') !== 'true') {
   window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  const logoutBtn = document.getElementById('logout-btn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', function() {
-      localStorage.clear();
-      window.location.href = 'auth.html'; 
-    });
-  }
-});
+
 </script>
 </head>
 <body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
@@ -176,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-3">
+    <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
@@ -185,13 +340,20 @@ document.addEventListener("DOMContentLoaded", function() {
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="index.html#about" class="nav-link">About</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <button id="logout-btn" 
-        class="ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      <a href="contact.html" class="nav-link">Contact</a>
+
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
+      <button id="logout-btn"
+               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -214,10 +376,20 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <button class="px-6 py-2 rounded-full text-white font-semibold 
-                     bg-gradient-to-r from-indigo-500 to-purple-600 
-                     hover:from-purple-600 hover:to-indigo-500 
-                     transition-all duration-300 shadow-md hover:shadow-xl">
+
+      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
+      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
         Log Out
       </button>
     </nav>
@@ -328,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <button class="type-chip px-3 py-2 rounded-full bg-white border border-gray-200 text-sm" data-type="mixedmedia">Mixed Media</button>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3">
           <select id="locationSelect" class="px-3 py-2 rounded-lg border border-gray-200 text-sm">
             <option value="all">All Locations</option>
             <option value="online">Online</option>
@@ -395,8 +567,6 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
           </div>
         </article>
-
-        <!-- card 2 -->
         <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="painting" data-location="mumbai" data-start="2023-11-12" data-end="2023-11-12" data-title="Piramal Museum of Art">
           <img src="assets/images/eve2.jpg" alt="" class="w-full h-56 object-cover">
           <div class="p-4">
@@ -421,34 +591,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
           </div>
         </article>
-
-        <!-- card 3 -->
-        <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="mumbai" data-start="2024-04-01" data-end="2024-05-30" data-title="Jehangir Art Gallery">
-          <img src="assets/images/eve3.jpg" alt="" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <div class="flex items-center justify-between">
-              <span class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-800">Ongoing</span>
-              <span class="text-xs text-gray-500">30 Apr 2024</span>
-            </div>
-            <h3 class="mt-3 font-semibold text-lg">Jehangir Art Gallery</h3>
-            <p class="mt-2 text-sm text-gray-600 desc-clamp">Kala Ghoda — contemporary show running through April.</p>
-            <div class="mt-4 flex items-center justify-between">
-              <div class="flex items-center gap-3">
-                <img src="assets/images/eve3.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
-                <div>
-                  <p class="text-sm font-medium">K.f</p>
-                  <p class="text-xs text-gray-500">Organizer</p>
-                </div>
-              </div>
-              <div class="flex gap-2">
-                <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
-                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
-              </div>
-            </div>
-          </div>
-        </article>
-        <!-- card 4 - Painting -->
-<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="painting" data-location="delhi" data-start="2024-05-01" data-end="2024-06-15" data-title="National Gallery of Modern Art">
+       <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="painting" data-location="delhi" data-start="2024-05-01" data-end="2024-06-15" data-title="National Gallery of Modern Art">
   <img src="assets/images/eve4.jpeg" alt="Painting Exhibition" class="w-full h-56 object-cover">
   <div class="p-4">
     <div class="flex items-center justify-between">
@@ -472,34 +615,30 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </article>
-
-<!-- card 5 - Sculpture -->
-<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="bangalore" data-start="2024-06-01" data-end="2024-07-15" data-title="Stone & Metal Forms">
-  <img src="https://images.squarespace-cdn.com/content/v1/61a76dee225b8d381c48c4f4/d8c923ef-a408-45a5-af18-659ca44249c3/_DSC9053+%28FILEminimizer%29.jpg" alt="Sculpture Exhibition" class="w-full h-56 object-cover">
-  <div class="p-4">
-    <div class="flex items-center justify-between">
-      <span class="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-800">Upcoming</span>
-      <span class="text-xs text-gray-500">01 Jun 2024</span>
-    </div>
-    <h3 class="mt-3 font-semibold text-lg">Stone & Metal Forms</h3>
-    <p class="mt-2 text-sm text-gray-600 desc-clamp">An exhibition highlighting contemporary sculpture practices in Bangalore.</p>
-    <div class="mt-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="https://images.squarespace-cdn.com/content/v1/61a76dee225b8d381c48c4f4/d8c923ef-a408-45a5-af18-659ca44249c3/_DSC9053+%28FILEminimizer%29.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
-        <div>
-          <p class="text-sm font-medium">Kala.ficial</p>
-          <p class="text-xs text-gray-500">Organizer</p>
-        </div>
-      </div>
-      <div class="flex gap-2">
-        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
-        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-<!-- card 6 - Digital -->
+ <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="mumbai" data-start="2024-04-01" data-end="2024-05-30" data-title="Jehangir Art Gallery">
+          <img src="assets/images/eve3.jpg" alt="" class="w-full h-56 object-cover">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-800">Ongoing</span>
+              <span class="text-xs text-gray-500">30 Apr 2024</span>
+            </div>
+            <h3 class="mt-3 font-semibold text-lg">Jehangir Art Gallery</h3>
+            <p class="mt-2 text-sm text-gray-600 desc-clamp">Kala Ghoda — contemporary show running through April.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="assets/images/eve3.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+                <div>
+                  <p class="text-sm font-medium">K.f</p>
+                  <p class="text-xs text-gray-500">Organizer</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+                <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+              </div>
+            </div>
+          </div>
+        </article>
 <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="digital" data-location="online" data-start="2024-05-10" data-end="2024-06-10" data-title="Virtual Digital Showcase">
   <img src="https://images.squarespace-cdn.com/content/v1/63b2fdbe4376de5bfdc6771f/1710606132226-YXGDN4YRBZ0CKJPFX4YR/The+Indivisible+Atomo_DigitalArtsBlog7.jpeg" alt="Digital Art Exhibition" class="w-full h-56 object-cover">
   <div class="p-4">
@@ -525,7 +664,6 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </article>
 
-<!-- card 7 - Photography -->
 <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="photography" data-location="kolkata" data-start="2024-04-15" data-end="2024-05-20" data-title="Frames of India">
   <img src="https://s7ap1.scene7.com/is/image/incredibleindia/national-gallery-of-modern-art-mumbai-maharashtra-2-musthead-hero?qlt=82&ts=1742164821867" alt="Photography Exhibition" class="w-full h-56 object-cover">
   <div class="p-4">
@@ -551,7 +689,6 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </article>
 
-<!-- card 8 - Mixed Media -->
 <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="mixed-media" data-location="delhi" data-start="2024-07-01" data-end="2024-08-15" data-title="Fusion of Forms">
   <img src="assets/images/eve8.jpeg" alt="Mixed Media Exhibition" class="w-full h-56 object-cover">
   <div class="p-4">
@@ -576,9 +713,30 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </article>
-
-
-        <!-- card 4 - famous -->
+<article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="sculpture" data-location="bangalore" data-start="2024-06-01" data-end="2024-07-15" data-title="Stone & Metal Forms">
+  <img src="https://images.squarespace-cdn.com/content/v1/61a76dee225b8d381c48c4f4/d8c923ef-a408-45a5-af18-659ca44249c3/_DSC9053+%28FILEminimizer%29.jpg" alt="Sculpture Exhibition" class="w-full h-56 object-cover">
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <span class="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-800">Upcoming</span>
+      <span class="text-xs text-gray-500">01 Jun 2024</span>
+    </div>
+    <h3 class="mt-3 font-semibold text-lg">Stone & Metal Forms</h3>
+    <p class="mt-2 text-sm text-gray-600 desc-clamp">An exhibition highlighting contemporary sculpture practices in Bangalore.</p>
+    <div class="mt-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="https://images.squarespace-cdn.com/content/v1/61a76dee225b8d381c48c4f4/d8c923ef-a408-45a5-af18-659ca44249c3/_DSC9053+%28FILEminimizer%29.jpg" class="w-9 h-9 rounded-full object-cover" alt="host">
+        <div>
+          <p class="text-sm font-medium">Kala.ficial</p>
+          <p class="text-xs text-gray-500">Organizer</p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn-view px-3 py-2 rounded-full bg-[#6C63FF] text-white text-sm">View</button>
+        <a href="#" class="px-3 py-2 rounded-full border border-gray-200 text-sm">Share</a>
+      </div>
+    </div>
+  </div>
+</article>
         <article class="card bg-white rounded-2xl overflow-hidden shadow transition hover:-translate-y-2" data-type="digital" data-location="online" data-start="2022-02-12" data-end="2022-02-12" data-title="Girdhari Lal Vyas Painting">
           <img src="assets/images/IA3.jpg" alt="" class="w-full h-56 object-cover">
           <div class="p-4">
@@ -678,11 +836,11 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="space-y-2">
         <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
         <ul class="space-y-2">
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#about">About Us</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#exhibition">Exhibitions</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artwork-for-sale">Artwork For Sale</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#artist-portal">Artist Portal</a></li>
-          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#contact">Contact</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./about.html">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./exhibition.html">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./artwork.html">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./Artist Portal.html">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./contact.html">Contact</a></li>
         </ul>
       </div>
 
@@ -730,18 +888,95 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </footer>
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+  <div class="modal-content">
+    <h2 class="text-xl font-semibold">Confirm Logout</h2>
+    <p class="mt-3">Are you sure you want to log out?</p>
+    <div class="flex justify-center gap-4 mt-6">
+      <button id="confirmLogout">Yes, Logout</button>
+      <button id="cancelLogout">Cancel</button>
+    </div>
+  </div>
+</div>
 </section>
   </main>
+  <!--scroll to top and bottom -->
+<button id="smartScrollBtn"
+          class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
+                 w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+                 transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Scroll">
+    <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" clip-rule="evenodd"/>
+    </svg>
+</button>
+<script src="assets/js/card-hover.js"></script>
+<script>(function () {
+  const scrollBtn = document.getElementById('smartScrollBtn');
+  const scrollIcon = document.getElementById('scrollIcon');
+  if (!scrollBtn || !scrollIcon) return;
 
+  const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
+
+  const setIcon = (direction) => {
+    if (direction === 'down') {
+      // ↓ icon path
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+    } else {
+      // ↑ icon path
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    }
+  };
+
+  const check = () => {
+    const threshold = updateThreshold();
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+
+    if (scrollTop < threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('down');
+    } else if (windowHeight + scrollTop >= docHeight - threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    } else {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    }
+  };
+
+  window.addEventListener('scroll', check);
+  window.addEventListener('resize', check);
+  check();
+
+  scrollBtn.addEventListener('click', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    const threshold = updateThreshold();
+
+    if (scrollTop < threshold) {
+      window.scrollTo({ top: docHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+})();</script>
  <script>
   // mobile menu
-  const mobileBtn = document.getElementById('mobileBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
   }
+
 
   // helper: parse date string "YYYY-MM-DD" or "YYYY/MM/DD" fallback
   function parseDate(s) {
@@ -948,6 +1183,7 @@ document.addEventListener("DOMContentLoaded", function() {
       e.target.reset();
     });
   }
+  
 
   // accessibility: press Esc to close modal
   document.addEventListener('keydown', (e) => {
@@ -955,6 +1191,129 @@ document.addEventListener("DOMContentLoaded", function() {
       modal.classList.add('hidden');
       document.body.style.overflow = '';
     }
+  });
+</script>
+
+    <script>
+      // --- LOGOUT LOGIC ---
+  document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtns = [
+    document.getElementById("logout-btn"),
+    document.getElementById("logout-btn-mobile")
+  ].filter(Boolean); // remove nulls if one button missing
+
+  const modal = document.getElementById("logoutModal");
+  const confirmBtn = document.getElementById("confirmLogout");
+  const cancelBtn = document.getElementById("cancelLogout");
+
+  logoutBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.remove("hidden");
+    });
+  });
+
+  cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+  confirmBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "auth.html";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+});
+</script> 
+
+<script>
+// Theme toggle functionality
+(function() {
+  'use strict';
+  
+  function initInlineTheme() {
+    console.log('Initializing inline theme system...');
+    
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+    const htmlElement = document.documentElement;
+    
+    if (!themeToggle) {
+      console.log('Theme toggle button not found!');
+      return;
+    }
+    
+    // Get current theme or default to light
+    let currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    
+    function updateIcons(theme) {
+      const isDark = theme === 'dark';
+      const iconClass = isDark ? 'fa-sun' : 'fa-moon';
+      
+      if (themeIcon) {
+        themeIcon.className = `fas ${iconClass} text-lg`;
+      }
+      if (mobileThemeIcon) {
+        mobileThemeIcon.className = `fas ${iconClass} text-lg`;
+      }
+    }
+    
+    function toggleTheme() {
+      console.log('Toggling theme...');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      currentTheme = newTheme;
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcons(newTheme);
+      
+      console.log('Theme switched to:', newTheme);
+    }
+    
+    // Set initial icons
+    updateIcons(currentTheme);
+    
+    // Add click listeners
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Desktop theme button clicked');
+      toggleTheme();
+    });
+    
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile theme button clicked');
+        toggleTheme();
+      });
+    }
+    
+    console.log('Inline theme toggle initialized successfully');
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initInlineTheme);
+  } else {
+    initInlineTheme();
+  }
+})();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
   });
 </script>
 
