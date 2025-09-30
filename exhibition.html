@@ -46,6 +46,7 @@
     .glass {
       background: rgba(255,255,255,0.6);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     /* small helper for clamping description */
@@ -168,11 +169,13 @@ header,
   transition: background-color .35s ease, color .35s ease, border-color .35s ease;
 }
 
+
 /* Dark theme root */
 body.dark-theme {
   /* comparable dark gradient */
   background: linear-gradient(90deg, #0b1020 0%, #111827 50%, #0b1220 100%) !important;
   color: #e6eef8 !important;
+
 }
 
 /* Loading screen */
@@ -453,9 +456,12 @@ body.dark-theme .card span {
   opacity: 0.95;
 }
 
+
 /* Organizer text */
 body.dark-theme .card .text-gray-500 {
   color: #9ca3af !important;
+
+
 }
 
 /* Share Button */
@@ -1636,6 +1642,19 @@ body.dark-theme footer h4 {
 </script> 
 
 <script src="theme-toggle.js" ></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 
 </body>
 </html>

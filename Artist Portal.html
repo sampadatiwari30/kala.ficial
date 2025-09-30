@@ -105,8 +105,35 @@
     border-radius: 50%;
     animation: float 12s ease-in-out infinite;
   }
-
-  
+ .nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(to right, #6366f1, #a855f7);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover {
+    color: #111827;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link.active {
+    color: #111827;
+    font-weight: 600;
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
   </style>
 </head>
 <body class="overflow-x-hidden">
@@ -691,6 +718,18 @@
 
 
 </main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPage = decodeURIComponent(window.location.pathname.split("/").pop());
+    const navLinks = document.querySelectorAll(".nav-link");
 
+    navLinks.forEach(link => {
+      let linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
 </body>
 </html>
