@@ -90,119 +90,7 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
-    /* Theme Toggle Styles */
-    .theme-toggle {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 3rem;
-      height: 3rem;
-      background-color: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .dark .theme-toggle {
-      background-color: rgba(75, 85, 99, 0.6);
-      border-color: rgba(75, 85, 99, 0.5);
-    }
-
-    .dark .theme-toggle:hover {
-      background-color: rgba(55, 65, 81, 0.6);
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .theme-toggle i {
-      color: #374151;
-      transition: all 0.3s ease;
-      font-size: 1.1rem;
-    }
-
-    .dark .theme-toggle i {
-      color: #fcd34d;
-    }
-
-    /* Apply dark theme styles */
-    .dark body {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-    }
-
-    .dark header {
-      background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    /* Text color adjustments for dark mode */
-    .dark .text-gray-900,
-    .dark .text-gray-800 {
-      color: #f1f5f9 !important;
-    }
-
-    .dark .text-gray-700,
-    .dark .text-gray-600 {
-      color: #cbd5e1 !important;
-    }
-
-    /* Mobile menu dark theme */
-    .dark #mobile-menu {
-      background: rgba(15, 23, 42, 0.98) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .dark .border-gray-200 {
-      border-color: #334155 !important;
-    }
-
-    /* Cards and content sections */
-    .dark .bg-white {
-      background-color: var(--secondary-bg) !important;
-      color: var(--primary-text);
-    }
-
-    .dark .bg-white\/95 {
-      background-color: rgba(30, 41, 59, 0.95) !important;
-    }
-
-    /* Section backgrounds for dark mode */
-    .dark .bg-gradient-to-b {
-      background: linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg)) !important;
-    }
-
-    .dark .from-\[\#f5f7ff\],
-    .dark .via-\[\#e9e3ff\] {
-      --tw-gradient-from: var(--primary-bg) !important;
-      --tw-gradient-via: var(--secondary-bg) !important;
-      --tw-gradient-to: transparent !important;
-    }
-
-    /* Ensure good contrast for dark mode text */
-    .dark p,
-    .dark .text-gray-700,
-    .dark .text-gray-600 {
-      color: #cbd5e1 !important;
-    }
-
-    .dark h1,
-    .dark h2,
-    .dark h3,
-    .dark h4,
-    .dark .text-gray-900,
-    .dark .text-gray-800 {
-      color: #f1f5f9 !important;
-    }
-
+  
     /* Nav link styles for dark mode */
     .nav-link {
       position: relative;
@@ -244,10 +132,7 @@
       font-weight: 600;
     }
     
-    .dark .nav-link.active {
-      color: #f1f5f9;
-    }
-    
+   
     .nav-link.active::after {
       width: 100%;
     }
@@ -335,41 +220,381 @@
       background-color: var(--border-color);
     }
 
-    /* Footer adjustments for dark mode */
-    .dark footer {
-      background: linear-gradient(to top, var(--primary-bg), var(--secondary-bg)) !important;
-    }
-
-    .dark footer .text-gray-800 {
-      color: #f1f5f9 !important;
-    }
-
-    .dark footer .text-gray-600 {
-      color: #cbd5e1 !important;
-    }
-
     /* Smooth transitions for all elements */
     * {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
+    /* 🌙 Dark Mode Global */
+body.dark-theme {
+  background-color: #0f172a; /* deep navy background */
+  color: #f1f5f9; /* light text */
+}
+
+/* Navbar */
+body.dark-theme header {
+  background: rgba(15, 23, 42, 0.85); /* darker glass effect */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Logo Text */
+body.dark-theme header .text-gray-900 {
+  color: #f8fafc; /* change brand text */
+}
+
+/* Nav Links */
+body.dark-theme .nav-link {
+  color: #e2e8f0; /* light gray text */
+  transition: color 0.3s ease;
+}
+body.dark-theme .nav-link:hover {
+  color: #38bdf8; /* sky blue hover */
+}
+
+/* Desktop Logout Button */
+body.dark-theme .logout-btn {
+  background: linear-gradient(to right, #1e3a8a, #4f46e5); /* dark indigo gradient */
+  color: #f8fafc;
+}
+body.dark-theme .logout-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #1e3a8a);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Mobile Menu */
+body.dark-theme #mobile-menu {
+  background: rgba(15, 23, 42, 0.95);
+}
+body.dark-theme #mobile-menu nav {
+  color: #f1f5f9;
+}
+body.dark-theme #mobile-menu .nav-link {
+  color: #e2e8f0;
+}
+body.dark-theme #mobile-menu .nav-link:hover {
+  color: #38bdf8;
+}
+
+/* Mobile Logout Button */
+body.dark-theme #mobile-menu .logout-btn {
+  background: linear-gradient(to right, #1e3a8a, #4f46e5);
+  color: #f8fafc;
+}
+body.dark-theme #mobile-menu .logout-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #1e3a8a);
+}
+
+/* Theme Toggle Icons */
+body.dark-theme #theme-icon,
+body.dark-theme #mobile-theme-icon {
+  color: #facc15; /* sun yellow */
+}
+/* 🌙 Dark Mode - About Hero Section */
+body.dark-theme section {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* deep gradient */
+  color: #f1f5f9;
+}
+
+/* Title Gradient Text */
+body.dark-theme section h1 {
+  background: linear-gradient(to right, #facc15, #f472b6, #a855f7); /* yellow → pink → purple */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph */
+body.dark-theme section p {
+  color: #d1d5db; /* soft gray */
+}
+body.dark-theme section p .text-purple-600 {
+  color: #c084fc; /* softer purple */
+}
+
+/* Learn More Button */
+body.dark-theme section a {
+  background: linear-gradient(to right, #2563eb, #9333ea); /* blue → purple */
+  color: #f9fafb;
+}
+body.dark-theme section a:hover {
+  background: linear-gradient(to right, #9333ea, #2563eb);
+  box-shadow: 0 6px 14px rgba(147, 51, 234, 0.4);
+}
+
+/* Illustration */
+body.dark-theme section img {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Floating Accent Shapes */
+body.dark-theme section .bg-pink-400 {
+  background-color: #f472b6; /* hot pink */
+  opacity: 0.25;
+}
+body.dark-theme section .bg-yellow-400 {
+  background-color: #facc15; /* bright yellow */
+  opacity: 0.25;
+}
+body.dark-theme section .bg-purple-400 {
+  background-color: #a855f7; /* bright purple */
+  opacity: 0.25;
+}
+/* 🌙 Dark Mode - Our Story Section */
+body.dark-theme #story {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Heading Gradient */
+body.dark-theme #story h2 {
+  background: linear-gradient(to right, #a855f7, #ec4899, #facc15); /* purple → pink → yellow */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph Text */
+body.dark-theme #story p {
+  color: #d1d5db; /* soft gray */
+}
+body.dark-theme #story p .text-purple-600 {
+  color: #c084fc; /* light purple */
+}
+body.dark-theme #story p .text-pink-500 {
+  color: #f472b6; /* bright pink */
+}
+
+/* Buttons */
+body.dark-theme #story a:first-child {
+  background: linear-gradient(to right, #2563eb, #9333ea); /* blue → purple */
+  color: #f9fafb;
+}
+body.dark-theme #story a:first-child:hover {
+  background: linear-gradient(to right, #9333ea, #2563eb);
+  box-shadow: 0 6px 14px rgba(147, 51, 234, 0.5);
+}
+
+body.dark-theme #story a:last-child {
+  border-color: #c084fc;
+  color: #c084fc;
+}
+body.dark-theme #story a:last-child:hover {
+  background-color: #9333ea;
+  color: #fff;
+  border-color: #9333ea;
+}
+
+/* Illustration Image */
+body.dark-theme #story img {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Floating Blobs */
+body.dark-theme #story .bg-pink-400 {
+  background-color: #f472b6;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-purple-400 {
+  background-color: #a855f7;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-yellow-400 {
+  background-color: #facc15;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-cyan-300 {
+  background-color: #22d3ee; /* cyan glow */
+  opacity: 0.25;
+}
+/* 🌙 Dark Mode - Mission & Vision Section */
+body.dark-theme #mission {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Mission Card */
+body.dark-theme #mission .border-purple-400 {
+  background: #1e1b4b; /* dark card bg */
+  border-left-color: #a855f7; /* bright purple */
+  color: #e2e8f0;
+}
+body.dark-theme #mission .border-purple-400 h2 {
+  color: #c084fc; /* light purple */
+}
+body.dark-theme #mission .border-purple-400 p {
+  color: #d1d5db; /* soft gray */
+}
+
+/* Vision Card */
+body.dark-theme #mission .border-pink-400 {
+  background: #1e1b4b; /* dark card bg */
+  border-left-color: #ec4899; /* pink glow */
+  color: #e2e8f0;
+}
+body.dark-theme #mission .border-pink-400 h2 {
+  color: #f472b6; /* light pink */
+}
+body.dark-theme #mission .border-pink-400 p {
+  color: #d1d5db; /* soft gray */
+}
+
+/* Hover effects in dark mode */
+body.dark-theme #mission .border-purple-400:hover,
+body.dark-theme #mission .border-pink-400:hover {
+  box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4); /* glowing effect */
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Decorative Blobs */
+body.dark-theme #mission .bg-pink-300 {
+  background-color: #f472b6;
+  opacity: 0.25;
+}
+body.dark-theme #mission .bg-purple-300 {
+  background-color: #a855f7;
+  opacity: 0.25;
+}
+body.dark-theme #mission .bg-yellow-300 {
+  background-color: #facc15;
+  opacity: 0.25;
+}
+/* Section background */
+body.dark-theme #artists {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Card base styles */
+body.dark-theme #artists .bg-white {
+  background: #1e1b4b !important; /* dark card bg */
+  color: #e2e8f0; /* light text */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+body.dark-theme #artists h4 {
+  color: #f8fafc; /* almost white */
+}
+
+body.dark-theme #artists h4.group-hover\:text-purple-600 {
+  color: #a855f7; /* purple accent */
+}
+
+body.dark-theme #artists h4.group-hover\:text-pink-600 {
+  color: #ec4899; /* pink accent */
+}
+
+body.dark-theme #artists h4.group-hover\:text-cyan-600 {
+  color: #06b6d4; /* cyan accent */
+}
+
+/* Paragraphs */
+body.dark-theme #artists p {
+  color: #cbd5e1; /* soft gray */
+}
+
+/* Gradient accent backgrounds (still visible on hover) */
+body.dark-theme #artists .absolute.bg-gradient-to-r {
+  opacity: 0.15; /* subtle in dark mode */
+}
+
+/* Shadow tweak for hover */
+body.dark-theme #artists .hover\:shadow-3xl:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+/* ============================= */
+/* Dark Theme - Call To Action   */
+/* ============================= */
+body.dark-theme section.py-24 {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* Dark gradient */
+  color: #f1f5f9;
+}
+
+body.dark-theme section.py-24 h2 {
+  background: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899); /* brighter gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-theme section.py-24 p {
+  color: #cbd5e1;
+}
+
+body.dark-theme section.py-24 a {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #f1f5f9;
+}
+body.dark-theme section.py-24 a:hover {
+  background: linear-gradient(to right, #ec4899, #06b6d4);
+  color: #fff;
+}
+
+/* ============================= */
+/* Dark Theme - Footer           */
+/* ============================= */
+body.dark-theme footer {
+  background: linear-gradient(to top, #111827, #1e1b4b, #0f172a);
+  color: #f1f5f9;
+}
+
+body.dark-theme footer h2,
+body.dark-theme footer h4 {
+  color: #f9fafb;
+}
+
+body.dark-theme footer p,
+body.dark-theme footer li,
+body.dark-theme footer a {
+  color: #cbd5e1;
+}
+
+body.dark-theme footer a:hover {
+  color: #a78bfa; /* bright purple hover */
+}
+
+body.dark-theme footer .relative.group {
+  background: #1e1b4b; /* dark card */
+  color: #e2e8f0;
+}
+
+body.dark-theme footer input[type="email"] {
+  background: #111827;
+  border-color: #374151;
+  color: #f1f5f9;
+}
+body.dark-theme footer input[type="email"]::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-theme footer button {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #fff;
+}
+
+body.dark-theme footer button:hover {
+  background: linear-gradient(to right, #ec4899, #06b6d4);
+}
+
+
+
+
+
+
   </style>
 </head>
-<body class="relative">
+<body class="relative bg-white">
     <!-- Navbar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg dark:bg-gradient-to-r dark:from-gray-900/80 dark:to-gray-800/60">
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
   <div class="container mx-auto px-6 py-3 flex justify-between items-center">
     
     <!-- Logo -->
     <a href="index.html" class="flex items-center space-x-3">
       <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
-      <span class="text-2xl font-bold tracking-wide text-gray-900 dark:text-gray-100">Kala.ficial</span>
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700 dark:text-gray-300">
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link active">About</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
@@ -380,8 +605,8 @@
         <i id="theme-icon" class="fas fa-moon text-lg"></i>
       </button>
       
-      <button id="logout-btn"
-               class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+      <button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
                bg-gradient-to-r from-indigo-500 to-purple-600 
                hover:from-purple-600 hover:to-indigo-500 
                transition-all duration-300 shadow-md hover:shadow-xl">
@@ -390,40 +615,39 @@
     </nav>
 
     <!-- Mobile Hamburger -->
-    <button id="menu-btn" class="md:hidden text-gray-800 dark:text-gray-200 text-3xl focus:outline-none">
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl dark:bg-gray-900/95">
-    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800 dark:text-gray-200">
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link active">About</a>
+      <a href="about.html" class="nav-link">About</a>
       <a href="exhibition.html" class="nav-link">Exhibition</a>
       <a href="artwork.html" class="nav-link">Artwork</a>
       <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
       <a href="contact.html" class="nav-link">Contact</a>      
       <!-- Mobile Theme Toggle -->
-      <div class="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
-        <span class="text-gray-700 dark:text-gray-300">Theme</span>
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
         <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
           <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
         </button>
       </div>
       
-      <button id="logout-btn-mobile" class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
-               bg-gradient-to-r from-indigo-500 to-purple-600 
-               hover:from-purple-600 hover:to-indigo-500 
-               transition-all duration-300 shadow-md hover:shadow-xl">
+      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
         Log Out
       </button>
     </nav>
   </div>
 </header>
-
    <!-- Hero Section: About Kala.ficial -->
-<section class="relative py-32 bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden flex items-center justify-center" style="margin-top: 40px;">
+<section class="relative py-32 bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden flex items-center justify-center" style="margin-top: 40px;">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
     <span class="absolute top-10 left-10 w-28 h-28 bg-pink-400 rounded-full opacity-20 blur-3xl animate-float-slow"></span>
@@ -437,8 +661,8 @@
       <h1 class="text-3xl md:text-5xl font-bold text-gradient bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text animate-text">
         About Kala.ficial
       </h1>
-      <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed">
-        🎨 <span class="font-semibold text-purple-600 dark:text-purple-400">Kala.ficial</span> is a global platform for emerging and undiscovered artists. Showcase your artwork, connect with exhibitions worldwide, and collaborate with creators. 🌍🖌️ It's where hidden talent meets global opportunities and creativity knows no boundaries.
+      <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+        🎨 <span class="font-semibold text-purple-600">Kala.ficial</span> is a global platform for emerging and undiscovered artists. Showcase your artwork, connect with exhibitions worldwide, and collaborate with creators. 🌍🖌️ It’s where hidden talent meets global opportunities and creativity knows no boundaries.
       </p>
       <a href="#story" class="inline-block bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
         Learn More
@@ -456,7 +680,7 @@
 </section>
 
 <!-- Our Story -->
-<section id="story" class="relative py-24 bg-gradient-to-b from-[#fdf6ff] via-[#f0e5ff] to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+<section id="story" class="relative py-24 bg-gradient-to-b from-[#fdf6ff] via-[#f0e5ff] to-white overflow-hidden">
   <!-- Floating Decorative Blobs -->
   <div class="absolute top-10 left-10 w-28 h-28 bg-pink-400 rounded-full opacity-20 blur-3xl animate-float-slow"></div>
   <div class="absolute bottom-16 right-12 w-36 h-36 bg-purple-400 rounded-full opacity-15 blur-2xl animate-float-fast"></div>
@@ -470,14 +694,14 @@
       <h2 class="text-4xl md:text-5xl font-extrabold text-gradient bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text animate-text">
         Our Story
       </h2>
-      <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed">
-        Founded in 2025 as a <span class="font-semibold text-purple-600 dark:text-purple-400">GSSoC creative project</span>, <span class="font-semibold text-purple-600 dark:text-purple-400">Kala.ficial</span> connects emerging artists and art enthusiasts worldwide. From curated online exhibitions to immersive offline showcases, we celebrate creativity, cultural diversity, and undiscovered talent. Our mission is to make art <span class="text-pink-500 dark:text-pink-400 font-semibold">accessible, inclusive, and inspiring</span> for everyone, everywhere.
+      <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+        Founded in 2025 as a <span class="font-semibold text-purple-600">GSSoC creative project</span>, <span class="font-semibold text-purple-600">Kala.ficial</span> connects emerging artists and art enthusiasts worldwide. From curated online exhibitions to immersive offline showcases, we celebrate creativity, cultural diversity, and undiscovered talent. Our mission is to make art <span class="text-pink-500 font-semibold">accessible, inclusive, and inspiring</span> for everyone, everywhere.
       </p>
       <div class="flex gap-4 mt-4 flex-wrap">
         <a href="#mission" class="inline-block bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           Learn About Our Mission
         </a>
-        <a href="#artists" class="inline-block border-2 border-purple-500 text-purple-500 dark:text-purple-400 font-semibold px-6 py-3 rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300 hover:scale-105">
+        <a href="#artists" class="inline-block border-2 border-purple-500 text-purple-500 font-semibold px-6 py-3 rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300 hover:scale-105">
           Explore Artists
         </a>
       </div>
@@ -498,7 +722,7 @@
 </section>
 
 <!-- Mission & Vision -->
-<section id="mission" class="relative py-24 bg-gradient-to-b from-[#fdf5ff] via-[#f3e8ff] to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+<section id="mission" class="relative py-24 bg-gradient-to-b from-[#fdf5ff] via-[#f3e8ff] to-white overflow-hidden">
   <!-- Background Decorative Shapes -->
   <div class="absolute top-10 left-10 w-28 h-28 bg-pink-300 rounded-full opacity-20 blur-3xl animate-float-slow"></div>
   <div class="absolute bottom-16 right-16 w-36 h-36 bg-purple-300 rounded-full opacity-15 blur-2xl animate-float-medium"></div>
@@ -507,26 +731,25 @@
   <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-stretch">
 
     <!-- Mission Card -->
-    <div class="p-10 bg-white dark:bg-gray-800 rounded-3xl shadow-xl border-l-8 border-purple-400 transform transition-transform duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105">
-      <h2 class="text-4xl font-bold mb-4 text-purple-600 dark:text-purple-400">Our Mission</h2>
-      <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+    <div class="p-10 bg-white rounded-3xl shadow-xl border-l-8 border-purple-400 transform transition-transform duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105">
+      <h2 class="text-4xl font-bold mb-4 text-purple-600">Our Mission</h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
         To empower artists by providing a global platform to showcase their work, connect with audiences, and collaborate with creators. Creating meaningful, accessible, and engaging art experiences worldwide.
       </p>
     </div>
 
     <!-- Vision Card -->
-    <div class="p-10 bg-white dark:bg-gray-800 rounded-3xl shadow-xl border-l-8 border-pink-400 transform transition-transform duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105">
-      <h2 class="text-4xl font-bold mb-4 text-pink-600 dark:text-pink-400">Our Vision</h2>
-      <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+    <div class="p-10 bg-white rounded-3xl shadow-xl border-l-8 border-pink-400 transform transition-transform duration-500 hover:-translate-y-4 hover:shadow-2xl hover:scale-105">
+      <h2 class="text-4xl font-bold mb-4 text-pink-600">Our Vision</h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
         To become the leading platform where emerging artists gain visibility, creativity thrives, and art lovers discover talent from every corner of the globe.
       </p>
     </div>
 
   </div>
 </section>
-
 <!-- Featured Artists & Styles -->
-<section id="artists" class="py-24 bg-gradient-to-b from-[#fdf5ff] via-[#f0e0ff] to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+<section id="artists" class="py-24 bg-gradient-to-b from-[#fdf5ff] via-[#f0e0ff] to-white relative overflow-hidden">
   <!-- Floating Decorative Shapes -->
   <div class="absolute top-10 left-10 w-28 h-28 bg-pink-300 rounded-full opacity-20 blur-3xl animate-float-slow"></div>
   <div class="absolute bottom-16 right-16 w-36 h-36 bg-purple-300 rounded-full opacity-15 blur-2xl animate-float-medium"></div>
@@ -539,12 +762,12 @@
     <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-3 place-items-center text-center">
 
       <!-- Card 1 -->
-      <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
+      <div class="flex flex-col items-center bg-white rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
         <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-purple-300 mb-4 transition-transform duration-500 group-hover:scale-110">
           <img src="assets/images/C1.png" alt="Traditional Art" class="w-full h-full object-cover"/>
         </div>
-        <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">Traditional Art</h4>
-        <p class="text-sm text-gray-500 dark:text-gray-400 max-w-[200px]">
+        <h4 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors duration-300">Traditional Art</h4>
+        <p class="text-sm text-gray-500 max-w-[200px]">
           Celebrating cultural heritage through timeless artistic styles.
         </p>
         <!-- Hover Gradient Accent -->
@@ -552,24 +775,24 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
+      <div class="flex flex-col items-center bg-white rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
         <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-pink-300 mb-4 transition-transform duration-500 group-hover:scale-110">
           <img src="assets/images/C2.png" alt="Modern Art" class="w-full h-full object-cover"/>
         </div>
-        <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors duration-300">Modern Art</h4>
-        <p class="text-sm text-gray-500 dark:text-gray-400 max-w-[200px]">
+        <h4 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-pink-600 transition-colors duration-300">Modern Art</h4>
+        <p class="text-sm text-gray-500 max-w-[200px]">
           Bold expressions and innovative creativity for the new era.
         </p>
         <div class="absolute -z-10 w-full h-full bg-gradient-to-r from-pink-200 via-purple-200 to-cyan-200 opacity-30 rounded-3xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
       </div>
 
       <!-- Card 3 -->
-      <div class="flex flex-col items-center bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
+      <div class="flex flex-col items-center bg-white rounded-3xl shadow-2xl p-6 hover:scale-105 transform transition-all duration-500 hover:shadow-3xl group relative overflow-hidden">
         <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg border-4 border-cyan-300 mb-4 transition-transform duration-500 group-hover:scale-110">
           <img src="assets/images/C3.png" alt="Digital Art" class="w-full h-full object-cover"/>
         </div>
-        <h4 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors duration-300">Digital Art</h4>
-        <p class="text-sm text-gray-500 dark:text-gray-400 max-w-[200px]">
+        <h4 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-cyan-600 transition-colors duration-300">Digital Art</h4>
+        <p class="text-sm text-gray-500 max-w-[200px]">
           Creative imagination brought to life with digital mastery.
         </p>
         <div class="absolute -z-10 w-full h-full bg-gradient-to-r from-cyan-200 via-purple-200 to-pink-200 opacity-30 rounded-3xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
@@ -580,7 +803,7 @@
 </section>
 
 <!-- Call To Action -->
-<section class="py-24 bg-gradient-to-b from-[#f0e0ff] via-[#f9e7ff] to-[#ffffff] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+<section class="py-24 bg-gradient-to-b from-[#f0e0ff] via-[#f9e7ff] to-[#ffffff] relative overflow-hidden">
   <div class="absolute top-10 left-12 w-24 h-24 bg-purple-200 rounded-full opacity-25 blur-3xl animate-float-slow"></div>
   <div class="absolute bottom-20 right-16 w-28 h-28 bg-pink-200 rounded-full opacity-20 blur-2xl animate-float-medium"></div>
   
@@ -588,8 +811,8 @@
     <h2 class="text-4xl font-bold mb-6 text-gradient bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text animate-text">
       Join Our Art Community
     </h2>
-    <p class="text-gray-700 dark:text-gray-300 text-lg mb-8 max-w-3xl mx-auto">
-      Whether you're an artist or an art lover, Kala.ficial welcomes you to explore, share, and celebrate art. Stay updated with our latest exhibitions, artist features, and immersive experiences.
+    <p class="text-gray-700 text-lg mb-8 max-w-3xl mx-auto">
+      Whether you’re an artist or an art lover, Kala.ficial welcomes you to explore, share, and celebrate art. Stay updated with our latest exhibitions, artist features, and immersive experiences.
     </p>
     <a href="contact.html" class="inline-block bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-10 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">
       Contact Us
@@ -597,7 +820,7 @@
   </div>
 </section>
 
-<footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-20 overflow-hidden">
+<footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
   <!-- Floating Shapes -->
   <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
     <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
@@ -607,19 +830,19 @@
     <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
   </div>
 
-  <div class="container mx-auto px-4 relative z-10 text-gray-800 dark:text-gray-200">
+  <div class="container mx-auto px-4 relative z-10 text-gray-800">
     <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       <!-- Brand -->
       <div class="mb-6 lg:mb-0">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Kala.ficial</h2>
-        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed">
           Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
         </p>
         <div class="flex gap-4 mt-6">
-          <a href="#" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
-          <a href="#" class="p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
         </div>
       </div>
 
@@ -638,32 +861,32 @@
       <!-- Contact Info -->
       <div>
         <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
-        <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+        <ul class="space-y-3 text-gray-600">
           <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
           <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
           <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
         </ul>
-        <p class="mt-4 text-gray-600 dark:text-gray-400 italic">We reply within 24 hours!</p>
+        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
       </div>
 
       <!-- Newsletter & Social -->
-      <div class="relative group bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
         <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">Subscribe to our newsletter for latest updates.</p>
+        <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
       
-        <form class="flex flex-col gap-3">
-          <input 
-            type="email" 
-            placeholder="Your Email" 
-            class="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300 dark:bg-gray-700 dark:text-white"
-          />
-          <button 
-            type="submit" 
-            class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
-          >
-            Subscribe
-          </button>
-        </form>
+  <form class="flex flex-col gap-3">
+    <input 
+      type="email" 
+      placeholder="Your Email" 
+      class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300"
+    />
+    <button 
+      type="submit" 
+      class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+    >
+      Subscribe
+    </button>
+  </form>
  
         <div class="flex gap-4 mt-6 justify-center sm:justify-start">
           <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
@@ -675,23 +898,11 @@
     </div>
 
     <!-- Footer Bottom -->
-    <div class="mt-12 border-t border-gray-300 dark:border-gray-700 pt-6 text-center text-gray-600 dark:text-gray-400 text-sm">
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
       &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
     </div>
   </div>
 </footer>
-
-<!-- Logout Confirmation Modal -->
-<div id="logoutModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
-  <div class="modal-content">
-    <h2 class="text-xl font-semibold">Confirm Logout</h2>
-    <p class="mt-3">Are you sure you want to log out?</p>
-    <div class="flex justify-center gap-4 mt-6">
-      <button id="confirmLogout">Yes, Logout</button>
-      <button id="cancelLogout">Cancel</button>
-    </div>
-  </div>
-</div>
 
 <!--scroll to top and bottom -->
 <button id="smartScrollBtn"
@@ -815,67 +1026,8 @@
   });
 </script>
 
+<script src="theme-toggle.js"> </script>
 
-
-<!-- Theme Toggle Script -->
-<script>
-(function() {
-  'use strict';
-
-  function initThemeToggle() {
-    const desktopToggle = document.getElementById('theme-toggle');
-    const mobileToggle = document.getElementById('mobile-theme-toggle');
-    const desktopIcon = document.getElementById('theme-icon');
-    const mobileIcon = document.getElementById('mobile-theme-icon');
-    const htmlElement = document.documentElement;
-
-    if (!desktopToggle && !mobileToggle) return;
-
-    // Load saved theme or default to light
-    let currentTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(currentTheme);
-
-    function applyTheme(theme) {
-      if (theme === 'dark') {
-        htmlElement.classList.add('dark');
-        if (desktopIcon) desktopIcon.className = 'fas fa-sun text-lg';
-        if (mobileIcon) mobileIcon.className = 'fas fa-sun text-lg';
-      } else {
-        htmlElement.classList.remove('dark');
-        if (desktopIcon) desktopIcon.className = 'fas fa-moon text-lg';
-        if (mobileIcon) mobileIcon.className = 'fas fa-moon text-lg';
-      }
-      localStorage.setItem('theme', theme);
-      currentTheme = theme;
-    }
-
-    function toggleTheme() {
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-    }
-
-    if (desktopToggle) {
-      desktopToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleTheme();
-      });
-    }
-
-    if (mobileToggle) {
-      mobileToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleTheme();
-      });
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
-  } else {
-    initThemeToggle();
-  }
-})();
-</script>
 
 </body>
 </html>
