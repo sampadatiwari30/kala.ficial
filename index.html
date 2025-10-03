@@ -331,439 +331,636 @@
       animation: float-fast 4s ease-in-out infinite;
     }
 
-    /* Theme Toggle Styles */
-    :root {
-      --primary-bg: #ffffff;
-      --secondary-bg: #f8fafc;
-      --primary-text: #1a202c;
-      --secondary-text: #4a5568;
-      --accent-color: #8b5cf6;
-      --border-color: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="dark"] {
-      --primary-bg: #1a202c;
-      --secondary-bg: #2d3748;
-      --primary-text: #f7fafc;
-      --secondary-text: #e2e8f0;
-      --accent-color: #9f7aea;
-      --border-color: #4a5568;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Theme Toggle Styles */
-    :root {
-      --primary-bg: #ffffff;
-      --secondary-bg: #f8fafc;
-      --primary-text: #1a202c;
-      --secondary-text: #4a5568;
-      --accent-color: #8b5cf6;
-      --border-color: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="dark"] {
-      --primary-bg: #1a202c;
-      --secondary-bg: #2d3748;
-      --primary-text: #f7fafc;
-      --secondary-text: #e2e8f0;
-      --accent-color: #9f7aea;
-      --border-color: #4a5568;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Theme toggle button styles with higher specificity */
-    .theme-toggle {
-      position: relative !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 3rem !important;
-      height: 3rem !important;
-      background-color: rgba(255, 255, 255, 0.9) !important;
-      backdrop-filter: blur(16px) !important;
-      border-radius: 50% !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
-      cursor: pointer !important;
-      transition: all 0.3s ease !important;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-      z-index: 10 !important;
-    }
-
-    [data-theme="dark"] .theme-toggle {
-      background-color: rgba(75, 85, 99, 0.9) !important;
-      border-color: rgba(156, 163, 175, 0.5) !important;
-    }
-
-    [data-theme="dark"] .theme-toggle:hover {
-      background-color: rgba(55, 65, 81, 0.9) !important;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1) !important;
-      background-color: rgba(255, 255, 255, 1) !important;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-    }
-
-    .theme-toggle i {
-      color: #374151 !important;
-      transition: all 0.3s ease !important;
-      font-size: 1.1rem !important;
-    }
-
-    [data-theme="dark"] .theme-toggle i {
-      color: #fcd34d !important;
-    }
-
-    /* Apply theme to body and main elements */
-    [data-theme="dark"] body {
-      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
-      color: #f7fafc !important;
-    }
-
-    [data-theme="dark"] .bg-gradient-to-r {
-      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
-    }
-
-    /* Header theme styles */
-    [data-theme="dark"] header {
-      background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
-      backdrop-filter: blur(20px) !important;
-      border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
-    }
-
-    /* Comprehensive text color fixes for dark mode */
-    [data-theme="dark"] .text-gray-900,
-    [data-theme="dark"] .text-gray-800,
-    [data-theme="dark"] .text-gray-700,
-    [data-theme="dark"] .text-black {
-      color: #f7fafc !important;
-    }
-
-    [data-theme="dark"] .text-gray-600,
-    [data-theme="dark"] .text-gray-500 {
-      color: #e2e8f0 !important;
-    }
-
-    [data-theme="dark"] .text-gray-400 {
-      color: #cbd5e0 !important;
-    }
-
-    /* Navigation links in dark mode */
-    [data-theme="dark"] .nav-link {
-      color: #e2e8f0 !important;
-    }
-
-    [data-theme="dark"] .nav-link:hover {
-      color: #f7fafc !important;
-    }
-
-    /* Mobile menu theme with better visibility */
-    [data-theme="dark"] #mobile-menu {
-      background: rgba(26, 32, 44, 0.98) !important;
-      backdrop-filter: blur(20px) !important;
-      border-top: 1px solid rgba(156, 163, 175, 0.2) !important;
-    }
-
-    [data-theme="dark"] .border-gray-200 {
-      border-color: #4a5568 !important;
-    }
-
-    /* Cards and content sections with better contrast */
-    [data-theme="dark"] .bg-white,
-    [data-theme="dark"] .bg-gray-50,
-    [data-theme="dark"] .bg-gray-100 {
-      background-color: rgba(45, 55, 72, 0.9) !important;
-      backdrop-filter: blur(10px) !important;
-      border: 1px solid rgba(75, 85, 99, 0.3) !important;
-    }
-
-    [data-theme="dark"] .bg-white\/95 {
-      background-color: rgba(45, 55, 72, 0.98) !important;
-    }
-
-    /* Hero section and main content areas */
-    [data-theme="dark"] section {
-      color: #e2e8f0 !important;
-    }
-
-    [data-theme="dark"] .bg-gradient-to-b {
-      background: linear-gradient(to bottom, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.6), rgba(26, 32, 44, 0.9)) !important;
-    }
-
-    /* Floating shapes and animations in dark mode */
-    [data-theme="dark"] .floating-shape,
-    [data-theme="dark"] .animated-shape {
-      opacity: 0.06 !important;
-    }
-
-    /* All text elements - comprehensive coverage */
-    [data-theme="dark"] h1,
-    [data-theme="dark"] h2,
-    [data-theme="dark"] h3,
-    [data-theme="dark"] h4,
-    [data-theme="dark"] h5,
-    [data-theme="dark"] h6 {
-      color: #f7fafc !important;
-    }
-
-    [data-theme="dark"] p,
-    [data-theme="dark"] span,
-    [data-theme="dark"] div:not(.theme-toggle),
-    [data-theme="dark"] li,
-    [data-theme="dark"] td,
-    [data-theme="dark"] th {
-      color: #e2e8f0 !important;
-    }
-
-    /* Links and interactive elements */
-    [data-theme="dark"] a:not(.nav-link):not(button) {
-      color: #93c5fd !important;
-    }
-
-    [data-theme="dark"] a:not(.nav-link):not(button):hover {
-      color: #dbeafe !important;
-    }
-
-    /* Button text visibility */
-    [data-theme="dark"] button:not(.theme-toggle) {
-      color: #f7fafc !important;
-    }
-
-    /* Form elements */
-    [data-theme="dark"] input,
-    [data-theme="dark"] textarea,
-    [data-theme="dark"] select {
-      background-color: rgba(45, 55, 72, 0.8) !important;
-      color: #f7fafc !important;
-      border-color: rgba(75, 85, 99, 0.5) !important;
-    }
-
-    /* Button styling improvements for dark theme */
-    [data-theme="dark"] .hover\:from-purple-600:hover {
-      background: linear-gradient(to right, #805ad5, #667eea) !important;
-    }
-
-    /* Text content styling */
-    [data-theme="dark"] .text-white {
-      color: #ffffff !important;
-    }
-
-    /* Ensure all text is visible */
-    [data-theme="dark"] h1,
-    [data-theme="dark"] h2,
-    [data-theme="dark"] h3,
-    [data-theme="dark"] h4,
-    [data-theme="dark"] h5,
-    [data-theme="dark"] h6 {
-      color: #f7fafc !important;
-    }
-
-    [data-theme="dark"] p {
-      color: #e2e8f0 !important;
-    }
-
-    /* Override any potential conflicts with specific text classes */
-    [data-theme="dark"] .text-4xl,
-    [data-theme="dark"] .text-3xl,
-    [data-theme="dark"] .text-2xl,
-    [data-theme="dark"] .text-xl,
-    [data-theme="dark"] .text-lg,
-    [data-theme="dark"] .text-base,
-    [data-theme="dark"] .text-sm,
-    [data-theme="dark"] .text-xs {
-      color: inherit !important;
-    }
-
-    /* Catch-all for any remaining text that might be invisible */
-    [data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
-      color: inherit !important;
-    }
-
-    /* Force visibility for any potentially invisible elements */
-    [data-theme="dark"] [style*="color: #"] {
-      color: #e2e8f0 !important;
-    }
-
-    /* Main hero heading styling for dark mode */
-    [data-theme="dark"] h1.text-5xl,
-    [data-theme="dark"] h1.text-6xl {
-      color: #ffffff !important;
-    }
-
-    /* Remove gradient background from main heading text in dark mode */
-    [data-theme="dark"] .bg-gradient-to-r.from-yellow-400.via-red-400.to-pink-500 {
-      background: none !important;
-      color: #ffffff !important;
-      -webkit-background-clip: unset !important;
-      background-clip: unset !important;
-      -webkit-text-fill-color: #ffffff !important;
-    }
-
-    /* Alternative selector to ensure the gradient text becomes white */
-    [data-theme="dark"] .text-transparent {
-      color: #ffffff !important;
-      -webkit-text-fill-color: #ffffff !important;
-      background: none !important;
-    }
-
-    /* Ensure smooth transitions */
-    * {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    }
-
-    /* Logout Modal Base */
-    #logoutModal .modal-content {
-      background-color: var(--primary-bg);
-      color: var(--primary-text);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-      border-radius: 1rem;
-      padding: 2rem;
-      max-width: 22rem;
-      width: 100%;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    /* Heading + text */
-    #logoutModal h2 {
-      color: var(--primary-text);
-    }
-
-    #logoutModal p {
-      color: var(--secondary-text);
-    }
-
-    /* Buttons */
-    #confirmLogout {
-      background: linear-gradient(to right, #ef4444, #ec4899);
-      /* red → pink */
-      color: #fff;
-      font-weight: 600;
-      border-radius: 9999px;
-      padding: 0.5rem 1.25rem;
-      transition: all 0.3s ease;
-    }
-
-    #confirmLogout:hover {
-      opacity: 0.9;
-      transform: scale(1.05);
-    }
-
-    #cancelLogout {
-      background-color: var(--secondary-bg);
-      color: var(--primary-text);
-      border-radius: 9999px;
-      padding: 0.5rem 1.25rem;
-      transition: all 0.3s ease;
-    }
-
-    #cancelLogout:hover {
-      background-color: var(--border-color);
-    }
-
-    /*Loading page*/
-    #loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(to right, #a78bfa, #f472b6, #6366f1);
-      color: #f3f4f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    #loading-screen.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader {
-      text-align: center;
-    }
-
-    .loader i {
-      font-size: 4.5rem;
-      animation: spin 2s linear infinite;
-    }
-
-    .loader h2 {
-      margin-top: 1.5rem;
-      font-size: 2.1rem;
-    }
-
-    .dots::after {
-      content: "";
-      display: inline-block;
-      animation: dots 1.5s steps(5, end) infinite;
-    }
-
-    @keyframes dots {
-      0% {
-        content: "";
-      }
-
-      20% {
-        content: ".";
-      }
-
-      40% {
-        content: "..";
-      }
-
-      60% {
-        content: "...";
-      }
-
-      80% {
-        content: "....";
-      }
-
-      100% {
-        content: "";
-      }
-    }
-
-    /* Spin Animation */
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* This is the base state (no rotation) */
-    .exhibition-item:hover,
-    .artwork-item:hover,
-    .artist-item:hover,
-    .flex.flex-col.items-center:hover {
-      /* We use CSS variables for the rotation, which JS will update */
-      transform: perspective(1000px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) scale(1.03);
-      /* Keep your scale effect */
-      filter: brightness(1.05) saturate(1.1);
-    }
-
-    /* Add this new rule for a smooth transition back to center when the mouse leaves */
-    .exhibition-item,
-    .artwork-item,
-    .artist-item,
-    .flex.flex-col.items-center {
-      --rotateX: 0deg;
-      --rotateY: 0deg;
-      /* Add the new variables to your existing transition */
-      transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease,
-        --rotateX 0.6s ease-out, --rotateY 0.6s ease-out;
-    }
+    /* Put this after tailwind CDN or in your main CSS file (so it overrides utilities if needed) */
+
+/* Smooth transitions */
+body,
+header,
+#mobile-menu,
+#loading-screen,
+.nav-link,
+.logout-btn {
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+}
+
+/* Dark theme root */
+body.dark-theme {
+  /* comparable dark gradient */
+  background: linear-gradient(90deg, #0b1020 0%, #111827 50%, #0b1220 100%) !important;
+  color: #e6eef8 !important;
+}
+
+/* Loading screen */
+body.dark-theme #loading-screen {
+  background: #071022;
+  color: #e6eef8;
+}
+
+/* Navbar */
+body.dark-theme header {
+  background: rgba(15, 23, 42, 0.85); /* dark translucent */
+  color: #e6eef8;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Logo text */
+body.dark-theme a > span,
+body.dark-theme .container a span {
+  color: #e6eef8 !important;
+}
+
+/* Nav links */
+body.dark-theme .nav-link {
+  color: #cfe8ff !important;
+}
+body.dark-theme .nav-link:hover {
+  color: #7dd3fc !important;
+}
+
+/* Theme toggle button hover */
+body.dark-theme .theme-toggle:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Logout button — make gradient more muted for dark */
+body.dark-theme .logout-btn {
+  background: linear-gradient(90deg, #374151 0%, #111827 100%) !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Mobile menu */
+body.dark-theme #mobile-menu {
+  background: rgba(10, 16, 30, 0.95);
+  color: #e6eef8;
+  border-color: rgba(255,255,255,0.04);
+}
+
+/* Border between mobile items */
+body.dark-theme #mobile-menu .border-t {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* Buttons, cards, other utilities (small helpers) */
+body.dark-theme .card,
+body.dark-theme .section {
+  background: #0f1724;
+  color: #e6eef8;
+}
+
+/* In case your logo is an SVG or image that needs brightness tweak */
+body.dark-theme img[alt*="KALA"] {
+  filter: brightness(.95) contrast(.95);
+}
+/* ============================
+   Dark Mode for Toggle + Logout
+   ============================ */
+
+/* Theme toggle button in dark mode */
+body.dark-theme .theme-toggle {
+  color: #e6eef8; /* light icon color */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px; /* fully round */
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+body.dark-theme .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+/* Logout button in dark mode */
+body.dark-theme #logout-btn,
+body.dark-theme #logout-btn-mobile {
+  background: linear-gradient(90deg, #4e8aeb 0%, #044eeb 100%) !important; /* muted dark gradient */
+  color: #e6eef8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+body.dark-theme #logout-btn:hover,
+body.dark-theme #logout-btn-mobile:hover {
+  background: linear-gradient(90deg, #3c7cd7 0%, #0069fb 100%) !important;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+/* =====================
+   Hero Section Dark Mode
+   ===================== */
+body.dark-theme #hero {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* deep indigo/navy gradient */
+  color: #f3f4f6; /* light gray text */
+}
+
+/* Heading */
+body.dark-theme #hero h1 {
+  color: #f9fafb; /* bright white for main title */
+}
+body.dark-theme #hero h1 span {
+  background: linear-gradient(to right, #fde047, #fb7185, #a78bfa); /* yellow-pink-purple gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph */
+body.dark-theme #hero p {
+  color: #d1d5db; /* softer gray for description */
+}
+
+/* Buttons */
+body.dark-theme #hero a {
+  transition: all 0.3s ease;
+}
+
+/* Explore Art button (yellow/orange → warm glow in dark mode) */
+body.dark-theme #hero a[href="#explore"] {
+  background: linear-gradient(to right, #facc15, #f97316);
+  color: #111827;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.5);
+}
+body.dark-theme #hero a[href="#explore"]:hover {
+  background: linear-gradient(to right, #fbbf24, #ea580c);
+  transform: scale(1.05);
+}
+
+/* Join as Artist button (outline → inverted dark style) */
+body.dark-theme #hero a[href="#join"] {
+  border-color: #f3f4f6;
+  color: #f3f4f6;
+  background: transparent;
+}
+body.dark-theme #hero a[href="#join"]:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Hero image shadow */
+body.dark-theme #hero img {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
+}
+
+/* Floating blobs in dark mode: more neon glow */
+body.dark-theme #hero .absolute {
+  opacity: 0.4; /* make blobs softer */
+  filter: blur(4px) brightness(1.2);
+}
+/* =====================
+   Hero Section Blobs Neon Glow (Dark Mode)
+   ===================== */
+body.dark-theme #hero .absolute {
+  opacity: 0.6; 
+  filter: blur(20px) brightness(1.3); /* glow effect */
+  mix-blend-mode: screen; /* blend nicely with dark background */
+}
+
+/* Pink Blob */
+body.dark-theme #hero .bg-pink-400,
+body.dark-theme #hero .bg-pink-500 {
+  background: #ec4899; /* hot pink */
+  box-shadow: 0 0 40px 15px rgba(236, 72, 153, 0.8);
+}
+
+/* Cyan Blob */
+body.dark-theme #hero .bg-cyan-400 {
+  background: #06b6d4; /* bright cyan */
+  box-shadow: 0 0 40px 15px rgba(6, 182, 212, 0.8);
+}
+
+/* Yellow Blob */
+body.dark-theme #hero .bg-yellow-300,
+body.dark-theme #hero .bg-yellow-400 {
+  background: #facc15; /* vivid yellow */
+  box-shadow: 0 0 40px 15px rgba(250, 204, 21, 0.7);
+}
+
+/* Purple Blob */
+body.dark-theme #hero .bg-purple-400,
+body.dark-theme #hero .bg-purple-500 {
+  background: #a78bfa; /* lavender/purple */
+  box-shadow: 0 0 40px 15px rgba(167, 139, 250, 0.7);
+}
+/* =====================
+   Exhibition Section Dark Mode Blobs Neon Glow
+   ===================== */
+body.dark-theme #exhibition {
+  background: linear-gradient(to bottom, #1f1f2e, #111119, #1a1a28); /* dark gradient */
+  color: #e5e5e5;
+}
+
+/* Floating shapes container */
+body.dark-theme #exhibition .absolute,
+body.dark-theme #exhibition .floating-shape {
+  opacity: 0.6;
+  filter: blur(20px) brightness(1.3);
+  mix-blend-mode: screen;
+}
+
+/* Purple Blobs */
+body.dark-theme #exhibition .bg-purple-300 {
+  background: #6d28d9; /* deep purple */
+  box-shadow: 0 0 40px 15px rgba(109, 40, 217, 0.8);
+}
+body.dark-theme #exhibition .bg-purple-400,
+body.dark-theme #exhibition .bg-purple-500 {
+  background: #a78bfa;
+  box-shadow: 0 0 40px 15px rgba(167, 139, 250, 0.7);
+}
+
+/* Pink Blobs */
+body.dark-theme #exhibition .bg-pink-200,
+body.dark-theme #exhibition .bg-pink-300,
+body.dark-theme #exhibition .bg-pink-400,
+body.dark-theme #exhibition .bg-pink-500 {
+  background: #ec4899;
+  box-shadow: 0 0 40px 15px rgba(236, 72, 153, 0.8);
+}
+
+/* Cyan / Teal Blobs */
+body.dark-theme #exhibition .bg-cyan-400,
+body.dark-theme #exhibition .bg-teal-400 {
+  background: #06b6d4;
+  box-shadow: 0 0 40px 15px rgba(6, 182, 212, 0.8);
+}
+
+/* Yellow Blobs */
+body.dark-theme #exhibition .bg-yellow-300,
+body.dark-theme #exhibition .bg-yellow-400 {
+  background: #facc15;
+  box-shadow: 0 0 40px 15px rgba(250, 204, 21, 0.7);
+}
+
+/* Red / Rose Blobs */
+body.dark-theme #exhibition .bg-red-400,
+body.dark-theme #exhibition .bg-rose-400 {
+  background: #ef4444;
+  box-shadow: 0 0 40px 15px rgba(239, 68, 68, 0.7);
+}
+
+/* Indigo Blobs */
+body.dark-theme #exhibition .bg-indigo-400 {
+  background: #4f46e5;
+  box-shadow: 0 0 40px 15px rgba(79, 70, 229, 0.7);
+}
+
+/* Cards Dark Mode */
+body.dark-theme #exhibition .exhibition-item {
+  background: #1f1f2e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme #exhibition .exhibition-item h3,
+body.dark-theme #exhibition .exhibition-item p {
+  color: #e5e5e5;
+}
+
+/* Button Dark Mode */
+body.dark-theme #exhibition a.inline-block {
+  background: #4f46e5;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.7);
+}
+
+body.dark-theme #exhibition a.inline-block:hover {
+  background: #3730a3;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.9);
+}
+/* Exhibition Section Header Text Dark Mode */
+body.dark-theme #exhibition h2 {
+  color: #f5f5f5; /* light gray/white for main heading */
+}
+
+body.dark-theme #exhibition p {
+  color: #d1d5db; /* lighter gray for paragraph text */
+}
+
+/* =====================
+   Artwork For Sale Section - Dark Mode
+   ===================== */
+
+/* Section background */
+body.dark-theme #artwork-for-sale {
+  background: #1f1f2e; /* dark background */
+}
+
+/* Floating shapes glow */
+body.dark-theme #artwork-for-sale .floating-shape {
+  opacity: 0.4;
+  filter: blur(20px) brightness(1.2);
+  mix-blend-mode: screen;
+}
+
+/* Section header and paragraph */
+body.dark-theme #artwork-for-sale h2 {
+  color: #f5f5f5; /* light heading */
+}
+
+body.dark-theme #artwork-for-sale p {
+  color: #d1d5db; /* light gray paragraph */
+}
+
+/* More button */
+body.dark-theme #artwork-for-sale a {
+  background: #6C63FF; /* keep purple */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.5);
+}
+
+body.dark-theme #artwork-for-sale a:hover {
+  background: #5750d3;
+}
+
+/* Artwork Cards */
+body.dark-theme #artwork-for-sale .artwork-item {
+  background: #2a2a3d; /* dark card background */
+  color: #f5f5f5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Quick View Overlay */
+body.dark-theme #artwork-for-sale .artwork-item .absolute {
+  background: rgba(0, 0, 0, 0.7); /* darker overlay for hover */
+}
+
+/* Artwork card text */
+body.dark-theme #artwork-for-sale .artwork-item h3,
+body.dark-theme #artwork-for-sale .artwork-item p {
+  color: #f5f5f5;
+}
+/* =====================
+   Artist Portal Section - Dark Mode
+   ===================== */
+
+/* Section background */
+body.dark-theme #artist-portal {
+  background: #1f1f2e; /* deep dark gradient background */
+}
+
+/* Floating shapes glow */
+body.dark-theme #artist-portal .floating-shape {
+  opacity: 0.4;
+  filter: blur(20px) brightness(1.2);
+  mix-blend-mode: screen;
+}
+
+/* Section header */
+body.dark-theme #artist-portal h2 {
+  color: #f5f5f5; /* light heading */
+}
+
+/* Paragraph text */
+body.dark-theme #artist-portal p {
+  color: #d1d5db; /* soft gray for readability */
+}
+
+/* More button */
+body.dark-theme #artist-portal a {
+  background: #6C63FF; /* keep purple for contrast */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.5);
+}
+
+body.dark-theme #artist-portal a:hover {
+  background: #5750d3;
+}
+
+/* Artist Cards */
+body.dark-theme #artist-portal .artist-item {
+  background: #2a2a3d; /* dark card background */
+  color: #f5f5f5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Card text */
+body.dark-theme #artist-portal .artist-item h3,
+body.dark-theme #artist-portal .artist-item p {
+  color: #f5f5f5;
+}
+
+/* Read More Button inside cards */
+body.dark-theme #artist-portal .read-more-btn {
+  color: #a78bfa; /* lavender/purple for contrast */
+}
+
+body.dark-theme #artist-portal .read-more-btn:hover {
+  text-decoration: underline;
+}
+/* =====================
+   About Section - Dark Mode
+   ===================== */
+
+/* Section background */
+body.dark-theme #about {
+  background: #1f1f2e; /* deep dark gradient */
+}
+
+/* Floating shapes glow */
+body.dark-theme #about .floating-shape {
+  opacity: 0.4;
+  filter: blur(20px) brightness(1.2);
+  mix-blend-mode: screen;
+}
+
+/* Section header */
+body.dark-theme #about h3 {
+  color: #f5f5f5; /* light heading */
+}
+
+/* Paragraph text */
+body.dark-theme #about p {
+  color: #d1d5db; /* soft gray for readability */
+}
+
+/* Explore Exhibitions button */
+body.dark-theme #about a {
+  background: #6C63FF; /* vibrant purple */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.5);
+}
+
+body.dark-theme #about a:hover {
+  background: #5750d3;
+}
+
+/* Circle Cards */
+body.dark-theme #about .flex.flex-col.items-center {
+  background: #2a2a3d; /* dark card background */
+  color: #f5f5f5;
+}
+
+/* Circle Card Titles */
+body.dark-theme #about h4 {
+  color: #f5f5f5;
+}
+
+/* Circle Card Paragraphs */
+body.dark-theme #about p.text-sm {
+  color: #c0c0c0;
+}
+
+/* Card border adjustments */
+body.dark-theme #about .border-purple-300 {
+  border-color: #a78bfa;
+}
+body.dark-theme #about .border-pink-300 {
+  border-color: #ec4899;
+}
+body.dark-theme #about .border-cyan-300 {
+  border-color: #06b6d4;
+}
+/* =====================
+   Contact & Footer Section - Dark Mode
+   ===================== */
+
+/* Section Background */
+body.dark-theme #contact {
+  background: #1f1f2e; /* deep dark gradient can also do gradient if needed */
+  color: #d1d5db;
+}
+
+/* Floating shapes */
+body.dark-theme #contact .floating-shape {
+  opacity: 0.3;
+  filter: blur(20px) brightness(1.2);
+  mix-blend-mode: screen;
+}
+
+/* Section header */
+body.dark-theme #contact h3 {
+  color: #f5f5f5;
+}
+
+/* Paragraph text */
+body.dark-theme #contact p {
+  color: #c0c0c0;
+}
+
+/* Contact Cards */
+body.dark-theme #contact .bg-white {
+  background-color: #2a2a3d !important; /* dark card background */
+  color: #f5f5f5;
+  border: 1px solid #3a3a50;
+}
+
+/* Icons */
+body.dark-theme #contact i {
+  color: #6C63FF;
+}
+
+/* Links */
+body.dark-theme #contact a {
+  color: #6C63FF;
+}
+body.dark-theme #contact a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+body.dark-theme #contact a.inline-flex,
+body.dark-theme #contact button {
+  background: #6C63FF;
+  color: #fff;
+}
+body.dark-theme #contact a.inline-flex:hover,
+body.dark-theme #contact button:hover {
+  background: #5750d3;
+  transform: scale(1.05);
+}
+
+/* Collaboration Modal */
+body.dark-theme #collabModal .bg-white {
+  background: #2a2a3d;
+  color: #f5f5f5;
+}
+body.dark-theme #collabModal input,
+body.dark-theme #collabModal textarea {
+  background: #1f1f2e;
+  color: #f5f5f5;
+  border-color: #5750d3;
+}
+body.dark-theme #collabModal input:focus,
+body.dark-theme #collabModal textarea:focus {
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.5);
+}
+/* =====================
+   Footer - Dark Mode
+   ===================== */
+
+body.dark-theme footer {
+  background: #11121a; /* deep dark gradient alternative */
+  color: #d1d5db; /* soft gray text */
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark-theme footer .floating-shape {
+  opacity: 0.15;
+  filter: blur(25px) brightness(1.2);
+  mix-blend-mode: screen;
+}
+
+body.dark-theme footer h2,
+body.dark-theme footer h4 {
+  color: #f5f5f5; /* light headings */
+}
+
+body.dark-theme footer p {
+  color: #c0c0c0; /* lighter gray for text */
+}
+
+body.dark-theme footer ul li a {
+  color: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+body.dark-theme footer ul li a:hover {
+  color: #6C63FF; /* brand accent color */
+}
+
+body.dark-theme footer .bg-white {
+  background-color: #1f1f2e; /* dark card background */
+  color: #d1d5db;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+body.dark-theme footer .bg-white input {
+  background-color: #11121a;
+  color: #d1d5db;
+  border: 1px solid #374151;
+}
+
+body.dark-theme footer .bg-white input:focus {
+  border-color: #6C63FF;
+  box-shadow: 0 0 0 2px rgba(108,99,255,0.4);
+}
+
+body.dark-theme footer button,
+body.dark-theme footer .bg-gradient-to-r {
+  background: linear-gradient(to right, #6C63FF, #ff6bcb);
+  color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+body.dark-theme footer button:hover {
+  transform: scale(1.05);
+}
+
+body.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+body.dark-theme footer .text-gray-600 {
+  color: #9ca3af;
+}
+
+body.dark-theme footer .text-red-500 {
+  color: #f87171; /* slightly muted red for dark mode */
+}
+
+
+
+
+
+
+
 
     /* Layered neon shadow glow */
     /* Layered neon shadow glow - lighter overlay */
@@ -959,7 +1156,6 @@
   </style>
 </head>
 
-
 <body class="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 overflow-x-hidden">
 
 <!-- Loading Screen -->
@@ -1140,7 +1336,7 @@
   <!-- Optional: Interactive Particle Canvas -->
   <canvas id="particles" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
   <section id="exhibition" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 
-bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden">
+bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden" style="padding-top: 40px; padding-bottom: 40px">
     <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
     <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
     <!-- Hero Content -->
