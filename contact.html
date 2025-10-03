@@ -57,6 +57,216 @@
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    body.dark-theme header {
+  background: #0f172a; /* dark navy */
+  border-bottom: 1px solid #1e293b; /* subtle border */
+  color: #f1f5f9;
+}
+
+body.dark-theme header a,
+body.dark-theme header .nav-link {
+  color: #e2e8f0; /* light gray text */
+}
+
+body.dark-theme header a:hover,
+body.dark-theme header .nav-link:hover {
+  color: #a78bfa; /* bright purple hover */
+}
+
+body.dark-theme header .active {
+  color: #8b5cf6; /* purple highlight for active link */
+  font-weight: 600;
+}
+
+body.dark-theme #menu-btn {
+  color: #f1f5f9;
+}
+
+body.dark-theme #mobile-menu {
+  background: #111827; /* dark bg for mobile menu */
+  border-top: 1px solid #1e293b;
+}
+
+body.dark-theme #mobile-menu a {
+  color: #e2e8f0;
+}
+
+body.dark-theme #mobile-menu a:hover {
+  color: #a78bfa;
+}
+
+body.dark-theme #logout-btn,
+body.dark-theme #mobile-menu button:last-child {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #fff;
+}
+body.dark-theme #logout-btn:hover,
+body.dark-theme #mobile-menu button:last-child:hover {
+  background: linear-gradient(to right, #ec4899, #06b6d4);
+  color: #fff;
+}
+
+/* Theme Toggle Button Styles */
+body.dark-theme #theme-toggle,
+body.dark-theme #mobile-theme-toggle {
+  background: #1f2937;
+  color: #f1f5f9;
+}
+body.dark-theme #theme-toggle:hover,
+body.dark-theme #mobile-theme-toggle:hover {
+  background: #374151;
+}
+/* ============================= */
+/* Dark Theme - Contact Page     */
+/* ============================= */
+
+/* Hero Section */
+body.dark-theme section.relative {
+  background: linear-gradient(to right, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+body.dark-theme section.relative h1 {
+  background: linear-gradient(to right, #a78bfa, #f472b6, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.dark-theme section.relative p {
+  color: #cbd5e1;
+}
+
+/* Contact Section Background */
+body.dark-theme section.py-20 {
+  background: linear-gradient(to bottom, #111827, #1e1b4b, #0f172a);
+  color: #e2e8f0;
+}
+
+/* Left Content Text */
+body.dark-theme section.py-20 h2 {
+  background: linear-gradient(to right, #c084fc, #f472b6, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.dark-theme section.py-20 p {
+  color: #cbd5e1;
+}
+body.dark-theme section.py-20 span.font-semibold {
+  color: #a78bfa; /* purple highlight */
+}
+
+/* Info Cards (Location, Email, Phone, etc.) */
+body.dark-theme .space-y-6 div {
+  color: #e2e8f0;
+}
+body.dark-theme .space-y-6 svg {
+  stroke: currentColor;
+}
+body.dark-theme .bg-purple-100 { background: #312e81; }
+body.dark-theme .bg-pink-100 { background: #831843; }
+body.dark-theme .bg-yellow-100 { background: #78350f; }
+body.dark-theme .bg-green-100 { background: #064e3b; }
+body.dark-theme .bg-blue-100 { background: #1e3a8a; }
+
+body.dark-theme .group:hover div {
+  filter: brightness(1.2);
+}
+
+/* Contact Form */
+body.dark-theme .bg-white {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+}
+body.dark-theme h3 {
+  color: #f9fafb;
+}
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #f1f5f9;
+}
+body.dark-theme input:focus,
+body.dark-theme select:focus,
+body.dark-theme textarea:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.5);
+}
+body.dark-theme label {
+  color: #9ca3af !important;
+}
+body.dark-theme select {
+  background: #111827 !important;
+}
+body.dark-theme span.text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* Submit Button */
+body.dark-theme button[type="submit"] {
+  background: linear-gradient(to right, #8b5cf6, #ec4899, #facc15);
+  color: #fff;
+}
+body.dark-theme button[type="submit"]:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+/* Footer Dark Mode */
+body.dark-theme footer {
+  background: linear-gradient(to bottom, #1f2937, #111827, #1f2937);
+  color: #cbd5e1;
+}
+
+body.dark-theme footer h3 {
+  background: linear-gradient(to right, #c084fc, #f472b6, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-theme footer h4 {
+  color: #e5e7eb;
+}
+
+body.dark-theme footer p,
+body.dark-theme footer li,
+body.dark-theme footer a {
+  color: #cbd5e1;
+}
+
+body.dark-theme footer a:hover {
+  color: #f472b6;
+}
+
+body.dark-theme footer input {
+  background-color: #374151;
+  color: #f3f4f6;
+  border-color: #4b5563;
+}
+
+body.dark-theme footer button {
+  background: linear-gradient(to right, #c084fc, #f472b6, #facc15);
+  color: #111827;
+}
+
+body.dark-theme footer .border-t {
+  border-color: #4b5563;
+}
+
+body.dark-theme footer .flex a i {
+  color: #cbd5e1;
+}
+
+body.dark-theme footer .flex a:hover i {
+  color: #f472b6;
+}
+
+/* Logo Text Dark Mode */
+body.dark-theme a.flex.items-center span {
+  background: linear-gradient(to right, #c084fc, #f472b6, #facc15); /* gradient colors */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
   </style>
 </head>
 <body class="bg-gradient-to-b from-purple-50 via-white to-yellow-50">
@@ -308,74 +518,79 @@
 </div>
 </div>
 </section>
-<!-- Footer -->
-<footer class="mt-16 bg-gradient-to-b from-[#fdfbff] via-[#f4eeff] to-[#efe8ff] relative overflow-hidden">
-  <!-- Decorative gradient blob -->
-  <div class="absolute -top-20 -left-20 w-72 h-72 bg-pink-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-  <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-  
-  <div class="container mx-auto px-6 py-16 grid md:grid-cols-4 gap-12 relative z-10">
-    
+<!-- Enhanced Footer -->
+<footer class="relative bg-gradient-to-b from-[#fdfbff] via-[#f4eeff] to-[#efe8ff] overflow-hidden pt-20 pb-12">
+
+  <!-- Decorative floating blobs -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-pink-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-purple-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+
+  <div class="container mx-auto px-6 grid md:grid-cols-4 gap-12 relative z-10">
+
     <!-- Brand -->
-    <div>
+    <div class="space-y-5">
       <h3 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-400 to-yellow-400">
         Kala.ficial
       </h3>
-      <p class="mt-5 text-base text-gray-600 leading-relaxed max-w-xs">
-        A creative hub connecting artists and art lovers worldwide. 
-        Explore exhibitions, discover talent, and celebrate creativity together.
+      <p class="text-gray-600 leading-relaxed max-w-xs">
+        A creative hub connecting artists and art lovers worldwide. Explore exhibitions, discover talent, and celebrate creativity together.
       </p>
+      <div class="flex space-x-4">
+        <a href="#" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-110 text-lg"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-110 text-lg"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-110 text-lg"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-110 text-lg"><i class="fab fa-linkedin-in"></i></a>
+      </div>
     </div>
 
     <!-- Quick Links -->
     <div>
       <h4 class="text-lg font-semibold mb-5 text-gray-900">Quick Links</h4>
       <ul class="space-y-3 text-gray-600">
-        <li><a href="index.html" class="hover:text-pink-500 transition">Home</a></li>
-        <li><a href="about.html" class="hover:text-pink-500 transition">About Us</a></li>
-        <li><a href="exhibitions.html" class="hover:text-pink-500 transition">Exhibitions</a></li>
-        <li><a href="contact.html" class="hover:text-pink-500 transition">Contact</a></li>
+        <li><a href="index.html" class="hover:text-purple-500 transition transform hover:translate-x-1">Home</a></li>
+        <li><a href="about.html" class="hover:text-purple-500 transition transform hover:translate-x-1">About Us</a></li>
+        <li><a href="exhibitions.html" class="hover:text-purple-500 transition transform hover:translate-x-1">Exhibitions</a></li>
+        <li><a href="contact.html" class="hover:text-purple-500 transition transform hover:translate-x-1">Contact</a></li>
       </ul>
     </div>
 
-    <!-- Resources -->
+    <!-- Resources & Explore -->
     <div>
       <h4 class="text-lg font-semibold mb-5 text-gray-900">Resources</h4>
       <ul class="space-y-3 text-gray-600">
-        <li><a href="#" class="hover:text-pink-500 transition">Blog</a></li>
-        <li><a href="#" class="hover:text-pink-500 transition">FAQs</a></li>
-        <li><a href="#" class="hover:text-pink-500 transition">Support</a></li>
-        <li><a href="#" class="hover:text-pink-500 transition">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-purple-500 transition transform hover:translate-x-1">Blog</a></li>
+        <li><a href="#" class="hover:text-purple-500 transition transform hover:translate-x-1">FAQs</a></li>
+        <li><a href="#" class="hover:text-purple-500 transition transform hover:translate-x-1">Support</a></li>
+        <li><a href="#" class="hover:text-purple-500 transition transform hover:translate-x-1">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-purple-500 transition transform hover:translate-x-1">Terms of Service</a></li>
       </ul>
     </div>
 
-    <!-- Social & Newsletter -->
-    <div>
-      <h4 class="text-lg font-semibold mb-5 text-gray-900">Stay Connected</h4>
-      <div class="flex space-x-5 mb-6 text-xl">
-        <a href="#" class="text-gray-500 hover:text-pink-500 transition"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="text-gray-500 hover:text-pink-500 transition"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="text-gray-500 hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-gray-500 hover:text-pink-500 transition"><i class="fab fa-linkedin-in"></i></a>
-      </div>
+    <!-- Newsletter & Contact -->
+    <div class="space-y-6">
+      <h4 class="text-lg font-semibold mb-3 text-gray-900">Stay Connected</h4>
+      <p class="text-gray-600">Subscribe to our newsletter for updates, exhibitions, and artist features.</p>
       <form class="flex shadow-lg rounded-lg overflow-hidden max-w-sm">
         <input 
           type="email" 
           placeholder="Your email" 
           class="w-full px-4 py-3 text-gray-700 focus:outline-none" />
         <button 
-          class="px-5 py-3 bg-gradient-to-r from-purple-500 via-pink-400 to-yellow-400 text-white font-semibold hover:opacity-90 transition">
+          class="px-5 py-3 bg-gradient-to-r from-purple-500 via-pink-400 to-yellow-400 text-white font-semibold hover:opacity-90 transition transform hover:scale-105">
           Subscribe
         </button>
       </form>
+      <p class="text-gray-500 text-sm">We respect your privacy. Unsubscribe anytime.</p>
     </div>
+
   </div>
 
   <!-- Bottom Bar -->
-  <div class="border-t border-gray-200 mt-12 py-6 text-center text-sm text-gray-500 relative z-10">
+  <div class="border-t border-gray-200 mt-16 pt-6 text-center text-sm text-gray-500 relative z-10">
     © 2025 <span class="font-semibold">Kala.ficial</span>. All rights reserved. | Designed with <span class="text-pink-500">❤️</span> for creativity.
   </div>
 </footer>
+
 <!--scroll to top and bottom -->
 <button id="smartScrollBtn"
           class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
@@ -440,6 +655,7 @@
     }
   });
 })();</script>
+<script src="theme-toggle.js"></script>
 
 <!-- Navbar JavaScript -->
 <script>
@@ -454,46 +670,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Theme Toggle Functionality
-  const themeToggle = document.getElementById('theme-toggle');
-  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-  const htmlElement = document.documentElement;
-
-  // Check for saved theme preference or default to 'light'
-  const currentTheme = localStorage.getItem('theme') || 'light';
   
-  // Apply the saved theme on page load
-  htmlElement.setAttribute('data-theme', currentTheme);
   
-  // Update icon based on current theme
-  const updateIcons = (theme) => {
-    if (themeIcon) {
-      themeIcon.className = theme === 'dark' ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
-    }
-    if (mobileThemeIcon) {
-      mobileThemeIcon.className = theme === 'dark' ? 'fas fa-sun text-lg' : 'fas fa-moon text-lg';
-    }
-  };
   
-  updateIcons(currentTheme);
-  
-  // Theme toggle function
-  const toggleTheme = () => {
-    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateIcons(newTheme);
-  };
-  
-  // Add event listeners for theme toggle
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
-  if (mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', toggleTheme);
-  }
 
   // Logout functionality
   const logoutBtn = document.getElementById('logout-btn');

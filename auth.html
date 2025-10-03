@@ -14,21 +14,181 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="Components/css/auth.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <style>
+      * {
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .floating-shape {
+        position: fixed;
+        background: linear-gradient(45deg, #8b5cf6, #ec4899);
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-shape:nth-child(1) {
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-shape:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        left: 80%;
+        animation-delay: 2s;
+      }
+
+      .floating-shape:nth-child(3) {
+        width: 100px;
+        height: 100px;
+        top: 80%;
+        left: 20%;
+        animation-delay: 4s;
+      }
+
+      .floating-shape:nth-child(4) {
+        width: 120px;
+        height: 120px;
+        top: 20%;
+        left: 70%;
+        animation-delay: 1s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+
+      .input-field {
+        border: 2px solid #e5e7eb;
+        transition: all 0.3s ease;
+      }
+
+      .input-field:focus {
+        border-color: #8b5cf6;
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+      }
+
+      .btn {
+        background: linear-gradient(45deg, #8b5cf6, #ec4899);
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+      }
+
+      .toggle-link {
+        color: #8b5cf6;
+        transition: color 0.3s ease;
+      }
+
+      .toggle-link:hover {
+        color: #7c3aed;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal {
+        animation: modalFadeIn 0.3s ease-in-out;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .auth-icon {
+        width: 120px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        position: relative;
+        animation: pulse 2s infinite;
+      }
+
+      .auth-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 10px 25px rgba(102, 126, 234, 0.3));
+      }
+
+      .success-message {
+        background: linear-gradient(45deg, #10b981, #34d399);
+        color: white;
+        padding: 12px 16px;
+        border-radius: 12px;
+        margin-top: 16px;
+        display: none;
+      }
+    </style>
   </head>
-  <body>
+  <body
+    class="bg-gradient-to-br from-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-4"
+  >
     <!-- Floating background shapes -->
     <div class="floating-shape"></div>
     <div class="floating-shape"></div>
     <div class="floating-shape"></div>
     <div class="floating-shape"></div>
 
-    <div class="container max-w-md w-full mx-auto p-8 card rounded-2xl fade-in relative z-10 overflow-y-auto max-h-screen no-scrollbar">
+    <!-- Main Auth Container -->
+    <div
+      class="container max-w-md w-full mx-auto p-8 card rounded-2xl fade-in relative z-10"
+    >
       <!-- Logo/Icon -->
       <div class="auth-icon">
-        <img src="assets/images/logo.png" alt="Kala.ficial Logo" />
+        <img src="logo.png" alt="Kala.ficial Logo" />
       </div>
 
       <h1 id="form-title" class="text-3xl font-bold text-center mb-2 text-gray-800">
@@ -39,8 +199,8 @@
       </p>
 
       <form id="auth-form" class="space-y-6">
-        <!-- Username (only for signup, hidden by default) -->
-        <div id="username-field" class="input-wrapper" style="display: none;">
+        <!-- Username (only for signup) -->
+        <div id="username-field" class="input-wrapper hidden">
           <label
             for="username"
             class="block text-sm font-semibold text-gray-700 mb-2"
@@ -53,7 +213,6 @@
             name="username"
             class="mt-1 block w-full px-4 py-3 rounded-xl input-field focus:outline-none"
             placeholder="Enter your username"
-            autocomplete="username"
           />
         </div>
 
@@ -95,6 +254,17 @@
           />
         </div>
 
+        <!-- Forgot Password Link -->
+        <div class="text-right -mt-2">
+          <button
+            type="button"
+            id="forgot-password-btn"
+            class="text-sm text-purple-600 hover:text-purple-800 transition-colors duration-300 bg-transparent border-none cursor-pointer"
+          >
+            <i class="fas fa-key mr-1"></i>Forgot Password?
+          </button>
+        </div>
+
         <!-- Divider -->
         <div class="flex items-center my-6">
           <div class="flex-1 border-t border-gray-300"></div>
@@ -105,19 +275,12 @@
         </div>
 
         <!-- Google Sign In -->
-        <div
-          id="g_id_onload"
-          data-client_id="YOUR_GOOGLE_CLIENT_ID"
-          data-context="signin"
-          data-ux_mode="popup"
-          data-callback="handleGoogleResponse"
-          data-auto_prompt="false"
-        ></div>
-
         <div class="flex justify-center">
           <button
             type="button"
-            class="google-btn w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-700 hover:bg-gray-50 transition-all duration-300 shadow-sm"
+            
+            id="google-signin-btn"
+            class="flex items-center justify-center w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-700 hover:bg-gray-50 transition-all duration-300 shadow-sm google-btn"
           >
             <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -148,6 +311,207 @@
         </p>
       </form>
     </div>
+
+    <!-- Forgot Password Modal -->
+    <div
+      id="forgot-password-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative modal">
+        <button
+          id="close-modal"
+          class="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        >
+          <i class="fas fa-times text-xl"></i>
+        </button>
+
+        <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">
+          <i class="fas fa-key text-purple-500 mr-2"></i>Reset Password
+        </h2>
+        <p class="text-center text-gray-600 mb-6">
+          Enter your email to receive reset instructions
+        </p>
+
+        <form id="forgot-password-form" class="space-y-4">
+          <div>
+            <label
+              for="reset-email"
+              class="block text-sm font-semibold text-gray-700 mb-2"
+            >
+              <i class="fas fa-envelope mr-2 text-purple-500"></i>Email Address
+            </label>
+            <input
+              type="email"
+              id="reset-email"
+              name="email"
+              class="mt-1 block w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-4 py-3 rounded-xl bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-all duration-300 focus:outline-none"
+          >
+            <i class="fas fa-paper-plane mr-2"></i>Send Reset Link
+          </button>
+
+          <div id="reset-success" class="success-message text-center">
+            <i class="fas fa-check-circle mr-2"></i>Password reset link sent
+            successfully!
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // All JavaScript code in one place
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const authForm = document.getElementById("auth-form");
+        const formTitle = document.getElementById("form-title");
+        const submitBtn = document.getElementById("submit-btn");
+        const toggleBtn = document.getElementById("toggle-btn");
+        const usernameField = document.getElementById("username-field");
+        const usernameInput = document.getElementById("username");
+        const forgotPasswordBtn = document.getElementById(
+          "forgot-password-btn"
+        );
+        const forgotPasswordModal = document.getElementById(
+          "forgot-password-modal"
+        );
+        const closeModal = document.getElementById("close-modal");
+        const forgotPasswordForm = document.getElementById(
+          "forgot-password-form"
+        );
+        const resetEmailInput = document.getElementById("reset-email");
+        const resetSuccessMessage = document.getElementById("reset-success");
+        const googleSignInBtn = document.getElementById("google-signin-btn");
+
+        // Initial state - Login mode
+        let isLoginMode = true;
+
+        // Toggle between Login and Signup
+        toggleBtn.addEventListener("click", function () {
+          isLoginMode = !isLoginMode;
+
+          if (isLoginMode) {
+            // Switch to Login
+            formTitle.textContent = "Welcome Back";
+            submitBtn.innerHTML =
+              '<i class="fas fa-sign-in-alt mr-2"></i>Sign In';
+            toggleBtn.innerHTML = "Don't have an account? Sign up";
+            usernameField.classList.add("hidden");
+            usernameInput.removeAttribute("required");
+          } else {
+            // Switch to Signup
+            formTitle.textContent = "Create Account";
+            submitBtn.innerHTML =
+              '<i class="fas fa-user-plus mr-2"></i>Sign Up';
+            toggleBtn.innerHTML = "Already have an account? Sign in";
+            usernameField.classList.remove("hidden");
+            usernameInput.setAttribute("required", "");
+          }
+        });
+
+        // Forgot Password Modal
+        forgotPasswordBtn.addEventListener("click", function () {
+          resetSuccessMessage.style.display = "none";
+          resetEmailInput.value = "";
+          forgotPasswordModal.classList.remove("hidden");
+        });
+
+        closeModal.addEventListener("click", function () {
+          forgotPasswordModal.classList.add("hidden");
+        });
+
+        // Close modal when clicking outside
+        forgotPasswordModal.addEventListener("click", function (e) {
+          if (e.target.id === "forgot-password-modal") {
+            forgotPasswordModal.classList.add("hidden");
+          }
+        });
+
+        // Forgot Password Form Submission
+        forgotPasswordForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = resetEmailInput.value;
+
+          // Simple validation
+          if (email && email.includes("@") && email.includes(".")) {
+            // Show success message
+            resetSuccessMessage.style.display = "flex";
+
+            // Hide modal after 2 seconds
+            setTimeout(() => {
+              forgotPasswordModal.classList.add("hidden");
+            }, 2000);
+          } else {
+            alert("Please enter a valid email address");
+          }
+        });
+
+        // Main Form Submission
+        authForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const username = document.getElementById("username").value;
+
+          // Add loading state
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
+          submitBtn.disabled = true;
+
+          // Simulate API call
+          setTimeout(() => {
+            if (isLoginMode) {
+              // Login logic
+              console.log("Login attempt:", { email, password });
+              alert(`Login successful! Welcome back to Kala.ficial.`);
+            } else {
+              // Signup logic
+              if (!username) {
+                alert("Please enter a username");
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+              }
+              console.log("Signup attempt:", { username, email, password });
+              alert(
+                `Account created successfully! Welcome to Kala.ficial, ${username}.`
+              );
+            }
+
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }, 1500);
+        });
+
+        // Google Sign In Button
+        googleSignInBtn.addEventListener("click", function () {
+          // Add loading state
+          const originalText = googleSignInBtn.innerHTML;
+          googleSignInBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i>Connecting...';
+          googleSignInBtn.disabled = true;
+
+          // Simulate Google Sign In
+          setTimeout(() => {
+            alert(
+              "Google Sign In would be implemented here with proper OAuth integration."
+            );
+
+            // Reset button
+            googleSignInBtn.innerHTML = originalText;
+            googleSignInBtn.disabled = false;
+          }, 1000);
+        });
+      });
+    </script>
   </body>
-  <script src="Components/js/auth.js"></script>
 </html>
