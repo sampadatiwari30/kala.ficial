@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Kala.ficial</title>
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      window.location.replace("auth.html");
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
+  <style>
+    :root {
+      --primary-bg: #ffffff;
+      --secondary-bg: #f8fafc;
+      --primary-text: #1a202c;
+      --secondary-text: #4a5568;
+      --accent-color: #8b5cf6;
+      --border-color: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --modal-bg: #ffffff;
+      --modal-text: #1f2937;
+    }
+
+    .dark {
+      --primary-bg: #0f172a;
+      --secondary-bg: #1e293b;
+      --primary-text: #f1f5f9;
+      --secondary-text: #cbd5e1;
+      --accent-color: #a78bfa;
+      --border-color: #334155;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+      --modal-bg: #1e293b;
+      --modal-text: #f1f5f9;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--primary-text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Floating Shapes Animation */
+    @keyframes float { 
+      0%,100% { transform: translateY(0) translateX(0); } 
+      50% { transform: translateY(-20px) translateX(15px); } 
+    }
+    
+    @keyframes spin-slow { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float 12s ease-in-out infinite;
+    }
+    .floating-shape:nth-child(1) { top: 10%; left: 15%; background-color: #ff6bcb; animation-duration: 14s; }
+    .floating-shape:nth-child(2) { top: 35%; left: 75%; background-color: #6C63FF; animation-duration: 16s; }
+    .floating-shape:nth-child(3) { top: 65%; left: 35%; background-color: #06b6d4; animation-duration: 18s; }
+
+    .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+    .text-gradient { 
+      background-clip: text; 
+      -webkit-background-clip: text; 
+      color: transparent; 
+    }
+
+    /* Interactive Card Hover */
+    .interactive-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+  
+    /* Nav link styles for dark mode */
+    .nav-link {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s ease;
+      color: var(--secondary-text);
+    }
+    
+    .dark .nav-link {
+      color: #cbd5e1;
+    }
+    
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    
+    .dark .nav-link:hover {
+      color: #f1f5f9;
+    }
+    
+    .nav-link:hover {
+      color: #111827;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link.active {
+      color: #111827;
+      font-weight: 600;
+    }
+    
+   
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Mobile animation */
+    #mobile-menu {
+      animation: slideDown 0.4s ease forwards;
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes spin-slow {
+      0%{transform:rotate(0deg);}
+      100%{transform:rotate(360deg);}
+    }
+    
+    @keyframes bounce-slow {
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+    }
+    
+    @keyframes gradientText {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    
+    .animate-float-slow { animation: float 12s ease-in-out infinite; }
+    .animate-float-medium { animation: float 9s ease-in-out infinite; }
+    .animate-float-fast { animation: float 6s ease-in-out infinite; }
+    .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+    .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+    .animate-text { 
+      animation: gradientText 5s ease infinite alternate; 
+      background-size: 200% 200%; 
+    }
+
+    /* Logout Modal */
+    #logoutModal .modal-content {
+      background-color: var(--modal-bg) !important;
+      color: var(--modal-text) !important;
+      border: 1px solid var(--border-color) !important;
+      box-shadow: var(--shadow) !important;
+      border-radius: 1rem !important;
+      padding: 2rem !important;
+      max-width: 22rem !important;
+      width: 100% !important;
+      text-align: center !important;
+      transition: all 0.3s ease !important;
+    }
+
+    #logoutModal h2 {
+      color: var(--primary-text);
+    }
+    
+    #logoutModal p {
+      color: var(--secondary-text);
+    }
+
+    #confirmLogout {
+      background: linear-gradient(to right, #ef4444, #ec4899);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    #confirmLogout:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    #cancelLogout {
+      background-color: var(--secondary-bg);
+      color: var(--primary-text);
+      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    #cancelLogout:hover {
+      background-color: var(--border-color);
+    }
+
+    /* Smooth transitions for all elements */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    /* 🌙 Dark Mode Global */
+body.dark-theme {
+  background-color: #0f172a; /* deep navy background */
+  color: #f1f5f9; /* light text */
+}
+
+/* Navbar */
+body.dark-theme header {
+  background: rgba(15, 23, 42, 0.85); /* darker glass effect */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Logo Text */
+body.dark-theme header .text-gray-900 {
+  color: #f8fafc; /* change brand text */
+}
+
+/* Nav Links */
+body.dark-theme .nav-link {
+  color: #e2e8f0; /* light gray text */
+  transition: color 0.3s ease;
+}
+body.dark-theme .nav-link:hover {
+  color: #38bdf8; /* sky blue hover */
+}
+
+/* Desktop Logout Button */
+body.dark-theme .logout-btn {
+  background: linear-gradient(to right, #1e3a8a, #4f46e5); /* dark indigo gradient */
+  color: #f8fafc;
+}
+body.dark-theme .logout-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #1e3a8a);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Mobile Menu */
+body.dark-theme #mobile-menu {
+  background: rgba(15, 23, 42, 0.95);
+}
+body.dark-theme #mobile-menu nav {
+  color: #f1f5f9;
+}
+body.dark-theme #mobile-menu .nav-link {
+  color: #e2e8f0;
+}
+body.dark-theme #mobile-menu .nav-link:hover {
+  color: #38bdf8;
+}
+
+/* Mobile Logout Button */
+body.dark-theme #mobile-menu .logout-btn {
+  background: linear-gradient(to right, #1e3a8a, #4f46e5);
+  color: #f8fafc;
+}
+body.dark-theme #mobile-menu .logout-btn:hover {
+  background: linear-gradient(to right, #4f46e5, #1e3a8a);
+}
+
+/* Theme Toggle Icons */
+body.dark-theme #theme-icon,
+body.dark-theme #mobile-theme-icon {
+  color: #facc15; /* sun yellow */
+}
+/* 🌙 Dark Mode - About Hero Section */
+body.dark-theme section {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* deep gradient */
+  color: #f1f5f9;
+}
+
+/* Title Gradient Text */
+body.dark-theme section h1 {
+  background: linear-gradient(to right, #facc15, #f472b6, #a855f7); /* yellow → pink → purple */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph */
+body.dark-theme section p {
+  color: #d1d5db; /* soft gray */
+}
+body.dark-theme section p .text-purple-600 {
+  color: #c084fc; /* softer purple */
+}
+
+/* Learn More Button */
+body.dark-theme section a {
+  background: linear-gradient(to right, #2563eb, #9333ea); /* blue → purple */
+  color: #f9fafb;
+}
+body.dark-theme section a:hover {
+  background: linear-gradient(to right, #9333ea, #2563eb);
+  box-shadow: 0 6px 14px rgba(147, 51, 234, 0.4);
+}
+
+/* Illustration */
+body.dark-theme section img {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Floating Accent Shapes */
+body.dark-theme section .bg-pink-400 {
+  background-color: #f472b6; /* hot pink */
+  opacity: 0.25;
+}
+body.dark-theme section .bg-yellow-400 {
+  background-color: #facc15; /* bright yellow */
+  opacity: 0.25;
+}
+body.dark-theme section .bg-purple-400 {
+  background-color: #a855f7; /* bright purple */
+  opacity: 0.25;
+}
+/* 🌙 Dark Mode - Our Story Section */
+body.dark-theme #story {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Heading Gradient */
+body.dark-theme #story h2 {
+  background: linear-gradient(to right, #a855f7, #ec4899, #facc15); /* purple → pink → yellow */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph Text */
+body.dark-theme #story p {
+  color: #d1d5db; /* soft gray */
+}
+body.dark-theme #story p .text-purple-600 {
+  color: #c084fc; /* light purple */
+}
+body.dark-theme #story p .text-pink-500 {
+  color: #f472b6; /* bright pink */
+}
+
+/* Buttons */
+body.dark-theme #story a:first-child {
+  background: linear-gradient(to right, #2563eb, #9333ea); /* blue → purple */
+  color: #f9fafb;
+}
+body.dark-theme #story a:first-child:hover {
+  background: linear-gradient(to right, #9333ea, #2563eb);
+  box-shadow: 0 6px 14px rgba(147, 51, 234, 0.5);
+}
+
+body.dark-theme #story a:last-child {
+  border-color: #c084fc;
+  color: #c084fc;
+}
+body.dark-theme #story a:last-child:hover {
+  background-color: #9333ea;
+  color: #fff;
+  border-color: #9333ea;
+}
+
+/* Illustration Image */
+body.dark-theme #story img {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Floating Blobs */
+body.dark-theme #story .bg-pink-400 {
+  background-color: #f472b6;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-purple-400 {
+  background-color: #a855f7;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-yellow-400 {
+  background-color: #facc15;
+  opacity: 0.3;
+}
+body.dark-theme #story .bg-cyan-300 {
+  background-color: #22d3ee; /* cyan glow */
+  opacity: 0.25;
+}
+/* 🌙 Dark Mode - Mission & Vision Section */
+body.dark-theme #mission {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Mission Card */
+body.dark-theme #mission .border-purple-400 {
+  background: #1e1b4b; /* dark card bg */
+  border-left-color: #a855f7; /* bright purple */
+  color: #e2e8f0;
+}
+body.dark-theme #mission .border-purple-400 h2 {
+  color: #c084fc; /* light purple */
+}
+body.dark-theme #mission .border-purple-400 p {
+  color: #d1d5db; /* soft gray */
+}
+
+/* Vision Card */
+body.dark-theme #mission .border-pink-400 {
+  background: #1e1b4b; /* dark card bg */
+  border-left-color: #ec4899; /* pink glow */
+  color: #e2e8f0;
+}
+body.dark-theme #mission .border-pink-400 h2 {
+  color: #f472b6; /* light pink */
+}
+body.dark-theme #mission .border-pink-400 p {
+  color: #d1d5db; /* soft gray */
+}
+
+/* Hover effects in dark mode */
+body.dark-theme #mission .border-purple-400:hover,
+body.dark-theme #mission .border-pink-400:hover {
+  box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4); /* glowing effect */
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Decorative Blobs */
+body.dark-theme #mission .bg-pink-300 {
+  background-color: #f472b6;
+  opacity: 0.25;
+}
+body.dark-theme #mission .bg-purple-300 {
+  background-color: #a855f7;
+  opacity: 0.25;
+}
+body.dark-theme #mission .bg-yellow-300 {
+  background-color: #facc15;
+  opacity: 0.25;
+}
+/* Section background */
+body.dark-theme #artists {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark gradient */
+  color: #f1f5f9;
+}
+
+/* Card base styles */
+body.dark-theme #artists .bg-white {
+  background: #1e1b4b !important; /* dark card bg */
+  color: #e2e8f0; /* light text */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+body.dark-theme #artists h4 {
+  color: #f8fafc; /* almost white */
+}
+
+body.dark-theme #artists h4.group-hover\:text-purple-600 {
+  color: #a855f7; /* purple accent */
+}
+
+body.dark-theme #artists h4.group-hover\:text-pink-600 {
+  color: #ec4899; /* pink accent */
+}
+
+body.dark-theme #artists h4.group-hover\:text-cyan-600 {
+  color: #06b6d4; /* cyan accent */
+}
+
+/* Paragraphs */
+body.dark-theme #artists p {
+  color: #cbd5e1; /* soft gray */
+}
+
+/* Gradient accent backgrounds (still visible on hover) */
+body.dark-theme #artists .absolute.bg-gradient-to-r {
+  opacity: 0.15; /* subtle in dark mode */
+}
+
+/* Shadow tweak for hover */
+body.dark-theme #artists .hover\:shadow-3xl:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+/* ============================= */
+/* Dark Theme - Call To Action   */
+/* ============================= */
+body.dark-theme section.py-24 {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* Dark gradient */
+  color: #f1f5f9;
+}
+
+body.dark-theme section.py-24 h2 {
+  background: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899); /* brighter gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-theme section.py-24 p {
+  color: #cbd5e1;
+}
+
+body.dark-theme section.py-24 a {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #f1f5f9;
+}
+body.dark-theme section.py-24 a:hover {
+  background: linear-gradient(to right, #ec4899, #06b6d4);
+  color: #fff;
+}
+
+/* ============================= */
+/* Dark Theme - Footer           */
+/* ============================= */
+body.dark-theme footer {
+  background: linear-gradient(to top, #111827, #1e1b4b, #0f172a);
+  color: #f1f5f9;
+}
+
+body.dark-theme footer h2,
+body.dark-theme footer h4 {
+  color: #f9fafb;
+}
+
+body.dark-theme footer p,
+body.dark-theme footer li,
+body.dark-theme footer a {
+  color: #cbd5e1;
+}
+
+body.dark-theme footer a:hover {
+  color: #a78bfa; /* bright purple hover */
+}
+
+body.dark-theme footer .relative.group {
+  background: #1e1b4b; /* dark card */
+  color: #e2e8f0;
+}
+
+body.dark-theme footer input[type="email"] {
+  background: #111827;
+  border-color: #374151;
+  color: #f1f5f9;
+}
+body.dark-theme footer input[type="email"]::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-theme footer button {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #fff;
+}
+
+body.dark-theme footer button:hover {
+  background: linear-gradient(to right, #ec4899, #06b6d4);
+}
+
+/* Blog specific styles */
+.blog-card {
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.blog-category {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.blog-read-more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.blog-read-more i {
+  transition: transform 0.3s ease;
+}
+
+.blog-read-more:hover i {
+  transform: translateX(4px);
+}
+
+/* Dark mode blog styles */
+body.dark-theme .blog-card {
+  background: #1e1b4b;
+  color: #e2e8f0;
+}
+
+body.dark-theme .blog-card h3 {
+  color: #f8fafc;
+}
+
+body.dark-theme .blog-card p {
+  color: #cbd5e1;
+}
+
+body.dark-theme .blog-card:hover {
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* Blog placeholder images */
+.blog-image-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Read More/Less functionality */
+.blog-expanded-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  opacity: 0;
+}
+
+.blog-expanded-content.show {
+  max-height: 1000px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.3s ease-in 0.2s;
+}
+
+.blog-expanded-content-inner {
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 1rem;
+}
+
+body.dark-theme .blog-expanded-content-inner {
+  border-top: 1px solid #334155;
+}
+
+  </style>
+</head>
+<body class="relative bg-white">
+    <!-- Navbar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center space-x-3">
+      <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
+           class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+      <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="blog.html" class="nav-link active">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+      </button>
+      
+      <button
+        class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+    <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="exhibition.html" class="nav-link">Exhibition</a>
+      <a href="artwork.html" class="nav-link">Artwork</a>
+      <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+      <a href="blog.html" class="nav-link active">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>      
+      <!-- Mobile Theme Toggle -->
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <span class="text-gray-700">Theme</span>
+        <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+      </div>
+      
+      <button class="logout-btn px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
+        Log Out
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Blog Hero Section -->
+<section class="relative py-32 bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden flex items-center justify-center" style="margin-top: 40px;">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
+    <span class="floating-shape bg-[#6C63FF] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center text-center">
+    <h1 class="text-4xl md:text-6xl font-bold text-gradient bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text animate-text mb-6">
+      Kala.ficial Blog
+    </h1>
+    <p class="text-gray-700 text-lg md:text-xl max-w-3xl leading-relaxed">
+      Discover insights, artist stories, exhibition highlights, and creative inspiration from our vibrant art community.
+    </p>
+    <div class="mt-8 flex gap-4">
+      <a href="#featured" class="inline-block bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+        Featured Posts
+      </a>
+      <a href="#all-posts" class="inline-block border-2 border-purple-500 text-purple-500 font-semibold px-8 py-3 rounded-full hover:bg-purple-500 hover:text-white transition-all duration-300 hover:scale-105">
+        All Articles
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Posts -->
+<section id="featured" class="relative py-20 bg-gradient-to-b from-[#fdf6ff] via-[#f0e5ff] to-white overflow-hidden">
+  <!-- Floating Decorative Blobs -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
+    <span class="floating-shape bg-[#6C63FF] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gradient bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text animate-text">
+      Featured Posts
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Featured Post 1 -->
+      <div class="blog-card bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-64 blog-image-placeholder">
+            Digital Art Feature
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="blog-category bg-purple-500 text-white">Digital Art</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span class="mr-4"><i class="far fa-calendar mr-1"></i> March 15, 2025</span>
+            <span><i class="far fa-clock mr-1"></i> 5 min read</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">The Rise of Digital Art: A New Era for Creatives</h3>
+          <p class="text-gray-600 mb-4">Explore how digital tools are transforming artistic expression and opening new opportunities for artists worldwide.</p>
+          
+          <!-- Expanded Content -->
+          <div class="blog-expanded-content" id="expanded-content-1">
+            <div class="blog-expanded-content-inner">
+              <p class="text-gray-600 mb-4">Digital art has revolutionized the creative landscape, allowing artists to experiment with new mediums and reach global audiences. From digital painting to 3D modeling, the possibilities are endless.</p>
+              <p class="text-gray-600 mb-4">Platforms like Kala.ficial are making it easier for digital artists to showcase their work, connect with collectors, and participate in virtual exhibitions that transcend geographical boundaries.</p>
+              <p class="text-gray-600">The future of digital art looks bright, with emerging technologies like VR and AR opening up even more creative possibilities for artists around the world.</p>
+            </div>
+          </div>
+          
+          <div class="blog-read-more text-purple-600" onclick="toggleReadMore('expanded-content-1', this)">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Post 2 -->
+      <div class="blog-card bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-64 blog-image-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            Traditional Art
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="blog-category bg-pink-500 text-white">Traditional Art</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span class="mr-4"><i class="far fa-calendar mr-1"></i> March 10, 2025</span>
+            <span><i class="far fa-clock mr-1"></i> 7 min read</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Preserving Traditional Art in a Digital World</h3>
+          <p class="text-gray-600 mb-4">How contemporary artists are blending ancient techniques with modern themes to keep traditional art forms alive and relevant.</p>
+          
+          <!-- Expanded Content -->
+          <div class="blog-expanded-content" id="expanded-content-2">
+            <div class="blog-expanded-content-inner">
+              <p class="text-gray-600 mb-4">Traditional art forms like oil painting, watercolor, and sculpture continue to hold immense value in our increasingly digital world. Many artists are finding innovative ways to bridge the gap between traditional techniques and contemporary themes.</p>
+              <p class="text-gray-600 mb-4">Through workshops, online tutorials, and community projects, artists are passing down centuries-old techniques to new generations while adapting them to address modern issues and aesthetics.</p>
+              <p class="text-gray-600">The resilience of traditional art forms demonstrates the enduring power of handmade craftsmanship and the human touch in creative expression.</p>
+            </div>
+          </div>
+          
+          <div class="blog-read-more text-purple-600" onclick="toggleReadMore('expanded-content-2', this)">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- All Blog Posts -->
+<section id="all-posts" class="relative py-20 bg-gradient-to-b from-[#fdf5ff] via-[#f3e8ff] to-white overflow-hidden">
+  <!-- Background Decorative Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#ff6bcb] opacity-20"></span>
+    <span class="floating-shape bg-[#6C63FF] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gradient bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text animate-text">
+      All Blog Posts
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Blog Post 1 -->
+      <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 blog-image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            Artist Spotlight
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="blog-category bg-cyan-500 text-white">Artist Spotlight</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span class="mr-4"><i class="far fa-calendar mr-1"></i> March 5, 2025</span>
+            <span><i class="far fa-clock mr-1"></i> 4 min read</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Artist Spotlight: Maya Rodriguez's Journey</h3>
+          <p class="text-gray-600 mb-4">Discover how this emerging artist found her voice through mixed media and cultural exploration.</p>
+          
+          <!-- Expanded Content -->
+          <div class="blog-expanded-content" id="expanded-content-3">
+            <div class="blog-expanded-content-inner">
+              <p class="text-gray-600 mb-4">Maya Rodriguez's artistic journey began in her grandmother's studio, where she first learned traditional weaving techniques. Over the years, she has developed a unique style that combines these traditional methods with contemporary digital elements.</p>
+              <p class="text-gray-600 mb-4">Her work explores themes of cultural identity, migration, and the intersection of traditional craftsmanship with modern technology. Through her art, Maya creates bridges between generations and cultures.</p>
+              <p class="text-gray-600">"Art is my way of honoring my heritage while embracing the future," says Maya. Her upcoming exhibition at Kala.ficial will showcase her latest series exploring these themes.</p>
+            </div>
+          </div>
+          
+          <div class="blog-read-more text-purple-600" onclick="toggleReadMore('expanded-content-3', this)">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 -->
+      <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 blog-image-placeholder" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
+            Exhibitions
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="blog-category bg-yellow-500 text-white">Exhibitions</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span class="mr-4"><i class="far fa-calendar mr-1"></i> February 28, 2025</span>
+            <span><i class="far fa-clock mr-1"></i> 6 min read</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Top 5 Must-See Art Exhibitions This Spring</h3>
+          <p class="text-gray-600 mb-4">From immersive digital installations to traditional masterpieces, don't miss these incredible shows.</p>
+          
+          <!-- Expanded Content -->
+          <div class="blog-expanded-content" id="expanded-content-4">
+            <div class="blog-expanded-content-inner">
+              <p class="text-gray-600 mb-4">This spring brings an exciting lineup of art exhibitions that showcase the diversity and innovation in contemporary art. Here are our top picks:</p>
+              <ul class="text-gray-600 mb-4 list-disc list-inside space-y-2">
+                <li>"Digital Dreams" - An immersive VR experience exploring the future of digital art</li>
+                <li>"Echoes of Tradition" - Contemporary artists reinterpreting classical techniques</li>
+                <li>"Urban Canvas" - Street art and graffiti transforming public spaces</li>
+                <li>"Sustainable Art" - Eco-friendly materials and environmental themes</li>
+                <li>"Global Voices" - International artists sharing cultural perspectives</li>
+              </ul>
+              <p class="text-gray-600">Many of these exhibitions are available both in-person and through Kala.ficial's virtual gallery platform, making art accessible to everyone.</p>
+            </div>
+          </div>
+          
+          <div class="blog-read-more text-purple-600" onclick="toggleReadMore('expanded-content-4', this)">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 -->
+      <div class="blog-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 blog-image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            Techniques
+          </div>
+          <div class="absolute top-4 left-4">
+            <span class="blog-category bg-green-500 text-white">Techniques</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-sm text-gray-500 mb-2">
+            <span class="mr-4"><i class="far fa-calendar mr-1"></i> February 20, 2025</span>
+            <span><i class="far fa-clock mr-1"></i> 8 min read</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800">Mastering Watercolor: Tips from Professional Artists</h3>
+          <p class="text-gray-600 mb-4">Learn essential techniques and common pitfalls to avoid when working with watercolor paints.</p>
+          
+          <!-- Expanded Content -->
+          <div class="blog-expanded-content" id="expanded-content-5">
+            <div class="blog-expanded-content-inner">
+              <p class="text-gray-600 mb-4">Watercolor painting requires a delicate balance of control and spontaneity. Professional artists share their top tips for mastering this beautiful medium:</p>
+              <ul class="text-gray-600 mb-4 list-disc list-inside space-y-2">
+                <li>Invest in quality paper - it makes all the difference in how pigments behave</li>
+                <li>Practice wet-on-wet and wet-on-dry techniques to understand water control</li>
+                <li>Start with light washes and build up color gradually</li>
+                <li>Don't overwork your painting - know when to stop</li>
+                <li>Embrace "happy accidents" as opportunities for creative discovery</li>
+              </ul>
+              <p class="text-gray-600">Remember that watercolor is as much about the water as it is about the color. The transparency and fluidity of the medium are what give it its unique character.</p>
+            </div>
+          </div>
+          
+          <div class="blog-read-more text-purple-600" onclick="toggleReadMore('expanded-content-5', this)">
+            Read More <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button class="bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
+        Load More Articles
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-20 bg-gradient-to-b from-[#f0e0ff] via-[#f9e7ff] to-[#ffffff] relative overflow-hidden">
+  <div class="absolute top-10 left-12 w-24 h-24 bg-purple-200 rounded-full opacity-25 blur-3xl animate-float-slow"></div>
+  <div class="absolute bottom-20 right-16 w-28 h-28 bg-pink-200 rounded-full opacity-20 blur-2xl animate-float-medium"></div>
+  
+  <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gradient bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text animate-text">
+      Stay Updated with Our Blog
+    </h2>
+    <p class="text-gray-700 text-lg mb-8">
+      Subscribe to our newsletter and never miss an article. Get the latest artist stories, exhibition news, and creative insights delivered to your inbox.
+    </p>
+    <form class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+      <input 
+        type="email" 
+        placeholder="Your email address" 
+        class="flex-grow px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+        required
+      />
+      <button 
+        type="submit" 
+        class="bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 whitespace-nowrap"
+      >
+        Subscribe Now
+      </button>
+    </form>
+  </div>
+</section>
+
+<footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+  <!-- Floating Shapes -->
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+    <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+    <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+    <span class="floating-shape bg-[#ffda6b] opacity-10"></span>
+    <span class="floating-shape bg-[#00c4ff] opacity-10"></span>
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10 text-gray-800">
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div class="mb-6 lg:mb-0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art community today.
+        </p>
+        <div class="flex gap-4 mt-6">
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+          <a href="#" class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-2">
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./about.html">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./exhibition.html">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./artwork.html">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./Artist Portal.html">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./blog.html">Blog</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+        <ul class="space-y-3 text-gray-600">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St, Anytown, India</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+        </ul>
+        <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+      </div>
+
+      <!-- Newsletter & Social -->
+      <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+        <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+        <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+      
+  <form class="flex flex-col gap-3">
+    <input 
+      type="email" 
+      placeholder="Your Email" 
+      class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300"
+    />
+    <button 
+      type="submit" 
+      class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105"
+    >
+      Subscribe
+    </button>
+  </form>
+ 
+        <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+      &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+    </div>
+  </div>
+</footer>
+
+<!--scroll to top and bottom -->
+<button id="smartScrollBtn"
+          class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white text-3xl hover:scale-110 hover:shadow-2xl font-bold 
+                 w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+                 transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Scroll">
+    <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" clip-rule="evenodd"/>
+    </svg>
+</button>
+
+<script>
+// Read More/Less functionality
+function toggleReadMore(contentId, button) {
+  const content = document.getElementById(contentId);
+  const isExpanded = content.classList.contains('show');
+  
+  if (isExpanded) {
+    content.classList.remove('show');
+    button.innerHTML = 'Read More <i class="fas fa-arrow-right ml-2"></i>';
+  } else {
+    content.classList.add('show');
+    button.innerHTML = 'Read Less <i class="fas fa-arrow-up ml-2"></i>';
+  }
+}
+
+(function () {
+  const scrollBtn = document.getElementById('smartScrollBtn');
+  const scrollIcon = document.getElementById('scrollIcon');
+  if (!scrollBtn || !scrollIcon) return;
+
+  const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
+
+  const setIcon = (direction) => {
+    if (direction === 'down') {
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+    } else {
+      scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"/>`;
+      scrollBtn.setAttribute('aria-label', 'Scroll to top');
+    }
+  };
+
+  const check = () => {
+    const threshold = updateThreshold();
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+
+    if (scrollTop < threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('down');
+    } else if (windowHeight + scrollTop >= docHeight - threshold) {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    } else {
+      scrollBtn.classList.add('show');
+      setIcon('up');
+    }
+  };
+
+  window.addEventListener('scroll', check);
+  window.addEventListener('resize', check);
+  check();
+
+  scrollBtn.addEventListener('click', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    const threshold = updateThreshold();
+
+    if (scrollTop < threshold) {
+      window.scrollTo({ top: docHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+})();
+</script>
+
+<!-- Mobile Menu button logic -->
+<script>
+  const mobileBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+
+<script>
+  // --- LOGOUT LOGIC ---
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtns = [
+      document.getElementById("logout-btn"),
+      document.getElementById("logout-btn-mobile")
+    ].filter(Boolean);
+
+    const modal = document.getElementById("logoutModal");
+    const confirmBtn = document.getElementById("confirmLogout");
+    const cancelBtn = document.getElementById("cancelLogout");
+
+    logoutBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.remove("hidden");
+      });
+    });
+
+    cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+    confirmBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "auth.html";
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.add("hidden");
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "blog.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+<script src="theme-toggle.js"> </script>
+
+
+</body>
+</html>
