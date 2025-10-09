@@ -1204,6 +1204,99 @@
             </div>
           </div>
         </div>
+      </footer>
+      <!-- Scroll to Top/Bottom Button -->
+      <button id="smartScrollBtn" class="fixed bottom-20 right-5 bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] text-white font-bold 
+               w-12 h-12 rounded-full shadow-lg flex items-center justify-center 
+               transition-all duration-300 hover:scale-110 z-50" aria-label="Scroll">
+        <svg id="scrollIcon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" clip-rule="evenodd" />
+        </svg>
+      </button>
+
+      <script>
+        (function () {
+          const scrollBtn = document.getElementById('smartScrollBtn');
+          const scrollIcon = document.getElementById('scrollIcon');
+          if (!scrollBtn || !scrollIcon) return;
+
+          const updateThreshold = () => Math.max(300, (document.body.scrollHeight || 800) / 3);
+
+          const setIcon = (direction) => {
+            if (direction === 'down') {
+              scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>`;
+              scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
+            } else {
+              scrollIcon.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l-4 4a1 1 0 010 1.414z"/>`;
+              scrollBtn.setAttribute('aria-label', 'Scroll to top');
+            }
+          };
+
+          const check = () => {
+            const threshold = updateThreshold();
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.body.scrollHeight;
+
+            if (scrollTop < threshold) {
+              setIcon('down');
+            } else if (windowHeight + scrollTop >= docHeight - threshold) {
+              setIcon('up');
+            } else {
+              setIcon('up');
+            }
+          };
+
+          window.addEventListener('scroll', check);
+          window.addEventListener('resize', check);
+          check();
+
+          scrollBtn.addEventListener('click', () => {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const docHeight = document.body.scrollHeight;
+            const threshold = updateThreshold();
+
+            if (scrollTop < threshold) {
+              window.scrollTo({ top: docHeight, behavior: 'smooth' });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        })();
+      </script>
+
+
+
+      <!-- Scripts -->
+      <script>
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const artistCards = document.querySelectorAll(".artist-card");
+        const modal = document.getElementById("artistModal");
+        const modalContent = document.getElementById("modalContent");
+        const modalName = document.getElementById("modalName");
+        const modalImage = document.getElementById("modalImage");
+        const modalCategory = document.getElementById("modalCategory");
+        const modalBio = document.getElementById("modalBio");
+
+        // Filter logic
+        filterBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelector(".filter-btn.active")?.classList.remove("active");
+            btn.classList.add("active");
+
+            const filter = btn.getAttribute("data-filter");
+            artistCards.forEach(card => {
+              if (filter === "all" || card.classList.contains(filter)) {
+                card.style.display = "block";
+                card.style.opacity = "1";
+              } else {
+                card.style.opacity = "0";
+                setTimeout(() => card.style.display = "none", 300);
+              }
+            });
+          });
+        });
 
         <!-- Footer Bottom -->
         <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
