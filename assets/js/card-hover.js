@@ -16,7 +16,7 @@ document.querySelectorAll('.card').forEach(card => {
   // Create sliding info panel (top)
   const infoPanel = document.createElement('div');
   infoPanel.className = `
-    absolute top-0 left-0 w-full bg-black/60 text-white p-3
+    absolute top-0 left-0 w-full text-white p-3
     transform -translate-y-full transition-transform duration-300
     pointer-events-none
   `;
