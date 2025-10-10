@@ -17,6 +17,13 @@ function redirectToMainPage() {
   window.location.href = "index.html"; // home page
 }
 
+const skipBtn = document.getElementById("skip-btn");
+skipBtn.addEventListener("click", () => {
+  localStorage.setItem("isLoggedIn", "guest");
+  window.location.href = "index.html";
+});
+
+
 toggleBtn.addEventListener("click", () => {
   isLogin = !isLogin;
   if (isLogin) {
