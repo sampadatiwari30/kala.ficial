@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kala.ficial — Artwork For Sale</title>
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -165,112 +166,6 @@
 .animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
 .animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
 
-/* Theme CSS Variables */
-:root {
-  --primary-bg: #ffffff;
-  --secondary-bg: #f8fafc;
-  --primary-text: #1a202c;
-  --secondary-text: #4a5568;
-  --accent-color: #8b5cf6;
-  --border-color: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] {
-  --primary-bg: #1a202c;
-  --secondary-bg: #2d3748;
-  --primary-text: #f7fafc;
-  --secondary-text: #e2e8f0;
-  --accent-color: #9f7aea;
-  --border-color: #4a5568;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-}
-
-/* Theme toggle button styles with higher specificity */
-.theme-toggle {
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 3rem !important;
-  height: 3rem !important;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: blur(16px) !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-  z-index: 10 !important;
-}
-
-[data-theme="dark"] .theme-toggle {
-  background-color: rgba(75, 85, 99, 0.9) !important;
-  border-color: rgba(156, 163, 175, 0.5) !important;
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-  background-color: rgba(55, 65, 81, 0.9) !important;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1) !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
-}
-
-.theme-toggle i {
-  color: #374151 !important;
-  transition: all 0.3s ease !important;
-  font-size: 1.1rem !important;
-}
-
-[data-theme="dark"] .theme-toggle i {
-  color: #fcd34d !important;
-}
-
-/* Apply theme to body and main elements */
-[data-theme="dark"] body {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%) !important;
-  color: var(--primary-text) !important;
-}
-
-[data-theme="dark"] header {
-  background: linear-gradient(to right, rgba(26, 32, 44, 0.95), rgba(45, 55, 72, 0.9)) !important;
-  backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid rgba(156, 163, 175, 0.2) !important;
-}
-
-[data-theme="dark"] .nav-link {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .nav-link:hover {
-  color: #fcd34d !important;
-}
-
-[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
-[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
-  color: #f9fafb !important;
-}
-
-[data-theme="dark"] p, [data-theme="dark"] span:not(.theme-toggle *) {
-  color: #e2e8f0 !important;
-}
-
-[data-theme="dark"] .text-gray-700,
-[data-theme="dark"] .text-gray-800,
-[data-theme="dark"] .text-gray-900 {
-  color: #f9fafb !important;
-}
-
-[data-theme="dark"] .bg-white {
-  background-color: #1f2937 !important;
-}
-
-[data-theme="dark"] *:not(.theme-toggle):not(.theme-toggle *) {
-  border-color: #4a5568 !important;
-}
 
 /* Logout Modal Base */
 #logoutModal .modal-content {
@@ -318,6 +213,540 @@
 #cancelLogout:hover {
   background-color: var(--border-color);
 }
+/* 🌙 Dark Theme */
+body.dark-theme {
+  background: linear-gradient(to bottom, #0f0f17, #1a1a24, #242433);
+  color: #f5f5f9;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Navbar */
+body.dark-theme header {
+  background: linear-gradient(to right, rgba(28, 28, 40, 0.9), rgba(20, 20, 30, 0.85));
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+}
+
+/* Logo Text */
+body.dark-theme header span {
+  color: #f9f9ff;
+}
+
+/* Navigation Links */
+body.dark-theme .nav-link {
+  color: #d8d8e6;
+  transition: color 0.3s ease;
+}
+body.dark-theme .nav-link:hover {
+  color: #a78bfa; /* Indigo highlight */
+}
+
+/* Theme Toggle Icons */
+body.dark-theme #theme-icon,
+body.dark-theme #mobile-theme-icon {
+  color: #f5f5f9;
+}
+
+/* Mobile Menu */
+body.dark-theme #mobile-menu {
+  background: rgba(26, 26, 36, 0.95);
+  color: #e2e2ec;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+body.dark-theme #mobile-menu .nav-link {
+  color: #d6d6dc;
+}
+body.dark-theme #mobile-menu .nav-link:hover {
+  color: #a78bfa;
+}
+
+/* Logout Button */
+body.dark-theme .logout-btn {
+  background: linear-gradient(to right, #6d28d9, #4c1d95);
+  box-shadow: 0 4px 12px rgba(109,40,217,0.4);
+}
+body.dark-theme .logout-btn:hover {
+  background: linear-gradient(to right, #4c1d95, #6d28d9);
+  box-shadow: 0 6px 16px rgba(109,40,217,0.6);
+}
+
+/* Links + Buttons */
+body.dark-theme a {
+  color: #e0e0f5;
+}
+body.dark-theme button {
+  color: #f5f5f9;
+}
+/* 🌙 Dark Theme - Hero Section */
+body.dark-theme section {
+  background: linear-gradient(to bottom, #111018, #1a1a24, #1f1f2e);
+  color: #f5f5f9;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Hero Heading */
+body.dark-theme h1 {
+  color: #f9f9ff;
+}
+body.dark-theme h1 span {
+  background-image: linear-gradient(to right, #facc15, #fb7185, #ec4899); /* bright yellow → red → pink */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero Paragraph */
+body.dark-theme p {
+  color: #c7c7d6;
+}
+
+/* Shop Now Button */
+body.dark-theme a[href="#gallery"] {
+  background: linear-gradient(to right, #facc15, #f97316); /* yellow → orange */
+  color: #111;
+  box-shadow: 0 4px 10px rgba(250, 204, 21, 0.3);
+}
+body.dark-theme a[href="#gallery"]:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 14px rgba(250, 204, 21, 0.4);
+}
+
+/* Sell Art Button */
+body.dark-theme a[href="artist-portal.html"] {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #e2e2ec;
+}
+body.dark-theme a[href="artist-portal.html"]:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Glass Card */
+body.dark-theme .glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+body.dark-theme .glass h3 {
+  color: #fafafa;
+}
+body.dark-theme .glass p {
+  color: #b5b5c9;
+}
+
+/* Card Buttons */
+body.dark-theme .glass button {
+  background: #6C63FF;
+  color: #fff;
+}
+body.dark-theme .glass a {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #e2e2ec;
+}
+body.dark-theme .glass a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Floating Blobs – stay colorful but glow in dark */
+body.dark-theme .absolute {
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+}
+/* 🌙 Dark Theme - Filters Section */
+body.dark-theme section.container {
+  background: #111018; /* dark background */
+  color: #f0f0f5; /* text color */
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Art Chips */
+body.dark-theme .art-chip {
+  background: #1a1a24;
+  color: #d1d1e0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+body.dark-theme .art-chip:hover,
+body.dark-theme .art-chip.active {
+  background: #6C63FF; /* purple accent for active */
+  color: #fff;
+  border-color: #6C63FF;
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(108, 99, 255, 0.4);
+}
+
+/* Inputs */
+body.dark-theme input[type="search"] {
+  background: #1a1a24;
+  color: #e0e0f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+body.dark-theme input[type="search"]::placeholder {
+  color: #b5b5c7;
+}
+body.dark-theme input[type="search"]:focus {
+  outline: none;
+  border-color: #6C63FF;
+  box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
+}
+
+/* Select Boxes */
+body.dark-theme select {
+  background: #1a1a24;
+  color: #e0e0f0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+body.dark-theme select:focus {
+  outline: none;
+  border-color: #6C63FF;
+  box-shadow: 0 0 6px rgba(108, 99, 255, 0.4);
+}
+
+/* Dropdown Options */
+body.dark-theme select option {
+  background: #1a1a24;
+  color: #e0e0f0;
+}
+
+/* Controls container hover effect */
+body.dark-theme .flex.relative,
+body.dark-theme .flex select,
+body.dark-theme .flex input {
+  transition: all 0.3s ease;
+}
+
+/* Hover / Focus effect for all interactive elements */
+body.dark-theme .art-chip:hover,
+body.dark-theme input[type="search"]:focus,
+body.dark-theme select:focus {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+/* 🌙 Dark Theme - Gallery Grid */
+body.dark-theme #gallery {
+  background: #0f0f16; /* dark background */
+  color: #e0e0f0; /* text color */
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Art Cards */
+body.dark-theme .art-card {
+  background: #1a1a24; /* dark card background */
+  color: #e0e0f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+body.dark-theme .art-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.5);
+}
+
+/* Images */
+body.dark-theme .art-card img {
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+body.dark-theme .art-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Card Overlay */
+body.dark-theme .card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+body.dark-theme .art-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* Wishlist Button */
+body.dark-theme .wishlist-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+body.dark-theme .wishlist-btn:hover {
+  transform: scale(1.1);
+  background: #6C63FF;
+  box-shadow: 0 2px 6px rgba(108, 99, 255, 0.5);
+}
+
+/* View Button */
+body.dark-theme .view-btn {
+  background: linear-gradient(to right, #6C63FF, #ff6bcb);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+body.dark-theme .view-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.5);
+}
+
+/* Card Text */
+body.dark-theme .art-card h3,
+body.dark-theme .art-card h4 {
+  color: #f0f0f5;
+}
+body.dark-theme .art-card p {
+  color: #b0b0c0;
+}
+
+/* Price & Stock Info */
+body.dark-theme .art-card .text-gray-500 {
+  color: #a0a0b0;
+}
+body.dark-theme .art-card .text-gray-400 {
+  color: #8888a0;
+}
+
+/* Load More Button */
+body.dark-theme #loadMore {
+  background: linear-gradient(to right, #6C63FF, #ff6bcb);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.6);
+  transition: all 0.3s ease;
+}
+body.dark-theme #loadMore:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.8);
+  cursor: pointer;
+}
+
+/* Optional: Smooth transition for all interactive elements */
+body.dark-theme .art-card,
+body.dark-theme .art-card img,
+body.dark-theme .wishlist-btn,
+body.dark-theme .view-btn,
+body.dark-theme #loadMore {
+  transition: all 0.3s ease;
+}
+/* 🌙 Dark Theme - Modal */
+body.dark-theme #artModal {
+  color: #e0e0f0;
+}
+
+body.dark-theme #artModal .bg-white {
+  background: #1a1a24; /* dark modal background */
+  color: #e0e0f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark-theme #artModal .text-gray-600 {
+  color: #a0a0b0;
+}
+body.dark-theme #artModal .text-gray-500 {
+  color: #8888a0;
+}
+body.dark-theme #artModal .text-gray-700 {
+  color: #b0b0c0;
+}
+
+/* Modal Overlay */
+body.dark-theme #artModal .absolute.inset-0.bg-black\/50 {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Close Button */
+body.dark-theme #closeModal {
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+body.dark-theme #closeModal:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Buttons */
+body.dark-theme #buyNowBtn {
+  background: linear-gradient(to right, #facc15, #f97316);
+  color: #1a1a24;
+  box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5);
+  transition: all 0.3s ease;
+}
+body.dark-theme #buyNowBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(255, 204, 0, 0.8);
+}
+
+body.dark-theme #addToCartBtn,
+body.dark-theme .wishlist-toggle {
+  border-color: #555;
+  color: #e0e0f0;
+  background: #2a2a36;
+  transition: all 0.3s ease;
+}
+body.dark-theme #addToCartBtn:hover,
+body.dark-theme .wishlist-toggle:hover {
+  background: #3a3a50;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* Modal Image */
+body.dark-theme #modalImg {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+body.dark-theme #modalImg:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+/* Grid Layout inside modal */
+body.dark-theme #artModal .grid.md\:grid-cols-2 {
+  gap: 1.5rem;
+}
+
+/* Newsletter Section */
+body.dark-theme section.bg-indigo-50 {
+  background: #1a1a24; /* dark newsletter background */
+  color: #e0e0f0;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark-theme section.bg-indigo-50 p,
+body.dark-theme section.bg-indigo-50 h3 {
+  color: #e0e0f0;
+}
+
+/* Newsletter input */
+body.dark-theme #newsletterEmail {
+  background: #2a2a36;
+  color: #e0e0f0;
+  border: 1px solid #555;
+  transition: all 0.3s ease;
+}
+body.dark-theme #newsletterEmail::placeholder {
+  color: #8888a0;
+}
+body.dark-theme #newsletterEmail:focus {
+  border-color: #6C63FF;
+  outline: none;
+}
+
+/* Newsletter button */
+body.dark-theme #newsletterForm button {
+  background: linear-gradient(to right, #6C63FF, #ff6bcb);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+body.dark-theme #newsletterForm button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.5);
+  cursor: pointer;
+}
+/* 🌙 Dark Theme - Footer */
+body.dark-theme footer {
+  background: #1a1a24; /* dark footer background */
+  color: #e0e0f0;
+  transition: all 0.4s ease;
+}
+
+/* Floating Shapes - optional darker tints */
+body.dark-theme footer .floating-shape.bg-[#6C63FF] { background-color: rgba(108, 99, 255, 0.2); }
+body.dark-theme footer .floating-shape.bg-[#ff6bcb] { background-color: rgba(255, 107, 203, 0.15); }
+body.dark-theme footer .floating-shape.bg-[#06b6d4] { background-color: rgba(6, 182, 212, 0.15); }
+body.dark-theme footer .floating-shape.bg-[#ffda6b] { background-color: rgba(255, 218, 107, 0.1); }
+body.dark-theme footer .floating-shape.bg-[#00c4ff] { background-color: rgba(0, 196, 255, 0.1); }
+
+/* Text Colors */
+body.dark-theme footer .text-gray-800,
+body.dark-theme footer .text-gray-900 { color: #f0f0f0; }
+body.dark-theme footer .text-gray-600 { color: #aaaacf; }
+
+/* Headings */
+body.dark-theme footer h2,
+body.dark-theme footer h4 { color: #fff; }
+
+/* Quick Links hover */
+body.dark-theme footer ul li:hover { color: #6C63FF; }
+body.dark-theme footer ul li i { color: #8888a0; transition: transform 0.3s ease; }
+body.dark-theme footer ul li:hover i { transform: translateX(4px); color: #6C63FF; }
+
+/* Newsletter & Social Box */
+body.dark-theme footer .group.bg-white {
+  background: #2a2a36;
+  color: #e0e0f0;
+  border: 1px solid #444;
+  transition: all 0.4s ease;
+}
+body.dark-theme footer .group.bg-white:hover {
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.5);
+}
+
+/* Newsletter input */
+body.dark-theme footer input[type="email"] {
+  background: #1f1f2a;
+  color: #e0e0f0;
+  border: 1px solid #555;
+  transition: all 0.3s ease;
+}
+body.dark-theme footer input[type="email"]::placeholder {
+  color: #8888a0;
+}
+body.dark-theme footer input[type="email"]:focus {
+  border-color: #6C63FF;
+  outline: none;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+}
+
+/* Newsletter button */
+body.dark-theme footer button[type="submit"] {
+  background: linear-gradient(to right, #6C63FF, #ff6bcb);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+}
+body.dark-theme footer button[type="submit"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.7);
+}
+
+/* Social icons */
+body.dark-theme footer a.text-[#6C63FF] {
+  color: #6C63FF;
+  transition: all 0.3s ease;
+}
+body.dark-theme footer a.text-[#6C63FF]:hover {
+  color: #ff6bcb;
+  transform: scale(1.1);
+}
+
+/* Footer Bottom */
+body.dark-theme footer .border-gray-300 { border-color: #444; }
+body.dark-theme footer .text-gray-600 { color: #aaaacf; }
+
+/* Logout Modal */
+body.dark-theme #logoutModal {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+  color: #e0e0f0;
+}
+body.dark-theme #logoutModal .modal-content {
+  background: #2a2a36;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.5);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+body.dark-theme #logoutModal button {
+  background: #6C63FF;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+body.dark-theme #logoutModal button:hover {
+  background: #5750d3;
+  transform: scale(1.05);
+}
+
+
 
   </style>
 </head>
@@ -1051,11 +1480,19 @@
       <div class="space-y-2">
         <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
         <ul class="space-y-2">
+<<<<<<< HEAD
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./about.html">About Us</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./exhibition.html">Exhibitions</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./artwork.html">Artwork For Sale</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./Artist Portal.html">Artist Portal</a></li>
           <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="./contact.html">Contact</a></li>
+=======
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="about.html">About Us</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="exhibition.html">Exhibitions</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="#">Artwork For Sale</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="Artist Portal.html">Artist Portal</a></li>
+          <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a href="contact.html">Contact</a></li>
+>>>>>>> 76c9292b33ac47b4b3218f69b8699c61253fe47c
         </ul>
       </div>
 
@@ -1397,83 +1834,19 @@
 })();</script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+<script src="theme-toggle.js"></script>
+
 <script>
-// Theme toggle functionality
-(function() {
-  'use strict';
-  
-  function initInlineTheme() {
-    console.log('Initializing inline theme system...');
-    
-    const themeToggle = document.getElementById('theme-toggle');
-    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
-    const htmlElement = document.documentElement;
-    
-    if (!themeToggle) {
-      console.log('Theme toggle button not found!');
-      return;
-    }
-    
-    // Get current theme or default to light
-    let currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    
-    function updateIcons(theme) {
-      const isDark = theme === 'dark';
-      const iconClass = isDark ? 'fa-sun' : 'fa-moon';
-      
-      if (themeIcon) {
-        themeIcon.className = `fas ${iconClass} text-lg`;
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop(); // e.g., "about.html"
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
       }
-      if (mobileThemeIcon) {
-        mobileThemeIcon.className = `fas ${iconClass} text-lg`;
-      }
-    }
-    
-    function toggleTheme() {
-      console.log('Toggling theme...');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      currentTheme = newTheme;
-      
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcons(newTheme);
-      
-      console.log('Theme switched to:', newTheme);
-    }
-    
-    // Set initial icons
-    updateIcons(currentTheme);
-    
-    // Add click listeners
-    themeToggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log('Desktop theme button clicked');
-      toggleTheme();
     });
-    
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile theme button clicked');
-        toggleTheme();
-      });
-    }
-    
-    console.log('Inline theme toggle initialized successfully');
-  }
-  
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initInlineTheme);
-  } else {
-    initInlineTheme();
-  }
-})();
+  });
 </script>
 
 </body>
