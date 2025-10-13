@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="icon" href="favicon.png" type="image/x-icon" />
+    <script>
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.replace("auth.html"); 
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+   
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Animated background shapes */
+    .animated-shape {
+
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+    }
+
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Custom animation speeds */
+    @keyframes bounce-slow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes bounce-fast {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes spin-slow {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 6s ease-in-out infinite;
+    }
+
+    .animate-bounce-fast {
+      animation: bounce-fast 3s ease-in-out infinite;
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 30%;
+      left: 70%;
+      animation-duration: 15s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 60%;
+      left: 40%;
+      animation-duration: 18s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-20px)
+      }
+    }
+
+    .animate-float {
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+      animation: float 15s ease-in-out infinite;
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 40%;
+      left: 75%;
+      animation-duration: 16s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 70%;
+      left: 30%;
+      animation-duration: 20s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    .floating-shape {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-duration: 12s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 40%;
+      left: 75%;
+      animation-duration: 16s;
+    }
+
+    .floating-shape:nth-child(3) {
+      top: 70%;
+      left: 30%;
+      animation-duration: 20s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-20px) translateX(15px);
+      }
+    }
+
+    /* Read More button functionality */
+    .read-more-btn {
+      cursor: pointer;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #111827;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link.active {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Mobile animation */
+    #mobile-menu {
+      animation: slideDown 0.4s ease forwards;
+    }
+
+    @keyframes float-slow {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-12px) translateX(8px);
+      }
+    }
+
+    @keyframes float-medium {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-18px) translateX(-10px);
+      }
+    }
+
+    @keyframes float-fast {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-25px) translateX(12px);
+      }
+    }
+
+    .animate-float-slow {
+      animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .animate-float-medium {
+      animation: float-medium 6s ease-in-out infinite;
+    }
+
+    .animate-float-fast {
+      animation: float-fast 4s ease-in-out infinite;
+    }
+
+    /* Put this after tailwind CDN or in your main CSS file (so it overrides utilities if needed) */
+
+/* Smooth transitions */
+body,
+header,
+#mobile-menu,
+#loading-screen,
+.nav-link,
+.logout-btn {
+  transition: background-color .35s ease, color .35s ease, border-color .35s ease;
+}
+
+/* Dark theme root */
+body.dark-theme {
+  /* comparable dark gradient */
+  background: linear-gradient(90deg, #0b1020 0%, #111827 50%, #0b1220 100%) !important;
+  color: #e6eef8 !important;
+}
+
+/* Loading screen */
+body.dark-theme #loading-screen {
+  background: #071022;
+  color: #e6eef8;
+}
+
+/* Navbar */
+body.dark-theme header {
+  background: rgba(15, 23, 42, 0.85); /* dark translucent */
+  color: #e6eef8;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* Logo text */
+body.dark-theme a > span,
+body.dark-theme .container a span {
+  color: #e6eef8 !important;
+}
+
+/* Nav links */
+body.dark-theme .nav-link {
+  color: #cfe8ff !important;
+}
+body.dark-theme .nav-link:hover {
+  color: #7dd3fc !important;
+}
+
+/* Theme toggle button hover */
+body.dark-theme .theme-toggle:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+/* Logout button — make gradient more muted for dark */
+body.dark-theme .logout-btn {
+  background: linear-gradient(90deg, #374151 0%, #111827 100%) !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Mobile menu */
+body.dark-theme #mobile-menu {
+  background: rgba(10, 16, 30, 0.95);
+  color: #e6eef8;
+  border-color: rgba(255,255,255,0.04);
+}
+
+/* Border between mobile items */
+body.dark-theme #mobile-menu .border-t {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* Buttons, cards, other utilities (small helpers) */
+body.dark-theme .card,
+body.dark-theme .section {
+  background: #0f1724;
+  color: #e6eef8;
+}
+
+/* In case your logo is an SVG or image that needs brightness tweak */
+body.dark-theme img[alt*="KALA"] {
+  filter: brightness(.95) contrast(.95);
+}
+/* ============================
+   Dark Mode for Toggle + Logout
+   ============================ */
+
+/* Theme toggle button in dark mode */
+body.dark-theme .theme-toggle {
+  color: #e6eef8; /* light icon color */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px; /* fully round */
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+body.dark-theme .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+/* Logout button in dark mode */
+body.dark-theme #logout-btn,
+body.dark-theme #logout-btn-mobile {
+  background: linear-gradient(90deg, #4e8aeb 0%, #044eeb 100%) !important; /* muted dark gradient */
+  color: #e6eef8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+body.dark-theme #logout-btn:hover,
+body.dark-theme #logout-btn-mobile:hover {
+  background: linear-gradient(90deg, #3c7cd7 0%, #0069fb 100%) !important;
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+/* ===== Dark Theme for Hero Section ===== */
+body.dark-theme #hero {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark indigo gradient */
+}
+
+body.dark-theme #hero h1 {
+  color: #f9fafb; /* almost white */
+}
+
+body.dark-theme #hero p {
+  color: #d1d5db; /* light gray */
+}
+
+body.dark-theme #hero a {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Primary button (gallery) */
+body.dark-theme #hero a[href="#gallery"] {
+  background: linear-gradient(to right, #8b5cf6, #ec4899); /* purple → pink */
+  color: #fff;
+}
+
+body.dark-theme #hero a[href="#gallery"]:hover {
+  background: linear-gradient(to right, #a855f7, #f472b6);
+  transform: scale(1.05);
+}
+
+/* Secondary button (contact) */
+body.dark-theme #hero a[href="#contact"] {
+  border-color: #f9fafb;
+  color: #f9fafb;
+}
+
+body.dark-theme #hero a[href="#contact"]:hover {
+  background: #f9fafb;
+  color: #111827;
+  transform: scale(1.05);
+}
+
+/* Hero Image shadow adjustments */
+body.dark-theme #hero img {
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.6); /* soft purple glow */
+}
+/* ===== Dark Theme for About Section ===== */
+body.dark-theme #about {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark indigo gradient */
+}
+
+body.dark-theme #about h2 {
+  color: #f9fafb; /* white for heading */
+}
+
+body.dark-theme #about p {
+  color: #d1d5db; /* light gray for readability */
+}
+
+body.dark-theme #about a {
+  background: linear-gradient(to right, #8b5cf6, #ec4899); /* purple → pink button */
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+body.dark-theme #about a:hover {
+  background: linear-gradient(to right, #a855f7, #f472b6);
+  transform: scale(1.05);
+}
+
+/* Artist Image glow in dark mode */
+body.dark-theme #about img {
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.5); /* pink glow */
+}
+
+/* Decorative blobs recolored for neon-like dark mode */
+body.dark-theme #about .bg-purple-300 {
+  background-color: rgba(139, 92, 246, 0.4); /* neon purple */
+}
+body.dark-theme #about .bg-pink-200 {
+  background-color: rgba(236, 72, 153, 0.3); /* neon pink */
+}
+body.dark-theme #about .bg-cyan-200 {
+  background-color: rgba(6, 182, 212, 0.35); /* teal glow */
+}
+body.dark-theme #about .bg-purple-400 {
+  background-color: rgba(168, 85, 247, 0.5); /* deep purple */
+}
+body.dark-theme #about .bg-pink-300 {
+  background-color: rgba(244, 114, 182, 0.5); /* brighter pink */
+}
+/* ===== Dark Theme for Art Philosophy Section ===== */
+body.dark-theme #philosophy {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark indigo gradient */
+}
+
+body.dark-theme #philosophy h2 {
+  color: #f9fafb; /* white heading */
+}
+
+body.dark-theme #philosophy p {
+  color: #d1d5db; /* light gray text */
+}
+
+body.dark-theme #philosophy .bg-white {
+  background: #1f2937; /* dark card background */
+  color: #e5e7eb; /* light text inside card */
+}
+
+body.dark-theme #philosophy .text-gray-700,
+body.dark-theme #philosophy .text-gray-600 {
+  color: #d1d5db; /* unify text to light gray */
+}
+
+body.dark-theme #philosophy img {
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.45); /* purple glow */
+}
+
+/* Decorative shapes recolored for neon dark mode */
+body.dark-theme #philosophy .bg-purple-300 {
+  background-color: rgba(139, 92, 246, 0.4); /* neon purple */
+}
+body.dark-theme #philosophy .bg-pink-200 {
+  background-color: rgba(236, 72, 153, 0.35); /* neon pink */
+}
+body.dark-theme #philosophy .bg-cyan-200 {
+  background-color: rgba(6, 182, 212, 0.35); /* teal glow */
+}
+body.dark-theme #philosophy .bg-purple-400 {
+  background-color: rgba(168, 85, 247, 0.6);
+}
+body.dark-theme #philosophy .bg-pink-300 {
+  background-color: rgba(244, 114, 182, 0.55);
+}
+body.dark-theme #philosophy .bg-cyan-300 {
+  background-color: rgba(34, 211, 238, 0.55);
+}
+/* ===== Dark Theme for Art Gallery Section ===== */
+body.dark-theme #gallery {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827); /* dark indigo gradient */
+}
+
+body.dark-theme #gallery h2 {
+  color: #f9fafb; /* white heading */
+}
+
+body.dark-theme #gallery p {
+  color: #d1d5db; /* light gray text */
+}
+
+/* Artwork Cards */
+body.dark-theme #gallery .artwork-card {
+  background: #1f2937; /* dark slate card */
+  color: #e5e7eb;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35); /* subtle purple glow */
+}
+
+body.dark-theme #gallery .artwork-card h3 {
+  color: #f3f4f6; /* almost white */
+}
+
+body.dark-theme #gallery .artwork-card p {
+  color: #9ca3af; /* muted gray */
+}
+
+/* Image glow effect */
+body.dark-theme #gallery .artwork-card img {
+  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.45); /* pink glow */
+}
+
+/* Inquire / Buy Button */
+body.dark-theme #gallery .artwork-card button {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  color: #fff;
+}
+
+body.dark-theme #gallery .artwork-card button:hover {
+  background: linear-gradient(to right, #a855f7, #f472b6);
+  transform: scale(1.05);
+}
+
+/* Connect Button */
+body.dark-theme #gallery a {
+  background: linear-gradient(to right, #06b6d4, #6366f1); /* cyan → indigo */
+  color: #fff;
+}
+
+body.dark-theme #gallery a:hover {
+  background: linear-gradient(to right, #0ea5e9, #4f46e5);
+  transform: scale(1.05);
+}
+
+/* Floating Blobs recolored */
+body.dark-theme #gallery .bg-purple-300 {
+  background-color: rgba(139, 92, 246, 0.4); /* neon purple */
+}
+body.dark-theme #gallery .bg-pink-200 {
+  background-color: rgba(236, 72, 153, 0.35); /* neon pink */
+}
+body.dark-theme #gallery .bg-cyan-200 {
+  background-color: rgba(6, 182, 212, 0.35); /* teal glow */
+}
+/* ==== Exhibitions & Achievements Dark Theme ==== */
+body.dark-theme #exhibitions {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827);
+}
+
+body.dark-theme #exhibitions h2 {
+  color: #f9fafb; /* light text */
+}
+
+body.dark-theme #exhibitions p {
+  color: #d1d5db; /* softer gray */
+}
+
+body.dark-theme .exhibition-card {
+  background: #1e293b; /* dark slate */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+body.dark-theme .exhibition-card h3 {
+  color: #f3f4f6; /* light heading */
+}
+
+body.dark-theme .exhibition-card p {
+  color: #cbd5e1; /* muted text */
+}
+
+body.dark-theme .exhibition-card p.text-gray-500 {
+  color: #94a3b8; /* lighter gray for dates */
+}
+
+/* Button Dark Mode */
+body.dark-theme #exhibitions a {
+  background: linear-gradient(to right, #7c3aed, #db2777);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.7);
+}
+
+body.dark-theme #exhibitions a:hover {
+  background: linear-gradient(to right, #6d28d9, #be185d);
+}
+
+/* Floating Shapes adjust for dark mode */
+body.dark-theme #exhibitions span {
+  opacity: 0.15;
+  filter: brightness(0.8);
+}
+/* ==== Artworks Section Dark Theme ==== */
+body.dark-theme #artworks {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827);
+}
+
+body.dark-theme #artworks h2 {
+  color: #f9fafb; /* bright white */
+}
+
+body.dark-theme #artworks p {
+  color: #d1d5db; /* muted gray text */
+}
+
+/* Artwork Cards */
+body.dark-theme .art-card {
+  background: #1e293b; /* dark slate card */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+
+body.dark-theme .art-card h3 {
+  color: #f3f4f6; /* light heading */
+}
+
+body.dark-theme .art-card p {
+  color: #cbd5e1; /* muted gray */
+}
+
+body.dark-theme .art-card p.font-medium {
+  color: #facc15; /* golden highlight for Price */
+}
+
+/* Buttons */
+body.dark-theme .art-card button {
+  transition: all 0.3s ease;
+}
+
+body.dark-theme .art-card button:first-child {
+  background: linear-gradient(to right, #facc15, #f97316);
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+body.dark-theme .art-card button:first-child:hover {
+  background: linear-gradient(to right, #eab308, #ea580c);
+  color: #000;
+}
+
+body.dark-theme .art-card button:last-child {
+  border-color: #f9fafb;
+  color: #f9fafb;
+}
+
+body.dark-theme .art-card button:last-child:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* CTA Button */
+body.dark-theme #artworks a {
+  background: linear-gradient(to right, #7c3aed, #db2777);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+}
+
+body.dark-theme #artworks a:hover {
+  background: linear-gradient(to right, #6d28d9, #be185d);
+}
+
+/* Floating Shapes */
+body.dark-theme #artworks span {
+  opacity: 0.15;
+  filter: brightness(0.8);
+}
+/* ==== Contact Section Dark Mode ==== */
+body.dark-theme #contact {
+  background: linear-gradient(to bottom, #0f172a, #1e1b4b, #111827);
+}
+
+body.dark-theme #contact h2 {
+  color: #f9fafb;
+}
+
+body.dark-theme #contact p {
+  color: #d1d5db;
+}
+
+/* Contact Cards */
+body.dark-theme .contact-card {
+  background: #1e293b;
+  color: #f3f4f6;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+}
+
+body.dark-theme .contact-card h3 {
+  color: #f9fafb;
+}
+
+body.dark-theme .contact-card p {
+  color: #cbd5e1;
+}
+
+/* Contact Buttons */
+body.dark-theme .contact-card a {
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+}
+
+body.dark-theme .contact-card a:hover {
+  filter: brightness(1.1);
+  transform: scale(1.07);
+}
+
+/* Decorative Floating Shapes */
+body.dark-theme #contact span {
+  opacity: 0.15;
+  filter: brightness(0.7);
+}
+
+/* ==== Footer Dark Mode ==== */
+body.dark-theme footer {
+  background: linear-gradient(to top, #0f172a, #1e1b4b, #111827);
+  color: #e5e7eb;
+}
+
+body.dark-theme footer h2,
+body.dark-theme footer h4 {
+  color: #f9fafb;
+}
+
+body.dark-theme footer p,
+body.dark-theme footer li,
+body.dark-theme footer a {
+  color: #d1d5db;
+}
+
+/* Links hover */
+body.dark-theme footer a:hover {
+  color: #a78bfa; /* violet accent */
+}
+
+/* Newsletter box */
+body.dark-theme footer .group.bg-white {
+  background: #1e293b;
+  color: #f9fafb;
+  border: 1px solid #374151;
+}
+
+body.dark-theme footer input[type="email"] {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #f9fafb;
+}
+
+body.dark-theme footer input[type="email"]::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-theme footer button[type="submit"] {
+  background: linear-gradient(to right, #7c3aed, #db2777);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+}
+
+body.dark-theme footer button[type="submit"]:hover {
+  background: linear-gradient(to right, #6d28d9, #be185d);
+}
+
+/* Social icons */
+body.dark-theme footer i {
+  color: #a78bfa;
+}
+
+body.dark-theme footer i:hover {
+  color: #f472b6;
+}
+
+/* Footer bottom */
+body.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+body.dark-theme footer .text-gray-600 {
+  color: #9ca3af;
+}
+
+</style>
+</head>
+    <!-- ===== Swati Kale Artist Page ===== -->
+<body class="font-sans bg-white text-gray-900">
+    <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl shadow-lg">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="assets/images/logo.png" alt="KALA.Ficial Logo"
+          class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
+        <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="#contact" class="nav-link">Contact</a>
+
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i id="theme-icon" class="fas fa-moon text-lg"></i>
+        </button>
+
+        <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+               bg-gradient-to-r from-indigo-500 to-purple-600 
+               hover:from-purple-600 hover:to-indigo-500 
+               transition-all duration-300 shadow-md hover:shadow-xl">
+          Log Out
+        </button>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden text-gray-800 text-3xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg shadow-xl">
+      <nav class="flex flex-col space-y-4 p-6 font-medium text-gray-800">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="exhibition.html" class="nav-link">Exhibition</a>
+        <a href="artwork.html" class="nav-link">Artwork</a>
+        <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
+        <a href="#contact" class="nav-link">Contact</a>
+
+
+        <!-- Mobile Theme Toggle -->
+        <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+          <span class="text-gray-700">Theme</span>
+          <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i id="mobile-theme-icon" class="fas fa-moon text-lg"></i>
+          </button>
+        </div>
+
+        <button class="logout-btn ml-6 px-6 py-2 rounded-full text-white font-semibold 
+                     bg-gradient-to-r from-indigo-500 to-purple-600 
+                     hover:from-purple-600 hover:to-indigo-500 
+                     transition-all duration-300 shadow-md hover:shadow-xl">
+          Log Out
+        </button>
+      </nav>
+    </div>
+  </header> 
+
+ <!-- ===== Hero Section ===== -->
+<section id="hero" class="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20
+  bg-gradient-to-b from-[#f5f7ff] via-[#e9e3ff] to-white overflow-hidden pt-28">
+
+  <!-- Decorative Animated Blobs -->
+  <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
+  <div class="absolute bottom-20 right-16 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-2xl animate-ping"></div>
+  <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-cyan-400 rounded-full opacity-40 blur-xl animate-bounce"></div>
+
+   <!-- Bottom Area -->
+    <div class="absolute bottom-24 left-1/4 w-3 h-3 bg-blue-400 rounded-full opacity-70 animate-float-medium"></div>
+    <div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow">
+    </div>
+    <div class="absolute bottom-10 right-20 w-3 h-3 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute bottom-14 left-10 w-2 h-2 bg-red-400 rounded-full opacity-65 animate-float-fast"></div>
+    <!-- Left Dense Floating Blobs -->
+    <div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+    <div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast">
+    </div>
+    <div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
+    <div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[10%] left-[6%] w-2 h-2 bg-red-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[55%] left-[9%] w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
+    <div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
+    <div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow">
+    </div>
+  <!-- Hero Text Content -->
+  <div class="z-10 text-center md:text-left md:w-1/2 space-y-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+      Swati Kale
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-700 max-w-lg mx-auto md:mx-0">
+      Celebrating Nature through Vibrant Strokes
+    </p>
+    <p class="text-gray-600 max-w-md">
+      Swati Kale is a contemporary Indian artist whose works are inspired by nature, light, and everyday life. 
+      Through her vibrant colors and fluid brushwork, she transforms simple moments into soulful expressions.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+      <a href="#gallery" class="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 
+        transition rounded-full font-semibold text-gray-900 shadow-lg hover:scale-105">
+        🎨 View Gallery
+      </a>
+      <a href="#contact" class="px-8 py-3 border-2 border-gray-900 hover:bg-gray-900 hover:text-white 
+        transition rounded-full font-semibold text-gray-900 shadow-md hover:scale-105">
+        ✨ Contact
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+<div class="mt-10 md:mt-0 md:w-1/2 flex justify-center relative">
+  <img src="assets/images/swati-art5.jpeg" alt="Swati Kale Artwork"
+    class="w-[80%] md:w-[90%] rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10">
+  <div class="absolute -top-6 -left-6 w-16 h-16 bg-purple-400 rounded-full opacity-60 animate-spin-slow"></div>
+</div>
+
+
+</section>
+<!-- ===== About the Artist Section ===== -->
+<section id="about" class="relative w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-20
+bg-gradient-to-b from-white via-[#f9f5ff] to-[#f5f7ff] overflow-hidden">
+
+  <!-- Decorative Floating Blobs -->
+  <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute top-1/2 left-1/4 w-32 h-32 bg-cyan-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Particle Canvas (Optional Interactive Background) -->
+  <canvas id="particles-about" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
+
+  <!-- Text Content -->
+  <div class="z-10 md:w-1/2 space-y-6 text-center md:text-left">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      About the Artist
+    </h2>
+    <p class="text-gray-700 text-lg md:text-xl leading-relaxed max-w-lg">
+      Swati Kale is a contemporary Indian artist whose works are inspired by the beauty of nature, light, and everyday life.
+      With her use of vibrant colors and fluid brushwork, she transforms simple moments into soulful artistic expressions.
+      Her paintings often explore themes of peace, serenity, and harmony.
+    </p>
+    <a href="#gallery" class="inline-block px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-400 
+      hover:from-yellow-500 hover:to-orange-500 transition rounded-full font-semibold text-gray-900 shadow-lg hover:scale-105">
+      🎨 View Gallery
+    </a>
+  </div>
+
+  <!-- Artist Image -->
+  <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center relative">
+    <img src="assets/images/swati-kale.jpg" alt="Swati Kale Portrait"
+      class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10">
+    <div class="absolute -top-6 -left-6 w-16 h-16 bg-purple-400 rounded-full opacity-60 animate-spin-slow"></div>
+    <div class="absolute bottom-10 right-10 w-12 h-12 bg-pink-300 rounded-full opacity-50 animate-bounce-slow"></div>
+  </div>
+</section>
+<!-- ===== Art Philosophy / Statement Section ===== -->
+<section id="philosophy" class="relative w-full flex flex-col items-center justify-center px-6 md:px-20 py-20
+bg-gradient-to-b from-[#f5f7ff] via-[#f9f5ff] to-white overflow-hidden">
+ <div class="absolute top-[40%] left-[48%] w-2 h-2 bg-pink-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[30%] left-[46%] w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
+    <div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-[65%] left-[42%] w-2.5 h-2.5 bg-green-400 rounded-full opacity-70 animate-float-fast">
+    </div>
+    <div class="absolute top-[70%] left-[45%] w-3 h-3 bg-rose-400 rounded-full opacity-65 animate-float-slow"></div>
+    <div class="absolute top-[50%] left-[39%] w-2 h-2 bg-orange-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[25%] left-[44%] w-2 h-2 bg-indigo-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[20%] left-[15%] w-2.5 h-2.5 bg-blue-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-[15%] left-[11%] w-2 h-2 bg-teal-400 rounded-full opacity-75 animate-float-medium"></div>
+    <div class="absolute top-[10%] left-[6%] w-2 h-2 bg-red-400 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute top-[55%] left-[9%] w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-medium">
+    </div>
+    <div class="absolute top-10 left-10 w-3 h-3 bg-pink-400 rounded-full opacity-70 animate-float-slow"></div>
+    <div class="absolute top-16 left-1/4 w-2.5 h-2.5 bg-yellow-400 rounded-full opacity-60 animate-float-fast"></div>
+    <div class="absolute top-1/3 left-1/2 w-2.5 h-2.5 bg-indigo-400 rounded-full opacity-80 animate-float-medium"></div>
+    <div class="absolute top-1/2 left-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-fast"></div>
+    <div class="absolute bottom-20 left-1/2 w-2 h-2 bg-pink-300 rounded-full opacity-80 animate-float-fast"></div>
+    <div class="absolute bottom-16 right-1/3 w-2.5 h-2.5 bg-emerald-400 rounded-full opacity-70 animate-float-slow">
+    </div>
+  <!-- Decorative Floating Shapes -->
+  <span class="absolute top-10 left-10 w-40 h-40 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute top-1/2 right-1/4 w-48 h-48 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute bottom-20 left-1/3 w-32 h-32 bg-cyan-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Section Header -->
+  <div class="text-center mb-12 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Art Philosophy
+    </h2>
+    <p class="mt-2 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+      Swati Kale’s work is a reflection of nature’s beauty and the emotions it evokes.
+      Each canvas expresses joy, peace, and harmony, capturing the soul of everyday life.
+    </p>
+  </div>
+
+  <!-- Philosophy Card -->
+  <div class="relative z-10 max-w-4xl w-full bg-white rounded-3xl shadow-2xl p-10 md:p-16 flex flex-col items-center text-center
+  transform hover:-translate-y-2 transition-transform duration-500">
+    
+    <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
+      “My art is deeply rooted in my observations of nature and the emotions it evokes.
+      Each canvas is a reflection of joy, peace, and beauty around us.”
+    </p>
+    
+   <div class="mt-8">
+  <img src="assets/images/swati-art4.jpeg" alt="Swati Kale Painting" 
+    class="rounded-2xl shadow-lg w-full md:w-4/5 mx-auto hover:scale-105 transition-transform duration-500">
+</div>
+
+  </div>
+
+  <!-- Small Floating Accent Shapes -->
+  <span class="absolute top-[60%] left-[15%] w-3 h-3 bg-purple-400 rounded-full opacity-70 animate-float-slow"></span>
+  <span class="absolute bottom-[15%] right-[10%] w-4 h-4 bg-pink-300 rounded-full opacity-60 animate-float-medium"></span>
+  <span class="absolute top-[20%] right-[20%] w-5 h-5 bg-cyan-300 rounded-full opacity-50 animate-float-fast"></span>
+
+</section>
+
+<!-- ===== Art Gallery Section ===== -->
+<section id="gallery" class="relative w-full flex flex-col items-center px-6 md:px-20 py-20
+bg-gradient-to-b from-[#f9f5ff] via-[#f5f7ff] to-white overflow-hidden">
+
+  <!-- Decorative Floating Blobs -->
+  <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute top-1/3 right-1/4 w-32 h-32 bg-cyan-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Section Header -->
+  <div class="text-center mb-12 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Art Gallery
+    </h2>
+    <p class="mt-2 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+      Explore the vibrant creations of Swati Kale, celebrating nature through soulful strokes.
+    </p>
+  </div>
+
+  <!-- Gallery Grid -->
+  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+    
+    <!-- Artwork Card Template -->
+    <div class="artwork-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art5.jpeg" alt="Artwork 1" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Sunlit Forest</h3>
+        <p class="text-gray-600 text-sm">Acrylic on Canvas</p>
+        <button class="mt-4 px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+        text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+          Inquire / Buy
+        </button>
+      </div>
+    </div>
+
+    <div class="artwork-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art3.jpeg" alt="Artwork 2" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Blooming Dawn</h3>
+        <p class="text-gray-600 text-sm">Oil on Canvas</p>
+        <button class="mt-4 px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+        text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+          Inquire / Buy
+        </button>
+      </div>
+    </div>
+
+    <div class="artwork-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art6.jpeg" alt="Artwork 3" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Serene Waters</h3>
+        <p class="text-gray-600 text-sm">Watercolor on Paper</p>
+        <button class="mt-4 px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+        text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+          Inquire / Buy
+        </button>
+      </div>
+    </div>
+
+    <!-- Add more artwork cards here as needed -->
+    
+  </div>
+
+  <!-- Optional: View All Button -->
+  <div class="mt-12 text-center relative z-10">
+    <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600
+    text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+      Connect / Explore More
+    </a>
+  </div>
+</section>
+
+<!-- ===== Exhibitions & Achievements Section ===== -->
+<section id="exhibitions" class="relative w-full flex flex-col items-center px-6 md:px-20 py-20
+bg-gradient-to-b from-[#f5f7ff] via-[#f9f5ff] to-white overflow-hidden">
+
+  <!-- Decorative Floating Shapes -->
+  <span class="absolute top-10 left-10 w-48 h-48 bg-purple-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-pink-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute top-1/3 right-1/4 w-32 h-32 bg-cyan-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Section Header -->
+  <div class="text-center mb-12 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Exhibitions & Achievements
+    </h2>
+    <p class="mt-2 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+      Celebrating Swati Kale’s journey through national & international exhibitions and artistic recognition.
+    </p>
+  </div>
+
+  <!-- Exhibitions Grid -->
+  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+
+    <!-- Exhibition Card 1 -->
+    <div class="exhibition-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-gallery.jpeg" alt="Peepletree Art Gallery" class="w-full h-60 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Peepletree Art Gallery, Bangalore</h3>
+        <p class="text-gray-600 text-sm mb-2">
+          Participated in national exhibition, showcasing nature-inspired artworks.
+        </p>
+        <p class="text-gray-500 text-xs">
+          28th April 2024
+        </p>
+      </div>
+    </div>
+
+    <!-- Exhibition Card 2 -->
+    <div class="exhibition-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-gallery1.jpeg" alt="Avisar Art Gallery" class="w-full h-60 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Avisar Art Gallery, Kolkata</h3>
+        <p class="text-gray-600 text-sm mb-2">
+          Featured in contemporary art exhibition and art magazines.
+        </p>
+        <p class="text-gray-500 text-xs">
+          30th May 2024
+        </p>
+      </div>
+    </div>
+
+    <!-- Exhibition Card 3 -->
+    <div class="exhibition-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-gallery2.jpeg" alt="Raja Ravi Varma Art Gallery" class="w-full h-60 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Raja Ravi Varma Art Gallery, Pune</h3>
+        <p class="text-gray-600 text-sm mb-2">
+          Recognized for contribution to contemporary Indian art.
+        </p>
+        <p class="text-gray-500 text-xs">
+          20th June 2024
+        </p>
+      </div>
+    </div>
+
+    <!-- Add more exhibition cards as needed -->
+
+  </div>
+
+  <!-- Optional: View All Button -->
+  <div class="mt-12 text-center relative z-10">
+    <a href="#gallery" class="px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600
+    text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+      Explore Artworks
+    </a>
+  </div>
+
+</section>
+<!-- ===== Available Artwork / Purchase Section ===== -->
+<section id="artworks" class="relative w-full flex flex-col items-center px-6 md:px-20 py-20
+bg-gradient-to-b from-[#fff5f8] via-[#f9f5ff] to-white overflow-hidden">
+
+  <!-- Decorative Floating Shapes -->
+  <span class="absolute top-10 left-10 w-48 h-48 bg-pink-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-purple-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute top-1/3 right-1/4 w-32 h-32 bg-yellow-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Section Header -->
+  <div class="text-center mb-12 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Available Artworks
+    </h2>
+    <p class="mt-2 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+      Explore and acquire Swati Kale’s original artworks, celebrating nature and vibrant expression.
+    </p>
+  </div>
+
+  <!-- Artwork Grid -->
+  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+
+    <!-- Artwork Card 1 -->
+    <div class="art-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art4.jpeg" alt="Artwork 1" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Sunlit Forest</h3>
+        <p class="text-gray-600 text-sm mb-2">Acrylic on Canvas, 24"x36"</p>
+        <p class="text-gray-500 font-medium mb-4">Price: $1,200</p>
+        <div class="flex justify-center gap-4">
+          <button class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+          text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+            Inquire
+          </button>
+          <button class="px-6 py-2 border-2 border-gray-900 hover:bg-gray-900 hover:text-white
+          text-gray-900 font-semibold rounded-full shadow-md transition transform hover:scale-105">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork Card 2 -->
+    <div class="art-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art.jpeg" alt="Artwork 2" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Blooming Dawn</h3>
+        <p class="text-gray-600 text-sm mb-2">Oil on Canvas, 30"x40"</p>
+        <p class="text-gray-500 font-medium mb-4">Price: $1,500</p>
+        <div class="flex justify-center gap-4">
+          <button class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+          text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+            Inquire
+          </button>
+          <button class="px-6 py-2 border-2 border-gray-900 hover:bg-gray-900 hover:text-white
+          text-gray-900 font-semibold rounded-full shadow-md transition transform hover:scale-105">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork Card 3 -->
+    <div class="art-card bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl cursor-pointer">
+      <div class="overflow-hidden">
+        <img src="assets/images/swati-art3.jpeg" alt="Artwork 3" class="w-full h-72 object-cover hover:scale-110 transition-transform duration-500">
+      </div>
+      <div class="p-6 text-center">
+        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Serene Waters</h3>
+        <p class="text-gray-600 text-sm mb-2">Watercolor on Paper, 18"x24"</p>
+        <p class="text-gray-500 font-medium mb-4">Price: $900</p>
+        <div class="flex justify-center gap-4">
+          <button class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500
+          text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+            Inquire
+          </button>
+          <button class="px-6 py-2 border-2 border-gray-900 hover:bg-gray-900 hover:text-white
+          text-gray-900 font-semibold rounded-full shadow-md transition transform hover:scale-105">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more artwork cards as needed -->
+
+  </div>
+
+  <!-- Optional CTA Button -->
+  <div class="mt-12 text-center relative z-10">
+    <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600
+    text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105">
+      Contact for Purchase
+    </a>
+  </div>
+
+</section>
+<!-- ===== Contact / Connect Section ===== -->
+<section id="contact" class="relative w-full flex flex-col items-center px-6 md:px-20 py-20 
+bg-gradient-to-b from-[#e0f7fa] via-[#f0f5ff] to-white overflow-hidden">
+
+  <!-- Decorative Floating Shapes -->
+  <span class="absolute top-10 left-10 w-48 h-48 bg-cyan-300 rounded-full opacity-30 animate-float"></span>
+  <span class="absolute bottom-20 right-20 w-64 h-64 bg-purple-200 rounded-full opacity-25 animate-float-slow"></span>
+  <span class="absolute top-1/3 right-1/4 w-32 h-32 bg-pink-200 rounded-full opacity-20 animate-float-medium"></span>
+
+  <!-- Section Header -->
+  <div class="text-center mb-12 relative z-10">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">
+      Connect with Swati Kale
+    </h2>
+    <p class="mt-2 text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+      Follow her journey, inquire about artworks, or stay updated with exhibitions.
+    </p>
+  </div>
+
+  <!-- Contact Cards -->
+  <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10">
+
+    <!-- Website Card -->
+    <div class="contact-card bg-white rounded-3xl shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl">
+      <div class="text-4xl mb-4 text-purple-500">
+        <i class="fa-solid fa-globe"></i>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Official Website</h3>
+      <p class="text-gray-600 mb-4">Explore her portfolio and latest artworks online.</p>
+      <a href="https://www.swatikale.com" target="_blank" class="px-6 py-2 bg-gradient-to-r from-purple-400 to-pink-500 
+      text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105 hover:from-purple-500 hover:to-pink-600">
+        Visit Website
+      </a>
+    </div>
+
+    <!-- Instagram Card -->
+    <div class="contact-card bg-white rounded-3xl shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl">
+      <div class="text-4xl mb-4 text-pink-500">
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Instagram</h3>
+      <p class="text-gray-600 mb-4">Follow her artistic journey and colorful creations.</p>
+      <a href="https://www.instagram.com/swati.kale" target="_blank" class="px-6 py-2 bg-gradient-to-r from-pink-400 to-orange-400 
+      text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105 hover:from-pink-500 hover:to-orange-500">
+        Follow
+      </a>
+    </div>
+
+    <!-- Email / Inquiry Card -->
+    <div class="contact-card bg-white rounded-3xl shadow-xl p-8 text-center transform hover:scale-105 transition-transform duration-500 hover:shadow-2xl">
+      <div class="text-4xl mb-4 text-yellow-500">
+        <i class="fa-solid fa-envelope"></i>
+      </div>
+      <h3 class="text-2xl font-semibold text-gray-900 mb-2">Email Inquiry</h3>
+      <p class="text-gray-600 mb-4">Reach out directly for artwork inquiries or collaborations.</p>
+      <a href="mailto:swati.kale@example.com" class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-400 
+      text-gray-900 font-semibold rounded-full shadow-lg transition transform hover:scale-105 hover:from-yellow-500 hover:to-orange-500">
+        Send Email
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer CTA -->
+  <div class="mt-16 text-center relative z-10">
+    <a href="artist-portal.html" class="px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 
+    text-white font-semibold rounded-full shadow-lg transition transform hover:scale-105 hover:from-purple-500 hover:to-pink-600">
+      Explore More Artists on Kala.ficial
+    </a>
+  </div>
+
+</section>
+
+        <footer class="relative bg-gradient-to-t from-[#f8f9ff] via-[#e0d7ff] to-[#ffffff] py-20 overflow-hidden">
+          <!-- Floating Background Shapes -->
+          <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <span class="floating-shape bg-[#6C63FF] opacity-20"></span>
+            <span class="floating-shape bg-[#ff6bcb] opacity-15"></span>
+            <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
+          </div>
+
+          <div class="container mx-auto px-4 relative z-10 text-gray-800">
+            <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+              <!-- Brand -->
+              <div class="mb-6 lg:mb-0">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Kala.ficial</h2>
+                <p class="text-gray-600 leading-relaxed">
+                  Empowering artists, enriching art lovers, and making art accessible to all. Join our vibrant art
+                  community today.
+                </p>
+                <div class="flex gap-4 mt-6">
+                  <a href="#"
+                    class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i
+                      class="fab fa-facebook-f text-[#6C63FF] hover:text-white"></i></a>
+                  <a href="#"
+                    class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i
+                      class="fab fa-x-twitter text-[#6C63FF] hover:text-white"></i></a>
+                  <a href="#"
+                    class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i
+                      class="fab fa-instagram text-[#6C63FF] hover:text-white"></i></a>
+                  <a href="#"
+                    class="p-2 bg-white rounded-full shadow-lg hover:scale-110 hover:bg-gradient-to-r hover:from-[#6C63FF] hover:to-[#ff6bcb] transition-all duration-300"><i
+                      class="fab fa-linkedin-in text-[#6C63FF] hover:text-white"></i></a>
+                </div>
+              </div>
+
+              <!-- Quick Links -->
+              <div class="space-y-2">
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                  <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i
+                      class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a
+                      href="#about">About Us</a></li>
+                  <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i
+                      class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a
+                      href="#exhibition">Exhibitions</a></li>
+                  <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i
+                      class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a
+                      href="#artwork-for-sale">Artwork For Sale</a></li>
+                  <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i
+                      class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a
+                      href="#artist-portal">Artist Portal</a></li>
+                  <li class="group flex items-center gap-2 hover:text-[#6C63FF] transition-all duration-300"><i
+                      class="fas fa-angle-right group-hover:translate-x-1 transition-transform duration-300"></i><a
+                      href="#contact">Contact</a></li>
+                </ul>
+              </div>
+
+              <!-- Contact Info -->
+              <div>
+                <h4 class="text-xl font-semibold mb-4">Contact Info</h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#6C63FF]"></i>123 Main St,
+                    Anytown, India</li>
+                  <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#6C63FF]"></i><a
+                      href="mailto:mypassion@kala.ficial.com" class="hover:underline">mypassion@kala.ficial.com</a></li>
+                  <li class="flex items-center gap-2"><i class="fas fa-phone-alt text-[#6C63FF]"></i><a
+                      href="tel:+911234567890" class="hover:underline">+91 1234567890</a></li>
+                </ul>
+                <p class="mt-4 text-gray-600 italic">We reply within 24 hours!</p>
+              </div>
+
+              <!-- Newsletter & Social -->
+              <div class="relative group bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500">
+                <h4 class="text-xl font-semibold mb-4">Stay Connected</h4>
+              <p class="text-gray-600 mb-4">Subscribe to our newsletter for latest updates.</p>
+
+              <form class="flex flex-col gap-3">
+                <input type="email" placeholder="Your Email"
+                  class="px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6C63FF] text-sm transition-all duration-300" />
+                <button type="submit"
+                  class="bg-gradient-to-r from-[#6C63FF] to-[#ff6bcb] hover:from-[#5750d3] hover:to-[#ff6bcb] text-white font-semibold rounded-lg px-4 py-2 text-sm transition-all duration-300 shadow-lg hover:scale-105">
+                  Subscribe
+                </button>
+              </form>
+              <div class="flex gap-4 mt-6 justify-center sm:justify-start">
+                <a href="#"
+                  class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i
+                    class="fab fa-facebook-f"></i></a>
+                <a href="#"
+                  class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i
+                    class="fab fa-x-twitter"></i></a>
+                <a href="#"
+                  class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i
+                    class="fab fa-instagram"></i></a>
+                <a href="#"
+                  class="text-[#6C63FF] hover:text-[#ff6bcb] transition-all duration-300 text-2xl hover:scale-110"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer Bottom -->
+          <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+            &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+          </div>
+        </div>
+      </footer>
+
+ <script src="theme-toggle.js"></script>
+
+</body>
+</html>
