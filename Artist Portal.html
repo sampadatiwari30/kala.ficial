@@ -11,36 +11,27 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
   <style>
     @keyframes float-slow {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0px) translateX(0px);
       }
-
       50% {
         transform: translateY(-20px) translateX(10px);
       }
     }
 
     @keyframes float-medium {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0px) translateX(0px);
       }
-
       50% {
         transform: translateY(-15px) translateX(-10px);
       }
     }
 
     @keyframes float-fast {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0px) translateX(0px);
       }
-
       50% {
         transform: translateY(-10px) translateX(15px);
       }
@@ -58,122 +49,20 @@
       animation: float-fast 4s ease-in-out infinite;
     }
 
-    @keyframes float-slow {
-
-      0%,
-      100% {
-        transform: translateY(0px) translateX(0px);
-      }
-
-      50% {
-        transform: translateY(-15px) translateX(5px);
-      }
-    }
-
-    @keyframes float-medium {
-
-      0%,
-      100% {
-        transform: translateY(0px) translateX(0px);
-      }
-
-      50% {
-        transform: translateY(-10px) translateX(-5px);
-      }
-    }
-
-    @keyframes float-fast {
-
-      0%,
-      100% {
-        transform: translateY(0px) translateX(0px);
-      }
-
-      50% {
-        transform: translateY(-5px) translateX(10px);
-      }
-    }
-
-    .animate-float-slow {
-      animation: float-slow 8s ease-in-out infinite;
-    }
-
-    .animate-float-medium {
-      animation: float-medium 6s ease-in-out infinite;
-    }
-
-    .animate-float-fast {
-      animation: float-fast 4s ease-in-out infinite;
-    }
-
-    @keyframes float-slow {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-15px)
-      }
-    }
-
-    @keyframes float-medium {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-10px)
-      }
-    }
-
-    @keyframes float-fast {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-5px)
-      }
-    }
-
-    .animate-float-slow {
-      animation: float-slow 8s ease-in-out infinite;
-    }
-
-    .animate-float-medium {
-      animation: float-medium 6s ease-in-out infinite;
-    }
-
-    .animate-float-fast {
-      animation: float-fast 4s ease-in-out infinite;
-    }
-
     /* Custom animation speeds */
     @keyframes bounce-slow {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0);
       }
-
       50% {
         transform: translateY(-15px);
       }
     }
 
     @keyframes bounce-fast {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0);
       }
-
       50% {
         transform: translateY(-8px);
       }
@@ -183,7 +72,6 @@
       0% {
         transform: rotate(0deg);
       }
-
       100% {
         transform: rotate(360deg);
       }
@@ -228,26 +116,11 @@
     }
 
     @keyframes float {
-
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0) translateX(0);
       }
-
       50% {
         transform: translateY(-20px) translateX(15px);
-      }
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-20px)
       }
     }
 
@@ -257,52 +130,6 @@
 
     .animate-float-slow {
       animation: float 15s ease-in-out infinite;
-    }
-
-    .floating-shape {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      animation: float 12s ease-in-out infinite;
-    }
-
-    .floating-shape:nth-child(1) {
-      top: 10%;
-      left: 15%;
-      animation-duration: 12s;
-    }
-
-    .floating-shape:nth-child(2) {
-      top: 40%;
-      left: 75%;
-      animation-duration: 16s;
-    }
-
-    .floating-shape:nth-child(3) {
-      top: 70%;
-      left: 30%;
-      animation-duration: 20s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) translateX(0);
-      }
-
-      50% {
-        transform: translateY(-20px) translateX(15px);
-      }
-    }
-
-    .floating-shape {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      animation: float 12s ease-in-out infinite;
     }
 
     .nav-link {
@@ -345,9 +172,7 @@
    ============================== */
     body.dark-theme {
       background-color: #0f172a;
-      /* slate-900 */
       color: #e2e8f0;
-      /* slate-200 */
     }
 
     /* Navbar background */
@@ -360,13 +185,11 @@
     /* Logo text */
     body.dark-theme header a span {
       color: #f8fafc;
-      /* almost white */
     }
 
     /* Desktop nav links */
     body.dark-theme header nav .nav-link {
       color: #cbd5e1;
-      /* slate-300 */
       transition: color 0.3s ease;
     }
 
@@ -377,7 +200,6 @@
     /* Mobile Menu */
     body.dark-theme #mobile-menu {
       background: rgba(15, 23, 42, 0.95);
-      /* deep slate bg */
       color: #f1f5f9;
     }
 
@@ -397,7 +219,6 @@
     /* Theme Toggle Button Icons */
     body.dark-theme .theme-toggle i {
       color: #facc15;
-      /* yellow-400 for sun */
     }
 
     /* Hamburger icon */
@@ -405,7 +226,7 @@
       color: #f1f5f9;
     }
 
-    /* Logout Button in dark mode (keep gradient but more contrast) */
+    /* Logout Button in dark mode */
     body.dark-theme .logout-btn {
       background: linear-gradient(to right, #9333ea, #4338ca);
       color: #fff;
@@ -418,49 +239,38 @@
     body.dark-theme section {
       background: linear-gradient(to bottom right,
           rgba(30, 41, 59, 0.9),
-          /* slate-800 */
           rgba(17, 24, 39, 0.9)
-          /* gray-900 */
         );
       color: #f1f5f9;
-      /* text-slate-100 */
     }
 
     /* Headings */
     body.dark-theme section h1 {
       color: #f9fafb;
-      /* white */
     }
 
     body.dark-theme section h1 span {
       background-image: linear-gradient(to right,
           #facc15,
-          /* yellow-400 */
           #fb7185,
-          /* rose-400 */
           #f472b6
-          /* pink-400 */
         );
     }
 
     /* Paragraph text */
     body.dark-theme section p {
       color: #cbd5e1;
-      /* slate-300 */
     }
 
     /* Primary CTA */
     body.dark-theme section a[href="#submit-art"] {
       background: linear-gradient(to right, #facc15, #fb923c);
-      /* yellow → orange */
       color: #1e293b;
-      /* slate-800 text */
     }
 
     /* Secondary CTA */
     body.dark-theme section a[href="#featured-artists"] {
       border-color: #475569;
-      /* slate-600 */
       color: #e2e8f0;
     }
 
@@ -471,7 +281,6 @@
     /* Featured Artist Card */
     body.dark-theme section .glass {
       background: rgba(30, 41, 59, 0.6);
-      /* dark translucent */
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -482,13 +291,11 @@
 
     body.dark-theme section .glass p {
       color: #94a3b8;
-      /* slate-400 */
     }
 
     /* Buttons inside card */
     body.dark-theme section .glass button {
       background: #6d28d9;
-      /* violet-700 */
       color: #fff;
     }
 
@@ -501,10 +308,9 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Floating blobs keep their colors but soften for dark mode */
+    /* Floating blobs */
     body.dark-theme section .absolute {
       opacity: 0.5;
-      /* make them subtler against dark bg */
     }
 
     /* ==============================
@@ -513,46 +319,35 @@
     body.dark-theme #about {
       background: linear-gradient(to bottom,
           rgba(17, 24, 39, 0.95),
-          /* slate-900 */
           rgba(30, 41, 59, 0.9),
-          /* slate-800 */
           rgba(15, 23, 42, 1)
-          /* slate-950 */
         );
       color: #e2e8f0;
-      /* slate-200 text */
     }
 
     /* Heading */
     body.dark-theme #about h2 {
       color: #f9fafb;
-      /* white text as fallback */
       background-image: linear-gradient(to right,
           #f472b6,
-          /* pink-400 */
           #a855f7,
-          /* purple-500 */
           #6366f1
-          /* indigo-500 */
         );
     }
 
     /* Paragraph */
     body.dark-theme #about p {
       color: #cbd5e1;
-      /* slate-300 */
     }
 
     body.dark-theme #about p span {
       color: #818cf8;
-      /* indigo-400 for brand highlight */
     }
 
     /* CTA Button */
     body.dark-theme #about a[href="#submit-art"] {
       background: linear-gradient(to right, #facc15, #fb923c);
       color: #1e293b;
-      /* slate-800 text for contrast */
       box-shadow: 0 4px 20px rgba(250, 204, 21, 0.3);
     }
 
@@ -564,50 +359,38 @@
     /* Floating Shapes */
     body.dark-theme #about .floating-shape {
       opacity: 0.25;
-      /* make shapes subtle in dark mode */
-    }
-
-    body.dark-theme #about .bg-[#6C63FF] {
-      background-color: #818cf8 !important;
-      /* indigo glow */
-    }
-
-    body.dark-theme #about .bg-[#ff6bcb] {
-      background-color: #f472b6 !important;
-      /* pink glow */
-    }
-
-    body.dark-theme #about .bg-[#06b6d4] {
-      background-color: #22d3ee !important;
-      /* cyan glow */
     }
 
     /* Image Frame */
     body.dark-theme #about img {
       box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
-      /* indigo glow */
     }
 
     /* Small blobs around image */
     body.dark-theme #about .absolute.bg-pink-400 {
       background-color: #f472b6;
-      /* brighter pink */
     }
 
     body.dark-theme #about .absolute.bg-yellow-400 {
       background-color: #facc15;
-      /* bright yellow */
     }
 
     body.dark-theme #about .absolute.bg-cyan-400 {
       background-color: #22d3ee;
-      /* brighter cyan */
     }
+    
 
     /* ==============================
    🌙 Dark Mode — Featured Artists
    ============================== */
     body.dark-theme #artists {
+      background: linear-gradient(
+        to bottom,
+        rgba(17, 24, 39, 1),
+        rgba(30, 41, 59, 0.95),
+        rgba(15, 23, 42, 1)
+      );
+      color: #e2e8f0;
       background: linear-gradient(to bottom,
           rgba(17, 24, 39, 1),
           /* slate-900 */
@@ -622,6 +405,15 @@
 
     /* Section Heading */
     body.dark-theme #artists h2 {
+      background-image: linear-gradient(
+        to right,
+        #f472b6,
+        #a855f7,
+        #6366f1
+      );
+      background-clip: text;
+-webkit-background-clip: text;
+
       background-image: linear-gradient(to right,
           #f472b6,
           /* pink-400 */
@@ -642,6 +434,15 @@
     /* Filter Buttons */
     body.dark-theme #artists .filter-btn {
       border-color: #475569;
+      color: #e2e8f0;
+    }
+    body.dark-theme #artists .filter-btn:hover {
+      background-color: rgba(244, 114, 182, 0.1);
+      color: #f472b6;
+    }
+    body.dark-theme #artists .filter-btn.active {
+      background: linear-gradient(to right, #facc15, #fb923c);
+      color: #1e293b;
       /* slate-600 */
       color: #e2e8f0;
       /* slate-200 */
@@ -663,6 +464,18 @@
     /* Artist Cards */
     body.dark-theme #artists .artist-card {
       background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: #e5e7eb;
+    }
+    body.dark-theme #artists .artist-card h3 {
+      color: #f9fafb;
+    }
+    body.dark-theme #artists .artist-card p {
+      color: #cbd5e1;
+    }
+    body.dark-theme #artists .artist-card span {
+      color: #f472b6;
       /* slate-800 glass */
       backdrop-filter: blur(10px);
       border: 1px solid rgba(148, 163, 184, 0.2);
@@ -728,6 +541,9 @@
     body.dark-theme #artists .absolute.bg-pink-400 {
       background-color: #f472b6;
     }
+    body.dark-theme #artists .absolute.bg-yellow-400 {
+      background-color: #facc15;
+    }
 
     body.dark-theme #artists .absolute.bg-yellow-400 {
       background-color: #facc15;
@@ -741,6 +557,14 @@
     body.dark-theme #artistModal {
       background: rgba(0, 0, 0, 0.7);
     }
+    body.dark-theme #artistModal #modalContent {
+      background: rgba(30, 41, 59, 0.95);
+      color: #e2e8f0;
+    }
+    body.dark-theme #artistModal #modalBio {
+      color: #cbd5e1;
+    }
+    
 
     body.dark-theme #artistModal #modalContent {
       background: rgba(30, 41, 59, 0.95);
@@ -757,6 +581,68 @@
    🌙 Dark Mode — Footer
    ============================== */
     body.dark-theme footer {
+      background: linear-gradient(
+        to top,
+        rgba(15, 23, 42, 1),
+        rgba(30, 41, 59, 0.95),
+        rgba(17, 24, 39, 1)
+      );
+      color: #e2e8f0;
+    }
+
+    /* Floating background shapes */
+    body.dark-theme footer .floating-shape {
+      opacity: 0.2;
+    }
+
+    /* Brand */
+    body.dark-theme footer h2 {
+      color: #f9fafb;
+    }
+    body.dark-theme footer p {
+      color: #cbd5e1;
+    }
+
+    /* Quick Links */
+    body.dark-theme footer h4 {
+      color: #f1f5f9;
+    }
+    body.dark-theme footer ul li {
+      color: #e2e8f0;
+    }
+    body.dark-theme footer ul li:hover {
+      color: #a78bfa;
+    }
+
+    /* Contact Info */
+    body.dark-theme footer .fa-map-marker-alt,
+    body.dark-theme footer .fa-envelope,
+    body.dark-theme footer .fa-phone-alt {
+      color: #a78bfa;
+    }
+    body.dark-theme footer .text-gray-600,
+    body.dark-theme footer a {
+      color: #cbd5e1;
+    }
+    body.dark-theme footer a:hover {
+      color: #f9fafb;
+    }
+
+    /* Newsletter Card */
+    body.dark-theme footer .bg-white {
+      background: rgba(30, 41, 59, 0.7) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    body.dark-theme footer input[type="email"] {
+      background: rgba(15, 23, 42, 0.8);
+      color: #f9fafb;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+    body.dark-theme footer input[type="email"]::placeholder {
+      color: #94a3b8;
+    }
+
       background: linear-gradient(to top,
           rgba(15, 23, 42, 1),
           /* slate-950 */
@@ -866,6 +752,8 @@
     body.dark-theme footer .fab {
       color: #cbd5e1;
     }
+    body.dark-theme footer .fab:hover {
+      color: #f472b6;
 
     body.dark-theme footer .fab:hover {
       color: #f472b6;
@@ -905,7 +793,6 @@
         <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
         <a href="#contact" class="nav-link">Contact</a>
 
-
         <!-- Theme Toggle Button -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
           <i id="theme-icon" class="fas fa-moon text-lg"></i>
@@ -934,7 +821,6 @@
         <a href="artwork.html" class="nav-link">Artwork</a>
         <a href="Artist Portal.html" class="nav-link">Artist Portal</a>
         <a href="#contact" class="nav-link">Contact</a>
-
 
         <!-- Mobile Theme Toggle -->
         <div class="flex items-center justify-between pt-4 border-t border-gray-200">
@@ -991,7 +877,6 @@
             </div>
           </div>
 
-
           <!-- Featured Artist Card -->
           <div class="relative flex justify-center">
             <div class="rounded-3xl overflow-hidden shadow-2xl glass p-4 w-full max-w-md">
@@ -999,7 +884,7 @@
               <div class="mt-4">
                 <h3 class="text-lg font-semibold">Featured Artist — Ananda Das</h3>
                 <p class="text-gray-600 text-sm mt-1">
-                  Celebrating contemporary Indian artistry. Explore Ananda Das’ unique journey and masterpieces.
+                  Celebrating contemporary Indian artistry. Explore Ananda Das' unique journey and masterpieces.
                 </p>
                 <div class="mt-3 flex gap-3">
                   <button class="px-3 py-2 rounded-full bg-[#6C63FF] text-white shadow-md hover:scale-105 transition">
@@ -1013,7 +898,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Decorative Animated Blobs -->
       <div class="absolute top-12 left-12 w-28 h-28 bg-pink-400 rounded-full opacity-30 blur-2xl animate-pulse"></div>
@@ -1052,9 +936,8 @@
       <div class="absolute top-[35%] left-[37%] w-3 h-3 bg-cyan-400 rounded-full opacity-75 animate-float-slow"></div>
       <div class="absolute top-[45%] left-[41%] w-2 h-2 bg-purple-400 rounded-full opacity-80 animate-float-medium">
       </div>
-
-
     </section>
+    
     <!-- ABOUT SECTION -->
     <section id="about" class="py-16 bg-gradient-to-b from-[#f5f0ff] via-[#e0f7fa]/40 to-white">
 
@@ -1072,7 +955,7 @@
             collectors, and curators, providing a space where art comes alive.
             <br><br>
             Discover a diverse range of artistic styles, from contemporary expressions to classical masterpieces. Learn
-            about artists’ journeys, inspirations, and creative processes through their detailed profiles.
+            about artists' journeys, inspirations, and creative processes through their detailed profiles.
             <br><br>
             Whether you're seeking your next favorite artwork or looking to showcase your own, <span
               class="font-semibold text-indigo-600">KALA.Ficial</span> is your gateway to a vibrant artistic community.
@@ -1089,8 +972,6 @@
           <span class="floating-shape bg-[#06b6d4] opacity-15"></span>
         </div>
 
-
-
         <!-- Image / Illustration -->
         <div class="relative flex justify-center items-center">
           <div class="relative w-full max-w-md">
@@ -1105,7 +986,6 @@
           </div>
         </div>
       </div>
-
     </section>
 
     <!-- FEATURED ARTISTS -->
@@ -1556,6 +1436,55 @@
         });
       });
 
+        <!-- Footer Bottom -->
+        <div class="mt-12 border-t border-gray-300 pt-6 text-center text-gray-600 text-sm">
+          &copy; 2025 Kala.ficial. All rights reserved. Crafted with <span class="text-red-500">♥</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const artistCards = document.querySelectorAll(".artist-card");
+    const modal = document.getElementById("artistModal");
+    const modalContent = document.getElementById("modalContent");
+    const modalName = document.getElementById("modalName");
+    const modalImage = document.getElementById("modalImage");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalBio = document.getElementById("modalBio");
+
+    // Filter logic
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active")?.classList.remove("active");
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+        artistCards.forEach(card => {
+          if (filter === "all" || card.classList.contains(filter)) {
+            card.style.display = "block";
+            card.style.opacity = "1";
+          } else {
+            card.style.opacity = "0";
+            setTimeout(() => card.style.display = "none", 300);
+          }
+        });
+      });
+    });
+
+    // Open modal
+    document.querySelectorAll(".view-profile").forEach(button => {
+      button.addEventListener("click", (e) => {
+        const card = e.target.closest(".artist-card");
+        const data = JSON.parse(card.getAttribute("data-artist"));
+
+        modalName.textContent = data.name;
+        modalImage.src = data.image;
+        modalCategory.textContent = data.category;
+        modalBio.textContent = data.bio;
       // Open modal
       document.querySelectorAll(".view-profile").forEach(button => {
         button.addEventListener("click", (e) => {
@@ -1584,9 +1513,22 @@
     </script>
     </section>
 
+        modal.classList.remove("hidden");
+        setTimeout(() => modalContent.classList.add("scale-100", "opacity-100"), 50);
+      });
+    });
 
+    // Close modal
+    function closeModal() {
+      modalContent.classList.remove("scale-100", "opacity-100");
+      setTimeout(() => modal.classList.add("hidden"), 300);
+    }
 
-  </main>
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+  
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const currentPage = decodeURIComponent(window.location.pathname.split("/").pop());
