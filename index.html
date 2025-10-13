@@ -8,7 +8,7 @@
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <script>
       if (localStorage.getItem("isLoggedIn") !== "true") {
-        window.location.replace("auth.html");
+        window.location.replace("index.html"); 
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -2083,7 +2083,7 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden" style="p
             mobileMenu.classList.toggle("hidden");
           });
 
-        });
+        };
 
         cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
         confirmBtn.addEventListener("click", () => {
@@ -2094,7 +2094,6 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden" style="p
         modal.addEventListener("click", (e) => {
           if (e.target === modal) modal.classList.add("hidden");
         });
-});
 
       </script>
 
@@ -2114,22 +2113,40 @@ bg-gradient-to-b from-purple-200 via-pink-100 to-white overflow-hidden" style="p
 
       <script>
 
+        document.addEventListener("DOMContentLoaded", () => {
+        const loginStatus = localStorage.getItem("isLoggedIn");
+
+        // If not logged in or skipped
+        if (!loginStatus) {
+        // No record → redirect to auth page
+          window.location.href = "index.html";
+        } 
+        else if (loginStatus === "guest") {
+         // Guest mode → allow limited access
+           console.log("Guest mode: limited features active");
+           const logoutBtns = document.querySelectorAll("#logout-btn, #logout-btn-mobile");
+           logoutBtns.forEach(btn => btn.style.display = "none"); // hide logout for guests
+        } 
+        else {
+           console.log("Logged-in user detected ✅");
+        }
+      });
+
         // Simple floating particles
-        const canvas = document.getElementById('particles');
+        const canvaas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvaas.width = window.innerWidth;
+        canvaas.height = window.innerHeight;
 
         let particlesArray = [];
         const colors = ['#FFD700', '#FF69B4', '#7B68EE', '#00FFFF'];
 
-        const menuBtn = document.getElementById("menu-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        menuBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
+        const menubtn = document.getElementById("menu-btn");
+        const mobilemenu = document.getElementById("mobile-menu");
+        menubtn.addEventListener("click", () => {
+          mobilemenu.classList.toggle("hidden");
         });
     
-  }
 
         // Active link highlight on scroll
         const sections = document.querySelectorAll("section");

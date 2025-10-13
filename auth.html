@@ -96,6 +96,14 @@
         box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
       }
 
+      #skip-btn {
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      #skip-btn:hover {
+        background: rgba(255, 255, 255, 1);
+      }
+
       .toggle-link {
         color: #8b5cf6;
         transition: color 0.3s ease;
@@ -299,6 +307,14 @@
         >
           <i class="fas fa-sign-in-alt mr-2"></i>Login
         </button>
+        <!-- ✅ Skip Button -->
+        <button
+          type="button"
+          id="skip-btn"
+          class="w-full mt-3 px-4 py-3 rounded-xl border border-purple-400 text-purple-600 font-semibold hover:bg-purple-50 transition-all duration-300 focus:outline-none"
+        >
+          <i class="fas fa-forward mr-2"></i>Skip for now
+        </button>
 
         <p class="text-center text-sm text-gray-600 mt-6">
           <span
@@ -451,7 +467,7 @@
           }
         });
 
-        // Main Form Submission
+              // Main Form Submission
         authForm.addEventListener("submit", function (e) {
           e.preventDefault();
 
@@ -510,6 +526,15 @@
             googleSignInBtn.disabled = false;
           }, 1000);
         });
+        // Skip Button
+          const skipBtn = document.getElementById("skip-btn");
+          if (skipBtn) {
+          skipBtn.addEventListener("click", function () {
+           // Redirect to next page
+           window.location.href = "index.html"; // make sure index.html exists in same folder
+         });
+       }
+
       });
     </script>
   </body>
