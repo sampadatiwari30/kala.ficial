@@ -37,7 +37,9 @@
 
 <h2 id="overview">🔍 Overview</h2>
 
-> 🎨 kala.ficial is a global platform for emerging and undiscovered artists to showcase their artwork through online and offline exhibitions. Artists can connect, collaborate, and get notified about upcoming exhibitions worldwide. It's a space where hidden talent meets global opportunities. 🌍🖌️
+> 🎨Kala.ficial is a global platform designed to empower emerging and undiscovered artists by giving them a digital stage to showcase their creativity. Through curated online and offline exhibitions, artists can present their work to a worldwide audience, connect with fellow creators, and collaborate across borders.
+>Our mission is to bridge the gap between hidden talent and global recognition — helping artists gain visibility, discover opportunities, and grow their artistic journey. 🌍✨
+>Whether you’re an aspiring artist or an art enthusiast, Kala.ficial is your gateway to a thriving creative community — where art meets opportunity and passion finds purpose. 🖌️💫
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
@@ -92,59 +94,115 @@ Experience kala.ficial live here:
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-<h2 id="screenshots"> 📸 Screenshots </h2>
+<h2 id="screenshots"> 📸 Screenshots </h>
 
-<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%201.JPG">
-<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%202.JPG">
-<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%203.JPG">
-<img src="https://github.com/sampadatiwari30/kala.ficial/blob/main/live%204.JPG">
+![Screenshot 1](assets/images/live1.png)
+![Screenshot 2](assets/images/live2.png)
+![Screenshot 3](assets/images/live3.png)
+![Screenshot 4](assets/images/live4.png)
+![Screenshot 5](assets/images/live5.png)
+![Screenshot 6](assets/images/live6.png)
+![Screenshot 7](assets/images/live7.png)
+![Screenshot 8](assets/images/live8.png)
+
+
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 ![GSSoC Logo](https://github.com/sampadatiwari30/kala.ficial/blob/main/gssoc%20logo.png)
 
-🌟 **Exciting News...**
+<h2 id="project-structure">📁 Project Structure</h2>
 
-🚀 This project is now an official part of GirlScript Summer of Code – GSSoC'25! 💃🎉💻 We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow *kala.ficial!* Let’s make learning and career development smarter – together! 🌟👨‍💻👩‍💻
+```bash
+kala.ficial/
+│
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── assets /
+├── about.html
+├── contact.html
+├── exhibition.html
+├── Artist Portal.html
+├── blog.html
+├── auth.html
+├── exhibition.html
+├── faq.html
+├── privacy.html
+├── sitemap.html
+├── terms.html
+├── test.html
+├── theme-test.html
+├── artist.html
+├── theme-toggle.js
+├── swati-kale.html
+├── you.html
+├── chris-huen-sin-kan.html
+├── index.html
+├── README.md
+```
 
-👩‍💻 GSSoC is one of India’s **largest 3-month-long open-source programs** that encourages developers of all levels to contribute to real-world projects 🌍 while learning, collaborating, and growing together. 🌱
+**🌟 Exciting Announcement!**
 
-🌈 With **mentorship, community support**, and **collaborative coding**, it's the perfect platform for developers to:
+🚀 *Kala.ficial* is proud to announce that it has been officially selected as part of GirlScript Summer of Code (GSSoC) 2025! 💃🎉💻
 
-- ✨ Improve their skills
-- 🤝 Contribute to impactful projects
-- 🏆 Get recognized for their work
-- 📜 Receive certificates and swag!
+We’re beyond thrilled to welcome passionate contributors from across India and around the world to collaborate, innovate, and grow with us.
+Together, let’s make art, technology, and creativity more accessible than ever before! 🌍🖌️
 
-🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this kala.ficial project family! Let's build, learn, and grow together — one commit at a time. 🔥👨‍💻👩‍💻
+**👩‍💻 About GSSoC**
+
+GirlScript Summer of Code (GSSoC) is one of *India’s largest open-source programs* — a 3-month journey that empowers developers of all skill levels to contribute to real-world projects while learning, collaborating, and growing together. 🌱
+
+It’s more than just coding — it’s about community, creativity, and contribution! 💡
+
+**🌈 Why Contribute to GSSoC × Kala.ficial?**
+
+By joining GSSoC 2025, contributors will get a chance to:
+-✨ Enhance their technical and creative skills
+-🤝 Collaborate on impactful open-source projects
+-🏆 Get recognized for their valuable contributions
+-📜 Earn certificates, swags, and community exposure
+-💡 Be part of a vibrant art-tech community that bridges creativity with innovation
+-🎉 Let’s Build the Future of Art-Tech Together!
+
+We’re incredibly excited to welcome GSSoC’25 contributors to the Kala.ficial project family.
+Let’s build, learn, and grow together — one commit at a time. 🔥👩‍💻👨‍💻
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <h2 id="contribution-guidelines">Contribution Guidelines📑</h2> 
 
-- Firstly Star (⭐) the Repository
-- Fork the Repository and create a new branch for any updates/changes/issue you are working on.
-- Start Coding and do changes.
-- Commit your changes
-- Create a Pull Request which will be reviewed and suggestions would be added to improve it.
-- Add Screenshots and updated website links to help us understand what changes is all about.
+**We’re excited to have you contribute to Kala.ficial! Follow these simple steps to get started:**
+
+⭐ Star the repository to show your support.
+
+- Fork the repository and create a new branch for your updates, fixes, or features.
+- Start coding and make your changes.
+- Commit your updates with clear, descriptive messages.
+- Create a Pull Request (PR) — our team will review it and share feedback or suggestions for improvement.
+- Don’t forget to add screenshots or updated website links to help us understand your changes better.
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-**Contributing is fun**
+**💜 Contributing is Fun!**
 
-We welcome all contributions and suggestions!
-Whether it's a new feature, design improvement, or a bug fix - your voice matters 💜
+We welcome all contributions and ideas — whether it’s adding a new feature, improving design, fixing bugs, or enhancing documentation.
 
-Your insights are invaluable to us. Reach out to us team for any inquiries, feedback, or concerns.
+Your voice matters, and your insights help make Kala.ficial even better.
+For any queries, feedback, or suggestions, feel free to reach out to the project maintainers or open a discussion.
+
+Together, let’s create something meaningful and inspiring! 🌈
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <h2 id="acknowledgments">🙏 Acknowledgments</h2>
 
-- Thanks to all contributors of this project 
-- Special shoutout to **GirlScript Summer of Code (GSSoC’25)** for the amazing community and support!
-- Built with dedication, collaboration, and lots of chai
+- A heartfelt thank you to everyone who has contributed to this project — your efforts make a real difference!
+
+**Special appreciation to GirlScript Summer of Code (GSSoC’25) 💫**
+for providing an incredible platform, community, and support system that encourages collaboration and learning.
+
+Built with dedication, teamwork, and plenty of ☕ chai moments. 💻💜
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
