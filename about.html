@@ -6,11 +6,7 @@
   <title>About Us - Kala.ficial</title>
   <link rel="icon" href="favicon.png" type="image/x-icon" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-      window.location.replace("auth.html");
-    }
-  </script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -587,7 +583,7 @@ body.dark-theme footer button:hover {
     
     <!-- Logo -->
     <a href="index.html" class="flex items-center space-x-3">
-      <img src="assets/images/logo.png" alt="KALA.Ficial Logo" 
+      <img src="assets/images/logo.png" alt="KALA.Ficial Logo" id="site-logo"
            class="h-16 w-auto drop-shadow-md transition-transform duration-300 hover:scale-110">
       <span class="text-2xl font-bold tracking-wide text-gray-900">Kala.ficial</span>
     </a>
@@ -711,7 +707,7 @@ body.dark-theme footer button:hover {
     <!-- Illustration / Image -->
     <div class="md:w-1/2 flex justify-center md:justify-end relative">
       <div class="w-full max-w-md relative group">
-        <img src="assets/images/logo.png" alt="Our Story Illustration" class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10" style="width: 300px;">
+        <img src="assets/images/logo.png" alt="Our Story Illustration" id="site-logo" class="rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500 z-10" style="width: 300px;">
         <!-- Floating Accent Shapes on Image -->
         <div class="absolute -top-6 -left-6 w-14 h-14 bg-purple-400 rounded-full opacity-40 animate-spin-slow"></div>
         <div class="absolute bottom-4 right-8 w-8 h-8 bg-pink-400 rounded-full opacity-50 animate-bounce-slow"></div>
