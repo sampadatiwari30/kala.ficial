@@ -11,17 +11,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-  <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-      window.location.replace("auth.html");
-    }
-  </script>
-
-  <script>
-    if (localStorage.getItem('isLoggedIn') !== 'true') {
-        window.location.href = 'auth.html'; // Change 'auth.html' to your actual login/signup page
-    }
-  </script>
+ 
 </head>
 <body class="antialiased bg-gradient-to-b from-[#f5f7ff] via-[#efe8ff] to-white text-gray-900">
 <!-- Navbar -->
@@ -923,6 +913,78 @@
   });
 });
 </script> 
+ 
+
+      <!-- Logout Confirmation Modal -->
+      <div id="logoutModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center">
+        <div class="modal-content">
+          <h2 class="text-xl font-semibold">Confirm Logout</h2>
+          <p class="mt-3">Are you sure you want to log out?</p>
+          <div class="flex justify-center gap-4 mt-6">
+            <button id="confirmLogout">Yes, Logout</button>
+            <button id="cancelLogout">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+
+      <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+
+        };
+
+        cancelBtn.addEventListener("click", () => modal.classList.add("hidden"));
+        confirmBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          window.location.href = "auth.html";
+        });
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.classList.add("hidden");
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const loginStatus = localStorage.getItem("isLoggedIn");
+
+        // If not logged in or skipped
+        if (!loginStatus) {
+        // No record → redirect to auth page
+          window.location.href = "index.html";
+        } 
+        else if (loginStatus === "guest") {
+         // Guest mode → allow limited access
+           console.log("Guest mode: limited features active");
+           const logoutBtns = document.querySelectorAll("#logout-btn, #logout-btn-mobile");
+           logoutBtns.forEach(btn => btn.style.display = "none"); // hide logout for guests
+        } 
+        else {
+           console.log("Logged-in user detected ✅");
+        }
+      });
+
+        // Simple floating particles
+        const canvaas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvaas.width = window.innerWidth;
+        canvaas.height = window.innerHeight;
+
+        let particlesArray = [];
+        const colors = ['#FFD700', '#FF69B4', '#7B68EE', '#00FFFF'];
+
+        const menubtn = document.getElementById("menu-btn");
+        const mobilemenu = document.getElementById("mobile-menu");
+        menubtn.addEventListener("click", () => {
+          mobilemenu.classList.toggle("hidden");
+        });
+        </script>
 
 <script src="theme-toggle.js" ></script>
 

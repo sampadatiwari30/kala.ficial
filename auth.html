@@ -15,9 +15,7 @@
       rel="stylesheet"
     />
     <style>
-      * {
-        font-family: "Quicksand", sans-serif;
-      }
+      * { font-family: "Quicksand", sans-serif; }
 
       .floating-shape {
         position: fixed;
@@ -26,47 +24,19 @@
         opacity: 0.1;
         animation: float 6s ease-in-out infinite;
       }
+      #forgot-password-modal {
+  z-index: 9999; /* ensures it's above other elements */
+}
 
-      .floating-shape:nth-child(1) {
-        width: 200px;
-        height: 200px;
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-      }
 
-      .floating-shape:nth-child(2) {
-        width: 150px;
-        height: 150px;
-        top: 60%;
-        left: 80%;
-        animation-delay: 2s;
-      }
-
-      .floating-shape:nth-child(3) {
-        width: 100px;
-        height: 100px;
-        top: 80%;
-        left: 20%;
-        animation-delay: 4s;
-      }
-
-      .floating-shape:nth-child(4) {
-        width: 120px;
-        height: 120px;
-        top: 20%;
-        left: 70%;
-        animation-delay: 1s;
-      }
+      .floating-shape:nth-child(1) { width: 200px; height: 200px; top: 10%; left: 10%; }
+      .floating-shape:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s; }
+      .floating-shape:nth-child(3) { width: 100px; height: 100px; top: 80%; left: 20%; animation-delay: 4s; }
+      .floating-shape:nth-child(4) { width: 120px; height: 120px; top: 20%; left: 70%; animation-delay: 1s; }
 
       @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-20px) rotate(180deg);
-        }
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
       }
 
       .card {
@@ -76,99 +46,36 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       }
 
-      .input-field {
-        border: 2px solid #e5e7eb;
-        transition: all 0.3s ease;
-      }
-
-      .input-field:focus {
-        border-color: #8b5cf6;
-        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-      }
+      .input-field { border: 2px solid #e5e7eb; transition: all 0.3s ease; }
+      .input-field:focus { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); }
 
       .btn {
         background: linear-gradient(45deg, #8b5cf6, #ec4899);
         transition: all 0.3s ease;
       }
+      .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
 
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
-      }
+      #skip-btn { background: rgba(255, 255, 255, 0.9); }
+      #skip-btn:hover { background: rgba(255, 255, 255, 1); }
 
-      #skip-btn {
-        background: rgba(255, 255, 255, 0.9);
-      }
+      .toggle-link { color: #8b5cf6; transition: color 0.3s ease; }
+      .toggle-link:hover { color: #7c3aed; }
 
-      #skip-btn:hover {
-        background: rgba(255, 255, 255, 1);
-      }
+      .fade-in { animation: fadeIn 0.8s ease-in-out; }
+      @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
 
-      .toggle-link {
-        color: #8b5cf6;
-        transition: color 0.3s ease;
-      }
+      .modal { animation: modalFadeIn 0.3s ease-in-out; }
+      @keyframes modalFadeIn { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
 
-      .toggle-link:hover {
-        color: #7c3aed;
-      }
-
-      .fade-in {
-        animation: fadeIn 0.8s ease-in-out;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .modal {
-        animation: modalFadeIn 0.3s ease-in-out;
-      }
-
-      @keyframes modalFadeIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-
-      .auth-icon {
-        width: 120px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 20px;
-        position: relative;
-        animation: pulse 2s infinite;
-      }
+      @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
       .auth-icon img {
-        width: 100%;
-        height: 100%;
+        width: 80px;
+        height: 80px;
         object-fit: contain;
         filter: drop-shadow(0 10px 25px rgba(102, 126, 234, 0.3));
+        animation: pulse 2s infinite;
+        margin: 0 auto 20px;
       }
 
       .success-message {
@@ -181,361 +88,207 @@
       }
     </style>
   </head>
-  <body
-    class="bg-gradient-to-br from-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-4"
-  >
-    <!-- Floating background shapes -->
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
-    <div class="floating-shape"></div>
 
-    <div
-      class="container max-w-md w-full mx-auto p-6 card rounded-2xl fade-in relative z-10"
-    >
-      <!-- Logo/Icon -->
-      <div class="auth-icon" style="width: 80px; height: 80px; margin-bottom: 12px;">
+  <body class="bg-gradient-to-br from-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Floating shapes -->
+    <div class="floating-shape"></div><div class="floating-shape"></div><div class="floating-shape"></div><div class="floating-shape"></div>
+
+    <div class="container max-w-md w-full mx-auto p-6 card rounded-2xl fade-in relative z-10">
+      <div class="auth-icon">
         <img src="assets/images/logo.png" alt="Kala.ficial Logo" />
       </div>
 
-      <h1 id="form-title" class="text-2xl font-bold text-center mb-1 text-gray-800">
-        Welcome Back
-      </h1>
-      <p id="form-subtitle" class="text-center text-gray-600 mb-5 text-sm">
-        Sign in to continue to Kala.ficial
-      </p>
+      <h1 id="form-title" class="text-2xl font-bold text-center mb-1 text-gray-800">Welcome Back</h1>
+      <p id="form-subtitle" class="text-center text-gray-600 mb-5 text-sm">Sign in to continue to Kala.ficial</p>
 
       <form id="auth-form" class="space-y-2">
-        <!-- Username (only for signup) -->
-        <div id="username-field" class="input-wrapper hidden">
-          <label
-            for="username"
-            class="block text-sm font-semibold text-gray-600 mb-2"
-          >
+        <div id="username-field" class="hidden">
+          <label for="username" class="block text-sm font-semibold text-gray-600 mb-2">
             <i class="fas fa-user mr-2 text-purple-500"></i>Username
           </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            class="mt-1 block w-full px-4 py-3 rounded-xl input-field focus:outline-none"
-            placeholder="Enter your username"
-          />
+          <input type="text" id="username" name="username" class="block w-full px-4 py-3 rounded-xl input-field" placeholder="Enter your username" />
         </div>
 
-        <!-- Email -->
-        <div class="input-wrapper">
-          <label
-            for="email"
-            class="block text-sm font-semibold text-gray-700 mb-2"
-          >
+        <div>
+          <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
             <i class="fas fa-envelope mr-2 text-purple-500"></i>Email Address
           </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="mt-1 block w-full px-4 py-3 rounded-xl input-field focus:outline-none"
-            placeholder="you@example.com"
-            autocomplete="email"
-            required
-          />
+          <input type="email" id="email" required class="block w-full px-4 py-3 rounded-xl input-field" placeholder="you@example.com" />
         </div>
 
-        <!-- Password -->
-        <div class="input-wrapper">
-          <label
-            for="password"
-            class="block text-sm font-semibold text-gray-700 mb-2"
-          >
+        <div>
+          <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
             <i class="fas fa-lock mr-2 text-purple-500"></i>Password
           </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="mt-1 block w-full px-4 py-3 rounded-xl input-field focus:outline-none"
-            placeholder="Enter your password"
-            autocomplete="current-password"
-            required
-          />
+          <input type="password" id="password" required class="block w-full px-4 py-3 rounded-xl input-field" placeholder="Enter your password" />
         </div>
 
-        <!-- Forgot Password Link -->
         <div class="text-right -mt-2">
-          <button
-            type="button"
-            id="forgot-password-btn"
-            class="text-sm text-purple-600 hover:text-purple-800 transition-colors duration-300 bg-transparent border-none cursor-pointer"
-          >
+          <button type="button" id="forgot-password-btn" class="text-sm text-purple-600 hover:text-purple-800">
             <i class="fas fa-key mr-1"></i>Forgot Password?
           </button>
         </div>
 
-        <!-- Divider -->
         <div class="flex items-center my-6">
           <div class="flex-1 border-t border-gray-300"></div>
-          <span class="px-4 text-sm text-gray-500 bg-white">
-            or continue with
-          </span>
+          <span class="px-4 text-sm text-gray-500 bg-white">or continue with</span>
           <div class="flex-1 border-t border-gray-300"></div>
         </div>
 
-        <!-- Google Sign In -->
-        <div class="flex justify-center">
-          <button
-            type="button"
-            
-            id="google-signin-btn"
-            class="flex items-center justify-center w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-700 hover:bg-gray-50 transition-all duration-300 shadow-sm google-btn"
-          >
-            <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-            </svg>
-            Continue with Google
-          </button>
-        </div>
+        <button type="button" id="google-signin-btn" class="flex items-center justify-center w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-700 hover:bg-gray-50">
+          <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Continue with Google
+        </button>
 
-        <!-- Submit Button -->
-        <button
-          type="submit"
-          id="submit-btn"
-          class="w-full px-4 py-3 rounded-xl text-white font-semibold btn focus:outline-none"
-        >
+        <button type="submit" id="submit-btn" class="w-full px-4 py-3 rounded-xl text-white font-semibold btn">
           <i class="fas fa-sign-in-alt mr-2"></i>Login
         </button>
-        <!-- ✅ Skip Button -->
-        <button
-          type="button"
-          id="skip-btn"
-          class="w-full mt-3 px-4 py-3 rounded-xl border border-purple-400 text-purple-600 font-semibold hover:bg-purple-50 transition-all duration-300 focus:outline-none"
-        >
+
+        <button type="button" id="skip-btn" class="w-full mt-3 px-4 py-3 rounded-xl border border-purple-400 text-purple-600 font-semibold hover:bg-purple-50">
           <i class="fas fa-forward mr-2"></i>Skip for now
         </button>
 
         <p class="text-center text-sm text-gray-600 mt-6">
-          <span
-            id="toggle-btn"
-            class="cursor-pointer toggle-link hover:underline font-medium"
-          >
-            New user? Sign up
-          </span>
+          <span id="toggle-btn" class="cursor-pointer toggle-link hover:underline font-medium">New user? Sign up</span>
         </p>
       </form>
     </div>
 
     <!-- Forgot Password Modal -->
-    <div
-      id="forgot-password-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
-    >
+    <div id="forgot-password-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
       <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative modal">
-        <button
-          id="close-modal"
-          class="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-        >
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
           <i class="fas fa-times text-xl"></i>
         </button>
 
-        <h2 class="text-2xl font-bold text-center mb-2 text-gray-800">
-          <i class="fas fa-key text-purple-500 mr-2"></i>Reset Password
-        </h2>
-        <p class="text-center text-gray-600 mb-6">
-          Enter your email to receive reset instructions
-        </p>
+        <h2 class="text-2xl font-bold text-center mb-2 text-gray-800"><i class="fas fa-key text-purple-500 mr-2"></i>Reset Password</h2>
+        <p class="text-center text-gray-600 mb-6">Enter your email to receive reset instructions</p>
 
         <form id="forgot-password-form" class="space-y-4">
-          <div>
-            <label
-              for="reset-email"
-              class="block text-sm font-semibold text-gray-700 mb-2"
-            >
-              <i class="fas fa-envelope mr-2 text-purple-500"></i>Email Address
-            </label>
-            <input
-              type="email"
-              id="reset-email"
-              name="email"
-              class="mt-1 block w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              placeholder="you@example.com"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="w-full px-4 py-3 rounded-xl bg-purple-600 text-white font-semibold hover:bg-purple-700 transition-all duration-300 focus:outline-none"
-          >
+          <input type="email" id="reset-email" class="block w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-purple-500" placeholder="you@example.com" required />
+          <button type="submit" class="w-full px-4 py-3 rounded-xl bg-purple-600 text-white font-semibold hover:bg-purple-700">
             <i class="fas fa-paper-plane mr-2"></i>Send Reset Link
           </button>
-
-          <div id="reset-success" class="success-message text-center">
-            <i class="fas fa-check-circle mr-2"></i>Password reset link sent
-            successfully!
-          </div>
+          <div id="reset-success" class="success-message text-center"><i class="fas fa-check-circle mr-2"></i>Password reset link sent!</div>
         </form>
       </div>
     </div>
 
-    <script>
-      // All JavaScript code in one place
-      document.addEventListener("DOMContentLoaded", function () {
-        // DOM Elements
-        const authForm = document.getElementById("auth-form");
-        const formTitle = document.getElementById("form-title");
-        const submitBtn = document.getElementById("submit-btn");
-        const toggleBtn = document.getElementById("toggle-btn");
-        const usernameField = document.getElementById("username-field");
-        const usernameInput = document.getElementById("username");
-        const forgotPasswordBtn = document.getElementById(
-          "forgot-password-btn"
-        );
-        const forgotPasswordModal = document.getElementById(
-          "forgot-password-modal"
-        );
-        const closeModal = document.getElementById("close-modal");
-        const forgotPasswordForm = document.getElementById(
-          "forgot-password-form"
-        );
-        const resetEmailInput = document.getElementById("reset-email");
-        const resetSuccessMessage = document.getElementById("reset-success");
-        const googleSignInBtn = document.getElementById("google-signin-btn");
+    <!-- Firebase & Auth Script -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+  } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
-        // Initial state - Login mode
-        let isLoginMode = true;
+  // ✅ Your Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDiL-nwYHIcXlOGL8bv_1tncQkY9D7GvzU",
+    authDomain: "kala-ficial.firebaseapp.com",
+    projectId: "kala-ficial",
+    storageBucket: "kala-ficial.firebasestorage.app",
+    messagingSenderId: "1733396781",
+    appId: "1:1733396781:web:1db7dde2ebafdfbce52ba4",
+    measurementId: "G-JC9F5FK63L"
+  };
 
-        // Toggle between Login and Signup
-        toggleBtn.addEventListener("click", function () {
-          isLoginMode = !isLoginMode;
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-          if (isLoginMode) {
-            // Switch to Login
-            formTitle.textContent = "Welcome Back";
-            submitBtn.innerHTML =
-              '<i class="fas fa-sign-in-alt mr-2"></i>Sign In';
-            toggleBtn.innerHTML = "Don't have an account? Sign up";
-            usernameField.classList.add("hidden");
-            usernameInput.removeAttribute("required");
-          } else {
-            // Switch to Signup
-            formTitle.textContent = "Create Account";
-            submitBtn.innerHTML =
-              '<i class="fas fa-user-plus mr-2"></i>Sign Up';
-            toggleBtn.innerHTML = "Already have an account? Sign in";
-            usernameField.classList.remove("hidden");
-            usernameInput.setAttribute("required", "");
-          }
-        });
+  // DOM Elements
+  const form = document.getElementById("auth-form");
+  const toggleBtn = document.getElementById("toggle-btn");
+  const submitBtn = document.getElementById("submit-btn");
+  const usernameField = document.getElementById("username-field");
+  const forgotModal = document.getElementById("forgot-password-modal");
+  const forgotBtn = document.getElementById("forgot-password-btn");
+  const closeModal = document.getElementById("close-modal");
+  const forgotForm = document.getElementById("forgot-password-form");
+  const resetEmail = document.getElementById("reset-email");
+  const resetSuccess = document.getElementById("reset-success");
 
-        // Forgot Password Modal
-        forgotPasswordBtn.addEventListener("click", function () {
-          resetSuccessMessage.style.display = "none";
-          resetEmailInput.value = "";
-          forgotPasswordModal.classList.remove("hidden");
-        });
+  let isLogin = true;
 
-        closeModal.addEventListener("click", function () {
-          forgotPasswordModal.classList.add("hidden");
-        });
+  // Toggle between Login & Signup
+  toggleBtn.addEventListener("click", () => {
+    isLogin = !isLogin;
+    usernameField.classList.toggle("hidden", isLogin);
+    submitBtn.innerHTML = isLogin
+      ? '<i class="fas fa-sign-in-alt mr-2"></i>Login'
+      : '<i class="fas fa-user-plus mr-2"></i>Sign Up';
+    toggleBtn.innerText = isLogin
+      ? "New user? Sign up"
+      : "Already have an account? Sign in";
+  });
 
-        // Close modal when clicking outside
-        forgotPasswordModal.addEventListener("click", function (e) {
-          if (e.target.id === "forgot-password-modal") {
-            forgotPasswordModal.classList.add("hidden");
-          }
-        });
+  // Login / Signup
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-        // Forgot Password Form Submission
-        forgotPasswordForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const email = resetEmailInput.value;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
 
-          // Simple validation
-          if (email && email.includes("@") && email.includes(".")) {
-            // Show success message
-            resetSuccessMessage.style.display = "flex";
+    try {
+      if (isLogin) {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("✅ Login successful!");
+        window.location.href = "index.html";
+      } else {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("🎉 Signup successful! Welcome to Kala.ficial.");
+        window.location.href = "index.html";
+      }
+    } catch (err) {
+      alert("❌ " + err.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = isLogin
+        ? '<i class="fas fa-sign-in-alt mr-2"></i>Login'
+        : '<i class="fas fa-user-plus mr-2"></i>Sign Up';
+    }
+  });
 
-            // Hide modal after 2 seconds
-            setTimeout(() => {
-              forgotPasswordModal.classList.add("hidden");
-            }, 2000);
-          } else {
-            alert("Please enter a valid email address");
-          }
-        });
+ forgotBtn.addEventListener("click", () => {
+  resetEmail.value = "";
+  resetSuccess.style.display = "none";
+  forgotModal.classList.remove("hidden");
+});
 
-              // Main Form Submission
-        authForm.addEventListener("submit", function (e) {
-          e.preventDefault();
+closeModal.addEventListener("click", () => forgotModal.classList.add("hidden"));
 
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-          const username = document.getElementById("username").value;
+forgotForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = resetEmail.value;
+  try {
+    await sendPasswordResetEmail(auth, email);
+    resetSuccess.style.display = "block";
+    resetEmail.value = "";
+    setTimeout(() => {
+      resetSuccess.style.display = "none";
+      forgotModal.classList.add("hidden");
+    }, 2000);
+  } catch (err) {
+    alert("❌ " + err.message);
+  }
+});
 
-          // Add loading state
-          const originalText = submitBtn.innerHTML;
-          submitBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-          submitBtn.disabled = true;
+  // Skip Button
+  document.getElementById("skip-btn").addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+</script>
 
-          // Simulate API call
-          setTimeout(() => {
-            if (isLoginMode) {
-              // Login logic
-              console.log("Login attempt:", { email, password });
-              alert(`Login successful! Welcome back to Kala.ficial.`);
-            } else {
-              // Signup logic
-              if (!username) {
-                alert("Please enter a username");
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                return;
-              }
-              console.log("Signup attempt:", { username, email, password });
-              alert(
-                `Account created successfully! Welcome to Kala.ficial, ${username}.`
-              );
-            }
-
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-          }, 1500);
-        });
-
-        // Google Sign In Button
-        googleSignInBtn.addEventListener("click", function () {
-          // Add loading state
-          const originalText = googleSignInBtn.innerHTML;
-          googleSignInBtn.innerHTML =
-            '<i class="fas fa-spinner fa-spin mr-2"></i>Connecting...';
-          googleSignInBtn.disabled = true;
-
-          // Simulate Google Sign In
-          setTimeout(() => {
-            alert(
-              "Google Sign In would be implemented here with proper OAuth integration."
-            );
-
-            // Reset button
-            googleSignInBtn.innerHTML = originalText;
-            googleSignInBtn.disabled = false;
-          }, 1000);
-        });
-        // Skip Button
-          const skipBtn = document.getElementById("skip-btn");
-          if (skipBtn) {
-          skipBtn.addEventListener("click", function () {
-           // Redirect to next page
-           window.location.href = "index.html"; // make sure index.html exists in same folder
-         });
-       }
-
-      });
-    </script>
   </body>
 </html>
