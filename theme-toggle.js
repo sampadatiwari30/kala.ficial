@@ -1,4 +1,4 @@
-/* theme-toggle.js  — Option 2 (dark-theme on <body>) */
+/* theme-toggle.js — with Logo Switching */
 (function () {
   'use strict';
 
@@ -10,8 +10,10 @@
     const mobileToggle = document.getElementById('mobile-theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const mobileIcon = document.getElementById('mobile-theme-icon');
-    const STORAGE_KEY = 'kala_theme'; // safer key name
+    const logo = document.getElementById('site-logo'); // ✅ logo element
+    const STORAGE_KEY = 'kala_theme';
 
+    // Helper functions for icons
     function iconToSun(el) {
       if (!el) return;
       el.classList.remove('fa-moon');
@@ -23,6 +25,17 @@
       el.classList.add('fa-moon');
     }
 
+    // ✅ Function to switch logo based on theme
+    function updateLogo(theme) {
+      if (!logo) return;
+      if (theme === 'dark') {
+        logo.src = 'assets/images/dark-logo.png';
+      } else {
+        logo.src = 'assets/images/logo.png';
+      }
+    }
+
+    // Apply theme + logo + icons
     function applyTheme(theme) {
       if (theme === 'dark') {
         body.classList.add('dark-theme');
@@ -33,6 +46,7 @@
         iconToMoon(themeIcon);
         iconToMoon(mobileIcon);
       }
+      updateLogo(theme); // ✅ update logo
       try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* ignore storage errors */ }
       window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
     }
@@ -42,31 +56,28 @@
       applyTheme(isDark ? 'light' : 'dark');
     }
 
-    // Attach listeners (safe guards if elements missing)
+    // Attach listeners
     if (themeToggle) themeToggle.addEventListener('click', (e) => { e.preventDefault(); toggleTheme(); });
     if (mobileToggle) mobileToggle.addEventListener('click', (e) => { e.preventDefault(); toggleTheme(); });
 
-    // Init theme on page load:
-    // 1) Use saved localStorage value if present
-    // 2) Otherwise use system preference
-    // 3) Default to light
+    // Init theme on load
     let saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { saved = null; }
     if (saved === 'dark' || saved === 'light') {
       applyTheme(saved);
     } else {
-      // no saved preference — use system pref
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       applyTheme(prefersDark ? 'dark' : 'light');
     }
   }
 
-  // Expose API if needed
+  // Public API (optional)
   window.kalaTheme = {
     setTheme: function (t) {
       if (!t) return;
       document.body.classList.toggle('dark-theme', t === 'dark');
-      // update localStorage
+      const logo = document.getElementById('site-logo');
+      if (logo) logo.src = t === 'dark' ? 'assets/images/dark-logo.png' : 'assets/images/logo.png';
       try { localStorage.setItem('kala_theme', t); } catch (e) {}
       window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: t } }));
     },
